@@ -7,6 +7,7 @@ firebase functions
 cloud build
 cloud run
 github
+culqi
 
 
 Dependencies:
