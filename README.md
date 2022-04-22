@@ -17,3 +17,6 @@ prettier
 tailwind
 ant-design
 tyled-components
+
+
+Las credenciales de culqi seran pasadas por env en el trigger de PROD y RED y example
