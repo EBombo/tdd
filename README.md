@@ -14,4 +14,5 @@ nextjs
 reactjs
 prettier
 tailwind
+ant-design
 tyled-components
