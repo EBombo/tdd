@@ -1,0 +1,30 @@
+{
+  "productionConfig": {
+    "phone": "0000000",
+    "serverEmail": {
+      "service": "gmail",
+      "host": "smtp.gmail.com",
+      "from": "TDD TEAM",
+      "user": "hello@ebombo.com",
+      "password": "pass"
+    },
+    "serverUrl": "https://tdd.com",
+    "mails": "pabloynciorivera@gmail.com",
+    "maxAgeCache": 86400,
+    "maxAgeCacheUserToken": 900
+  },
+  "devConfig": {
+    "phone": "0000000",
+    "serverEmail": {
+      "service": "gmail",
+      "host": "smtp.gmail.com",
+      "from": "TDD TEAM",
+      "user": "hello@ebombo.com",
+      "password": "pass"
+    },
+    "serverUrl": "https://tdd.com",
+    "mails": "pabloynciorivera@gmail.com",
+    "maxAgeCache": 86400,
+    "maxAgeCacheUserToken": 900
+  }
+}
