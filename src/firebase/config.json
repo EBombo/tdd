@@ -1,0 +1,55 @@
+{
+  "production": {
+    "firebase": {
+      "apiKey": "AIzaSyDjlOSf3XgbkrxAHq22SPJsy5CNmz1XcTg",
+      "authDomain": "bombo-games.firebaseapp.com",
+      "databaseURL": "https://bombo-games-default-rtdb.firebaseio.com",
+      "projectId": "bombo-games",
+      "storageBucket": "bombo-games.appspot.com",
+      "messagingSenderId": "1070628660325",
+      "appId": "1:1070628660325:web:da4704997a7bd837d5528c",
+      "measurementId": "G-KWMV30S3TE"
+    },
+    "firebaseEvents": {
+      "apiKey": "AIzaSyAUBaakhi0swY_FDM3LeuGrfIN1Li7AugM",
+      "authDomain": "ebombo-events.firebaseapp.com",
+      "projectId": "ebombo-events",
+      "storageBucket": "ebombo-events.appspot.com",
+      "messagingSenderId": "83072686764",
+      "appId": "1:83072686764:web:2c5680dc46bfacb5d5dd09",
+      "measurementId": "G-BWH1540T4Q"
+    },
+    "serverUrlLocal": "http://localhost:8080",
+    "serverUrl": "https://ebombo.io/api",
+    "serverUrlEvents": "https://api.ebombo.com",
+    "storageUrl": "https://storage.googleapis.com/bombo-games.appspot.com",
+    "analytics": "",
+    "maxAgeCache": 86400
+  },
+  "development": {
+    "firebase": {
+      "apiKey": "AIzaSyB7PF1ukaiZOEWt-XmJT5ZtYoY-b5cdOhY",
+      "authDomain": "bombo-games-dev.firebaseapp.com",
+      "projectId": "bombo-games-dev",
+      "storageBucket": "bombo-games-dev.appspot.com",
+      "messagingSenderId": "310996445281",
+      "appId": "1:310996445281:web:d9311966a8488369d1e220",
+      "measurementId": "G-QE8D28XL8Z"
+    },
+    "firebaseEvents": {
+      "apiKey": "AIzaSyCWpwb6O8pdYT6v4L4YajKfTLCa9XPOUGs",
+      "authDomain": "ebombo-events-dev.firebaseapp.com",
+      "projectId": "ebombo-events-dev",
+      "storageBucket": "ebombo-events-dev.appspot.com",
+      "messagingSenderId": "400641140585",
+      "appId": "1:400641140585:web:4edded714bb211fd8c7ff8",
+      "measurementId": "G-NWBPEND5Q0"
+    },
+    "serverUrlLocal": "http://localhost:3001/api",
+    "serverUrl": "https://red.ebombo.io/api",
+    "serverUrlEvents": "https://red-api.ebombo.com",
+    "storageUrl": "https://storage.googleapis.com/bombo-games-dev.appspot.com",
+    "analytics": "",
+    "maxAgeCache": 86400
+  }
+}
