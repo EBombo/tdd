@@ -35,31 +35,6 @@ let auth;
 let analytics;
 let database;
 
-let analyticsEvents;
-let firestoreEvents;
-let storageEvents;
-let authEvents;
-
-let analyticsBingo;
-let firestoreBingo;
-let storageBingo;
-let authBingo;
-
-let analyticsRoulette;
-let firestoreRoulette;
-let storageRoulette;
-let authRoulette;
-
-let analyticsTrivia;
-let firestoreTrivia;
-let storageTrivia;
-let authTrivia;
-
-let analyticsHanged;
-let firestoreHanged;
-let storageHanged;
-let authHanged;
-
 if (isEmpty(firebase.apps)) {
   try {
     console.log("initializeApp", isEmpty(firebase.apps));
@@ -76,82 +51,6 @@ if (isEmpty(firebase.apps)) {
   } catch (error) {
     console.error("error initializeApp", error);
   }
-  // Allow connection with events firebase
-  try {
-    firebase.initializeApp(config.firebaseEvents, "events");
-    firestoreEvents = firebase.app("events").firestore();
-    storageEvents = firebase.app("events").storage();
-    authEvents = firebase.app("events").auth();
-
-    if (typeof window !== "undefined") {
-      analyticsEvents = firebase.app("events").analytics();
-    }
-
-    firestoreEvents.settings({ ignoreUndefinedProperties: true });
-  } catch (error) {
-    console.error("error initializeApp", error);
-  }
-  //Allow connection with bingo firebase
-  try {
-    firebase.initializeApp(config.firebaseBingo, "bingo");
-    firestoreBingo = firebase.app("bingo").firestore();
-    storageBingo = firebase.app("bingo").storage();
-    authBingo = firebase.app("bingo").auth();
-
-    if (typeof window !== "undefined") {
-      analyticsBingo = firebase.app("bingo").analytics();
-    }
-
-    firestoreBingo.settings({ ignoreUndefinedProperties: true });
-  } catch (error) {
-    console.error("error initializeApp", error);
-  }
-  //Allow connection with roulette firebase
-  try {
-    firebase.initializeApp(config.firebaseRoulette, "roulette");
-    firestoreRoulette = firebase.app("roulette").firestore();
-    storageRoulette = firebase.app("roulette").storage();
-    authRoulette = firebase.app("roulette").auth();
-
-    if (typeof window !== "undefined") {
-      analyticsRoulette = firebase.app("roulette").analytics();
-    }
-
-    firestoreRoulette.settings({ ignoreUndefinedProperties: true });
-  } catch (error) {
-    console.error("error initializeApp", error);
-  }
-  //Allow connection with trivia firebase
-  try {
-    firebase.initializeApp(config.firebaseTrivia, "trivia");
-    firestoreTrivia = firebase.app("trivia").firestore();
-    storageTrivia = firebase.app("trivia").storage();
-    authTrivia = firebase.app("trivia").auth();
-
-    if (typeof window !== "undefined") {
-      analyticsTrivia = firebase.app("trivia").analytics();
-    }
-
-    firestoreTrivia.settings({ ignoreUndefinedProperties: true });
-  } catch (error) {
-    console.error("error initializeApp", error);
-  }
-
-  //Allow connection with hanged firebase
-  try {
-    firebase.initializeApp(config.firebaseHanged, "hanged");
-    firestoreHanged = firebase.app("hanged").firestore();
-    storageHanged = firebase.app("hanged").storage();
-    authHanged = firebase.app("hanged").auth();
-
-    if (typeof window !== "undefined") {
-      analyticsHanged = firebase.app("hanged").analytics();
-    }
-
-    firestoreHanged.settings({ ignoreUndefinedProperties: true });
-  } catch (error) {
-    console.error("error initializeApp", error);
-  }
 }
 
 if (DOMAIN?.includes("localhost")) {
@@ -160,34 +59,4 @@ if (DOMAIN?.includes("localhost")) {
   //auth.useEmulator("http://localhost:9099/");
 }
 
-export {
-  analyticsHanged,
-  firestoreHanged,
-  storageHanged,
-  authHanged,
-  analyticsBingo,
-  firestoreBingo,
-  storageBingo,
-  authBingo,
-  analyticsTrivia,
-  firestoreTrivia,
-  storageTrivia,
-  authTrivia,
-  analyticsRoulette,
-  firestoreRoulette,
-  storageRoulette,
-  authRoulette,
-  analyticsEvents,
-  firestoreEvents,
-  storageEvents,
-  authEvents,
-  firestore,
-  analytics,
-  database,
-  firebase,
-  hostName,
-  version,
-  storage,
-  config,
-  auth,
-};
+export { firestore, analytics, database, firebase, hostName, version, storage, config, auth };
