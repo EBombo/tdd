@@ -21,15 +21,6 @@ const Navbar = (props) => {
     >{children}</Anchor>
   );
 
-  const RightAnchor = ({ primary=false, children, url }) => (
-    <Anchor
-      className={`ml-4 inline-block px-4 py-2 leading-none border rounded-3xl border-pink-500 mt-4 lg:mt-0
-        ${primary ? "bg-pink-500" : "bg-white"}
-        `}
-      url={url}
-    >{children}</Anchor>
-  );
-
   return (
     <div className="bg-whiteTransparent shadow-navbar">
       <nav className="h-[50px] lg:h-[120px] flex items-center justify-between flex-wrap px-4">
