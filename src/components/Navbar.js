@@ -2,25 +2,42 @@ import React, { useEffect } from "reactn";
 import { useRouter } from "next/router";
 import {config} from "../firebase";
 import {Image} from "./common/Image";
+import {Anchor} from "./form/Anchor";
+import {Button} from "./form/Button";
 
 // TODO: Implement Navbar
 const Navbar = (props) => {
   const router = useRouter();
 
   useEffect(() => {
-    router.prefetch("/library");
-    router.prefetch("/library/events");
-    router.prefetch("/events/[eventId]");
+    router.prefetch("/");
+    router.prefetch("/login");
   }, []);
 
+  const LeftAnchor = ({ children, url }) => (
+    <Anchor
+      className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-pink-500 mr-8"
+      url={url}
+    >{children}</Anchor>
+  );
+
+  const RightAnchor = ({ primary=false, children, url }) => (
+    <Anchor
+      className={`ml-4 inline-block px-4 py-2 leading-none border rounded-3xl border-pink-500 mt-4 lg:mt-0
+        ${primary ? "bg-pink-500" : "bg-white"}
+        `}
+      url={url}
+    >{children}</Anchor>
+  );
+
   return (
-    <div className="bg-whiteDark">
-      <nav className="h-[50px] flex items-center justify-between flex-wrap">
+    <div className="bg-whiteTransparent shadow-navbar">
+      <nav className="h-[50px] lg:h-[120px] flex items-center justify-between flex-wrap px-4">
         <div className="flex items-center flex-shrink-0 text-black mr-6">
           <Image
             src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`}
-            width="125px"
             height="35px"
+            desktopHeight="55px"
             size="contain"
             margin="0"
           />
@@ -32,19 +49,13 @@ const Navbar = (props) => {
         </div>
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow">
-            <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white mr-4">
-              Inicio
-            </a>
-            <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white mr-4">
-              Programa
-            </a>
-            <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white">
-              Expositores
-            </a>
+            <LeftAnchor url="/"><span className="text-base">Inicio</span></LeftAnchor>
+            <LeftAnchor url="/"><span className="text-base">Programa</span></LeftAnchor>
+            <LeftAnchor url="/"><span className="text-base">Expositores</span></LeftAnchor>
           </div>
           <div>
-            <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Adquirir entrada</a>
-            <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Iniciar sesión</a>
+            <Button primary onClick={() => router.push("/")}>Adquirir entrada</Button>
+            <Button onClick={() => router.push("/login")}>Iniciar sesión</Button>
           </div>
         </div>
       </nav>
