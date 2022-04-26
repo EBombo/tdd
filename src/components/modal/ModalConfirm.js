@@ -46,7 +46,7 @@ const ContentModal = styled.div`
     margin: 1rem 0;
     color: ${(props) => props.theme.basic.blackDarken};
     text-align: center;
-    font-family: Lato;
+    font-family: 'Encode Sans', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
