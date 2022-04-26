@@ -17,7 +17,7 @@ const Navbar = (props) => {
     <div className="h-[50px] px-4 flex items-center justify-between bg-whiteDark">
       <div>
         <Image
-          src={`${config.storageUrl}/resources/ebombo-icon.png`}
+          src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`}
           width="125px"
           height="35px"
           size="contain"
