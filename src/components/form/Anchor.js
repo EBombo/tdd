@@ -32,19 +32,6 @@ const AnchorTag = styled.a`
 
   :hover {
     text-decoration: ${(props) => (props.underlined ? `underline` : "")};
-    text-shadow: 0 0 10px
-      ${({ variant = "default", theme }) =>
-        variant === "primary"
-          ? theme.basic.primary
-          : variant === "secondary"
-          ? theme.basic.secondary
-          : variant === "warning"
-          ? theme.basic.warning
-          : variant === "danger"
-          ? theme.basic.danger
-          : variant === "white"
-          ? theme.basic.whiteLight
-          : theme.basic.primary};
   }
 
   &[disabled] {

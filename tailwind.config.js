@@ -36,6 +36,7 @@ module.exports = {
         grayLighten: "#C4C4C4",
         gray: "#E4E4E4",
         secondGray: "#EFEFEF",
+        whiteTransparent: "#FFFFFFCC",
       },
       backgroundImage: () => ({
         pattern: `url('${config.storageUrl}/resources/pattern.svg')`,
@@ -43,6 +44,9 @@ module.exports = {
         landing: `url('${config.storageUrl}/resources/landing-cover.svg')`,
         index: `url('${config.storageUrl}/resources/index-bg-img.jpg')`
       }),
+      boxShadow: {
+        "navbar": "0px 4px 4px 0px #00000012",
+      },
     },
   },
   plugins: [],

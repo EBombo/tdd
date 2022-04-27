@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import {config} from "../../firebase";
+import Navbar from "../../components/Navbar";
 import Countdown from "../../components/Countdown";
 import { Button } from "../../components/form/Button";
 import { Image } from "../../components/common/Image";
