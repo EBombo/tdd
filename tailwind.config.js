@@ -10,7 +10,7 @@ module.exports = {
         success: "#56EEA5",
         successDark: "#3FA876",
         successLight: "#77f1b7",
-        primary: "#956DFC",
+        primary: "#ED1E79",
         primaryDark: "#5D449E",
         primaryLight: "#C4ADFF",
         primaryDarken: "#754EDA",
@@ -40,7 +40,8 @@ module.exports = {
       },
       backgroundImage: () => ({
         pattern: `url('${config.storageUrl}/resources/pattern.svg')`,
-        navbarShadow: "box-shadow: 0px 4px 4px 0px #00000012"
+        navbarShadow: "box-shadow: 0px 4px 4px 0px #00000012",
+        landing: `url('${config.storageUrl}/resources/landing-cover.svg')`
       }),
       boxShadow: {
         "navbar": "0px 4px 4px 0px #00000012",
