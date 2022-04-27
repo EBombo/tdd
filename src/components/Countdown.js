@@ -48,7 +48,7 @@ const Countdown = ({ title = "Reserva la fecha", ...props }) => {
   }, [days, hours, minutes, seconds]);
 
   return (
-    <div className="min-h-[50px] pt-28 pb-20 bg-whiteDark">
+    <div className="min-h-[50px] pt-28 pb-20 bg-white">
       <div className="text-center text-xl lg:text-4xl font-bold mb-16">{title}</div>
       {displayContent}
     </div>
