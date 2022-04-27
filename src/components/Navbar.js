@@ -15,12 +15,14 @@ const Navbar = (props) => {
     router.prefetch("/login");
   }, []);
 
-  const LeftAnchor = ({ children, url }) => (
+  const LeftAnchor = React.memo(({ children, url }) => (
     <Anchor
-      className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-pink-500 mr-8 py-2"
+      className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-pink-500 py-2"
       url={url}
-    >{children}</Anchor>
-  );
+    >
+      <span className="text-base mr-8">{children}</span>
+    </Anchor>
+  ));
 
   return (
     <div className="">
@@ -41,9 +43,9 @@ const Navbar = (props) => {
         </div>
         <div className="w-full hidden lg:block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow">
-            <LeftAnchor url="/"><span className="text-base">Inicio</span></LeftAnchor>
-            <LeftAnchor url="/"><span className="text-base">Programa</span></LeftAnchor>
-            <LeftAnchor url="/"><span className="text-base">Expositores</span></LeftAnchor>
+            <LeftAnchor url="/">Inicio</LeftAnchor>
+            <LeftAnchor url="/">Programa</LeftAnchor>
+            <LeftAnchor url="/">Expositores</LeftAnchor>
           </div>
           <div>
             <Button primary onClick={() => router.push("/")}>Adquirir entrada</Button>
@@ -53,9 +55,9 @@ const Navbar = (props) => {
         {menuDrawer && (
           <div className="absolute top-[50px] right-0 py-8 w-full block flex-grow lg:flex lg:items-center lg:w-auto bg-white">
             <div className="text-sm lg:flex-grow">
-              <LeftAnchor url="/"><span className="text-base">Inicio</span></LeftAnchor>
-              <LeftAnchor url="/"><span className="text-base">Programa</span></LeftAnchor>
-              <LeftAnchor url="/"><span className="text-base">Expositores</span></LeftAnchor>
+              <LeftAnchor url="/">Inicio</LeftAnchor>
+              <LeftAnchor url="/">Programa</LeftAnchor>
+              <LeftAnchor url="/">Expositores</LeftAnchor>
             </div>
             <div>
               <div className="text-center"><Button primary onClick={() => router.push("/")}>Adquirir entrada</Button></div>
