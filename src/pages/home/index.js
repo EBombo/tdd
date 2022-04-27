@@ -2,6 +2,7 @@ import React, { useEffect, useGlobal, useState } from "reactn";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
+import Navbar from "../../components/Navbar";
 import Countdown from "../../components/Countdown";
 
 export const Home = (props) => {
@@ -26,6 +27,7 @@ export const Home = (props) => {
     <LandingContainer>
 
       <div className="min-h-screen">
+        <Navbar />
 
       </div>
 
