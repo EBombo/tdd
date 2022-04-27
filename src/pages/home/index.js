@@ -3,11 +3,29 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import {config} from "../../firebase";
-import Navbar from "../../components/Navbar";
 import Countdown from "../../components/Countdown";
 import { Button } from "../../components/form/Button";
 import { Image } from "../../components/common/Image";
 import { PreviewCarousel } from "../../components/PreviewCarousel";
+import { NewsCarousel } from "./NewsCarousel";
+
+const news = [
+  {
+    imageUrl: `${config}/resources/news-sample.jpg`,
+    title: "Transformación digital",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
+  {
+    imageUrl: `${config}/resources/news-sample.jpg`,
+    title: "Transformación digital",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
+  {
+    imageUrl: `${config}/resources/news-sample.jpg`,
+    title: "Transformación digital",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
+];
 
 export const Home = (props) => {
   const router = useRouter();
@@ -29,16 +47,14 @@ export const Home = (props) => {
 
   return (
     <LandingContainer>
-      <div className="h-full bg-index bg-no-repeat bg-cover flex lg:items-end bg-bottom">
-          {/*
-        <div className="mt-8 lg:mt-0 lg:mx-12 grid lg:grid-cols-3 w-[90%] lg:w-full h-[50%] lg:h-[75%]">
+      <div className="min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)] w-full bg-index bg-no-repeat bg-cover flex lg:items-end bg-bottom">
+        <div className="mt-8 lg:mt-0 lg:mx-12 lg:grid lg:grid-cols-3 w-[90%] lg:w-full lg:h-[500px]">
           <div className="col-start-1 col-end-2 bg-whiteTransparent p-4 lg:p-8">
             <h2 className="text-xl lg:text-3xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
             <p className="text-base lg:text-lg mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
             <Button margin="m-0" primary onClick={() => {}}>Adquirir entrada</Button>
           </div>
         </div>
-          */}
       </div>
 
       <Countdown />
@@ -65,8 +81,9 @@ export const Home = (props) => {
 
       <div className="bg-white py-4">
         <div className="mx-auto max-w-[1200px]">
-          <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Expositores</div>
+          <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Noticias de Interés</div>
 
+          <NewsCarousel items={news} />
         </div>
       </div>
 
