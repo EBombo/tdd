@@ -1,5 +1,5 @@
-import React from "reactn";
-import { Input, Anchor, Button } from "../../components/form";
+import React, { useEffect } from "reactn";
+import { Anchor, Button, Input } from "../../components/form";
 import { useForm } from "react-hook-form";
 import Countdown from "../../components/Countdown";
 import { object, string } from "yup";
@@ -10,6 +10,10 @@ export const Login = (props) => {
   const router = useRouter();
 
   const { signIn } = useAuth();
+
+  useEffect(() => {
+    router.prefetch("/register");
+  }, []);
 
   const schema = object().shape({
     email: string().required().email(),
