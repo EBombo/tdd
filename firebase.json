@@ -1,11 +1,10 @@
 {
   "hosting": {
     "public": "public",
-    "redirects": [
+    "rewrites": [
       {
         "source": "**",
-        "destination": "https://tdd-prod-red-o4tetk355a-uc.a.run.app",
-        "type": 200
+        "destination": "https://tdd-prod-red-o4tetk355a-uc.a.run.app"
       }
     ],
     "headers": [
