@@ -90,6 +90,7 @@ export const timelineBlocks = [
       {
         name: "Raul Katz",
         title: "",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/raul-katz.jpg`,
         subtitle: "Política Públicas para impulsar la TD del país",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -98,6 +99,7 @@ export const timelineBlocks = [
       {
         name: "Julio Porcel",
         title: "Past President TDD",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/julio-porcel.jpg`,
         subtitle: "Panorama Digital del Perú",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -106,6 +108,7 @@ export const timelineBlocks = [
       {
         name: "Alfredo Astudillo",
         title: "Vice Presidente TDD",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/alfredo-astudillo.jpg`,
         subtitle: "Aceleración del Avance Digital del Perú",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -114,6 +117,7 @@ export const timelineBlocks = [
       {
         name: "Carlos Huaman",
         title: "Socio Fundador DN Consultores",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-huaman.jpg`,
         subtitle: "Política Pública Sectorial",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -133,6 +137,7 @@ export const timelineBlocks = [
       {
         name: "Fernando Zavala",
         title: "Presidente de Directorio Grupo Interbank",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/fernando-zavala.jpg`,
         subtitle: "Liderazgo, Estrategia Digital & Gobierno Corporativo",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -141,6 +146,7 @@ export const timelineBlocks = [
       {
         name: "Carlos Osorio",
         title: "",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-osorio.jpg`,
         subtitle: "Modelos de Negocio, Innovación & Rediseño de Procesos",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -149,6 +155,7 @@ export const timelineBlocks = [
       {
         name: "Liliana Alvarado",
         title: "Directora Escuela Postgrado UTP Presidente TDD",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/liliana-alvarado.jpg`,
         subtitle: "Cambio Cultural & Desarrollo de Competencias y Capacidades (skillings)",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -157,6 +164,7 @@ export const timelineBlocks = [
       {
         name: "Guillermo Pacheco",
         title: "Gerente General NOVATRONIC",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/guillermo-pacheco.jpg`,
         subtitle: "Experiencias Exitosas de Transformación Digital",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -176,6 +184,7 @@ export const timelineBlocks = [
       {
         name: "Manuel Alonso Coto",
         title: "IE Business School",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/manuel-coto.jpg`,
         subtitle: "La Transformación Digital como factor de Competitividad Empresarial",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -184,6 +193,7 @@ export const timelineBlocks = [
       {
         name: "Gabriel Amaro",
         title: "",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/gabriel-amaro.jpg`,
         subtitle: "Ecosistema para el desarrollo de las Pymes",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -192,6 +202,7 @@ export const timelineBlocks = [
       {
         name: "Guillermo Rodríguez",
         title: "Operations & Information Systems Management Raymond A. Mason School of Business",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/guillermo-rodriguez.jpg`,
         subtitle: "La innovación como Clave del Éxito",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -206,10 +217,12 @@ export const timelineBlocks = [
     color: "skyBlue",
     description:
       "Las Tecnologías Digitales son las impulsoras de la transformación y su entendimiento y dominio es imprescindible. La mejor forma para absorber estas tecnologías es utilizarlas en aplicaciones específicas en las cuales se pueda desarrollar la experiencia de uso y aprendizaje, así como la prueba del valor que estas tecnologías ofrecen.",
+    commentators: "Jaime Dupuy (Cómex) | Javier Salinas | Roque Benavides",
     exhibitors: [
       {
         name: "Juan José Miranda",
         title: "",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/juan-miranda.jpg`,
         subtitle: "Aplicaciones de Block Chain",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -218,6 +231,7 @@ export const timelineBlocks = [
       {
         name: "Benito Juárez",
         title: "Director Ejecutivo FabLab",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/benito-juarez.jpg`,
         subtitle: "Fabricación Digital (impresión 3D)",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -226,6 +240,7 @@ export const timelineBlocks = [
       {
         name: "Rosa Delgado",
         title: "IPv6 Council Perú",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/rosa-delgado.jpg`,
         subtitle: "El Internet Industrial de las Cosas IIoT",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -234,6 +249,7 @@ export const timelineBlocks = [
       {
         name: "Jorge Aguinaga",
         title: "Gerente de Gestión Estratégica de Información UPC",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/jorge-aguinaga.jpg`,
         subtitle: "Big Data y Data Analytics",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",
@@ -242,6 +258,7 @@ export const timelineBlocks = [
       {
         name: "Edgar Pérez",
         title: "",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/edgar-perez.jpg`,
         subtitle: "Metaverso",
         linkedin: "https://www.google.com",
         twitter: "https://www.google.com",

@@ -29,7 +29,7 @@ export const Timeline = (props) => {
 
       <Countdown />
 
-      <div className="bg-whiteDark p-4 md:p-8">
+      <div className="bg-white p-4 md:p-8">
         {timelineBlocks.map((block, index) => (
           <div className="rounded-[8px] bg-white shadow-[0_0_37px_rgba(0,0,0,0.15)] p-2 my-4 md:p-4 md:my-8 md:p-4 max-w-[1500px] mx-auto">
             <div className="flex items-center rounded-[8px] gap-[20px] md:translate-x-[-2rem] translate-x-[-1rem]">
