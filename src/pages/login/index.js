@@ -1,4 +1,4 @@
-import React, { useEffect } from "reactn";
+import React, { useEffect, useGlobal } from "reactn";
 import { Anchor, Button, Input } from "../../components/form";
 import { useForm } from "react-hook-form";
 import Countdown from "../../components/Countdown";
@@ -11,7 +11,10 @@ export const Login = (props) => {
 
   const { signIn } = useAuth();
 
+  const [authUser] = useGlobal("user");
+
   useEffect(() => {
+    router.prefetch("/buy-tickets");
     router.prefetch("/register");
   }, []);
 
@@ -74,7 +77,8 @@ export const Login = (props) => {
             <div className="text-['Encode Sans'] text-blackDarken font-[400] text-[16px] leading-[20px]">
               Si aún no tienes tu entrada para la feria ¡Estás atiempo para conseguirla!
             </div>
-            <Button primary margin="my-4" onClick={() => router.push("/register")}>
+
+            <Button primary margin="my-4" onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
               Adquirir entrada
             </Button>
           </div>

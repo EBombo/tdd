@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { config } from "../../firebase";
 import Countdown from "../../components/Countdown";
-import { Button } from "../../components/form/Button";
+import { Button } from "../../components/form";
 import { Image } from "../../components/common/Image";
 import { PreviewCarousel } from "../../components/PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
@@ -47,16 +47,11 @@ export const Home = (props) => {
   const [authUser] = useGlobal("user");
 
   useEffect(() => {
+    router.prefetch("/buy-tickets");
     router.prefetch("/library");
     router.prefetch("/library/events");
     router.prefetch("/events/[eventId]");
   }, []);
-
-  useEffect(() => {
-    if (!authUser) return;
-
-    router.push("/");
-  }, [authUser]);
 
   return (
     <LandingContainer>
@@ -65,7 +60,7 @@ export const Home = (props) => {
           <div className="col-start-1 col-end-2 bg-whiteTransparent p-4 lg:p-8">
             <h2 className="text-xl lg:text-3xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
             <p className="text-base lg:text-lg mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
-            <Button margin="m-0" primary onClick={() => {}}>
+            <Button margin="m-0" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
               Adquirir entrada
             </Button>
           </div>
@@ -129,7 +124,7 @@ export const Home = (props) => {
             Si desea información acerca de la feria, por favor envie su solicitud al correo contaco@tdduni.org
           </div>
 
-          {/* TODO: contacto */}
+          {/* TODO: Contacto. */}
         </div>
       </div>
     </LandingContainer>
