@@ -1,19 +1,19 @@
-const {getUserToken, getVerifyCode, getResendVerifyCode, getSendEmail} = require("./users/get");
-const {postError, getError} = require("./errors");
-const {postUser} = require("./users/post");
+const { getUserToken, getVerifyCode, getResendVerifyCode, getSendEmail } = require("./users/get");
+const { postError, getError } = require("./errors");
+const { postUser } = require("./users/post");
 const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
-const {getManifest} = require("./manifests/get");
+const { getManifest } = require("./manifests/get");
 
 const api = express();
 const router = express.Router();
 
-router.use(cors({origin: "*"}));
+router.use(cors({ origin: "*" }));
 
 router.use(bodyParser.json());
 
-router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", async (req, res) => res.send("Hello!"));
 
@@ -43,4 +43,4 @@ router.post("/error-boundary", postError);
 
 api.use("/api", router);
 
-module.exports = {api};
+module.exports = { api };

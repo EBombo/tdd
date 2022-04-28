@@ -1,4 +1,4 @@
-import React, {forwardRef} from "reactn";
+import React, { forwardRef } from "reactn";
 
 export const Button = forwardRef((props, ref) => (
   <button
@@ -9,6 +9,7 @@ export const Button = forwardRef((props, ref) => (
       ${props.margin ?? "ml-4 mt-4 lg:mt-0"}
       `}
     {...props}
-  >{props.children}</button>
+  >
+    {props.children}
+  </button>
 ));
-

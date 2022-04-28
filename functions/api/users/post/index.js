@@ -1,3 +1,3 @@
-const {postUser} = require("./postUser");
+const { postUser } = require("./postUser");
 
 exports.postUser = postUser;

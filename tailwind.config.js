@@ -39,8 +39,12 @@ module.exports = {
       backgroundImage: () => ({
         pattern: `url('${config.storageUrl}/resources/pattern.svg')`,
         landing: `url('${config.storageUrl}/resources/landing-cover.svg')`,
-        timeline: `url('${config.storageUrl}/resources/timeline-cover.svg')`
+        timeline: `url('${config.storageUrl}/resources/timeline-cover.svg')`,
+        index: `url('${config.storageUrl}/resources/index-bg-img.jpg')`
       }),
+      boxShadow: {
+        navbar: "0px 4px 4px 0px #00000012",
+      },
     },
   },
   plugins: [],
