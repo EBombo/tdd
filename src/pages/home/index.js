@@ -9,6 +9,7 @@ import { Image } from "../../components/common/Image";
 import { PreviewCarousel } from "../../components/PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
 import { Sponsors } from "./Sponsors";
+import { ContactForm } from "./ContactForm";
 
 const news = [
   {
@@ -124,7 +125,7 @@ export const Home = (props) => {
             Si desea información acerca de la feria, por favor envie su solicitud al correo contaco@tdduni.org
           </div>
 
-          {/* TODO: Contacto. */}
+          <ContactForm />
         </div>
       </div>
     </LandingContainer>
