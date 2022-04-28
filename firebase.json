@@ -4,7 +4,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "https://tdd-prod-red-o4tetk355a-uc.a.run.app"
+        "destination": "https://tdd-prod-red-o4tetk355a-uc.a.run.app/"
       }
     ],
     "headers": [
