@@ -21,7 +21,11 @@ export const BuyTickets = (props) => {
 
             <div className="text-white text-center text-xl">soles</div>
 
-            <Button variant="primary">PAGAR</Button>
+            <div className="flex mt-4">
+              <Button primary margin="m-auto">
+                Pagar entrada
+              </Button>
+            </div>
           </div>
         </div>
       </div>
