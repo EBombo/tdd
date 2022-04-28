@@ -34,13 +34,13 @@ module.exports = {
         red: "#D2232A",
         green: "#39B54A",
         orange: "#F47B20",
-        lightBlue: "#00AEEF"
+        lightBlue: "#00AEEF",
       },
       backgroundImage: () => ({
         pattern: `url('${config.storageUrl}/resources/pattern.svg')`,
         landing: `url('${config.storageUrl}/resources/landing-cover.svg')`,
         timeline: `url('${config.storageUrl}/resources/timeline-cover.svg')`,
-        index: `url('${config.storageUrl}/resources/index-bg-img.jpg')`
+        index: `url('${config.storageUrl}/resources/index-bg-img.jpg')`,
       }),
       boxShadow: {
         navbar: "0px 4px 4px 0px #00000012",

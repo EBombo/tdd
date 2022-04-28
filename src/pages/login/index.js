@@ -12,7 +12,7 @@ export const Login = (props) => {
   const { signIn } = useAuth();
 
   useEffect(() => {
-    if(router.isReady) return
+    if (router.isReady) return;
     router.prefetch("/buy-tickets");
     router.prefetch("/register");
   }, []);
