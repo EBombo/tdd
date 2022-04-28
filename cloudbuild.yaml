@@ -57,7 +57,7 @@ steps:
 
     # TODO: Create access to the Google Cloud Storage object to xxxx-compute@developer.gserviceaccount.com.
   - name: "gcr.io/cloud-builders/gsutil"
-    args: ["-m" , "cp" , "-r" , "-n" ,"gs://tdd-dev.appspot.com/*", "gs://${PROJECT_ID}.appspot.com"]
+    args: ["-m" , "cp" , "-r" , "-n" ,"gs://tdd-dev-348022.appspot.com/*", "gs://${PROJECT_ID}.appspot.com"]
 
 images:
   - "gcr.io/${PROJECT_ID}/${PROJECT_ID}"
