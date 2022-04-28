@@ -1,10 +1,12 @@
 {
   "hosting": {
-    "public": "public",
     "rewrites": [
       {
         "source": "**",
-        "destination": "https://tdd-prod-red-o4tetk355a-uc.a.run.app/"
+        "run": {
+          "serviceId": "tdd-prod-red",
+          "region": "us-central1"
+        }
       }
     ],
     "headers": [
