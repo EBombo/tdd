@@ -22,7 +22,7 @@ export const BuyTickets = (props) => {
             <div className="text-white text-center text-xl">soles</div>
 
             <div className="flex mt-4">
-              <Button primary margin="m-auto">
+              <Button primary margin="m-auto" fontSize="text-xl">
                 Pagar entrada
               </Button>
             </div>
