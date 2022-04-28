@@ -1,10 +1,14 @@
 import React from "reactn";
 import { SEOMeta } from "../src/components/common/seo";
+import { Home } from "../src/pages/home";
+import Navbar from "../src/components/Navbar";
 
 const Init = (props) => (
   <>
     <SEOMeta {...props} />
-    hello
+    <Navbar>
+      <Home/>
+    </Navbar>
   </>
 );
 

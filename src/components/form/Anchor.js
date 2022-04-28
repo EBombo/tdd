@@ -13,7 +13,7 @@ const AnchorTag = styled.a`
   line-height: ${(props) => (props.lineHeight ? props.lineHeight : "11px")};
   text-decoration: ${(props) => (props.underlined ? `underline` : "")};
   border: ${(props) => (props.border ? props.border : "")};
-  margin: ${(props) => (props.margin ? props.margin : "")};
+  margin: ${(props) => (props.margin ? props.margin : "0")};
   padding: ${(props) => (props.padding ? props.padding : "")};
   text-align: ${(props) => (props.textAlign ? props.textAlign : "center")};
   display: ${(props) => (props.display ? props.display : "")};
@@ -32,19 +32,6 @@ const AnchorTag = styled.a`
 
   :hover {
     text-decoration: ${(props) => (props.underlined ? `underline` : "")};
-    text-shadow: 0 0 10px
-      ${({ variant = "default", theme }) =>
-        variant === "primary"
-          ? theme.basic.primary
-          : variant === "secondary"
-          ? theme.basic.secondary
-          : variant === "warning"
-          ? theme.basic.warning
-          : variant === "danger"
-          ? theme.basic.danger
-          : variant === "white"
-          ? theme.basic.whiteLight
-          : theme.basic.primary};
   }
 
   &[disabled] {
