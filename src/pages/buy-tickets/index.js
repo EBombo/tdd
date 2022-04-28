@@ -11,7 +11,7 @@ export const BuyTickets = (props) => {
           <div className="text-xl mb-2">Comprar entradas</div>
 
           <div className="lg:w-[50%] sm:w-[90%] m-auto rounded-md p-6 bg-blackDarken">
-            <div className="text-xl text-primary mb-4">Entrada Full Access</div>
+            <div className="text-xl text-primary mb-4 text-center">Entrada Full Access</div>
 
             <div className="text-white text-center mb-4">
               Obtén acceso a toda la feria durante toda su duración y asiste a todas las presentaciones
