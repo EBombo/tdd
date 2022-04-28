@@ -30,16 +30,16 @@ module.exports = {
         black: "#000000",
         blackLighten: "#404040",
         blackDarken: "#242424",
-        grayDarken: "#585858",
-        grayDark: "#A3A3A3",
-        grayLight: "#666666",
-        grayLighten: "#C4C4C4",
-        gray: "#E4E4E4",
-        secondGray: "#EFEFEF",
+        gray: "#A6A4A7",
+        red: "#D2232A",
+        green: "#39B54A",
+        orange: "#F47B20",
+        lightBlue: "#00AEEF"
       },
       backgroundImage: () => ({
         pattern: `url('${config.storageUrl}/resources/pattern.svg')`,
-        landing: `url('${config.storageUrl}/resources/landing-cover.svg')`
+        landing: `url('${config.storageUrl}/resources/landing-cover.svg')`,
+        timeline: `url('${config.storageUrl}/resources/timeline-cover.svg')`
       }),
     },
   },
