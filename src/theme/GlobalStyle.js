@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -70,14 +70,14 @@ export const GlobalStyle = createGlobalStyle`
   html {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
-    background: ${(props) => props.theme.basic.secondary};
+    background: ${(props) => props.theme.basic.white};
   }
 
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: ${(props) => props.theme.basic.secondary};
+    background: ${(props) => props.theme.basic.white};
     font-family: 'Encode Sans', sans-serif;
     overflow: auto !important;
   }
