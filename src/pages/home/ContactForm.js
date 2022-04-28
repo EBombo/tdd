@@ -6,7 +6,6 @@ import { object, string } from "yup";
 import { useFetch } from "../../hooks/useFetch";
 
 export const ContactForm = ({ items, ...props }) => {
-
   const { Fetch } = useFetch();
 
   const schema = object().shape({
@@ -46,14 +45,7 @@ export const ContactForm = ({ items, ...props }) => {
       <div className="">
         <form onSubmit={handleSubmit(submitContact)} className="max-w-[700px] grid gap-2">
           <div className="grid lg:grid-cols-2 gap-2">
-            <Input
-              name="name"
-              type="text"
-              ref={register}
-              error={errors.name}
-              height="50px"
-              placeholder="Nombre"
-            />
+            <Input name="name" type="text" ref={register} error={errors.name} height="50px" placeholder="Nombre" />
             <Input
               name="lastName"
               type="text"
@@ -63,14 +55,7 @@ export const ContactForm = ({ items, ...props }) => {
               placeholder="Apellido"
             />
           </div>
-          <Input
-            name="email"
-            type="text"
-            ref={register}
-            error={errors.email}
-            height="50px"
-            placeholder="Correo"
-          />
+          <Input name="email" type="text" ref={register} error={errors.email} height="50px" placeholder="Correo" />
           <TextArea
             name="message"
             type="text"
@@ -90,4 +75,3 @@ export const ContactForm = ({ items, ...props }) => {
     </div>
   );
 };
-

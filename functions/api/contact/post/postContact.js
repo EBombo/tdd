@@ -17,7 +17,7 @@ const postContact = async (req, res, next) => {
     const contactCollection = firestore.collection("contact");
 
     await contactCollection.add({
-      ...data
+      ...data,
     });
 
     return res.send({ success: true });
@@ -28,4 +28,3 @@ const postContact = async (req, res, next) => {
 };
 
 module.exports = { postContact };
-
