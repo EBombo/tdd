@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "reactn";
+import React, { useEffect, useGlobal, useState } from "reactn";
 import { useRouter } from "next/router";
 import { config } from "../firebase";
 import { Image } from "./common/Image";
@@ -9,11 +9,15 @@ import Footer from "./Footer";
 
 // TODO: Implement Navbar
 const Navbar = (props) => {
-  const [menuDrawer, setMenuDrawer] = useState(false);
   const router = useRouter();
 
+  const [authUser] = useGlobal("user");
+
+  const [menuDrawer, setMenuDrawer] = useState(false);
+
   useEffect(() => {
-    router.prefetch("/");
+    router.prefetch("/buy-tickets");
+    router.prefetch("/register");
     router.prefetch("/login");
   }, []);
 
@@ -56,9 +60,10 @@ const Navbar = (props) => {
           </div>
 
           <div>
-            <Button primary onClick={() => router.push("/")}>
+            <Button primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
               Adquirir entrada
             </Button>
+
             <Button onClick={() => router.push("/login")}>Iniciar sesión</Button>
           </div>
         </div>
@@ -73,7 +78,7 @@ const Navbar = (props) => {
 
             <div>
               <div className="text-center">
-                <Button primary onClick={() => router.push("/")}>
+                <Button primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
                   Adquirir entrada
                 </Button>
               </div>
