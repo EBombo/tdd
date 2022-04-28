@@ -4,7 +4,7 @@
       {
         "source": "**",
         "run": {
-          "serviceId": "tdd-prod-red",
+          "serviceId": "tdd-prod",
           "region": "us-central1"
         }
       }
