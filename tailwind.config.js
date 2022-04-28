@@ -42,10 +42,10 @@ module.exports = {
         pattern: `url('${config.storageUrl}/resources/pattern.svg')`,
         navbarShadow: "box-shadow: 0px 4px 4px 0px #00000012",
         landing: `url('${config.storageUrl}/resources/landing-cover.svg')`,
-        index: `url('${config.storageUrl}/resources/index-bg-img.jpg')`
+        index: `url('${config.storageUrl}/resources/index-bg-img.jpg')`,
       }),
       boxShadow: {
-        "navbar": "0px 4px 4px 0px #00000012",
+        navbar: "0px 4px 4px 0px #00000012",
       },
     },
   },

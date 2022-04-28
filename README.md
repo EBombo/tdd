@@ -1,4 +1,3 @@
-
 Resources:
 
 - firebase hosting
@@ -9,8 +8,8 @@ Resources:
 - github
 - culqi
 
-
 Dependencies:
+
 - nextjs
 - reactjs
 - prettier

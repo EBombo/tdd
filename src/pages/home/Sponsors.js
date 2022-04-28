@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from "reactn";
+import React from "reactn";
 import { Image } from "../../components/common/Image";
 
 export const Sponsors = ({ items }) => {

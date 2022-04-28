@@ -1,8 +1,8 @@
-import {ButtonAnt} from "../form";
-import {ModalContainer} from "../common/ModalContainer";
+import { ButtonAnt } from "../form";
+import { ModalContainer } from "../common/ModalContainer";
 import React from "reactn";
 import styled from "styled-components";
-import {mediaQuery} from "../../constants";
+import { mediaQuery } from "../../constants";
 
 export const ModalConfirm = (props) => (
   <ModalContainer
@@ -46,7 +46,7 @@ const ContentModal = styled.div`
     margin: 1rem 0;
     color: ${(props) => props.theme.basic.blackDarken};
     text-align: center;
-    font-family: 'Encode Sans', sans-serif;
+    font-family: "Encode Sans", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
