@@ -8,23 +8,34 @@ import { Button } from "../../components/form/Button";
 import { Image } from "../../components/common/Image";
 import { PreviewCarousel } from "../../components/PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
+import { Sponsors } from "./Sponsors";
 
 const news = [
   {
-    imageUrl: `${config}/resources/news-sample.jpg`,
+    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
     title: "Transformación digital",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
-    imageUrl: `${config}/resources/news-sample.jpg`,
+    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
     title: "Transformación digital",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
-    imageUrl: `${config}/resources/news-sample.jpg`,
+    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
     title: "Transformación digital",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
+];
+
+const sponsors = [
+  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg`, },
+  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg`, },
+  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg`, },
+  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg`, },
+  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg`, },
+  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg`, },
+  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg`, },
 ];
 
 export const Home = (props) => {
@@ -87,6 +98,22 @@ export const Home = (props) => {
         </div>
       </div>
 
+      <div className="bg-white py-4">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Auspiciadores</div>
+
+          <Sponsors items={sponsors} />
+        </div>
+      </div>
+
+      <div className="bg-white py-4">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="text-xl lg:text-4xl font-bold pt-4 mb-8 mx-4">Información de contacto</div>
+          <div className="text-base lg:text-xl pt-4 mb-8 mx-4">Si desea información acerca de la feria, por favor envie su solicitud al correo contaco@tdduni.org</div>
+
+          {/* TODO: contacto */}
+        </div>
+      </div>
     </LandingContainer>
   );
 };
