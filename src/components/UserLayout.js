@@ -1,6 +1,6 @@
 import React from "reactn";
-import {config} from "../firebase";
-import {Image} from "./common/Image";
+import { config } from "../firebase";
+import { Image } from "./common/Image";
 
 const UserLayout = (props) => {
   return (
