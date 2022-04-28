@@ -5,6 +5,8 @@ import {Image} from "./common/Image";
 import {Anchor} from "./form/Anchor";
 import {Button} from "./form/Button";
 
+import Footer from "./Footer";
+
 // TODO: Implement Navbar
 const Navbar = (props) => {
   const [ menuDrawer, setMenuDrawer ] = useState(false);
@@ -65,11 +67,11 @@ const Navbar = (props) => {
             </div>
           </div>
         )}
-        
       </nav>
       <div className="">
         <div className="w-[100wv] min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)] flex-auto grid">{props.children}</div>
       </div>
+      <div><Footer/></div>
     </div>
   );
 };
