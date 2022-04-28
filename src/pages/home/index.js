@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { config } from "../../firebase";
 import Countdown from "../../components/Countdown";
-import { Button } from "../../components/form/Button";
+import { Button } from "../../components/form";
 import { Image } from "../../components/common/Image";
 import { PreviewCarousel } from "../../components/PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
