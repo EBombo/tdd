@@ -1,6 +1,6 @@
 {
   "projects": {
     "default": "tdd-prod",
-    "dev": "tdd-dev"
+    "dev": "tdd-dev-348022"
   }
 }
