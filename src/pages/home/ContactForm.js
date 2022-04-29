@@ -4,13 +4,18 @@ import { Anchor, Button, Input, TextArea } from "../../components/form";
 import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { useFetch } from "../../hooks/useFetch";
+import { useSendError } from "../../hooks";
+import { config } from "../../firebase";
 
 export const ContactForm = (props) => {
   const { Fetch } = useFetch();
+  const { sendError } = useSendError();
 
   const schema = object().shape({
     email: string().required().email(),
-    password: string().required(),
+    name: string().required(),
+    lastName: string().required(),
+    message: string(),
   });
 
   const { register, errors, handleSubmit } = useForm({
@@ -30,9 +35,10 @@ export const ContactForm = (props) => {
 
       if (error) throw new Error(error);
 
-      props.showNotification("Enviado", "", "info");
+      props.showNotification("Enviado", "Tu mensaje se ha enviado exitósamente", "info");
     } catch (error) {
       sendError(error, "submitContact");
+      props.showNotification("Error", error.toString());
     }
   };
 

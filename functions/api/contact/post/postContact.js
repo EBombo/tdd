@@ -20,7 +20,7 @@ const postContact = async (req, res, next) => {
     const contactCollection = firestore.collection("contact");
 
     await contactCollection.add({
-      ...data,
+      ...newContact,
     });
 
     return res.send({ success: true });

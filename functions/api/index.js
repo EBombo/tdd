@@ -30,7 +30,7 @@ router.get("/verify/:userId/verification-code/:verificationCode", getVerifyCode)
 
 //------------------------contact------------------------
 
-router.post("/contact/", postContact);
+router.post("/contact", postContact);
 
 //------------------------send email------------------------
 
@@ -46,6 +46,6 @@ router.get("/error-vanilla", getError);
 
 router.post("/error-boundary", postError);
 
-api.use("/api", router);
+api.use("/", router);
 
 module.exports = { api };

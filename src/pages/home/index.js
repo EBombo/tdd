@@ -125,7 +125,7 @@ export const Home = (props) => {
             Si desea información acerca de la feria, por favor envie su solicitud al correo contaco@tdduni.org
           </div>
 
-          <ContactForm />
+          <ContactForm {...props} />
         </div>
       </div>
     </LandingContainer>
