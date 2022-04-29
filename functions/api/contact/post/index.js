@@ -1,3 +1,3 @@
 const { postContact } = require("./postContact");
 
-exports.postUser = postContact;
+exports.postContact = postContact;

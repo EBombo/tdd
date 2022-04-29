@@ -3,7 +3,7 @@ const { sendEmail } = require("../../../email/sendEmail");
 const { get } = require("lodash");
 const logger = require("../../../utils/logger");
 const { fetchUser } = require("../../../collections/users");
-const { fetchTemplate } = require("../../../collections/templates");
+const { fetchTemplate } = require("../../../collections/settings");
 
 const getResendVerifyCode = async (req, res, next) => {
   try {
