@@ -7,6 +7,8 @@ const postContact = async (req, res, next) => {
 
     let newContact = req.body;
 
+    const origin = get(req, "headers.origin", config.serverUrl);
+
     if (!newContact.email)
       return res.status(412).send({
         statusText: "invalid-email",
@@ -28,3 +30,4 @@ const postContact = async (req, res, next) => {
 };
 
 module.exports = { postContact };
+

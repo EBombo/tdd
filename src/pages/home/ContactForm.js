@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { useFetch } from "../../hooks/useFetch";
 
-export const ContactForm = ({ items, ...props }) => {
+export const ContactForm = (props) => {
   const { Fetch } = useFetch();
 
   const schema = object().shape({
