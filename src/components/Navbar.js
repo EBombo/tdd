@@ -23,7 +23,7 @@ const Navbar = (props) => {
 
   const LeftAnchor = React.memo(({ children, url }) => (
     <Anchor className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-pink-500 py-2" url={url}>
-      <span className="text-base mr-8">{children}</span>
+      <span className="text-base mx-4">{children}</span>
     </Anchor>
   ));
 
@@ -69,7 +69,7 @@ const Navbar = (props) => {
         </div>
 
         {menuDrawer && (
-          <div className="absolute top-[50px] right-0 py-8 w-full block flex-grow lg:flex lg:items-center lg:w-auto bg-white">
+          <div className="absolute top-[50px] right-0 z-10 py-8 w-full block flex-grow lg:flex lg:items-center lg:w-auto bg-white">
             <div className="text-sm lg:flex-grow">
               <LeftAnchor url="/">Inicio</LeftAnchor>
               <LeftAnchor url="/timeline">Programa</LeftAnchor>
@@ -78,13 +78,13 @@ const Navbar = (props) => {
 
             <div>
               <div className="text-center">
-                <Button primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
+                <Button margin="m-2" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
                   Adquirir entrada
                 </Button>
               </div>
 
               <div className="text-center">
-                <Button onClick={() => router.push("/login")}>Iniciar sesión</Button>
+                <Button margin="m-2" onClick={() => router.push("/login")}>Iniciar sesión</Button>
               </div>
             </div>
           </div>

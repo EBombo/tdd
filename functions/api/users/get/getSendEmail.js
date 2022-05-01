@@ -1,4 +1,4 @@
-const { fetchTemplate } = require("../../../collections/templates");
+const { fetchTemplate } = require("../../../collections/settings");
 const { sendEmail } = require("../../../email/sendEmail");
 const logger = require("../../../utils/logger");
 const { firestore } = require("../../../config");
