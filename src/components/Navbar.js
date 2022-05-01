@@ -55,8 +55,8 @@ const Navbar = (props) => {
         <div className="w-full hidden lg:block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow">
             <LeftAnchor url="/">Inicio</LeftAnchor>
-            <LeftAnchor url="/">Programa</LeftAnchor>
-            <LeftAnchor url="/">Expositores</LeftAnchor>
+            <LeftAnchor url="/timeline">Programa</LeftAnchor>
+            <LeftAnchor url="/exhibitors">Expositores</LeftAnchor>
           </div>
 
           <div>
@@ -72,8 +72,8 @@ const Navbar = (props) => {
           <div className="absolute top-[50px] right-0 py-8 w-full block flex-grow lg:flex lg:items-center lg:w-auto bg-white">
             <div className="text-sm lg:flex-grow">
               <LeftAnchor url="/">Inicio</LeftAnchor>
-              <LeftAnchor url="/">Programa</LeftAnchor>
-              <LeftAnchor url="/">Expositores</LeftAnchor>
+              <LeftAnchor url="/timeline">Programa</LeftAnchor>
+              <LeftAnchor url="/exhibitors">Expositores</LeftAnchor>
             </div>
 
             <div>
@@ -92,7 +92,7 @@ const Navbar = (props) => {
       </nav>
 
       <div className="">
-        <div className="w-[100wv] min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)] flex-auto grid">
+        <div className="w-[100wv] min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)]">
           {props.children}
         </div>
       </div>

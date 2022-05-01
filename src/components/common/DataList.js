@@ -89,7 +89,8 @@ export const timelineBlocks = [
     exhibitors: [
       {
         name: "Raul Katz",
-        title: "",
+        title: "President Telecom Advisory Services LLC, Director Business" +
+          "Strategy Research Columbia Institute for tele-Information",
         imageUrl: `${config.storageUrl}/resources/exhibitors/raul-katz.jpg`,
         subtitle: "Política Públicas para impulsar la TD del país",
         linkedin: "https://www.google.com",
