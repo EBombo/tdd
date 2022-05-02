@@ -6,9 +6,10 @@ import { config } from "../../firebase";
 import { useSendError } from "../../hooks";
 import { useFetch } from "../../hooks/useFetch";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const currency = "PEN";
-const defaultCost = 20000;
+const defaultCost = 200;
 
 // Reference:
 // Tarjetas de prueba: https://docs.culqi.com/#/desarrollo/tarjetas
@@ -21,6 +22,8 @@ export const CulqiComponent = (props) => {
 
   const [authUser] = useGlobal("user");
 
+  const [cost, setCost] = useState(defaultCost);
+
   useEffect(() => {
     if (authUser) return;
 
@@ -31,9 +34,12 @@ export const CulqiComponent = (props) => {
     try {
       console.log({ event });
 
-      const { error } = await Fetch(`${config.serverUrl}/users/:userId/pucharse/:amount`, "POST", {
+      const { error } = await Fetch(`${config.serverUrl}/users/${authUser.id}/payment`, "POST", {
         user: authUser,
-        purcharse: event,
+        email: event.email,
+        source_id: event.id,
+        currency_code: currency,
+        amount: cost,
       });
 
       if (error) throw Error(error);
@@ -71,7 +77,8 @@ export const CulqiComponent = (props) => {
                   margin="m-auto"
                   fontSize="text-xl"
                   onClick={() => {
-                    setAmount(defaultCost);
+                    const formattedCost = cost * 100;
+                    setAmount(formattedCost);
                     openCulqi();
                   }}
                 >
