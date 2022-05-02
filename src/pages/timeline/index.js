@@ -98,31 +98,9 @@ export const Timeline = (props) => {
                       {exhibitor.title}
                     </div>
                     <div className="flex items-center gap-[5px]">
-                      <Anchor url={exhibitor.linkedin}>
+                      <Anchor url={exhibitor.linkedin} target="_blank">
                         <Image
                           src={`${config.storageUrl}/resources/linkedin-${block.color}.svg`}
-                          width="18px"
-                          height="18px"
-                          desktopWidth="34px"
-                          desktopHeight="34px"
-                          size="contain"
-                          margin="0"
-                        />
-                      </Anchor>
-                      <Anchor url={exhibitor.twitter}>
-                        <Image
-                          src={`${config.storageUrl}/resources/twitter-${block.color}.svg`}
-                          width="18px"
-                          height="18px"
-                          desktopWidth="34px"
-                          desktopHeight="34px"
-                          size="contain"
-                          margin="0"
-                        />
-                      </Anchor>
-                      <Anchor url={exhibitor.website}>
-                        <Image
-                          src={`${config.storageUrl}/resources/website-${block.color}.svg`}
                           width="18px"
                           height="18px"
                           desktopWidth="34px"
@@ -138,14 +116,44 @@ export const Timeline = (props) => {
             ))}
 
             {block.commentators && (
-              <div className="flex flex-col gap-[10px] my-[40px]">
-                <div className="text-['Encode Sans'] font-[500] text-[14px] leading-[18px] md:text-[30px] md:leading-[34px]">
-                  Comentaristas:
+              <>
+                <div className="flex items-center rounded-[8px] gap-[20px] md:translate-x-[-2rem] translate-x-[-1rem]">
+                  <div
+                    className={`py-2 px-12 md:py-4 rounded-[8px] font-[500] text-['Encode Sans'] text-white text-[15px] leading-[20px] md:text-[30px] md:leading-[35px]`}
+                    style={{ background: block.color }}
+                  >
+                    Comentaristas
+                  </div>
                 </div>
-                <div className="text-['Encode Sans'] font-[700] text-[14px] leading-[18px] md:text-[30px] md:leading-[34px]">
-                  {block.commentators}
+
+                <div className="grid justify-center mt-8 gap-4 md:grid-cols-[repeat(3,1fr)]">
+                  {block.commentators.map((commentator) => (
+                    <div className="shadow-[0_0_37px_rgba(0,0,0,0.15)] rounded-[8px] bg-white p-4 max-w-[350px]">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="text-['Encode Sans'] font-[700] text-[25px] leading-[30px] text-black">
+                          {commentator.name}
+                        </div>
+                        <div>
+                          <Anchor url={commentator.linkedin} target="_blank">
+                            <Image
+                              src={`${config.storageUrl}/resources/linkedin-${block.color}.svg`}
+                              width="18px"
+                              height="18px"
+                              desktopWidth="35px"
+                              desktopHeight="35px"
+                              size="contain"
+                              margin="0"
+                            />
+                          </Anchor>
+                        </div>
+                      </div>
+                      <div className="text-['Encode Sans'] font-[500] text-[20px] leading-[25px] text-black">
+                        {commentator.title}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
+              </>
             )}
           </div>
         ))}

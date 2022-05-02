@@ -33,6 +33,7 @@ export const Anchor = (props) => {
 };
 
 const AnchorTag = styled.a`
+  cursor: pointer;
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 500)};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "12px")};
   line-height: ${(props) => (props.lineHeight ? props.lineHeight : "16px")};
