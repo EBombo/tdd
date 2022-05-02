@@ -20,7 +20,7 @@ export const BuyTickets = (props) => {
 
             <div className="text-white text-center text-xl">soles</div>
 
-            <CulqiComponent />
+            <CulqiComponent {...props} />
           </div>
         </div>
       </div>
