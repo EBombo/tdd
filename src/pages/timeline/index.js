@@ -31,8 +31,8 @@ export const Timeline = (props) => {
 
       <div className="bg-white p-4 md:p-8">
         {timelineBlocks.map((block, index) => (
-          <div className="rounded-[8px] bg-white shadow-[0_0_37px_rgba(0,0,0,0.15)] p-2 my-4 md:p-4 md:my-8 md:p-4 max-w-[1500px] mx-auto">
-            <div className="flex items-center rounded-[8px] gap-[20px] md:translate-x-[-2rem] translate-x-[-1rem]">
+          <div className="rounded-[8px] bg-white shadow-[0_0_37px_rgba(0,0,0,0.15)] p-2 my-4 md:p-12 md:my-8 md:p-4 max-w-[1500px] mx-auto">
+            <div className="flex items-center rounded-[8px] gap-[20px] md:translate-x-[-4rem] translate-x-[-1rem]">
               <div
                 className={`p-4 md:p-8 rounded-[8px] uppercase font-[600] text-['Encode Sans'] text-white text-[20px] leading-[25px] md:text-[40px] md:leading-[45px]`}
                 style={{ background: block.color }}
@@ -117,7 +117,7 @@ export const Timeline = (props) => {
 
             {block.commentators && (
               <>
-                <div className="flex items-center rounded-[8px] gap-[20px] md:translate-x-[-2rem] translate-x-[-1rem]">
+                <div className="flex items-center rounded-[8px] gap-[20px] md:translate-x-[-4rem] translate-x-[-1rem]">
                   <div
                     className={`py-2 px-12 md:py-4 rounded-[8px] font-[500] text-['Encode Sans'] text-white text-[15px] leading-[20px] md:text-[30px] md:leading-[35px]`}
                     style={{ background: block.color }}
@@ -126,7 +126,7 @@ export const Timeline = (props) => {
                   </div>
                 </div>
 
-                <div className="grid justify-center mt-8 gap-4 md:grid-cols-[repeat(3,1fr)]">
+                <div className="grid justify-center my-8 gap-4 md:grid-cols-[repeat(3,1fr)]">
                   {block.commentators.map((commentator) => (
                     <div className="shadow-[0_0_37px_rgba(0,0,0,0.15)] rounded-[8px] bg-white p-4 max-w-[350px]">
                       <div className="flex items-center justify-between mb-4">
