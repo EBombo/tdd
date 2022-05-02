@@ -9,6 +9,7 @@ import { Image } from "../../components/common/Image";
 import { PreviewCarousel } from "../../components/PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
 import { Sponsors } from "./Sponsors";
+import { ContactForm } from "./ContactForm";
 
 const news = [
   {
@@ -57,7 +58,7 @@ export const Home = (props) => {
     <LandingContainer>
       <div className="min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)] w-full bg-index bg-no-repeat bg-cover flex lg:items-end bg-bottom">
         <div className="mt-8 lg:mt-0 lg:mx-12 lg:grid lg:grid-cols-3 w-[90%] lg:w-full lg:h-[500px]">
-          <div className="col-start-1 col-end-2 bg-whiteTransparent p-4 lg:p-8">
+          <div className="col-start-1 col-end-2 bg-white/[.60] p-4 lg:p-8">
             <h2 className="text-xl lg:text-3xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
             <p className="text-base lg:text-lg mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
@@ -126,7 +127,7 @@ export const Home = (props) => {
             Si desea información acerca de la feria, por favor envie su solicitud al correo contaco@tdduni.org
           </div>
 
-          {/* TODO: Contacto. */}
+          <ContactForm {...props} />
         </div>
       </div>
     </LandingContainer>
