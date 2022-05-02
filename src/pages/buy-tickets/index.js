@@ -1,6 +1,6 @@
 import React from "reactn";
 import styled from "styled-components";
-import { Button } from "../../components/form";
+import { CulqiComponent } from "./CulqiComponent";
 
 export const BuyTickets = (props) => {
   return (
@@ -20,11 +20,7 @@ export const BuyTickets = (props) => {
 
             <div className="text-white text-center text-xl">soles</div>
 
-            <div className="flex mt-6">
-              <Button primary margin="m-auto" fontSize="text-xl">
-                PAGAR ENTRADA
-              </Button>
-            </div>
+            <CulqiComponent />
           </div>
         </div>
       </div>

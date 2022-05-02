@@ -1,9 +1,8 @@
-import React, { useEffect, useGlobal, useState } from "reactn";
-import { useRouter } from "next/router";
-import { config } from "../firebase";
-import { Image } from "./common/Image";
-import { Anchor } from "./form/Anchor";
-import { Button } from "./form/Button";
+import React, {useEffect, useGlobal, useState} from "reactn";
+import {useRouter} from "next/router";
+import {config} from "../firebase";
+import {Image} from "./common/Image";
+import {Anchor, Button} from "./form";
 
 import Footer from "./Footer";
 
