@@ -13,7 +13,8 @@ const defaultCost = 200;
 
 // Reference:
 // Tarjetas de prueba: https://docs.culqi.com/#/desarrollo/tarjetas
-
+// dev dashboard: https://integ-panel.culqi.com/#/dashboard
+// prod dashboard: https://panel.culqi.com/#/dashboard
 export const CulqiComponent = (props) => {
   const router = useRouter();
 
