@@ -26,7 +26,7 @@ exports.postPayment = async (req, res, next) => {
     const resp = await culqiCharges(email, source_id, currency_code, amount);
 
     logger.log("resp", resp);
-    // Crear el pin de acceso a la cuenta.
+    // TODO: Crear el pin de acceso a la cuenta, consultar con gonzalo el flujo.
 
     return res.send({ success: true });
   } catch (error) {
