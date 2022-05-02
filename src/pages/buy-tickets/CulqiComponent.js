@@ -23,16 +23,18 @@ export const CulqiComponent = (props) => {
   const [authUser] = useGlobal("user");
 
   const [cost, setCost] = useState(defaultCost);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (authUser) return;
 
+    // TODO: Redirect after register page is available.
     //router.push("/login");
   }, [authUser]);
 
   const purchasing = async (event) => {
     try {
-      console.log({ event });
+      setIsLoading(true);
 
       const { error } = await Fetch(`${config.serverUrl}/users/${authUser.id}/payment`, "POST", {
         user: authUser,
@@ -50,6 +52,8 @@ export const CulqiComponent = (props) => {
       sendError(error, "purchasing");
       props.showNotification("Error", "Algo salio mal, intente nuevamente");
     }
+
+    setIsLoading(false);
   };
 
   const onError = (error) => {
@@ -77,7 +81,10 @@ export const CulqiComponent = (props) => {
                   primary
                   margin="m-auto"
                   fontSize="text-xl"
+                  loading={isLoading}
+                  disabled={isLoading}
                   onClick={() => {
+                    // TODO: Implement coupons.
                     const formattedCost = cost * 100;
                     setAmount(formattedCost);
                     openCulqi();

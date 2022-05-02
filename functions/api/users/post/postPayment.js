@@ -1,5 +1,6 @@
 const logger = require("../../../utils/logger");
 const { config } = require("../../../config");
+const fetch = require("node-fetch");
 
 exports.postPayment = async (req, res, next) => {
   try {
