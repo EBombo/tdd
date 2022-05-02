@@ -85,16 +85,32 @@ export const timelineBlocks = [
     color: "red",
     description:
       "El estado peruano requiere desarrollar las políticas públicas que aceleren el  desarrollo digital del pais concertando con todos los sectores públicos y privados involucrados. Las características transversales de estas políticas hacen necesario proporcionar una visión y enfoque integral en su desarrollo sin perder de vista el impulso a políticas específicas como es el caso de la brecha de acceso al Internet.",
-    commentators: "Angélica Matsuda | Marushka Chocobar | Juan Rivadeneyra",
+    commentators: [
+      {
+        name: "Angélica Matsuda",
+        title: "CEO Fueradelacaja Soluciones, Founder & President Perú D",
+        linkedin: "https://www.linkedin.com/in/ang%C3%A9lica-matsuda-374a039/",
+      },
+      {
+        name: "Marushka Chocobar",
+        title: "Directora de la Secretaría de Gobierno y Transformación Digital PCM",
+        linkedin: "https://www.linkedin.com/in/marushkachocobar/",
+      },
+      {
+        name: "Juan Rivadeneyra",
+        title: "Director de Regulación CLARO",
+        linkedin: "https://www.linkedin.com/in/juan-rivadeneyra-8725202/",
+      },
+    ],
     exhibitors: [
       {
         name: "Raul Katz",
-        title: "President Telecom Advisory Services LLC, Director Business" +
+        title:
+          "President Telecom Advisory Services LLC, Director Business" +
           "Strategy Research Columbia Institute for tele-Information",
         imageUrl: `${config.storageUrl}/resources/exhibitors/raul-katz.jpg`,
         subtitle: "Política Públicas para impulsar la TD del país",
         linkedin: "https://www.linkedin.com/in/raul-katz-b160687/",
-        twitter: "https://www.google.com",
         country: "argentine",
       },
       {
@@ -103,7 +119,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/julio-porcel.jpg`,
         subtitle: "Panorama Digital del Perú",
         linkedin: "https://www.linkedin.com/in/julio-porcel-b931b135/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -112,7 +127,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/alfredo-astudillo.jpg`,
         subtitle: "Aceleración del Avance Digital del Perú",
         linkedin: "https://www.linkedin.com/in/alfredoastudillo/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -121,7 +135,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-huaman.jpg`,
         subtitle: "Política Pública Sectorial",
         linkedin: "https://www.linkedin.com/in/carlos-huam%C3%A1n-tomecich-economista-digital-4664338/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
     ],
@@ -133,7 +146,23 @@ export const timelineBlocks = [
     color: "green",
     description:
       "La transformación digital es importante en las organizaciones pues le brinda agilidad para ofrecer nuevos productos y servicios y mejorar la experiencia del cliente, cambiando fundamentalmente la forma en que opera para brindar valor a sus clientes.",
-    commentators: "Jaime Dupuy (Cómex) | Javier Salinas | Roque Benavides",
+    commentators: [
+      {
+        name: "Jaime Dupuy",
+        title: "Legal and Regulatory Affairs ManagerLegal Sociedad de Comercio Exterior del Perú ComexPerú",
+        linkedin: "https://www.linkedin.com/in/jaimedupuy/",
+      },
+      {
+        name: "Javier Salinas",
+        title: "Presidente Asociacion de Economia Plateada en el Perú, Promotor del ecosistema y regulación Fintech en el Perú y la región",
+        linkedin: "https://www.linkedin.com/in/javierrsalinasm/",
+      },
+      {
+        name: "Roque Benavides",
+        title: "Presidente de Directorio Compañía de Minas Buenaventura",
+        linkedin: "https://www.linkedin.com/in/roque-benavides-ganoza-298a4246/",
+      },
+    ],
     exhibitors: [
       {
         name: "Fernando Zavala",
@@ -141,7 +170,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/fernando-zavala.jpg`,
         subtitle: "Liderazgo, Estrategia Digital & Gobierno Corporativo",
         linkedin: "https://www.linkedin.com/in/fernandozavala/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -150,7 +178,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/walter-cabanillas.jpg`,
         subtitle: "Modelos de Negocio, Innovación & Rediseño de Procesos",
         linkedin: "https://www.linkedin.com/in/waltercabanillas/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -159,7 +186,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/liliana-alvarado.jpg`,
         subtitle: "Cambio Cultural & Desarrollo de Competencias y Capacidades (skillings)",
         linkedin: "https://www.linkedin.com/in/liliana-alvarado-48596715/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -168,7 +194,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/guillermo-pacheco.jpg`,
         subtitle: "Experiencias Exitosas de Transformación Digital",
         linkedin: "https://www.linkedin.com/in/guillermo-pacheco-7b74936/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
     ],
@@ -180,7 +205,13 @@ export const timelineBlocks = [
     color: "orange",
     description:
       "El enfoque digital ha trasformado completamente la forma de relacionarse con los consumidores y las exigencias de estos, esto obliga a las organizaciones a tomar decisiones estratégicas y operativas sustentadas en tecnología para ponerlas al servicio del consumidor.",
-    commentators: "María Almenara Armando de la Flor",
+    commentators: [
+      {
+        name: "Carlos Armando de la Flor",
+        title: "CoFundador y CEO María Almenara",
+        linkedin: "https://www.linkedin.com/in/cadelaflor/",
+      }
+    ],
     exhibitors: [
       {
         name: "Ignacio Couto",
@@ -188,7 +219,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/ignacio-couto.jpg`,
         subtitle: "La Transformación Digital como factor de Competitividad Empresarial",
         linkedin: "https://www.linkedin.com/in/ignaciocouto/",
-        twitter: "https://www.google.com",
         country: "spain",
       },
       {
@@ -197,7 +227,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/gabriel-amaro.jpg`,
         subtitle: "Ecosistema para el desarrollo de las Pymes",
         linkedin: "https://www.linkedin.com/in/gabriel-amaro-54989818/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -206,7 +235,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/guillermo-rodriguez.jpg`,
         subtitle: "La innovación como Clave del Éxito",
         linkedin: "https://www.linkedin.com/in/guillermo-rodr%C3%ADguez-abitia-363b5b4/",
-        twitter: "https://www.google.com",
         country: "italy",
       },
     ],
@@ -218,15 +246,14 @@ export const timelineBlocks = [
     color: "skyBlue",
     description:
       "Las Tecnologías Digitales son las impulsoras de la transformación y su entendimiento y dominio es imprescindible. La mejor forma para absorber estas tecnologías es utilizarlas en aplicaciones específicas en las cuales se pueda desarrollar la experiencia de uso y aprendizaje, así como la prueba del valor que estas tecnologías ofrecen.",
-    commentators: "Jaime Dupuy (Cómex) | Javier Salinas | Roque Benavides",
     exhibitors: [
       {
         name: "Juan José Miranda",
-        title: "Director Digital Technology Innovation Blockchain & Web3 NTT DATA - Presidente de la Asociación Blockchain & DLT Peru ABPE",
+        title:
+          "Director Digital Technology Innovation Blockchain & Web3 NTT DATA - Presidente de la Asociación Blockchain & DLT Peru ABPE",
         imageUrl: `${config.storageUrl}/resources/exhibitors/juan-miranda.jpg`,
         subtitle: "Aplicaciones de Block Chain",
         linkedin: "https://www.linkedin.com/in/jjmiranda/",
-        twitter: "https://www.google.com",
         country: "spain",
       },
       {
@@ -235,7 +262,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/benito-juarez.jpg`,
         subtitle: "Fabricación Digital (impresión 3D)",
         linkedin: "https://www.linkedin.com/in/benojuarez/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -244,7 +270,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/rosa-delgado.jpg`,
         subtitle: "El Internet Industrial de las Cosas IIoT",
         linkedin: "https://www.linkedin.com/in/rosa-maria-delgado-024304/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -253,7 +278,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/jorge-aguinaga.jpg`,
         subtitle: "Big Data y Data Analytics",
         linkedin: "https://www.linkedin.com/in/jorgeaguinaga/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
       {
@@ -262,7 +286,6 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/edgar-perez.jpg`,
         subtitle: "Metaverso",
         linkedin: "https://www.linkedin.com/in/edgarperez/",
-        twitter: "https://www.google.com",
         country: "peru",
       },
     ],
