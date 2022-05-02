@@ -33,7 +33,7 @@ export const CulqiComponent = (props) => {
 
       const { error } = await Fetch(`${config.serverUrl}/users/:userId/pucharse/:amount`, "POST", {
         user: authUser,
-        pucharse: event,
+        purcharse: event,
       });
 
       if (error) throw Error(error);
