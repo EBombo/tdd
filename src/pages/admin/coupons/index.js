@@ -1,20 +1,22 @@
 import React, { useEffect, useGlobal, useState } from "reactn";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 import { firestore } from "../../../firebase";
 import { Anchor } from "../../../components/form/Anchor";
+import { snapshotToArray } from "../../../utils"
 
 export const Coupons = (props) => {
-  // const router = useRouter();
+  const router = useRouter();
 
   const [authUser] = useGlobal("user");
   const [coupons, setCoupons] = useState([]);
 
   useEffect(() => {
-    // router.prefetch("/events/[eventId]");
+    router.prefetch("/admin/coupons/[couponId]");
+
     const fetchCoupons = async () => {
       const couponsSnapshot = await firestore.collection("coupons").get();
-      const coupons_ = couponsSnapshot.data();
+      const coupons_ = snapshotToArray(couponsSnapshot);
 
       setCoupons(coupons_);
     };
@@ -26,7 +28,8 @@ export const Coupons = (props) => {
     <div className="mx-4">
       {data.map((coupon, i) => (
         <div key={`coupon-${i}`} className="block bg-white shadow p-4">
-          Coupon {coupon?.id}{" "}
+          Coupon {coupon?.id}
+          <div className="float-right"><Anchor url={`/admin/coupons/${coupon?.id}`}>Editar</Anchor></div>
         </div>
       ))}
     </div>

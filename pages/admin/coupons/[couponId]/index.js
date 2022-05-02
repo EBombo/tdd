@@ -6,7 +6,7 @@ const CouponsContainer = (props) => {
   return (
     <PrivateRoutes>
       <Navbar>
-        <CouponForm {...props} />;
+        <CouponForm {...props} />
       </Navbar>
     </PrivateRoutes>
   );
