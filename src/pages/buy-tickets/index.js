@@ -1,6 +1,5 @@
 import React from "reactn";
 import styled from "styled-components";
-
 import { Button } from "../../components/form";
 
 export const BuyTickets = (props) => {
