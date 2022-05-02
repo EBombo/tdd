@@ -31,4 +31,3 @@ const postContact = async (req, res, next) => {
 };
 
 module.exports = { postContact };
-

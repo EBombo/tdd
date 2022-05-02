@@ -22,10 +22,7 @@ const updateUser = async (userId, user) => {
 };
 
 const fetchUserByEmail = async (userEmail) => {
-  const userSnapshot = await firestore
-    .collection("users")
-    .where("email", "==", userEmail)
-    .get();
+  const userSnapshot = await firestore.collection("users").where("email", "==", userEmail).get();
 
   if (userSnapshot.empty) return null;
 

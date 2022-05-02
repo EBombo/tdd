@@ -5,8 +5,7 @@ const fetchSettings = async () => {
   return settings.data();
 };
 
-const updateSetting = async (settingId, setting) =>
-  await firestore.doc(`settings/${settingId}`).update(setting);
+const updateSetting = async (settingId, setting) => await firestore.doc(`settings/${settingId}`).update(setting);
 
 const fetchTemplates = async (templateName) => {
   const templates_ = await firestore.doc("settings/templates").get();
