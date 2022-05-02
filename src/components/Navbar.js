@@ -84,7 +84,9 @@ const Navbar = (props) => {
               </div>
 
               <div className="text-center">
-                <Button margin="m-2" onClick={() => router.push("/login")}>Iniciar sesión</Button>
+                <Button margin="m-2" onClick={() => router.push("/login")}>
+                  Iniciar sesión
+                </Button>
               </div>
             </div>
           </div>
@@ -92,9 +94,7 @@ const Navbar = (props) => {
       </nav>
 
       <div className="">
-        <div className="w-[100wv] min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)]">
-          {props.children}
-        </div>
+        <div className="w-[100wv] min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)]">{props.children}</div>
       </div>
 
       <div>
