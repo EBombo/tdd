@@ -4,7 +4,7 @@ import { config } from "../../firebase";
 import Countdown from "../../components/Countdown";
 import { Anchor, Button } from "../../components/form";
 import { Input } from "antd";
-import { timelineBlocks } from "../../components/common/Datalist";
+import { timelineBlocks } from "../../components/common/DataList";
 import orderBy from "lodash/orderBy";
 import isEmpty from "lodash/isEmpty";
 
