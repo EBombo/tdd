@@ -48,6 +48,7 @@ export const CulqiComponent = (props) => {
     } catch (error) {
       console.error(error);
       sendError(error, "purchasing");
+      props.showNotification("Error", "Algo salio mal, intente nuevamente");
     }
   };
 

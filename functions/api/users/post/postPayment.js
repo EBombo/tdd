@@ -22,8 +22,9 @@ exports.postPayment = async (req, res, next) => {
 
     if (currency_code !== "PEN") throw Error("current is corrupt");
 
-    await culqiCharges(email, source_id, currency_code, amount);
+    const resp = await culqiCharges(email, source_id, currency_code, amount);
 
+    logger.log("resp", resp);
     // Crear el pin de acceso a la cuenta.
 
     return res.send({ success: true });
