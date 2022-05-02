@@ -22,7 +22,7 @@ const MyApp = ({ Component, pageProps }) => {
     <ThemeProvider theme={get(authUserLS, "theme") === "lightTheme" ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Head>
-        <title>Ebombo Games</title>
+        <title>TDD</title>
         <meta charSet="UTF-8" />
         <meta name="google" value="notranslate" />
         <meta
