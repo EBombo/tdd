@@ -7,7 +7,7 @@ import { useSendError } from "../../../hooks";
 
 import { firestore } from "../../../firebase";
 import { Input, Button, DatePicker  } from "../../../components/form";
-import PickerTag from "antd/lib/date-picker/PickerTag";
+import moment from "moment";
 
 const COUPONS_COLLECTION = "coupons";
 
@@ -49,12 +49,12 @@ export const CouponForm = (props) => {
       const coupon_ = {
         ...couponData,
         discountFactor: couponData.discountFactor * 100,
-        activeSince: couponData.activeSince.toDate(),
-        expireAt: couponData.expireAt.toDate(),
-
+        activeSince: moment(couponData.activeSince.toDate()),
+        expireAt: moment(couponData.expireAt.toDate()),
       };
       setCurrentCoupon(coupon_);
 
+      reset();
     };
 
     fetchCoupon();
@@ -68,8 +68,6 @@ export const CouponForm = (props) => {
 
   const createCoupon = async (data) => {
     try {
-      data.hasActivationDate = !!data.activeSince;
-      data.hasExpirationDate = !!data.expireAt;
       const discountFactor = data.discountFactor / 100;
 
       const docRef = firestore.doc(`${COUPONS_COLLECTION}/${documentId}`);
@@ -124,9 +122,9 @@ export const CouponForm = (props) => {
           <Controller
             name="activeSince"
             control={control}
+            defaultValue={currentCoupon?.activeSince}
             as={
               <DatePicker
-                defaultValue={currentCoupon?.activeSince || null}
                 name="activeSince"
                 type="datetime-local"
                 ref={register}
@@ -143,7 +141,6 @@ export const CouponForm = (props) => {
             defaultValue={currentCoupon?.expireAt}
             as={
               <DatePicker
-                defaultValue={get(currentCoupon, "expireAt", null)}
                 name="expireAt"
                 type="datetime-local"
                 ref={register}
@@ -155,7 +152,7 @@ export const CouponForm = (props) => {
 
           <div>
             <Button primary htmltype="submit" margin="m-0">
-              <span className="px-8">Crear cupón</span>
+              <span className="px-8">{isNew ? "Crear cupón" : "Actualizar cupón"}</span>
             </Button>
           </div>
         </form>
