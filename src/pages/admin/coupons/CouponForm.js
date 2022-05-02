@@ -6,7 +6,7 @@ import { object, string, number, date } from "yup";
 import { useSendError } from "../../../hooks";
 
 import { firestore } from "../../../firebase";
-import { Input, Button, DatePicker  } from "../../../components/form";
+import { Input, Button, DatePicker } from "../../../components/form";
 import moment from "moment";
 
 const COUPONS_COLLECTION = "coupons";
@@ -60,7 +60,7 @@ export const CouponForm = (props) => {
     fetchCoupon();
   }, [couponId]);
 
-  const isNew = useMemo(() => (couponId === "new"), [couponId]);
+  const isNew = useMemo(() => couponId === "new", [couponId]);
 
   const documentId = useMemo(() => {
     return isNew ? firestore.collection(COUPONS_COLLECTION).doc().id : couponId;

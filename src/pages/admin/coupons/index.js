@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { firestore } from "../../../firebase";
 import { Anchor } from "../../../components/form/Anchor";
-import { snapshotToArray } from "../../../utils"
+import { snapshotToArray } from "../../../utils";
 
 export const Coupons = (props) => {
   const router = useRouter();
@@ -29,7 +29,9 @@ export const Coupons = (props) => {
       {data.map((coupon, i) => (
         <div key={`coupon-${i}`} className="block bg-white shadow p-4">
           Coupon {coupon?.id}
-          <div className="float-right"><Anchor url={`/admin/coupons/${coupon?.id}`}>Editar</Anchor></div>
+          <div className="float-right">
+            <Anchor url={`/admin/coupons/${coupon?.id}`}>Editar</Anchor>
+          </div>
         </div>
       ))}
     </div>
@@ -39,7 +41,9 @@ export const Coupons = (props) => {
     <div className="">
       <h1 className="text-xl font-bold">Cupones</h1>
 
-      <div><Anchor url="/admin/coupons/new">Crear cupón</Anchor></div>
+      <div>
+        <Anchor url="/admin/coupons/new">Crear cupón</Anchor>
+      </div>
 
       <div className="block">
         <CouponList data={coupons} />

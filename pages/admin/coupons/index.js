@@ -12,5 +12,4 @@ const CouponsContainer = (props) => {
   );
 };
 
-
 export default CouponsContainer;
