@@ -1,4 +1,5 @@
 import { config } from "../../firebase";
+import { darkTheme } from "../../theme";
 
 export const avatars = [
   `${config.storageUrl}/resources/avatars/dog.svg`,
@@ -292,3 +293,30 @@ export const timelineBlocks = [
     ],
   },
 ];
+
+export const accountStates = {
+  valid: {
+    color: darkTheme.basic.primary,
+    label: "Válido",
+  },
+  notValid: {
+    color: darkTheme.basic.danger,
+    label: "No válido",
+  },
+  inProcess: {
+    color: darkTheme.basic.action,
+    label: "En proceso",
+  },
+};
+
+export const verifiedState = {
+  noVerified: {
+    type: "danger",
+    text: "Cancelar Verificacion",
+  },
+  verified: {
+    type: "primary",
+    text: "Verificar",
+  },
+};
+

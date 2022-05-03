@@ -1,13 +1,13 @@
 import React from "reactn";
 import styled from "styled-components";
-import { useHistory } from "react-router";
+import { useRouter } from "next/router";
 
 export const AclLink = (props) => {
-  const history = useHistory();
+  const router = useRouter();
 
   const isEnabled = props.userAcls.some((acl) => acl === props.name);
 
-  const onClick = () => (isEnabled && props.onClick ? props.onClick() : history.push(props.to));
+  const onClick = () => (isEnabled && props.onClick ? props.onClick() : router.push(props.to));
 
   return (
     <Link isEnabled={isEnabled} onClick={onClick}>

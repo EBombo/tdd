@@ -3,11 +3,14 @@ import { useRouter } from "next/router";
 import moment from "moment";
 import { firestore } from "../../../firebase";
 import { Anchor } from "../../../components/form/Anchor";
+import { useAcl } from "../../../hooks/acl";
 import { spinLoaderMin } from "../../../components/common/loader";
 import { snapshotToArray } from "../../../utils";
 
 export const Coupons = (props) => {
   const router = useRouter();
+
+  const { AclLink } = useAcl();
 
   const [authUser] = useGlobal("user");
   const [coupons, setCoupons] = useState([]);
@@ -40,7 +43,7 @@ export const Coupons = (props) => {
       {data.map((coupon, i) => (
         <div key={`coupon-${i}`} className="block bg-white shadow p-4 my-4">
           <div className="float-right">
-            <Anchor url={`/admin/coupons/${coupon?.id}`}>Editar</Anchor>
+            <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/${coupon?.id}`}>Editar</AclLink>
           </div>
           <p className="text-lg font-bold">Cupón: {coupon?.code}</p>
           <p>Cantidad Máxima de uso: {coupon?.maxUsage}</p>
@@ -62,7 +65,7 @@ export const Coupons = (props) => {
       <h1 className="text-xl font-bold">Cupones</h1>
 
       <div>
-        <Anchor url="/admin/coupons/new">Crear cupón</Anchor>
+        <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/new`}>Crear cupón</AclLink>
       </div>
 
       <div className="block">{isLoading ? spinLoaderMin() : <CouponList data={coupons} />}</div>

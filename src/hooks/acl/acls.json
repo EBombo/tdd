@@ -6,6 +6,13 @@
       "/admin/settings/templates": "Edicion de templates"
     }
   },
+  "adminUsers": {
+    "label": "Gestión de usuarios",
+    "items": {
+      "/admin/users": "Listado de usuarios",
+      "/admin/users/[userId]": "Edición/Creación de usuarios"
+    }
+  },
   "adminCoupons": {
     "label": "Gestión de cupones",
     "items": {
