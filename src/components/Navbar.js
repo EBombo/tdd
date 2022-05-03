@@ -10,7 +10,7 @@ import Footer from "./Footer";
 const Navbar = (props) => {
   const router = useRouter();
 
-  const path = router.pathname
+  const path = router.pathname;
 
   const [authUser] = useGlobal("user");
 
