@@ -1,4 +1,4 @@
-import React, { useEffect } from "reactn";
+import React, { useEffect, useGlobal } from "reactn";
 import { Anchor, Button, Input } from "../../components/form";
 import { useForm } from "react-hook-form";
 import Countdown from "../../components/Countdown";
@@ -11,11 +11,18 @@ export const Login = (props) => {
 
   const { signIn } = useAuth();
 
+  const [authUser] = useGlobal("user");
+
   useEffect(() => {
     if (router.isReady) return;
     router.prefetch("/buy-tickets");
     router.prefetch("/register");
   }, []);
+
+  useEffect(() => {
+    //TODO: DEFINIR A DONDE SE REDIRIGE AL USUARIO LUEGO DEL INICIAR SESION
+    if (authUser) router.push("/");
+  }, [authUser]);
 
   const schema = object().shape({
     email: string().required().email(),

@@ -19,7 +19,7 @@ const postUser = async (req, res, next) => {
 
     const _searchName = searchName(user);
 
-    await updateUser(user.id, { user, searchName: _searchName, createAt: new Date(), updateAt: new Date() });
+    await updateUser(user.id, { ...user, searchName: _searchName, createAt: new Date(), updateAt: new Date() });
 
     return res.send({ success: true });
   } catch (error) {

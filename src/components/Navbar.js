@@ -5,10 +5,13 @@ import { Image } from "./common/Image";
 import { Anchor, Button } from "./form";
 
 import Footer from "./Footer";
+import { useAuth } from "../hooks/useAuth";
 
 // TODO: Implement Navbar
 const Navbar = (props) => {
   const router = useRouter();
+
+  const { signOut } = useAuth();
 
   const [authUser] = useGlobal("user");
 
@@ -82,11 +85,19 @@ const Navbar = (props) => {
                 </Button>
               </div>
 
-              <div className="text-center">
-                <Button margin="m-2" onClick={() => router.push("/login")}>
-                  Iniciar sesión
-                </Button>
-              </div>
+              {!authUser ? (
+                <div className="text-center">
+                  <Button margin="m-2" onClick={() => router.push("/login")}>
+                    Iniciar sesión
+                  </Button>
+                </div>
+              ) : (
+                <div className="text-center">
+                  <Button margin="m-2" onClick={() => signOut()}>
+                    Cerrar sesión
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         )}
