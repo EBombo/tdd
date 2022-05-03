@@ -1,5 +1,4 @@
 import React, { useEffect, useGlobal } from "reactn";
-import styled from "styled-components";
 import { Button } from "../../components/form";
 import { Culqi, CulqiProvider } from "react-culqi";
 import { config } from "../../firebase";
@@ -64,42 +63,38 @@ export const CulqiComponent = (props) => {
   };
 
   return (
-    <CulqiComponentStyled>
-      <CulqiProvider
-        title="TDD"
-        onError={onError}
-        currency={currency}
-        onToken={purchasing}
-        publicKey={config.culqi}
-        description="COMPRAR ENTRADAS"
-        options={{ style: { logo: `${config.storageUrl}/resources/logo-tdd-utp-vector.svg` } }}
-      >
-        <Culqi>
-          {({ openCulqi, setAmount }) => {
-            return (
-              <div className="flex mt-6">
-                <Button
-                  primary
-                  margin="m-auto"
-                  fontSize="text-xl"
-                  loading={isLoading}
-                  disabled={isLoading}
-                  onClick={() => {
-                    // TODO: Implement coupons.
-                    const formattedCost = cost * 100;
-                    setAmount(formattedCost);
-                    openCulqi();
-                  }}
-                >
-                  PAGAR ENTRADA
-                </Button>
-              </div>
-            );
-          }}
-        </Culqi>
-      </CulqiProvider>
-    </CulqiComponentStyled>
+    <CulqiProvider
+      title="TDD"
+      onError={onError}
+      currency={currency}
+      onToken={purchasing}
+      publicKey={config.culqi}
+      description="COMPRAR ENTRADAS"
+      options={{ style: { logo: `${config.storageUrl}/resources/logo-tdd-utp-vector.svg` } }}
+    >
+      <Culqi>
+        {({ openCulqi, setAmount }) => {
+          return (
+            <div className="flex mt-6">
+              <Button
+                primary
+                margin="m-auto"
+                fontSize="text-xl"
+                loading={isLoading}
+                disabled={isLoading}
+                onClick={() => {
+                  // TODO: Implement coupons.
+                  const formattedCost = cost * 100;
+                  setAmount(formattedCost);
+                  openCulqi();
+                }}
+              >
+                PAGAR ENTRADA
+              </Button>
+            </div>
+          );
+        }}
+      </Culqi>
+    </CulqiProvider>
   );
 };
-
-const CulqiComponentStyled = styled.div``;
