@@ -60,7 +60,9 @@ export const Home = (props) => {
         <div className="mt-8 lg:mt-0 lg:mx-12 lg:grid lg:grid-cols-3 w-[90%] lg:w-full lg:h-[500px]">
           <div className="col-start-1 col-end-2 bg-white/[.60] p-4 lg:p-8">
             <h2 className="text-xl lg:text-3xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
+
             <p className="text-base lg:text-lg mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
+
             <Button margin="m-0" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
               Adquirir entrada
             </Button>

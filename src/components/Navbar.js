@@ -2,8 +2,7 @@ import React, { useEffect, useGlobal, useState } from "reactn";
 import { useRouter } from "next/router";
 import { config } from "../firebase";
 import { Image } from "./common/Image";
-import { Anchor } from "./form/Anchor";
-import { Button } from "./form/Button";
+import { Anchor, Button } from "./form";
 
 import Footer from "./Footer";
 
@@ -84,7 +83,9 @@ const Navbar = (props) => {
               </div>
 
               <div className="text-center">
-                <Button margin="m-2" onClick={() => router.push("/login")}>Iniciar sesión</Button>
+                <Button margin="m-2" onClick={() => router.push("/login")}>
+                  Iniciar sesión
+                </Button>
               </div>
             </div>
           </div>
@@ -92,9 +93,7 @@ const Navbar = (props) => {
       </nav>
 
       <div className="">
-        <div className="w-[100wv] min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)]">
-          {props.children}
-        </div>
+        <div className="w-[100wv] min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)]">{props.children}</div>
       </div>
 
       <div>

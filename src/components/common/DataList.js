@@ -154,7 +154,8 @@ export const timelineBlocks = [
       },
       {
         name: "Javier Salinas",
-        title: "Presidente Asociacion de Economia Plateada en el Perú, Promotor del ecosistema y regulación Fintech en el Perú y la región",
+        title:
+          "Presidente Asociacion de Economia Plateada en el Perú, Promotor del ecosistema y regulación Fintech en el Perú y la región",
         linkedin: "https://www.linkedin.com/in/javierrsalinasm/",
       },
       {
@@ -210,7 +211,7 @@ export const timelineBlocks = [
         name: "Carlos Armando de la Flor",
         title: "CoFundador y CEO María Almenara",
         linkedin: "https://www.linkedin.com/in/cadelaflor/",
-      }
+      },
     ],
     exhibitors: [
       {
