@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "../src/components/error-fallback/ErrorFallback";
 import { WithConfiguration } from "../src/session/WithConfiguration";
+import { WithAuthentication } from "../src/session/WithAuthentication";
 import { config } from "../src/firebase";
 import Head from "next/head";
 import "../src/theme/globals.css";
@@ -68,7 +69,9 @@ const MyApp = ({ Component, pageProps }) => {
       />
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <WithConfiguration>
-          <Component {...pageProps} showNotification={showNotificationAnt} />
+          <WithAuthentication>
+            <Component {...pageProps} showNotification={showNotificationAnt} />
+          </WithAuthentication>
         </WithConfiguration>
       </ErrorBoundary>
     </ThemeProvider>

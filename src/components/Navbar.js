@@ -1,14 +1,16 @@
-import React, { useEffect, useGlobal, useState } from "reactn";
-import { useRouter } from "next/router";
-import { config } from "../firebase";
-import { Image } from "./common/Image";
-import { Anchor, Button } from "./form";
-
+import React, {useEffect, useGlobal, useState} from "reactn";
+import {useRouter} from "next/router";
+import {config} from "../firebase";
+import {Image} from "./common/Image";
+import {Anchor, Button} from "./form";
+import {useAuth} from "../hooks/useAuth";
 import Footer from "./Footer";
 
 // TODO: Implement Navbar
 const Navbar = (props) => {
   const router = useRouter();
+
+  const { signOut } = useAuth();
 
   const path = router.pathname;
 
@@ -80,7 +82,13 @@ const Navbar = (props) => {
               Adquirir entrada
             </Button>
 
-            <Button onClick={() => router.push("/login")}>Iniciar sesión</Button>
+            {!authUser ? (
+              <Button onClick={() => router.push("/login")}>Iniciar sesión</Button>
+            ) : (
+              <Button margin="ml-2" onClick={() => signOut()}>
+                Cerrar sesión
+              </Button>
+            )}
           </div>
         </div>
 
@@ -114,11 +122,19 @@ const Navbar = (props) => {
                 </Button>
               </div>
 
-              <div className="text-center">
-                <Button margin="m-2" onClick={() => router.push("/login")}>
-                  Iniciar sesión
-                </Button>
-              </div>
+              {!authUser ? (
+                <div className="text-center">
+                  <Button margin="m-2" onClick={() => router.push("/login")}>
+                    Iniciar sesión
+                  </Button>
+                </div>
+              ) : (
+                <div className="text-center">
+                  <Button margin="m-2" onClick={() => signOut()}>
+                    Cerrar sesión
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         )}

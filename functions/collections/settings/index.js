@@ -9,7 +9,9 @@ const updateSetting = async (settingId, setting) => await firestore.doc(`setting
 
 const fetchTemplates = async (templateName) => {
   const templates_ = await firestore.doc("settings/templates").get();
-  return templates_.data()?.[templateName];
+  const templateDate = templates_.data();
+
+  if (templateDate) return templateDate[templateName];
 };
 
 module.exports = { fetchSettings, updateSetting, fetchTemplates };
