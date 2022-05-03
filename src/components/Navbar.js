@@ -66,7 +66,15 @@ const Navbar = (props) => {
               Adquirir entrada
             </Button>
 
-            <Button onClick={() => router.push("/login")}>Iniciar sesión</Button>
+            {!authUser ? (
+              <Button onClick={() => router.push("/login")}>
+                Iniciar sesión
+              </Button>
+            ) : (
+              <Button margin="ml-2" onClick={() => signOut()}>
+                Cerrar sesión
+              </Button>
+            )}
           </div>
         </div>
 

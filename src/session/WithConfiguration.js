@@ -34,15 +34,13 @@ export const WithConfiguration = (props) => {
       setEnvironment(config.firebase.projectId);
 
       await setGlobal({
-        user: authUserLS ? collectionToDate(authUserLS) : { id: firestore.collection("users").doc().id },
+        user: authUserLS ? collectionToDate(authUserLS) : null,
         settings: collectionToDate({ ...settingsLS, version }),
         location,
         audios: [],
         languageCode,
         ping: null,
-
         isAutomatic: false,
-
         register: null,
         isLoadingUser: false,
         isLoadingCreateUser: false,
