@@ -12,14 +12,14 @@ const fetchUser = async (userId) => {
 };
 
 const updateUser = async (userId, user) => {
-  const _userBefore = fetchUser(userId)
-  logger.log(_userBefore)
+  const _userBefore = fetchUser(userId);
+  logger.log(_userBefore);
 
   await firestore.doc(`users/${userId}`).set(user, { merge: true });
 
-  const _userAfter = fetchUser(userId)
-  logger.log(_userAfter)
-}
+  const _userAfter = fetchUser(userId);
+  logger.log(_userAfter);
+};
 
 const fetchUserByEmail = async (userEmail) => {
   const userSnapshot = await firestore.collection("users").where("email", "==", userEmail).get();

@@ -1,9 +1,9 @@
-import React, { useEffect, useGlobal, useState } from "reactn";
-import { useRouter } from "next/router";
-import { config } from "../firebase";
-import { Image } from "./common/Image";
-import { Anchor, Button } from "./form";
-import { useAuth } from "../hooks/useAuth";
+import React, {useEffect, useGlobal, useState} from "reactn";
+import {useRouter} from "next/router";
+import {config} from "../firebase";
+import {Image} from "./common/Image";
+import {Anchor, Button} from "./form";
+import {useAuth} from "../hooks/useAuth";
 import Footer from "./Footer";
 
 // TODO: Implement Navbar
@@ -83,9 +83,7 @@ const Navbar = (props) => {
             </Button>
 
             {!authUser ? (
-              <Button onClick={() => router.push("/login")}>
-                Iniciar sesión
-              </Button>
+              <Button onClick={() => router.push("/login")}>Iniciar sesión</Button>
             ) : (
               <Button margin="ml-2" onClick={() => signOut()}>
                 Cerrar sesión
