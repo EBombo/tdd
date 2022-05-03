@@ -8,8 +8,6 @@ import { useFetch } from "./useFetch";
 import { notification } from "antd";
 import get from "lodash/get";
 
-``;
-
 const GOOGLE_PROVIDER = "google";
 const FACEBOOK_PROVIDER = "facebook";
 
@@ -134,8 +132,6 @@ export const useAuth = () => {
     try {
       const { error } = await Fetch(`${config.serverUrl}/users/${user.id}`, "POST", {
         ...user,
-        createAt: new Date(),
-        updateAt: new Date(),
         acls: {
           common: Object.keys(acls.common.items),
         },

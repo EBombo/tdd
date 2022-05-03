@@ -1,6 +1,6 @@
 const logger = require("../../../utils/logger");
 const { updateUser } = require("../../../collections/users");
-const Date = require("yup/lib/date");
+const { searchName } = require("../../../utils");
 
 const postUser = async (req, res, next) => {
   try {
@@ -17,7 +17,9 @@ const postUser = async (req, res, next) => {
         isValidate: true,
       });
 
-    await updateUser(user.id, user);
+    const _searchName = searchName(user);
+
+    await updateUser(user.id, { user, searchName: _searchName, createAt: new Date(), updateAt: new Date() });
 
     return res.send({ success: true });
   } catch (error) {

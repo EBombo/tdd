@@ -19,9 +19,14 @@ export const Register = (props) => {
     router.prefetch("/login");
   }, []);
 
+  useEffect(() => {
+    //TODO: DEFINIR A DONDE SE REDIRIGE AL USUARIO LUEGO DEL REGISTRO
+    if (authUser) router.push("/");
+  }, []);
+
   const schema = object().shape({
-    names: string().required(),
-    surnames: string().required(),
+    name: string().required(),
+    lastName: string().required(),
     documentId: string().required(),
     phoneNumber: string().required().min(5),
     email: string().required().email(),
@@ -39,10 +44,7 @@ export const Register = (props) => {
 
     delete user.email2;
 
-    await signUp({
-      ...user,
-
-    });
+    await signUp(user);
   };
 
   return (
@@ -57,14 +59,14 @@ export const Register = (props) => {
           </div>
           <div className="my-4">Crea tu cuenta con tus datos para poder comprar tu entrada.</div>
           <div className="mb-4">
-            <Input name="names" type="text" ref={register} error={errors.names} height="50px" placeholder="Nombres" />
+            <Input name="name" type="text" ref={register} error={errors.name} height="50px" placeholder="Nombres" />
           </div>
           <div className="mb-4">
             <Input
-              name="surnames"
+              name="lastName"
               type="text"
               ref={register}
-              error={errors.surnames}
+              error={errors.lastName}
               height="50px"
               placeholder="Apellidos"
             />
