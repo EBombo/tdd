@@ -54,7 +54,7 @@ if (isEmpty(firebase.apps)) {
 }
 
 if (DOMAIN?.includes("localhost")) {
-  config.serverUrl = "http://localhost:5001/tdd-dev-348022/us-central1/api";
+  // config.serverUrl = "http://localhost:5001/tdd-dev-348022/us-central1/api";
   //firestore.useEmulator("localhost", 8080);
   //auth.useEmulator("http://localhost:9099/");
 }
