@@ -22,7 +22,7 @@ export const Register = (props) => {
   useEffect(() => {
     //TODO: DEFINIR A DONDE SE REDIRIGE AL USUARIO LUEGO DEL REGISTRO
     if (authUser) router.push("/");
-  }, []);
+  }, [authUser]);
 
   const schema = object().shape({
     name: string().required(),
