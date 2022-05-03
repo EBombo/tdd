@@ -44,8 +44,8 @@ export const WithConfiguration = (props) => {
         isAutomatic: false,
 
         register: null,
-        isLoadingUser: true,
-        isLoadingCreateUser: true,
+        isLoadingUser: false,
+        isLoadingCreateUser: false,
         isVisibleLoginModal: false,
         isVisibleForgotPassword: false,
         openRightDrawer: false,

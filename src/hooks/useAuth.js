@@ -1,13 +1,14 @@
 import { authenticationErrors } from "../firebase/authentication";
 import React, { useEffect, useGlobal, useState } from "reactn";
-import { authEvents, config, firebase } from "../firebase";
+import { auth, config, firebase } from "../firebase";
 import { useUser } from "./useLocalStorageState";
 import acls from "../hooks/acl/acls.json";
 import styled from "styled-components";
 import { useFetch } from "./useFetch";
-import { dialCodes } from "../utils";
 import { notification } from "antd";
 import get from "lodash/get";
+
+``;
 
 const GOOGLE_PROVIDER = "google";
 const FACEBOOK_PROVIDER = "facebook";
@@ -78,7 +79,7 @@ export const useAuth = () => {
   }, [error]);
 
   const signOut = async () => {
-    await authEvents.signOut();
+    await auth.signOut();
     setLSAuthUser.reset();
     await setAuthUser(null);
   };
@@ -86,7 +87,7 @@ export const useAuth = () => {
   const signIn = async (user) => {
     try {
       await setIsLoadingUser(true);
-      await authEvents.signInWithEmailAndPassword(user.email.trim().toLowerCase(), user.password);
+      await auth.signInWithEmailAndPassword(user.email.trim().toLowerCase(), user.password);
     } catch (error) {
       let errorMessage = authenticationErrors[error.code];
       setError(errorMessage || "Ha ocurrido un error, intenta nuevamente");
@@ -97,7 +98,7 @@ export const useAuth = () => {
   const signInWithToken = async (token) => {
     try {
       await setIsLoadingUser(true);
-      await authEvents.signInWithCustomToken(token);
+      await auth.signInWithCustomToken(token);
     } catch (error) {
       let errorMessage = authenticationErrors[error.code];
       setError(errorMessage || "Ha ocurrido un error, intenta nuevamente");
@@ -110,17 +111,11 @@ export const useAuth = () => {
       await setIsLoadingUser(true);
       await setIsLoadingCreateUser(true);
 
-      const result = await authEvents.createUserWithEmailAndPassword(user.email.toLowerCase().trim(), user.password);
-
-      const dialCode = (countryCode) => {
-        const country = dialCodes.find((country) => country.code === countryCode);
-        return get(country, "dialCode", null);
-      };
+      const result = await auth.createUserWithEmailAndPassword(user.email.toLowerCase().trim(), user.password);
 
       const mapRegister = (user, result) => ({
         id: result.uid,
         ...user,
-        dialCode: dialCode(user.countryCode),
         providerData: { ...result.providerData[0] },
       });
 
@@ -137,8 +132,10 @@ export const useAuth = () => {
 
   const createAccount = async (user) => {
     try {
-      const { error } = await Fetch(`${config.serverUrl}/api/users/${user.id}`, "POST", {
+      const { error } = await Fetch(`${config.serverUrl}/users/${user.id}`, "POST", {
         ...user,
+        createAt: new Date(),
+        updateAt: new Date(),
         acls: {
           common: Object.keys(acls.common.items),
         },
@@ -165,7 +162,7 @@ export const useAuth = () => {
 
       const currentProvider_ = currentProvider(provider);
 
-      await authEvents.signInWithRedirect(currentProvider_);
+      await auth.signInWithRedirect(currentProvider_);
     } catch (error) {
       setError(error);
       await setIsLoadingUser(false);
@@ -175,7 +172,7 @@ export const useAuth = () => {
 
   const recoveryPassword = async (email) => {
     try {
-      await authEvents.sendPasswordResetEmail(email);
+      await auth.sendPasswordResetEmail(email);
     } catch (error) {
       const errorMessage = authenticationErrors[error.code];
       setError(errorMessage || "Ha ocurrido un error, intenta nuevamente");

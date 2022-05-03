@@ -1,17 +1,12 @@
-const { config, adminFirestore, firestore } = require("../../../config");
 const logger = require("../../../utils/logger");
-const { searchName } = require("../../../utils");
-const defaultTo = require("lodash/defaultTo");
-const fetch = require("node-fetch");
-const get = require("lodash/get");
-const moment = require("moment");
+const { updateUser } = require("../../../collections/users");
+const Date = require("yup/lib/date");
 
 const postUser = async (req, res, next) => {
   try {
     logger.log("user register->", req.body);
 
     let user = req.body;
-    const origin = get(req, "headers.origin", config.serverUrl);
 
     user.id = req.params.userId;
 
@@ -21,6 +16,8 @@ const postUser = async (req, res, next) => {
         message: "Email es requerido",
         isValidate: true,
       });
+
+    await updateUser(user.id, user);
 
     return res.send({ success: true });
   } catch (error) {
