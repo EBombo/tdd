@@ -3,7 +3,7 @@ const api = require("./api");
 
 const runtimeOptions = {
   timeoutSeconds: 60,
-  memory: "256MB",
+  memory: "1GB",
 };
 
 const apiRegion = "us-central1";

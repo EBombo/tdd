@@ -1,6 +1,6 @@
 const { getUserToken, getVerifyCode, getResendVerifyCode, getSendEmail } = require("./users/get");
 const { postError, getError } = require("./errors");
-const { postUser } = require("./users/post");
+const { postUser, postPayment } = require("./users/post");
 const { postContact } = require("./contact/post");
 const bodyParser = require("body-parser");
 const express = require("express");
@@ -27,6 +27,8 @@ router.get("/users/tokens/:tokenId", getUserToken);
 router.get("/verify/:userId/resend-code", getResendVerifyCode);
 
 router.get("/verify/:userId/verification-code/:verificationCode", getVerifyCode);
+
+router.post("/users/:userId/payment", postPayment);
 
 //------------------------contact------------------------
 
