@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import get from "lodash/get";
 import { object, string, number, date } from "yup";
 import { useSendError } from "../../../hooks";
-
 import { firestore } from "../../../firebase";
 import { Input, Button, DatePicker } from "../../../components/form";
 import moment from "moment";
@@ -15,8 +14,6 @@ export const CouponForm = (props) => {
   const router = useRouter();
 
   const { couponId } = router.query;
-
-  const [currentCoupon, setCurrentCoupon] = useState({});
 
   const { sendError } = useSendError();
 
@@ -32,6 +29,8 @@ export const CouponForm = (props) => {
     validationSchema: schema,
     reValidateMode: "onSubmit",
   });
+
+  const [currentCoupon, setCurrentCoupon] = useState({});
 
   useEffect(() => {
     router.prefetch("/admin/coupons");
@@ -49,8 +48,8 @@ export const CouponForm = (props) => {
       const coupon_ = {
         ...couponData,
         discountFactor: couponData.discountFactor * 100,
-        activeSince: moment(couponData.activeSince.toDate()),
-        expireAt: moment(couponData.expireAt.toDate()),
+        activeSince: couponData.activeSince ? moment(couponData.activeSince?.toDate()) : couponData.activeSince,
+        expireAt: couponData.expireAt ? moment(couponData.expireAt?.toDate()) : couponData.expireAt,
       };
       setCurrentCoupon(coupon_);
 
@@ -71,9 +70,14 @@ export const CouponForm = (props) => {
       const discountFactor = data.discountFactor / 100;
 
       const docRef = firestore.doc(`${COUPONS_COLLECTION}/${documentId}`);
-      await (isNew
-        ? docRef.set({ ...data, createdAt: new Date(), updateAt: new Date(), id: documentId, discountFactor })
-        : docRef.update({ ...data, updateAt: new Date(), discountFactor }));
+      await docRef.set({
+        ...data,
+        createAt: isNew ? new Date() : currentCoupon?.createAt?.toDate(),
+        updateAt: new Date(),
+        id: documentId,
+        discountFactor,
+        deleted: isNew ? false : currentCoupon?.deleted,
+      }, { merge: true })
 
       router.push("/admin/coupons");
     } catch (e) {
@@ -83,7 +87,7 @@ export const CouponForm = (props) => {
   };
 
   return (
-    <div className="">
+    <div className="max-w-[1200px] mx-auto">
       <h1 className="text-xl font-bold">Crear nuevo cupón</h1>
       <div className="block">
         <form onSubmit={handleSubmit(createCoupon)} className="max-w-[700px] grid gap-2">
