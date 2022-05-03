@@ -10,6 +10,8 @@ import Footer from "./Footer";
 const Navbar = (props) => {
   const router = useRouter();
 
+  const path = router.pathname
+
   const [authUser] = useGlobal("user");
 
   const [menuDrawer, setMenuDrawer] = useState(false);
@@ -57,19 +59,19 @@ const Navbar = (props) => {
               <span className="mx-2">
                 <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/home.svg`} />
               </span>
-              Inicio
+              <span className={path === "/" && "text-pink-500"}>Inicio</span>
             </LeftAnchor>
             <LeftAnchor url="/timeline">
               <span className="mx-2">
                 <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/schedule.svg`} />
               </span>
-              Programa
+              <span className={path === "/timeline" && "text-pink-500"}>Programa</span>
             </LeftAnchor>
             <LeftAnchor url="/exhibitors">
               <span className="mx-2">
                 <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/lectern.svg`} />
               </span>
-              Expositores
+              <span className={path === "/exhibitors" && "text-pink-500"}>Expositores</span>
             </LeftAnchor>
           </div>
 
