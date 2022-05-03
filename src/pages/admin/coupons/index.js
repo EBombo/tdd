@@ -17,7 +17,8 @@ export const Coupons = (props) => {
     router.prefetch("/admin/coupons/[couponId]");
 
     const fetchCoupons = async () => {
-      const couponsSnapshot = await firestore.collection("coupons")
+      const couponsSnapshot = await firestore
+        .collection("coupons")
         .where("deleted", "==", false)
         .orderBy("createAt", "desc")
         .get();
@@ -32,22 +33,27 @@ export const Coupons = (props) => {
     fetchCoupons();
   }, []);
 
-  const dateFormatted = (date) => date ? moment(date).format("L") : "";
+  const dateFormatted = (date) => (date ? moment(date).format("L") : "");
 
   const CouponList = React.memo(({ data }) => (
     <div className="mx-4">
-    {data.map((coupon, i) => (
-      <div key={`coupon-${i}`} className="block bg-white shadow p-4 my-4">
-        <div className="float-right">
-          <Anchor url={`/admin/coupons/${coupon?.id}`}>Editar</Anchor>
+      {data.map((coupon, i) => (
+        <div key={`coupon-${i}`} className="block bg-white shadow p-4 my-4">
+          <div className="float-right">
+            <Anchor url={`/admin/coupons/${coupon?.id}`}>Editar</Anchor>
+          </div>
+          <p className="text-lg font-bold">Cupón: {coupon?.code}</p>
+          <p>Cantidad Máxima de uso: {coupon?.maxUsage}</p>
+          <p>Descuento (%): {coupon?.discountFactor}</p>
+          <p>
+            Activo desde:{" "}
+            {coupon?.activeSince
+              ? dateFormatted(coupon?.activeSince?.toDate())
+              : dateFormatted(coupon?.createAt?.toDate())}
+          </p>
+          <p>Expiración: {coupon?.expireAt ? dateFormatted(coupon?.expireAt?.toDate()) : "Sin fecha de expiración"}</p>
         </div>
-        <p className="text-lg font-bold">Cupón: {coupon?.code}</p>
-        <p>Cantidad Máxima de uso: {coupon?.maxUsage}</p>
-        <p>Descuento (%): {coupon?.discountFactor}</p>
-        <p>Activo desde: {coupon?.activeSince ? dateFormatted(coupon?.activeSince?.toDate()) : dateFormatted(coupon?.createAt?.toDate())}</p>
-        <p>Expiración: {coupon?.expireAt ? dateFormatted(coupon?.expireAt?.toDate()) : "Sin fecha de expiración"}</p>
-      </div>
-    ))}
+      ))}
     </div>
   ));
 
@@ -59,9 +65,7 @@ export const Coupons = (props) => {
         <Anchor url="/admin/coupons/new">Crear cupón</Anchor>
       </div>
 
-      <div className="block">
-        {isLoading ? spinLoaderMin() : <CouponList data={coupons} />}
-      </div>
+      <div className="block">{isLoading ? spinLoaderMin() : <CouponList data={coupons} />}</div>
     </div>
   );
 };
