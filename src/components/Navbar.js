@@ -27,7 +27,7 @@ const Navbar = (props) => {
   ));
 
   return (
-    <div className="">
+    <>
       <nav className="h-[50px] lg:h-[120px] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
         <div className="flex items-center flex-shrink-0 text-black mr-6">
           <Image
@@ -53,9 +53,9 @@ const Navbar = (props) => {
 
         <div className="w-full hidden lg:block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow">
-            <LeftAnchor url="/">Inicio</LeftAnchor>
-            <LeftAnchor url="/timeline">Programa</LeftAnchor>
-            <LeftAnchor url="/exhibitors">Expositores</LeftAnchor>
+            <LeftAnchor url="/"><span className="mx-2"><Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/home.svg`} /></span>Inicio</LeftAnchor>
+            <LeftAnchor url="/timeline"><span className="mx-2"><Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/schedule.svg`} /></span>Programa</LeftAnchor>
+            <LeftAnchor url="/exhibitors"><span className="mx-2"><Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/lectern.svg`} /></span>Expositores</LeftAnchor>
           </div>
 
           <div>
@@ -70,9 +70,9 @@ const Navbar = (props) => {
         {menuDrawer && (
           <div className="absolute top-[50px] right-0 z-10 py-8 w-full block flex-grow lg:flex lg:items-center lg:w-auto bg-white">
             <div className="text-sm lg:flex-grow">
-              <LeftAnchor url="/">Inicio</LeftAnchor>
-              <LeftAnchor url="/timeline">Programa</LeftAnchor>
-              <LeftAnchor url="/exhibitors">Expositores</LeftAnchor>
+              <LeftAnchor url="/"><span className="mx-2"><Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/home.svg`} /></span>Inicio</LeftAnchor>
+              <LeftAnchor url="/timeline"><span className="mx-2"><Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/schedule.svg`} /></span>Programa</LeftAnchor>
+              <LeftAnchor url="/exhibitors"><span className="mx-2"><Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/lectern.svg`} /></span>Expositores</LeftAnchor>
             </div>
 
             <div>
@@ -99,7 +99,7 @@ const Navbar = (props) => {
       <div>
         <Footer />
       </div>
-    </div>
+    </>
   );
 };
 
