@@ -44,7 +44,7 @@ export const Coupons = (props) => {
         <p className="text-lg font-bold">Cupón: {coupon?.code}</p>
         <p>Cantidad Máxima de uso: {coupon?.maxUsage}</p>
         <p>Descuento (%): {coupon?.discountFactor}</p>
-        <p>Activo desde: {coupon?.activeSince ? dateFormatted(coupon?.activeSince?.toDate()) : coupon?.createAt?.toDate()}</p>
+        <p>Activo desde: {coupon?.activeSince ? dateFormatted(coupon?.activeSince?.toDate()) : dateFormatted(coupon?.createAt?.toDate())}</p>
         <p>Expiración: {coupon?.expireAt ? dateFormatted(coupon?.expireAt?.toDate()) : "Sin fecha de expiración"}</p>
       </div>
     ))}
@@ -60,10 +60,7 @@ export const Coupons = (props) => {
       </div>
 
       <div className="block">
-        {isLoading
-          ? spinLoaderMin()
-          : <CouponList data={coupons} />
-        }
+        {isLoading ? spinLoaderMin() : <CouponList data={coupons} />}
       </div>
     </div>
   );

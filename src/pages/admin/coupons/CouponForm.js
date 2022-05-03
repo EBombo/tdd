@@ -69,15 +69,14 @@ export const CouponForm = (props) => {
     try {
       const discountFactor = data.discountFactor / 100;
 
-      const docRef = firestore.doc(`${COUPONS_COLLECTION}/${documentId}`);
-      await docRef.set({
+      firestore.doc(`${COUPONS_COLLECTION}/${documentId}`).set({
         ...data,
         createAt: isNew ? new Date() : currentCoupon?.createAt?.toDate(),
         updateAt: new Date(),
         id: documentId,
         discountFactor,
         deleted: isNew ? false : currentCoupon?.deleted,
-      }, { merge: true })
+      }, { merge: true });
 
       router.push("/admin/coupons");
     } catch (e) {
