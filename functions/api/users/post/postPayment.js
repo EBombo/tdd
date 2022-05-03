@@ -13,15 +13,15 @@ exports.postPayment = async (req, res, next) => {
 
     if (!email) throw Error("Email is required");
 
-    if (userId !== user.id) throw Error("User corrupt.");
+    if (userId !== user.id) throw Error("User is corrupt.");
 
     if (!amount) throw Error("amount is required");
 
-    if (amount < 0) throw Error("invalid amount");
+    if (amount < 0) throw Error("Amount is invalid");
 
-    if (!source_id) throw "token invalid";
+    if (!source_id) throw "token is invalid";
 
-    if (currency_code !== "PEN") throw Error("current is corrupt");
+    if (currency_code !== "PEN") throw Error("Currency is corrupt");
 
     const resp = await culqiCharges(email, source_id, currency_code, amount);
 
