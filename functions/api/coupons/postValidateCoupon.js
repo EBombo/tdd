@@ -15,6 +15,7 @@ exports.postValidateCoupon = async (req, res, next) => {
     if (couponCode !== req.params.couponCode) throw Error("Cupón invalido");
 
     const coupon = await fetchCoupon(couponCode);
+    console.log({ coupon });
 
     if (!coupon) throw Error("El cupón no existe");
 
@@ -23,14 +24,15 @@ exports.postValidateCoupon = async (req, res, next) => {
     const isAvailable = moment(coupon.activeSince.toDate()).isBefore(currentUserDate);
     if (!isAvailable) throw Error("Cupón no esta disponible");
 
-    const isExpired = moment(coupon.expireAt.toDate()).isBefore(currentUserDate);
+    const isExpired = coupon.expireAt && moment(coupon.expireAt.toDate()).isBefore(currentUserDate);
     if (isExpired) throw Error("Cupón ha expirado");
 
     if (!coupon.enabled) throw Error("Cupón no esta disponible");
 
-    if (coupon.maxUsage >= paymentsLength) throw Error("Cupón ha superado su limite de uso");
+    console.log({ paymentsLength });
+    if (paymentsLength >= +coupon.maxUsage) throw Error("Cupón ha superado su limite de uso");
 
-    const totalDiscount = defaultCost * +scoupon.discountFactor;
+    const totalDiscount = defaultCost * +coupon.discountFactor;
 
     return res.send({ success: true, discount: totalDiscount, coupon });
   } catch (error) {
