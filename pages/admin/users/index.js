@@ -4,13 +4,13 @@ import Navbar from "../../../src/components/Navbar";
 
 const UsersContainer = (props) => {
   return (
-    <Navbar>
-      <Users {...props} />
-    </Navbar>
+    <PrivateRoutes>
+      <Navbar>
+        <Users {...props} />
+      </Navbar>
+    </PrivateRoutes>
   );
 };
 
-    // <PrivateRoutes>
-    // </PrivateRoutes>
 export default UsersContainer;
 

@@ -4,14 +4,14 @@ import Navbar from "../../../../../src/components/Navbar";
 
 const UsersContainer = (props) => {
   return (
-    <Navbar>
-      <AdminUserAcls {...props} />
-    </Navbar>
+    <PrivateRoutes>
+      <Navbar>
+        <AdminUserAcls {...props} />
+      </Navbar>
+    </PrivateRoutes>
   );
 };
 
-    // <PrivateRoutes>
-    // </PrivateRoutes>
 export default UsersContainer;
 
 
