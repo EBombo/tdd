@@ -80,7 +80,6 @@ export const CulqiComponent = (props) => {
                 disabled={isLoading}
                 margin="mx-auto mt-2"
                 onClick={() => {
-                  // TODO: Implement coupons.
                   const formattedCost = +props.totalCost * 100;
                   setAmount(formattedCost);
                   openCulqi();
