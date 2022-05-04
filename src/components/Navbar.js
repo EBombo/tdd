@@ -33,13 +33,14 @@ const Navbar = (props) => {
   return (
     <>
       <nav className="h-[50px] lg:h-[120px] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
-        <div className="flex items-center flex-shrink-0 text-black mr-6">
+        <div className="flex items-center flex-shrink-0 text-black mr-6 cursor-pointer">
           <Image
             src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`}
             height="35px"
             desktopHeight="55px"
             size="contain"
             margin="0"
+            onClick={() => router.push(authUser ? "/admin" : "/")}
           />
         </div>
 

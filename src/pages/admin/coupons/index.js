@@ -2,7 +2,6 @@ import React, { useEffect, useGlobal, useState } from "reactn";
 import { useRouter } from "next/router";
 import moment from "moment";
 import { firestore } from "../../../firebase";
-import { Anchor } from "../../../components/form/Anchor";
 import { useAcl } from "../../../hooks/acl";
 import { spinLoaderMin } from "../../../components/common/loader";
 import { snapshotToArray } from "../../../utils";
@@ -43,9 +42,7 @@ export const Coupons = (props) => {
       {data.map((coupon, i) => (
         <div key={`coupon-${i}`} className="block bg-white shadow p-4 my-4">
           <div className="float-right">
-            <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/${coupon?.id}`}>
-              Editar
-            </AclLink>
+            <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/${coupon?.id}`} variant="primary">Editar</AclLink>
           </div>
           <p className="text-lg font-bold">Cupón: {coupon?.code}</p>
           <p>Cantidad Máxima de uso: {coupon?.maxUsage}</p>
@@ -63,13 +60,15 @@ export const Coupons = (props) => {
   ));
 
   return (
-    <div className="max-w-[1200px] mx-auto">
-      <h1 className="text-xl font-bold">Cupones</h1>
+    <div className="max-w-[1200px] mx-auto py-8">
+      <div className="mb-4">
+        <AclLink name="/admin" to="/admin" variant="primary">Regresar</AclLink>
+      </div>
+
+      <h1 className="text-xl font-bold mb-4">Cupones</h1>
 
       <div>
-        <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/new`}>
-          Crear cupón
-        </AclLink>
+        <AclLink name="/admin/coupons/new" to="/admin/coupons/new" variant="primary">Crear cupón</AclLink>
       </div>
 
       <div className="block">{isLoading ? spinLoaderMin() : <CouponList data={coupons} />}</div>

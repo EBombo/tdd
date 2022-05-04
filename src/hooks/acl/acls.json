@@ -18,7 +18,8 @@
     "label": "Gestión de cupones",
     "items": {
       "/admin/coupons": "Listado de cupones",
-      "/admin/coupons/[couponId]": "Edición/Creación de cupones"
+      "/admin/coupons/[couponId]": "Edición de cupones",
+      "/admin/coupons/new": "Creación de cupones"
     }
   },
   "common": {

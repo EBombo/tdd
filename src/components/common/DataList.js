@@ -36,6 +36,26 @@ export const adminMenus = [
   },
 ];
 
+export const menus = [
+  /*
+  {
+    name: "Reportes",
+    url: "/reports",
+    src: `${config.storageUrl}/resources/footer/reports-icon.svg`,
+  },
+   */
+  {
+    name: "Lista de usuarios",
+    url: "/admin/users",
+    isAdmin: true,
+  },
+  {
+    name: "Lista de cupónes",
+    url: "/admin/coupons",
+    isAdmin: true,
+  },
+];
+
 export const emailTemplates = [
   {
     id: "newAccount",

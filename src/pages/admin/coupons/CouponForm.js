@@ -92,13 +92,11 @@ export const CouponForm = (props) => {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto">
-      <div>
-        <AclLink name="/admin/coupons" to="/admin/coupons">
-          Regresar
-        </AclLink>
+    <div className="max-w-[1200px] mx-auto py-8 px-4">
+      <div className="mb-4">
+        <AclLink variant="primary" name="/admin/coupons" to="/admin/coupons">Regresar</AclLink>
       </div>
-      <h1 className="text-xl font-bold">Crear nuevo cupón</h1>
+      <h1 className="text-xl font-bold mb-4">{isNew ? "Crear nuevo" : "Editar"} cupón</h1>
       <div className="block">
         <form onSubmit={handleSubmit(createCoupon)} className="max-w-[700px] grid gap-2">
           <label htmlFor="code">Código</label>

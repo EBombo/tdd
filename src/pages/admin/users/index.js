@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import moment from "moment";
 import get from "lodash/get";
 import orderBy from "lodash/orderBy";
@@ -8,8 +7,8 @@ import { useRouter } from "next/router";
 import { snapshotToArray } from "../../../utils";
 import { firestore } from "../../../firebase";
 import { useAcl } from "../../../hooks/acl";
+import { Anchor } from "../../../components/form/Anchor";
 import { Icon } from "../../../components/common/Icons";
-import { Button } from "../../../components/form";
 import { spinLoaderMin } from "../../../components/common/loader";
 
 export const Users = (props) => {
@@ -51,9 +50,14 @@ export const Users = (props) => {
   return loadingUsers ? (
     spinLoaderMin()
   ) : (
-    <div className="mx-auto max-w-[1200px]">
+    <div className="mx-auto max-w-[1200px] py-8">
+      <div className="mb-4">
+        <Anchor url="/admin" variant="primary">
+          Regresar
+        </Anchor>
+      </div>
       <div className="title">
-        <h2>Usuarios</h2>
+        <h2 className="text-lg">Usuarios</h2>
       </div>
       <br />
       <div className="content-filters">
@@ -89,13 +93,11 @@ export const Users = (props) => {
             ]}
           >
             <AclLink name="/admin/users/[userId]" to={`/admin/users/${user.id}`}>
-              <ContentAdminUser>
+              <div className="flex flex-col items-start text-base">
                 <p>{`${get(user, "name", "")} ${get(user, "lastName", "")}`}</p>
-                <span>Nickname: {user.nickname}</span>
-                <span>{`Monto: ${get(user, "money", 0)}`}</span>
-                <span>{get(user, "email", "without email")}</span>
+                <span className="text-black">{get(user, "email", "without email")}</span>
                 <h4>{`Creado: ${user.createAt && moment(user.createAt.toDate()).format("DD MMM YYYY")}`}</h4>
-              </ContentAdminUser>
+              </div>
             </AclLink>
           </List.Item>
         )}
@@ -104,12 +106,3 @@ export const Users = (props) => {
   );
 };
 
-const ContentAdminUser = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  span {
-    color: ${(props) => props.theme.basic.default};
-    font-size: 0.8rem;
-  }
-`;

@@ -77,9 +77,9 @@ export const AdminUserAcls = (props) => {
   return loadingUser ? (
     spinLoader()
   ) : (
-    <>
+    <div className="mx-auto max-w-[1200px]">
       <div className="my-4">
-        <Anchor url="/admin/users" disabled={loadingUpdateUser}>
+        <Anchor url="/admin/users" disabled={loadingUpdateUser} variant="primary">
           Regresar
         </Anchor>
       </div>
@@ -94,16 +94,15 @@ export const AdminUserAcls = (props) => {
           Nick: <b>{user.nickname}</b>
         </div>
         <br />
-        <hr />
-        <h3>PERMISOS PARA ADMINISTRADORES</h3>
+        <h3 className="text-lg">PERMISOS PARA ADMINISTRADORES</h3>
         <hr />
         <br />
         <label>
           <input type="checkbox" onClick={toggle} checked={allChecked} /> Marcar todos
         </label>
         {map(acls, (moduleAcl, module) => (
-          <ul key={module}>
-            <li>{moduleAcl.label}</li>
+          <ul key={module} className="my-4">
+            <li className="text-base mb-2">{moduleAcl.label}</li>
             {map(moduleAcl.items, (description, urlAcl) => (
               <Controller
                 key={urlAcl}
@@ -116,10 +115,10 @@ export const AdminUserAcls = (props) => {
             ))}
           </ul>
         ))}
-        <Button variant="primary" htmltype="submit" loading={loadingUpdateUser} disabled={loadingUpdateUser}>
+        <Button margin="my-2" variant="primary" htmltype="submit" loading={loadingUpdateUser} disabled={loadingUpdateUser}>
           GUARDAR
         </Button>
       </form>
-    </>
+    </div>
   );
 };
