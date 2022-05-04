@@ -18,10 +18,13 @@ export const ModalConfirm = (props) => (
       <div className="title">{props.title}</div>
       <div className="description">{props.description}</div>
       <div className="btns-container">
-        <Button color="default" onClick={() => {
-          props.setIsVisibleModalConfirm(false);
-          props.onCloseModalConfirm?.();
-        }}>
+        <Button
+          color="default"
+          onClick={() => {
+            props.setIsVisibleModalConfirm(false);
+            props.onCloseModalConfirm?.();
+          }}
+        >
           Cancelar
         </Button>
         <Button color="danger" onClick={props.action}>

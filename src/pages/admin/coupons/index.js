@@ -53,7 +53,7 @@ export const Coupons = (props) => {
         description="Al eliminar el cupón ya no podrá revertir la acción"
         action={async () => {
           setDeleteModal(false);
-          await firestore.doc(`coupons/${currentCoupon?.id}`).update({deleted: true});
+          await firestore.doc(`coupons/${currentCoupon?.id}`).update({ deleted: true });
         }}
         setIsVisibleModalConfirm={setDeleteModal}
         onCloseModalConfirm={() => setCurrentCoupon(null)}
@@ -61,10 +61,14 @@ export const Coupons = (props) => {
       <ModalConfirm
         isVisibleModalConfirm={disableModal}
         title={`${currentCoupon?.enabled ? "Deshabilitar" : "Habilitar"} Cupón ${currentCoupon?.code}`}
-        description={`${currentCoupon?.enabled ? "Deshabilitar bloquea desde el momento el uso de este cupón" : "Activar permite el uso del cupón"}`}
+        description={`${
+          currentCoupon?.enabled
+            ? "Deshabilitar bloquea desde el momento el uso de este cupón"
+            : "Activar permite el uso del cupón"
+        }`}
         action={async () => {
           setDisableModal(false);
-          await firestore.doc(`coupons/${currentCoupon?.id}`).update({enabled: !currentCoupon.enabled});
+          await firestore.doc(`coupons/${currentCoupon?.id}`).update({ enabled: !currentCoupon.enabled });
         }}
         setIsVisibleModalConfirm={setDisableModal}
         onCloseModalConfirm={() => setCurrentCoupon(null)}
@@ -104,7 +108,16 @@ export const Coupons = (props) => {
             </div>
           </div>
           <p className="text-lg font-bold">Cupón: {coupon?.code}</p>
-          <p>Estado: <span className={`rounded border-2 px-2 ${coupon?.enabled ? "border-primary text-primary" : "border-gray text-gray"}`}>{coupon?.enabled ? "Habilitado"  : "Deshabilitado"}</span></p>
+          <p>
+            Estado:{" "}
+            <span
+              className={`rounded border-2 px-2 ${
+                coupon?.enabled ? "border-primary text-primary" : "border-gray text-gray"
+              }`}
+            >
+              {coupon?.enabled ? "Habilitado" : "Deshabilitado"}
+            </span>
+          </p>
           <p>Cantidad Máxima de uso: {coupon?.maxUsage}</p>
           <p>Descuento (%): {coupon?.discountFactor}</p>
           <p>

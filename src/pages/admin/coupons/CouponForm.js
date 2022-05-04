@@ -56,7 +56,9 @@ export const CouponForm = (props) => {
       };
       setCurrentCoupon(coupon_);
 
-      reset({activeSince: couponData.activeSince ? moment(couponData.activeSince?.toDate()) : couponData.activeSince});
+      reset({
+        activeSince: couponData.activeSince ? moment(couponData.activeSince?.toDate()) : couponData.activeSince,
+      });
     };
 
     fetchCoupon();
@@ -138,13 +140,7 @@ export const CouponForm = (props) => {
             name="activeSince"
             control={control}
             defaultValue={currentCoupon?.activeSince}
-            as={
-              <DatePicker
-                type="datetime-local"
-                error={errors.activeSince}
-                placeholder="Activo desde"
-              />
-            }
+            as={<DatePicker type="datetime-local" error={errors.activeSince} placeholder="Activo desde" />}
           />
 
           <label htmlFor="expireAt">Expira el</label>
