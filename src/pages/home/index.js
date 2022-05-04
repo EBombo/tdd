@@ -1,15 +1,16 @@
-import React, { useEffect, useGlobal } from "reactn";
+import React, { useEffect, useGlobal, useState } from "reactn";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-
+import { timelineBlocks } from "../../components/common/DataList";
 import { config } from "../../firebase";
 import Countdown from "../../components/Countdown";
 import { Button } from "../../components/form";
 import { Image } from "../../components/common/Image";
-import { PreviewCarousel } from "../../components/PreviewCarousel";
+import { PreviewCarousel } from "./PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
 import { Sponsors } from "./Sponsors";
 import { ContactForm } from "./ContactForm";
+import orderBy from "lodash/orderBy";
 
 const news = [
   {
@@ -47,11 +48,23 @@ export const Home = (props) => {
 
   const [authUser] = useGlobal("user");
 
+  const [exhibitors, setExhibitors] = useState([]);
+
   useEffect(() => {
     router.prefetch("/buy-tickets");
     router.prefetch("/library");
     router.prefetch("/library/events");
     router.prefetch("/events/[eventId]");
+  }, []);
+
+  useEffect(() => {
+    const _exhibitors = [];
+
+    timelineBlocks.map((block) => _exhibitors.push(...block.exhibitors));
+
+    const sortedExhibitors = orderBy(_exhibitors, ["name"], ["asc"]);
+
+    setExhibitors(sortedExhibitors);
   }, []);
 
   return (
@@ -100,7 +113,7 @@ export const Home = (props) => {
         <div className="mx-auto max-w-[1200px]">
           <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Expositores</div>
 
-          <PreviewCarousel items={[{}]} />
+          <PreviewCarousel items={exhibitors} />
         </div>
       </div>
 
