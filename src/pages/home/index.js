@@ -109,7 +109,7 @@ export const Home = (props) => {
         </div>
       </div>
 
-      <div className="bg-white py-4">
+      <div className="bg-white py-4 md:py-12">
         <div className="mx-auto max-w-[1200px]">
           <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Expositores</div>
 
