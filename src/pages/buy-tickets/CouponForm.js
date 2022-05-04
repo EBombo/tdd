@@ -3,8 +3,11 @@ import { Button, Input } from "../../components/form";
 import { object, string } from "yup";
 import { useForm } from "react-hook-form";
 import { useSendError } from "../../hooks";
+import { useFetch } from "../../hooks/useFetch";
+import { config } from "../../firebase";
 
 export const CouponForm = (props) => {
+  const { Fetch } = useFetch();
   const { sendError } = useSendError();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -18,17 +21,29 @@ export const CouponForm = (props) => {
     reValidateMode: "onSubmit",
   });
 
-  const validateCouponCode = (data) => {
+  const validateCouponCode = async (data) => {
     try {
       setIsLoading(true);
 
       console.log({ data });
 
-      setIsLoading(false);
+      const url = `${config.serverUrl}/coupons/validate-coupons`;
+
+      const { response, error } = await Fetch(url, "POST", { couponCode: data.couponCode });
+
+      if (error) throw Error(error);
+
+      const discount = +response.discount;
+
+      props.setDiscount(discount);
+
+      props.showNotification("Ok", "El cupon esta disponible", "success");
     } catch (error) {
       console.error(error);
       sendError(error, "validateCouponCode");
+      props.showNotification("Error", "Algo salio mal intentalo nuevamente");
     }
+    setIsLoading(false);
   };
 
   return (
