@@ -37,6 +37,7 @@ export const CouponForm = (props) => {
       const discount = +response.discount;
 
       props.setDiscount(discount);
+      props.setCoupon(response.coupon);
 
       props.showNotification("Ok", "El cupon esta disponible", "success");
     } catch (error) {

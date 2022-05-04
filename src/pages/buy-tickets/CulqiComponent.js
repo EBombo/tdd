@@ -34,6 +34,7 @@ export const CulqiComponent = (props) => {
         user: authUser,
         email: event.email,
         source_id: event.id,
+        coupon: props.coupon,
         currency_code: currency,
         amount: +props.totalCost,
       });

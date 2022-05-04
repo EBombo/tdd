@@ -32,11 +32,10 @@ exports.postValidateCoupon = async (req, res, next) => {
 
     const totalDiscount = defaultCost * +scoupon.discountFactor;
 
-    return res.send({ success: true, discount: totalDiscount });
+    return res.send({ success: true, discount: totalDiscount, coupon });
   } catch (error) {
     logger.error(error);
-    return res.status(400).send({ message: error.message });
-    //next(error);
+    return res.status(400).send({ message: error.message, success: false });
   }
 };
 
