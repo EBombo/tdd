@@ -2,7 +2,6 @@ import React, { useEffect, useGlobal, useState } from "reactn";
 import { config, firestore } from "../../../../firebase";
 import get from "lodash/get";
 import { Checkbox, Modal } from "antd";
-import { snapshotToArray } from "../../../../utils";
 import moment from "moment";
 import { Button } from "../../../../components/form/Button";
 import { spinLoader } from "../../../../components/common/loader";
@@ -10,12 +9,9 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import {
   userAccountState,
-  userVerifiedState,
 } from "../../../../components/common/getDataOfList";
 import { mediaQuery } from "../../../../constants";
 import { useAcl } from "../../../../hooks/acl";
-import { useFetch } from "../../../../hooks/useFetch";
-import { useSendError } from "../../../../hooks/useSendError";
 
 export const User = (props) => {
   const [authUser] = useGlobal("user");
@@ -25,16 +21,8 @@ export const User = (props) => {
   const router = useRouter();
   const { userId } = router.query;
 
-  const [transactions, setTransactions] = useState([]);
   const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
-  const [loadingVerify, setLoadingVerify] = useState(false);
-  const [limitTransactions, setLimitTransactions] = useState(20);
-  const [loadingTransactions, setLoadingTransactions] = useState(true);
-  const [loading, setLoading] = useState(false);
-
-  const { sendError } = useSendError();
-  const { Fetch } = useFetch();
 
   useEffect(() => {
     if (!userId) return;
@@ -42,10 +30,6 @@ export const User = (props) => {
     const sub = fetchUser();
     return () => sub && sub();
   }, [userId]); //eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    // fetchTransactions();
-  }, [limitTransactions]); //eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchUser = () =>
     firestore
@@ -58,21 +42,7 @@ export const User = (props) => {
         setLoadingUser(false);
       });
 
-  const fetchTransactions = async () => {
-    const querySnapshot = await firestore
-      .collection("transactions")
-      .where("user.id", "==", userId)
-      .orderBy("createAt", "desc")
-      .limit(limitTransactions)
-      .get();
-
-    setTransactions(snapshotToArray(querySnapshot));
-    setLoadingTransactions(false);
-  };
-
   const goBack = () => router.push("/admin/users");
-
-  const urlApiRequestIsVerified = () => `${config.serverUrl}/admin/users/${userId}/verified`;
 
   const banAccount = (isBanned) =>
     Modal.confirm({
@@ -83,61 +53,6 @@ export const User = (props) => {
       onOk: async () =>
         await firestore.doc("users/" + userId).update({ isBanned }),
     });
-
-  const actionColor = (action) => {
-    if (action === "user-win") return "green";
-    if (action === "user-lose") return "red";
-    if (action === "user-cancel-match") return "black";
-    if (action === "charge") return "green";
-    if (action === "free") return "#cece03";
-
-    return "black";
-  };
-
-  const verifyUser = async () => {
-    try {
-      setLoadingVerify(true);
-
-      const { error } = await Fetch(urlApiRequestIsVerified(), "PUT");
-
-      props.showNotification(
-        error ? "ERROR" : "OK",
-        error ? "Algo salió mal" : "Realizado",
-        error ? "error" : "success"
-      );
-
-      !error && fetchTransactions();
-    } catch (error) {
-      sendError({ error: Object(error).toString(), action: "verifyUser" });
-    }
-    setLoadingVerify(false);
-  };
-
-  const deleteAuthenticationUser = async (email) => {
-    setLoading(true);
-    try {
-      const { error } = await Fetch(
-        `${config.serverUrlAdmin}/admin/${get(authUser, "id", "")}/delete-user`,
-        "POST",
-        {
-          email,
-        }
-      );
-
-      props.showNotification(
-        "OK",
-        error ? "Algo salió mal" : "Se elimino correctamente el email",
-        "success"
-      );
-    } catch (error) {
-      sendError({
-        error: Object(error).toString(),
-        action: "sendSuggestion",
-      });
-    }
-    setLoading(false);
-    router.push("/admin/users");
-  };
 
   return loadingUser ? (
     spinLoader()
@@ -200,23 +115,6 @@ export const User = (props) => {
               </span>
             </div>
           </fieldset>
-          <fieldset>
-            <legend>
-              <span className="title-legend">Verificar</span>
-            </legend>
-            <div className="item">
-              <ContainerValidate>
-                <label>Verificar usuario: </label>
-                <Button
-                  loading={loadingVerify}
-                  variant={userVerifiedState(user).type}
-                  onClick={() => verifyUser()}
-                >
-                  {userVerifiedState(user).text}
-                </Button>
-              </ContainerValidate>
-            </div>
-          </fieldset>
           <Acl name="/admin/users/[userId]/acls">
             <fieldset>
               <legend>
@@ -233,17 +131,6 @@ export const User = (props) => {
                 </Button>
                 <br />
                 <br />
-                <label>Eliminar Usuario :</label>
-                <Button
-                  variant="danger"
-                  display="inline"
-                  onClick={() =>
-                    deleteAuthenticationUser(get(user, "email", ""))
-                  }
-                  loading={loading}
-                >
-                  Eliminar Usuario
-                </Button>
               </div>
             </fieldset>
           </Acl>
@@ -263,68 +150,6 @@ export const User = (props) => {
             </fieldset>
           </Acl>
         </div>
-        <div className="content-coins-right">
-          <fieldset>
-            <legend>
-              <span className="title-legend">Transacciones</span>
-            </legend>
-            <div className="item-transactions">
-              <div className="scrollbar" id="style-scroll">
-                <div className="force-overflow">
-                  {transactions.map((transaction, index) => (
-                    <ul
-                      key={index}
-                      className="list-transaction"
-                      onClick={() => console.log(transaction)}
-                    >
-                      <li>
-                        Creado:{" "}
-                        <span className="text-bold">
-                          {" "}
-                          {moment(transaction.createAt.toDate()).format(
-                            "DD/MM/YYYY hh:mm:ss"
-                          )}{" "}
-                        </span>
-                      </li>
-                      <li style={{ color: actionColor(transaction.action) }}>
-                        Acción:{" "}
-                        <span className="text-bold">{transaction.action}</span>
-                      </li>
-                      <li>
-                        Descripción:{" "}
-                        <span className="text-bold">
-                          {transaction.description}
-                        </span>
-                      </li>
-                      <li>
-                        Nota:{" "}
-                        <span className="text-bold">{transaction.note}</span>
-                      </li>
-                      <li>
-                        Dinero:{" "}
-                        <span className="text-bold">{transaction.amount}</span>
-                      </li>
-                      <br />
-                      <hr />
-                    </ul>
-                  ))}
-                  {limitTransactions <= transactions.length && (
-                    <Button
-                      loading={loadingTransactions}
-                      disabled={loadingTransactions}
-                      onClick={() => {
-                        setLoadingTransactions(true);
-                        setLimitTransactions(limitTransactions + 20);
-                      }}
-                    >
-                      VER MAS
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </div>
       </div>
     </UserContainer>
   );
@@ -333,11 +158,6 @@ export const User = (props) => {
 const Text = styled.span`
   color: ${(props) => props.color} !important;
   font-weight: 500;
-`;
-
-const ContainerValidate = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;
 
 const UserContainer = styled.div`

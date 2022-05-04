@@ -7,13 +7,16 @@ import { useSendError } from "../../../hooks";
 import { firestore } from "../../../firebase";
 import { Input, Button, DatePicker } from "../../../components/form";
 import moment from "moment";
+import { useAcl } from "../../../hooks/acl";
 
 const COUPONS_COLLECTION = "coupons";
 
 export const CouponForm = (props) => {
   const router = useRouter();
-
+  
   const { couponId } = router.query;
+
+  const { AclLink } = useAcl();
 
   const { sendError } = useSendError();
 
@@ -90,6 +93,9 @@ export const CouponForm = (props) => {
 
   return (
     <div className="max-w-[1200px] mx-auto">
+      <div>
+        <AclLink name="/admin/coupons" to="/admin/coupons">Regresar</AclLink>
+      </div>
       <h1 className="text-xl font-bold">Crear nuevo cupón</h1>
       <div className="block">
         <form onSubmit={handleSubmit(createCoupon)} className="max-w-[700px] grid gap-2">

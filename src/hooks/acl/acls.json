@@ -10,7 +10,8 @@
     "label": "Gestión de usuarios",
     "items": {
       "/admin/users": "Listado de usuarios",
-      "/admin/users/[userId]": "Edición/Creación de usuarios"
+      "/admin/users/[userId]": "Edición/Creación de usuarios",
+      "/admin/users/[userId]/acls": "Gestión de permisos del usuario"
     }
   },
   "adminCoupons": {

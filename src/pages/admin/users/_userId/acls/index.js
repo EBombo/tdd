@@ -6,7 +6,6 @@ import { Checkbox, message } from "antd";
 import get from "lodash/get";
 import map from "lodash/map";
 import mapValues from "lodash/mapValues";
-// import acls from "../../../../../acl/acls.json";
 import acls from "../../../../../hooks/acl/acls.json";
 import { Controller, useForm } from "react-hook-form";
 import flatMap from "lodash/flatMap";

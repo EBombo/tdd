@@ -115,11 +115,6 @@ export const Users = (props) => {
   );
 };
 
-const Text = styled.span`
-  color: ${(props) => props.color} !important;
-  font-weight: 500;
-`;
-
 const ContentAdminUser = styled.div`
   display: flex;
   flex-direction: column;
