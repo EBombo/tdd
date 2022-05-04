@@ -12,6 +12,8 @@ export const Login = (props) => {
   const { signIn } = useAuth();
 
   const [authUser] = useGlobal("user");
+  const [isLoadingUser] = useGlobal("isLoadingUser");
+  const [isLoadingCreateUser] = useGlobal("isLoadingCreateUser");
 
   useEffect(() => {
     if (router.isReady) return;
@@ -75,7 +77,13 @@ export const Login = (props) => {
               </Anchor>
             </span>
           </div>
-          <Button primary margin="my-4" htmlType="submit">
+          <Button
+            primary
+            margin="my-4"
+            htmlType="submit"
+            loading={isLoadingUser}
+            disabled={isLoadingUser || isLoadingCreateUser}
+          >
             Ingresar
           </Button>
 
