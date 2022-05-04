@@ -10,6 +10,7 @@ const defaultDiscount = 0;
 export const BuyTickets = (props) => {
   const [cost] = useState(defaultCost);
   const [discount, setDiscount] = useState(defaultDiscount);
+  const [isLoading, setIsLoading] = useState(false);
 
   const totalCost = useMemo(() => {
     return +(cost - discount);
@@ -34,14 +35,14 @@ export const BuyTickets = (props) => {
             </div>
           </div>
 
-          <CouponForm {...props} setDiscount={setDiscount} />
+          <CouponForm {...props} setDiscount={setDiscount} isLoading={isLoading} setIsLoading={setIsLoading} />
 
           <div className="text-white">Sub total: {cost.toFixed(2)} </div>
           <div className="text-white">Descuento por cupón: {discount.toFixed(2)} </div>
           <div />
           <div className="text-white text-md">Total: {totalCost.toFixed(2)}</div>
 
-          <CulqiComponent {...props} totalCost={totalCost} />
+          <CulqiComponent {...props} totalCost={totalCost} isLoading={isLoading} setIsLoading={setIsLoading} />
         </div>
       </div>
 

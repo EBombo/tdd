@@ -5,7 +5,6 @@ import { config } from "../../firebase";
 import { useSendError } from "../../hooks";
 import { useFetch } from "../../hooks/useFetch";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 const currency = "PEN";
 
@@ -21,8 +20,6 @@ export const CulqiComponent = (props) => {
 
   const [authUser] = useGlobal("user");
 
-  const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     if (authUser) return;
 
@@ -31,7 +28,7 @@ export const CulqiComponent = (props) => {
 
   const purchasing = async (event) => {
     try {
-      setIsLoading(true);
+      props.setIsLoading(true);
 
       const { error } = await Fetch(`${config.serverUrl}/users/${authUser.id}/payment`, "POST", {
         user: authUser,
@@ -50,7 +47,7 @@ export const CulqiComponent = (props) => {
       props.showNotification("Error", "Algo salio mal, intente nuevamente");
     }
 
-    setIsLoading(false);
+    props.setIsLoading(false);
   };
 
   const onError = (error) => {
@@ -76,8 +73,8 @@ export const CulqiComponent = (props) => {
               <Button
                 primary
                 fontSize="text-lg"
-                loading={isLoading}
-                disabled={isLoading}
+                loading={props.isLoading}
+                disabled={props.isLoading}
                 margin="mx-auto mt-2"
                 onClick={() => {
                   const formattedCost = +props.totalCost * 100;

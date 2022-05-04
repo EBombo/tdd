@@ -1,4 +1,4 @@
-import React, { useState } from "reactn";
+import React from "reactn";
 import { Button, Input } from "../../components/form";
 import { object, string } from "yup";
 import { useForm } from "react-hook-form";
@@ -9,8 +9,6 @@ import { config } from "../../firebase";
 export const CouponForm = (props) => {
   const { Fetch } = useFetch();
   const { sendError } = useSendError();
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const schema = object().shape({
     couponCode: string().required(),
@@ -23,15 +21,18 @@ export const CouponForm = (props) => {
 
   const validateCouponCode = async (data) => {
     try {
-      setIsLoading(true);
+      props.setIsLoading(true);
 
-      console.log({ data });
+      const { couponCode } = data;
 
-      const url = `${config.serverUrl}/coupons/validate-coupons`;
+      const url = `${config.serverUrl}/coupons/${couponCode}/validate`;
 
-      const { response, error } = await Fetch(url, "POST", { couponCode: data.couponCode });
+      const { response, error } = await Fetch(url, "POST", { couponCode, userDate: new Date() });
 
-      if (error) throw Error(error);
+      if (error) {
+        props.showNotification("Error", error?.message ?? "Algo salio mal intentalo nuevamente");
+        throw Error(error);
+      }
 
       const discount = +response.discount;
 
@@ -39,11 +40,10 @@ export const CouponForm = (props) => {
 
       props.showNotification("Ok", "El cupon esta disponible", "success");
     } catch (error) {
-      console.error(error);
+      console.log(error);
       sendError(error, "validateCouponCode");
-      props.showNotification("Error", error?.message ?? "Algo salio mal intentalo nuevamente");
     }
-    setIsLoading(false);
+    props.setIsLoading(false);
   };
 
   return (
@@ -57,11 +57,11 @@ export const CouponForm = (props) => {
             border="none"
             ref={register}
             name="couponCode"
-            disabled={isLoading}
+            disabled={props.isLoading}
             error={errors.couponCode}
             placeholder="Ingresa tu cupón"
           />
-          <Button fontSize="text-xs" htmlType="submit" loading={isLoading} disabled={isLoading} primary>
+          <Button fontSize="text-xs" htmlType="submit" loading={props.isLoading} disabled={props.isLoading} primary>
             Validar cupón
           </Button>
         </div>
