@@ -23,7 +23,7 @@ export const CouponForm = (props) => {
   const schema = object().shape({
     code: string().required(),
     maxUsage: number().required().positive().integer(),
-    activeSince: date().nullable(),
+    activeSince: date().required(),
     expireAt: date().nullable(),
     discountFactor: number().required().positive().integer().max(100),
   });
@@ -56,7 +56,7 @@ export const CouponForm = (props) => {
       };
       setCurrentCoupon(coupon_);
 
-      reset();
+      reset({activeSince: couponData.activeSince ? moment(couponData.activeSince?.toDate()) : couponData.activeSince});
     };
 
     fetchCoupon();
@@ -80,6 +80,7 @@ export const CouponForm = (props) => {
           id: documentId,
           discountFactor,
           deleted: isNew ? false : currentCoupon?.deleted,
+          enabled: isNew ? true : currentCoupon?.enabled,
         },
         { merge: true }
       );
@@ -139,9 +140,7 @@ export const CouponForm = (props) => {
             defaultValue={currentCoupon?.activeSince}
             as={
               <DatePicker
-                name="activeSince"
                 type="datetime-local"
-                ref={register}
                 error={errors.activeSince}
                 placeholder="Activo desde"
               />

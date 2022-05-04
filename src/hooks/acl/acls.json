@@ -18,6 +18,8 @@
     "label": "Gestión de cupones",
     "items": {
       "/admin/coupons": "Listado de cupones",
+      "/admin/coupons#disable": "Habilitar/Deshabilitar cupón",
+      "/admin/coupons#delete": "Eliminar cupón",
       "/admin/coupons/[couponId]": "Edición de cupones",
       "/admin/coupons/new": "Creación de cupones"
     }

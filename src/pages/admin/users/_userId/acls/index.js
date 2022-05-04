@@ -11,6 +11,7 @@ import { Controller, useForm } from "react-hook-form";
 import flatMap from "lodash/flatMap";
 import isEmpty from "lodash/isEmpty";
 import { Button, Anchor } from "../../../../../components/form";
+import { ModalConfirm } from "../../../../../components/modal/ModalConfirm";
 
 export const AdminUserAcls = (props) => {
   const router = useRouter();
@@ -28,16 +29,16 @@ export const AdminUserAcls = (props) => {
   useEffect(() => {
     if (!userId) return;
 
+    const validateAll = () => {
+      const allCheckboxes = watch();
+      if (isEmpty(allCheckboxes)) return;
+      const cbxValues = Object.values(allCheckboxes);
+      return cbxValues.every((item) => item);
+    };
+
     fetchUser();
     setAllChecked(validateAll());
   }, [watch, userId]);
-
-  const validateAll = () => {
-    const allCheckboxes = watch();
-    if (isEmpty(allCheckboxes)) return;
-    const cbxValues = Object.values(allCheckboxes);
-    return cbxValues.every((item) => item);
-  };
 
   const fetchUser = async () => {
     const userQuery = await firestore.doc(`users/${userId}`).get();
@@ -49,7 +50,6 @@ export const AdminUserAcls = (props) => {
   };
 
   const updateUser = async (data) => {
-    console.log("data->", data);
     setLoadingUpdateUser(true);
     const newAcls = mapValues(data, (moduleUrls) =>
       map(moduleUrls, (moduleUrl, key) => (moduleUrl ? key.replaceAll("<", "[").replaceAll(">", "]") : null)).filter(

@@ -1,4 +1,4 @@
-import { ButtonAnt } from "../form";
+import { Button } from "../form";
 import { ModalContainer } from "../common/ModalContainer";
 import React from "reactn";
 import styled from "styled-components";
@@ -18,12 +18,15 @@ export const ModalConfirm = (props) => (
       <div className="title">{props.title}</div>
       <div className="description">{props.description}</div>
       <div className="btns-container">
-        <ButtonAnt color="default" onClick={() => props.setIsVisibleModalConfirm(false)}>
+        <Button color="default" onClick={() => {
+          props.setIsVisibleModalConfirm(false);
+          props.onCloseModalConfirm?.();
+        }}>
           Cancelar
-        </ButtonAnt>
-        <ButtonAnt color="danger" onClick={props.action}>
+        </Button>
+        <Button color="danger" onClick={props.action}>
           {props.buttonName || "Continuar"}
-        </ButtonAnt>
+        </Button>
       </div>
     </ContentModal>
   </ModalContainer>
