@@ -2,10 +2,13 @@ import React, { useState } from "reactn";
 import { useAuth } from "../../hooks/useAuth";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { Input, Button } from "../../components/form";
+import { Button, Input } from "../../components/form";
+import { useSendError } from "../../hooks";
 
 export const ForgotPassword = (props) => {
   const { recoveryPassword } = useAuth();
+
+  const { sendError } = useSendError();
 
   const [emailSent, setEmailSent] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -33,6 +36,7 @@ export const ForgotPassword = (props) => {
       setEmailSent(true);
     } catch (error) {
       console.error(error);
+      await sendError(error, "recoverPassword");
     }
     setLoadingSendEmailStatus(false);
   };
