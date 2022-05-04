@@ -13,4 +13,3 @@ const AdminIndexContainer = (props) => {
 };
 
 export default AdminIndexContainer;
-

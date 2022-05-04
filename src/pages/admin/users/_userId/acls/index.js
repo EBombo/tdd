@@ -115,7 +115,13 @@ export const AdminUserAcls = (props) => {
             ))}
           </ul>
         ))}
-        <Button margin="my-2" variant="primary" htmltype="submit" loading={loadingUpdateUser} disabled={loadingUpdateUser}>
+        <Button
+          margin="my-2"
+          variant="primary"
+          htmltype="submit"
+          loading={loadingUpdateUser}
+          disabled={loadingUpdateUser}
+        >
           GUARDAR
         </Button>
       </form>

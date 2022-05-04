@@ -94,7 +94,9 @@ export const CouponForm = (props) => {
   return (
     <div className="max-w-[1200px] mx-auto py-8 px-4">
       <div className="mb-4">
-        <AclLink variant="primary" name="/admin/coupons" to="/admin/coupons">Regresar</AclLink>
+        <AclLink variant="primary" name="/admin/coupons" to="/admin/coupons">
+          Regresar
+        </AclLink>
       </div>
       <h1 className="text-xl font-bold mb-4">{isNew ? "Crear nuevo" : "Editar"} cupón</h1>
       <div className="block">

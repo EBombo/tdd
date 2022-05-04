@@ -54,7 +54,9 @@ export const User = (props) => {
   ) : (
     <div className="mx-auto max-w-[1200px] py-8">
       <div className="mx-4">
-        <AclLink variant="primary" name="/admin/users" to="/admin/users">Regresar</AclLink>
+        <AclLink variant="primary" name="/admin/users" to="/admin/users">
+          Regresar
+        </AclLink>
       </div>
       <div className="grid lg:grid-cols-2">
         <div className="mx-2">
@@ -115,4 +117,3 @@ export const User = (props) => {
     </div>
   );
 };
-
