@@ -11,8 +11,6 @@ import { useAcl } from "../../../hooks/acl";
 import { Icon } from "../../../components/common/Icons";
 import { Button } from "../../../components/form";
 import { spinLoaderMin } from "../../../components/common/loader";
-// import { ModalDeleteUser } from "./ModalDeleteUser";
-import { userAccountState } from "../../../components/common/getDataOfList";
 
 export const Users = (props) => {
   const router = useRouter();
@@ -21,7 +19,6 @@ export const Users = (props) => {
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
   const [loadingUsers, setLoadingUsers] = useState(true);
-  const [isVisibleModalDelete, setIsVisibleModalDelete] = useState(false);
 
   useEffect(() => {
     fetchUsers();
@@ -59,23 +56,8 @@ export const Users = (props) => {
     spinLoaderMin()
   ) : (
     <div className="mx-auto max-w-[1200px]">
-      {/*
-      {isVisibleModalDelete && (
-        <ModalDeleteUser
-          isVisibleModalDelete={isVisibleModalDelete}
-          setIsVisibleModalDelete={setIsVisibleModalDelete}
-        />
-      )}
-      */}
       <div className="title">
         <h2>Usuarios</h2>
-        <Button
-          variant="primary"
-          margin="0"
-          onClick={() => setIsVisibleModalDelete(true)}
-        >
-          Eliminar Usuario
-        </Button>
       </div>
       <br />
       <div className="content-filters">
@@ -120,15 +102,6 @@ export const Users = (props) => {
                 <span>Nickname: {user.nickname}</span>
                 <span>{`Monto: ${get(user, "money", 0)}`}</span>
                 <span>{get(user, "email", "without email")}</span>
-                {/*
-                <span>
-                  Estado de cuenta:{" "}
-                  <Text color={userAccountState(user).color}>
-                    {userAccountState(user).label}
-                  </Text>
-                </span>
-                */}
-
                 <h4>{`Creado: ${
                   user.createAt &&
                   moment(user.createAt.toDate()).format("DD MMM YYYY")

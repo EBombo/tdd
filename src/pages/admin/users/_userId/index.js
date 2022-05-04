@@ -7,7 +7,6 @@ import moment from "moment";
 import { Button } from "../../../../components/form/Button";
 import { spinLoader } from "../../../../components/common/loader";
 import { useRouter } from "next/router";
-import { ValidateAccount } from "./ValidateAccount";
 import styled from "styled-components";
 import {
   userAccountState,
@@ -263,12 +262,6 @@ export const User = (props) => {
               </div>
             </fieldset>
           </Acl>
-          <fieldset>
-            <legend>
-              <span className="title-legend">Validar cuenta</span>
-            </legend>
-            <ValidateAccount user={user} isVisibleImageDocument={true} />
-          </fieldset>
         </div>
         <div className="content-coins-right">
           <fieldset>
