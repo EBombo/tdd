@@ -15,7 +15,6 @@ exports.postValidateCoupon = async (req, res, next) => {
     if (couponCode !== req.params.couponCode) throw Error("Cupón invalido");
 
     const coupon = await fetchCoupon(couponCode);
-    console.log({ coupon });
 
     if (!coupon) throw Error("El cupón no existe");
 
@@ -29,7 +28,6 @@ exports.postValidateCoupon = async (req, res, next) => {
 
     if (!coupon.enabled) throw Error("Cupón no esta disponible");
 
-    console.log({ paymentsLength });
     if (paymentsLength >= +coupon.maxUsage) throw Error("Cupón ha superado su limite de uso");
 
     const totalDiscount = defaultCost * +coupon.discountFactor;
