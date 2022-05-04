@@ -41,7 +41,7 @@ export const CouponForm = (props) => {
     } catch (error) {
       console.error(error);
       sendError(error, "validateCouponCode");
-      props.showNotification("Error", "Algo salio mal intentalo nuevamente");
+      props.showNotification("Error", error?.message ?? "Algo salio mal intentalo nuevamente");
     }
     setIsLoading(false);
   };
