@@ -1,17 +1,41 @@
-import React from "reactn";
+import React, { useGlobal } from "reactn";
 import { CulqiComponent } from "./CulqiComponent";
 import Countdown from "../../components/Countdown";
 import { CouponForm } from "./CouponForm";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { firestore } from "../../firebase";
 
 const defaultCost = 200;
 const defaultDiscount = 0;
 
 export const BuyTickets = (props) => {
+  const [authUser] = useGlobal("user");
+
   const [cost] = useState(defaultCost);
   const [coupon, setCoupon] = useState(null);
   const [discount, setDiscount] = useState(defaultDiscount);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!authUser) return;
+
+    const fetchPayments = () =>
+      firestore
+        .collection("payments")
+        .where("user.id", "==", authUser.id)
+        .limit(1)
+        .onSnapshot((paymentSnapShot) => {
+          if (paymentSnapShot.empty) return;
+
+          // TODO: Redirect to event.
+          //router.push("/")
+        });
+
+    const sub = fetchPayments();
+    return () => {
+      sub && sub();
+    };
+  }, [authUser]);
 
   const totalCost = useMemo(() => {
     return +(cost - discount);
