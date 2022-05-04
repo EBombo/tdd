@@ -46,8 +46,8 @@ export const BuyTickets = (props) => {
 
           <div className="text-white">Sub total: {cost.toFixed(2)} </div>
           <div className="text-white">Descuento por cupón: {discount.toFixed(2)} </div>
-          <div />
-          <div className="text-white text-md">Total: {totalCost.toFixed(2)}</div>
+          <div className="w-full h-[1px] bg-white my-1" />
+          <div className="text-white text-lg">Total: {totalCost.toFixed(2)}</div>
 
           <CulqiComponent
             {...props}
