@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 const currency = "PEN";
-const defaultCost = 200;
 
 // Reference:
 // Tarjetas de prueba: https://docs.culqi.com/#/desarrollo/tarjetas
@@ -22,14 +21,12 @@ export const CulqiComponent = (props) => {
 
   const [authUser] = useGlobal("user");
 
-  const [cost, setCost] = useState(defaultCost);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (authUser) return;
 
-    // TODO: Redirect after register page is available.
-    //router.push("/login");
+    router.push("/login");
   }, [authUser]);
 
   const purchasing = async (event) => {
@@ -41,7 +38,7 @@ export const CulqiComponent = (props) => {
         email: event.email,
         source_id: event.id,
         currency_code: currency,
-        amount: cost,
+        amount: +props.totalCost,
       });
 
       if (error) throw Error(error);
@@ -78,13 +75,13 @@ export const CulqiComponent = (props) => {
             <div className="flex mt-6">
               <Button
                 primary
-                margin="m-auto"
-                fontSize="text-xl"
+                fontSize="text-lg"
                 loading={isLoading}
                 disabled={isLoading}
+                margin="mx-auto mt-2"
                 onClick={() => {
                   // TODO: Implement coupons.
-                  const formattedCost = cost * 100;
+                  const formattedCost = +props.totalCost * 100;
                   setAmount(formattedCost);
                   openCulqi();
                 }}
