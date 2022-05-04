@@ -43,6 +43,7 @@ module.exports = {
       backgroundImage: () => ({
         pattern: `url('${config.storageUrl}/resources/pattern.svg')`,
         landing: `url('${config.storageUrl}/resources/landing-cover.svg')`,
+        register: `url('${config.storageUrl}/resources/register-cover.svg')`,
         timeline: `url('${config.storageUrl}/resources/timeline-cover.svg')`,
         exhibitors: `url('${config.storageUrl}/resources/exhibitors-cover.svg')`,
         index: `url('${config.storageUrl}/resources/index-bg-img.jpg')`,

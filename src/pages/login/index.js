@@ -1,4 +1,4 @@
-import React, { useEffect } from "reactn";
+import React, { useEffect, useGlobal } from "reactn";
 import { Anchor, Button, Input } from "../../components/form";
 import { useForm } from "react-hook-form";
 import Countdown from "../../components/Countdown";
@@ -11,11 +11,18 @@ export const Login = (props) => {
 
   const { signIn } = useAuth();
 
+  const [authUser] = useGlobal("user");
+
   useEffect(() => {
     if (router.isReady) return;
     router.prefetch("/buy-tickets");
     router.prefetch("/register");
   }, []);
+
+  useEffect(() => {
+    //TODO: DEFINIR A DONDE SE REDIRIGE AL USUARIO LUEGO DEL INICIAR SESION
+    if (authUser) router.push("/");
+  }, [authUser]);
 
   const schema = object().shape({
     email: string().required().email(),
@@ -29,7 +36,7 @@ export const Login = (props) => {
 
   return (
     <div>
-      <div className="w-full bg-landing bg-no-repeat bg-cover h-full p-4 justify-center md:p-8 md:flex md:justify-end">
+      <div className="w-full bg-landing bg-no-repeat bg-cover h-full p-4 justify-center md:p-8 md:min-h-[calc(100vh-100px)] md:flex md:justify-end">
         <form
           className="max-w-[500px] bg-white/[.60] h-[fit-content] rounded-[10px] p-4"
           onSubmit={handleSubmit(signIn)}
