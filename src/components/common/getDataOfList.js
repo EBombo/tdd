@@ -12,4 +12,3 @@ export const userVerifiedState = (user) => {
   if (user.isVerified) return verifiedState["noVerified"];
   return verifiedState["verified"];
 };
-

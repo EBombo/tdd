@@ -7,9 +7,7 @@ import { Button } from "../../../../components/form/Button";
 import { spinLoader } from "../../../../components/common/loader";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import {
-  userAccountState,
-} from "../../../../components/common/getDataOfList";
+import { userAccountState } from "../../../../components/common/getDataOfList";
 import { mediaQuery } from "../../../../constants";
 import { useAcl } from "../../../../hooks/acl";
 
@@ -50,8 +48,7 @@ export const User = (props) => {
       okText: "Si",
       okType: "danger",
       cancelText: "No",
-      onOk: async () =>
-        await firestore.doc("users/" + userId).update({ isBanned }),
+      onOk: async () => await firestore.doc("users/" + userId).update({ isBanned }),
     });
 
   return loadingUser ? (
@@ -68,9 +65,7 @@ export const User = (props) => {
               <label>Estado de cuenta: </label>
               <span>
                 {" "}
-                <Text color={userAccountState(user).color}>
-                  {userAccountState(user).label}
-                </Text>{" "}
+                <Text color={userAccountState(user).color}>{userAccountState(user).label}</Text>{" "}
               </span>
             </div>
             <div className="item">
@@ -85,20 +80,12 @@ export const User = (props) => {
             </div>
             <div className="item">
               <label>Cumpleaños: </label>{" "}
-              <span>
-                {user.birthDate &&
-                  moment(get(user, "birthDate")).format("DD/MM/YYYY")}{" "}
-              </span>
+              <span>{user.birthDate && moment(get(user, "birthDate")).format("DD/MM/YYYY")} </span>
             </div>
             <div className="item">
               <label>Teléfono: </label>
               <span
-                onClick={() =>
-                  window.open(
-                    `https://wa.me/51${get(user, "phoneNumber", "")}`,
-                    "_blank"
-                  )
-                }
+                onClick={() => window.open(`https://wa.me/51${get(user, "phoneNumber", "")}`, "_blank")}
                 style={{ cursor: "pointer", color: "green" }}
               >
                 {get(user, "phoneNumber", "")}{" "}
@@ -107,12 +94,7 @@ export const User = (props) => {
             <div className="item">
               <label> Creado: </label>
 
-              <span>
-                {user.createAt &&
-                  moment(get(user, "createAt", null)?.toDate()).format(
-                    "DD/MM/YYYY"
-                  )}{" "}
-              </span>
+              <span>{user.createAt && moment(get(user, "createAt", null)?.toDate()).format("DD/MM/YYYY")} </span>
             </div>
           </fieldset>
           <Acl name="/admin/users/[userId]/acls">
@@ -122,11 +104,7 @@ export const User = (props) => {
               </legend>
               <div className="item">
                 <label>Editar permisos :</label>
-                <Button
-                  variant="primary"
-                  display="inline"
-                  onClick={() => router.push(`/admin/users/${userId}/acls`)}
-                >
+                <Button variant="primary" display="inline" onClick={() => router.push(`/admin/users/${userId}/acls`)}>
                   EDITAR PERMISOS
                 </Button>
                 <br />

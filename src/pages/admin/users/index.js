@@ -29,11 +29,7 @@ export const Users = (props) => {
   }, [search]);
 
   const fetchUsers = async () => {
-    const users = await firestore
-      .collection("users")
-      .orderBy("createAt", "desc")
-      .limit(100)
-      .get();
+    const users = await firestore.collection("users").orderBy("createAt", "desc").limit(100).get();
 
     setUsers(snapshotToArray(users));
 
@@ -61,11 +57,7 @@ export const Users = (props) => {
       </div>
       <br />
       <div className="content-filters">
-        <Input.Search
-          className="search-team"
-          placeholder="Buscar usuario"
-          onSearch={(value) => setSearch(value)}
-        />
+        <Input.Search className="search-team" placeholder="Buscar usuario" onSearch={(value) => setSearch(value)} />
       </div>
       <Divider />
       <List
@@ -102,10 +94,7 @@ export const Users = (props) => {
                 <span>Nickname: {user.nickname}</span>
                 <span>{`Monto: ${get(user, "money", 0)}`}</span>
                 <span>{get(user, "email", "without email")}</span>
-                <h4>{`Creado: ${
-                  user.createAt &&
-                  moment(user.createAt.toDate()).format("DD MMM YYYY")
-                }`}</h4>
+                <h4>{`Creado: ${user.createAt && moment(user.createAt.toDate()).format("DD MMM YYYY")}`}</h4>
               </ContentAdminUser>
             </AclLink>
           </List.Item>

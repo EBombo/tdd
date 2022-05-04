@@ -13,7 +13,7 @@ const COUPONS_COLLECTION = "coupons";
 
 export const CouponForm = (props) => {
   const router = useRouter();
-  
+
   const { couponId } = router.query;
 
   const { AclLink } = useAcl();
@@ -94,7 +94,9 @@ export const CouponForm = (props) => {
   return (
     <div className="max-w-[1200px] mx-auto">
       <div>
-        <AclLink name="/admin/coupons" to="/admin/coupons">Regresar</AclLink>
+        <AclLink name="/admin/coupons" to="/admin/coupons">
+          Regresar
+        </AclLink>
       </div>
       <h1 className="text-xl font-bold">Crear nuevo cupón</h1>
       <div className="block">

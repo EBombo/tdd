@@ -78,7 +78,11 @@ export const AdminUserAcls = (props) => {
     spinLoader()
   ) : (
     <>
-      <div className="my-4"><Anchor url="/admin/users" disabled={loadingUpdateUser}>Regresar</Anchor></div>
+      <div className="my-4">
+        <Anchor url="/admin/users" disabled={loadingUpdateUser}>
+          Regresar
+        </Anchor>
+      </div>
       <form onSubmit={handleSubmit(updateUser)} noValidate>
         <div>
           Nombre: <b>{user.name}</b>
@@ -95,8 +99,7 @@ export const AdminUserAcls = (props) => {
         <hr />
         <br />
         <label>
-          <input type="checkbox" onClick={toggle} checked={allChecked} /> Marcar
-          todos
+          <input type="checkbox" onClick={toggle} checked={allChecked} /> Marcar todos
         </label>
         {map(acls, (moduleAcl, module) => (
           <ul key={module}>
@@ -113,12 +116,7 @@ export const AdminUserAcls = (props) => {
             ))}
           </ul>
         ))}
-        <Button
-          variant="primary"
-          htmltype="submit"
-          loading={loadingUpdateUser}
-          disabled={loadingUpdateUser}
-        >
+        <Button variant="primary" htmltype="submit" loading={loadingUpdateUser} disabled={loadingUpdateUser}>
           GUARDAR
         </Button>
       </form>

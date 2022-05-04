@@ -43,7 +43,9 @@ export const Coupons = (props) => {
       {data.map((coupon, i) => (
         <div key={`coupon-${i}`} className="block bg-white shadow p-4 my-4">
           <div className="float-right">
-            <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/${coupon?.id}`}>Editar</AclLink>
+            <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/${coupon?.id}`}>
+              Editar
+            </AclLink>
           </div>
           <p className="text-lg font-bold">Cupón: {coupon?.code}</p>
           <p>Cantidad Máxima de uso: {coupon?.maxUsage}</p>
@@ -65,7 +67,9 @@ export const Coupons = (props) => {
       <h1 className="text-xl font-bold">Cupones</h1>
 
       <div>
-        <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/new`}>Crear cupón</AclLink>
+        <AclLink name="/admin/coupons/[couponId]" to={`/admin/coupons/new`}>
+          Crear cupón
+        </AclLink>
       </div>
 
       <div className="block">{isLoading ? spinLoaderMin() : <CouponList data={coupons} />}</div>

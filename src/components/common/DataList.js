@@ -319,4 +319,3 @@ export const verifiedState = {
     text: "Verificar",
   },
 };
-
