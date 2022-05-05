@@ -1,13 +1,15 @@
 const logger = require("../../../utils/logger");
-const { config } = require("../../../config");
+const { config, firestore } = require("../../../config");
 const fetch = require("node-fetch");
+
+const defaultCost = 200;
 
 exports.postPayment = async (req, res, next) => {
   try {
     logger.log("postPayment", req.query, req.body, req.params);
 
     const { userId } = req.params;
-    const { user, email, source_id, currency_code, amount } = req.body;
+    const { user, email, source_id, currency_code, amount, coupon } = req.body;
 
     if (!user) throw Error("User is required");
 
@@ -23,10 +25,22 @@ exports.postPayment = async (req, res, next) => {
 
     if (currency_code !== "PEN") throw Error("Currency is corrupt");
 
-    const resp = await culqiCharges(email, source_id, currency_code, amount);
+    /**
+     * Calcular el monto a pagar, este debe coincidir con el monto recibido,
+     * de lo contrario puede hacer algun tipo de corrupcion con el proceso.
+     **/
+    const discount = +(coupon?.discountFactor ?? 0);
+    const discountAmount = defaultCost * discount;
+    const totalAmount = defaultCost - discountAmount;
 
-    logger.log("resp", resp);
-    // TODO: Crear el pin de acceso a la cuenta, consultar con gonzalo el flujo.
+    if (+totalAmount !== +amount) throw Error("El monto de pago no es valido");
+
+    const response = await culqiCharges(email, source_id, currency_code, amount);
+
+    /** This logger is necessary. **/
+    logger.log("response", response);
+
+    await createPayment({ user, email, source_id, currency_code, amount, coupon, response });
 
     return res.send({ success: true });
   } catch (error) {
@@ -58,4 +72,17 @@ const culqiCharges = async (email, source_id, currency_code, amount) => {
   }
 
   return response.json();
+};
+
+const createPayment = async (paymentProps) => {
+  const paymentRef = await firestore.collection("payments");
+
+  const paymentId = paymentRef.doc().id;
+
+  await paymentRef
+    .doc(paymentId)
+    .set(
+      { ...paymentProps, createAt: new Date(), updateAt: new Date(), deleted: false, id: paymentId },
+      { merge: true }
+    );
 };
