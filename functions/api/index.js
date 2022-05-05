@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
 const { getManifest } = require("./manifests/get");
+const { postValidateCoupon } = require("./coupons");
 
 const api = express();
 const router = express.Router();
@@ -42,11 +43,15 @@ router.get("/templates/:templateId/emails/:emailId", getSendEmail);
 
 router.get("/manifest", getManifest);
 
-//------------------------error------------------------
-
 router.get("/error-vanilla", getError);
 
 router.post("/error-boundary", postError);
+
+//------------------------error------------------------
+
+router.post("/coupons/:couponCode/validate", postValidateCoupon);
+
+//------------------------coupons------------------------
 
 api.use("/", router);
 
