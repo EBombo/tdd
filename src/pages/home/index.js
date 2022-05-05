@@ -130,7 +130,7 @@ export const Home = (props) => {
         <div className="mx-auto max-w-[1200px]">
           <div className="text-xl lg:text-4xl font-bold pt-4 mb-8 mx-4">Información de contacto</div>
           <div className="text-base lg:text-xl pt-4 mb-8 mx-4">
-            Si desea información acerca de la feria, por favor envie su solicitud al correo <span className="font-bold">contaco@tdduni.org</span> 
+            Si desea información acerca de la feria, por favor envie su solicitud al correo <span className="font-bold">congreso@tdduni.org</span>
           </div>
 
           <ContactForm {...props} />
