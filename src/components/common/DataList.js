@@ -103,7 +103,8 @@ export const timelineBlocks = [
     name: "Bloque 1",
     date: "Miércoles 8",
     title: "Políticas Públicas",
-    color: "red",
+    color: "#D2232A",
+    colorName: "red",
     description:
       "El estado peruano requiere desarrollar las políticas públicas que aceleren el  desarrollo digital del pais concertando con todos los sectores públicos y privados involucrados. Las características transversales de estas políticas hacen necesario proporcionar una visión y enfoque integral en su desarrollo sin perder de vista el impulso a políticas específicas como es el caso de la brecha de acceso al Internet.",
     commentators: [
@@ -164,7 +165,8 @@ export const timelineBlocks = [
     name: "Bloque 2",
     date: "Jueves 9",
     title: "TRANSFORMACIÓN DIGITAL DE LAS ORGANIZACIONES PRIVADAS",
-    color: "green",
+    color: "#39B54A",
+    colorName: "green",
     description:
       "La transformación digital es importante en las organizaciones pues le brinda agilidad para ofrecer nuevos productos y servicios y mejorar la experiencia del cliente, cambiando fundamentalmente la forma en que opera para brindar valor a sus clientes.",
     commentators: [
@@ -224,7 +226,8 @@ export const timelineBlocks = [
     name: "Bloque 3",
     date: "Viernes 10",
     title: "TRANSFORMACIÓN DIGITAL DE LAS ORGANIZACIONES PRIVADAS",
-    color: "orange",
+    color: "#F47B20",
+    colorName: "orange",
     description:
       "El enfoque digital ha trasformado completamente la forma de relacionarse con los consumidores y las exigencias de estos, esto obliga a las organizaciones a tomar decisiones estratégicas y operativas sustentadas en tecnología para ponerlas al servicio del consumidor.",
     commentators: [
@@ -265,7 +268,8 @@ export const timelineBlocks = [
     name: "Bloque 4",
     date: "Sábado 11",
     title: "TECNOLOGÍAS DIGITALES Y SU APLICACIÓN",
-    color: "skyBlue",
+    color: "#00AEEF",
+    colorName: "skyblue",
     description:
       "Las Tecnologías Digitales son las impulsoras de la transformación y su entendimiento y dominio es imprescindible. La mejor forma para absorber estas tecnologías es utilizarlas en aplicaciones específicas en las cuales se pueda desarrollar la experiencia de uso y aprendizaje, así como la prueba del valor que estas tecnologías ofrecen.",
     exhibitors: [

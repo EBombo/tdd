@@ -77,14 +77,14 @@ export const Exhibitors = (props) => {
           {exhibitors.slice(0, limit).map((exhibitor, index) => (
             <div
               key={`${exhibitor.name}-${index}`}
-              className="p-4 my-8 rounded-[8px] grid gap-4 shadow-[0_0_37px_rgba(0,0,0,0.15)] mx-auto max-w-[320px] md:max-w-[1200px] md:grid-cols-[325px_auto] md:p-8"
+              className="p-4 my-8 rounded-[8px] grid gap-4 shadow-[0_0_37px_rgba(0,0,0,0.15)] mx-auto max-w-[320px] md:max-w-[1100px] md:grid-cols-[325px_auto] md:p-8"
             >
               <Image
                 src={exhibitor.imageUrl}
                 width="265px"
                 height="265px"
-                desktopHeight="325px"
-                desktopWidth="325px"
+                desktopHeight="300px"
+                desktopWidth="300px"
                 size="cover"
                 margin="0 auto"
                 borderRadius="8px"
@@ -92,7 +92,7 @@ export const Exhibitors = (props) => {
               <div className="p-2 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center md:justify-between md:flex-row">
-                    <div className="text-['Encode Sans'] text-black font-[700] text-[20px] leading-[25px] md:text-[40px] md:leading-[52px]">
+                    <div className="text-['Encode Sans'] text-black font-[700] text-[20px] leading-[25px] md:text-[30px] md:leading-[35px]">
                       {exhibitor.name}
                     </div>
 
@@ -108,12 +108,12 @@ export const Exhibitors = (props) => {
                     </div>
                   </div>
 
-                  <div className="py-4 text-['Encode Sans'] text-black font-[400] text-[14px] leading-[18px] md:text-[25px] md:leading-[30px]">
+                  <div className="py-4 text-['Encode Sans'] text-black font-[400] text-[14px] leading-[18px] md:text-[20px] md:leading-[25px]">
                     {exhibitor.title}
                   </div>
                 </div>
 
-                <div className="flex">
+                <div className="flex items-center justify-between">
                   <Anchor url={exhibitor.linkedin}>
                     <Image
                       src={`${config.storageUrl}/resources/linkedin-primary.svg`}
@@ -125,6 +125,16 @@ export const Exhibitors = (props) => {
                       cursor="pointer"
                     />
                   </Anchor>
+                  <div className="block md:hidden">
+                    <Image
+                      src={`${config.storageUrl}/resources/${exhibitor.country}.svg`}
+                      width="40px"
+                      height="30px"
+                      size="contain"
+                      margin="0"
+                      borderRadius="8px"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
