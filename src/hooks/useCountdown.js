@@ -11,17 +11,17 @@ const getReturnValues = (countDown) => {
 };
 
 const useCountdown = (targetDate) => {
-  const countDownDate = new Date(targetDate).getTime();
+  const countdownDate = targetDate.getTime();
 
-  const [countDown, setCountDown] = useState(countDownDate - new Date().getTime());
+  const [countDown, setCountDown] = useState(countdownDate - new Date().getTime());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCountDown(countDownDate - new Date().getTime());
+      setCountDown(countdownDate - new Date().getTime());
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [countDownDate]);
+  }, [countdownDate]);
 
   return getReturnValues(countDown);
 };
