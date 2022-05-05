@@ -31,13 +31,12 @@ const Navbar = (props) => {
   ));
 
   return (
-    <>
-      <nav className="h-[50px] lg:h-[120px] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
+    <div className="relative h-[100vh]">
+      <nav className="h-[100px] absolute top-0 left-0 right-0 translate-y-[-100%] z-[9999] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
         <div className="flex items-center flex-shrink-0 text-black mr-6 cursor-pointer lg:min-w-[170px]">
           <Image
             src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`}
-            height="35px"
-            desktopHeight="55px"
+            height="85px"
             size="contain"
             margin="0"
             onClick={() => router.push(authUser ? "/admin" : "/")}
@@ -60,25 +59,39 @@ const Navbar = (props) => {
           <div className="text-sm lg:flex-grow">
             <LeftAnchor url="/">
               <span className="mx-2 min-w-[12px]">
-                {path === "/"
-                  ? <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/home-pink.svg`} />
-                  : <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/home.svg`} />}
+                {path === "/" ? (
+                  <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/home-pink.svg`} />
+                ) : (
+                  <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/home.svg`} />
+                )}
               </span>
               <span className={path === "/" && "text-pink-500"}>Inicio</span>
             </LeftAnchor>
             <LeftAnchor url="/timeline">
               <span className="mx-2 min-w-[12px]">
-                {path === "/timeline"
-                  ? <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/schedule-pink.svg`} />
-                  : <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/schedule.svg`} />}
+                {path === "/timeline" ? (
+                  <Image
+                    className="inline-block"
+                    width="12px"
+                    src={`${config.storageUrl}/resources/schedule-pink.svg`}
+                  />
+                ) : (
+                  <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/schedule.svg`} />
+                )}
               </span>
               <span className={path === "/timeline" && "text-pink-500"}>Programa</span>
             </LeftAnchor>
             <LeftAnchor url="/exhibitors">
               <span className="mx-2">
-                {path === "/exhibitors"
-                  ? <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/lectern-pink.svg`} />
-                  : <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/lectern.svg`} />}
+                {path === "/exhibitors" ? (
+                  <Image
+                    className="inline-block"
+                    width="12px"
+                    src={`${config.storageUrl}/resources/lectern-pink.svg`}
+                  />
+                ) : (
+                  <Image className="inline-block" width="12px" src={`${config.storageUrl}/resources/lectern.svg`} />
+                )}
               </span>
               <span className={path === "/exhibitors" && "text-pink-500"}>Expositores</span>
             </LeftAnchor>
@@ -100,7 +113,7 @@ const Navbar = (props) => {
         </div>
 
         {menuDrawer && (
-          <div className="absolute top-[50px] right-0 z-10 py-8 w-full block flex-grow lg:flex lg:items-center lg:w-auto bg-white">
+          <div className="absolute top-[100px] right-0 z-10 py-8 w-full block flex-grow lg:flex lg:items-center lg:w-auto bg-white">
             <div className="text-sm lg:flex-grow">
               <LeftAnchor url="/">
                 <span className="mx-2">
@@ -147,14 +160,11 @@ const Navbar = (props) => {
         )}
       </nav>
 
-      <div className="">
-        <div className="w-[100wv] min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)]">{props.children}</div>
-      </div>
-
-      <div>
+      <div className="mt-[100px] h-[calc(100vh-100px)] overflow-auto">
+        <div className="w-[100wv] min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-120px)]">{props.children}</div>
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 
