@@ -113,7 +113,7 @@ export const Exhibitors = (props) => {
                   </div>
                 </div>
 
-                <div className="flex">
+                <div className="flex items-center justify-between">
                   <Anchor url={exhibitor.linkedin}>
                     <Image
                       src={`${config.storageUrl}/resources/linkedin-primary.svg`}
@@ -125,6 +125,16 @@ export const Exhibitors = (props) => {
                       cursor="pointer"
                     />
                   </Anchor>
+                  <div className="block md:hidden">
+                    <Image
+                      src={`${config.storageUrl}/resources/${exhibitor.country}.svg`}
+                      width="40px"
+                      height="30px"
+                      size="contain"
+                      margin="0"
+                      borderRadius="8px"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
