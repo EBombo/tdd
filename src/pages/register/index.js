@@ -1,10 +1,13 @@
-import React, { useEffect, useGlobal } from "reactn";
+import React, { useEffect, useGlobal, useState } from "reactn";
 import { Button, Input } from "../../components/form";
 import Countdown from "../../components/Countdown";
-import { object, string } from "yup";
-import { useForm } from "react-hook-form";
+
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
+import { Image } from "../../components/common/Image";
+import { config } from "../../firebase";
+import { StudentRegister } from "./StudentRegister";
+import { VisitorRegister } from "./VisitorRegister";
 
 export const Register = (props) => {
   const router = useRouter();
@@ -12,8 +15,8 @@ export const Register = (props) => {
   const { signUp } = useAuth();
 
   const [authUser] = useGlobal("user");
-  const [isLoadingUser] = useGlobal("isLoadingUser");
-  const [isLoadingCreateUser] = useGlobal("isLoadingCreateUser");
+
+  const [tab, setTab] = useState(0);
 
   useEffect(() => {
     router.prefetch("/login");
@@ -23,21 +26,6 @@ export const Register = (props) => {
     //TODO: DEFINIR A DONDE SE REDIRIGE AL USUARIO LUEGO DEL REGISTRO
     if (authUser) router.push("/");
   }, [authUser]);
-
-  const schema = object().shape({
-    name: string().required(),
-    lastName: string().required(),
-    documentId: string().required(),
-    phoneNumber: string().required().min(5),
-    email: string().required().email(),
-    email2: string().required().email(),
-    password: string().required().min(6),
-  });
-
-  const { register, errors, handleSubmit } = useForm({
-    validationSchema: schema,
-    reValidateMode: "onSubmit",
-  });
 
   const signUpUser = async (user) => {
     if (user.email !== user.email2) return props.showNotification("Error", "Los emails no coinciden.");
@@ -49,91 +37,54 @@ export const Register = (props) => {
 
   return (
     <div>
-      <div className="w-full bg-register bg-no-repeat bg-cover h-full p-4 justify-center md:min-h-[calc(100vh-100px)] md:p-8 md:flex md:justify-end">
-        <form
-          className="max-w-[500px] bg-white/[.60] h-[fit-content] rounded-[10px] p-4"
-          onSubmit={handleSubmit(signUpUser)}
-        >
-          <div className="text-['Encode Sans'] font-[700] text-[20px] leading-[25px] md:text-[40px] md:leading-[44px]">
-            Regístrate
-          </div>
-          <div className="my-4">Crea tu cuenta con tus datos para poder comprar tu entrada.</div>
-          <div className="mb-4">
-            <Input name="name" type="text" ref={register} error={errors.name} height="50px" placeholder="Nombres" />
-          </div>
-          <div className="mb-4">
-            <Input
-              name="lastName"
-              type="text"
-              ref={register}
-              error={errors.lastName}
-              height="50px"
-              placeholder="Apellidos"
-            />
-          </div>
-          <div className="mb-4">
-            <Input
-              name="documentId"
-              type="text"
-              ref={register}
-              error={errors.documentId}
-              height="50px"
-              placeholder="DNI"
-            />
-          </div>
-          <div className="mb-4">
-            <Input
-              name="phoneNumber"
-              type="text"
-              ref={register}
-              error={errors.phoneNumber}
-              height="50px"
-              placeholder="Celular"
-            />
-          </div>
-          <div className="mb-4">
-            <Input name="email" type="text" ref={register} error={errors.email} height="50px" placeholder="Correo" />
-          </div>
-          <div className="mb-4">
-            <Input
-              name="email2"
-              type="text"
-              ref={register}
-              error={errors.email2}
-              height="50px"
-              placeholder="Confirmar correo"
-            />
-          </div>
+      <div className="w-full relative bg-register bg-no-repeat bg-cover p-4 justify-center lg:min-h-[calc(100vh-100px)] md:p-8 lg:flex lg:justify-end">
+        <div className="col-start-1 col-end-2 bg-white/[.60] max-w-[500px] p-4 hidden absolute bottom-0 left-8 xl:block lg:p-8">
+          <h2 className="text-xl lg:text-4xl font-bold mb-6">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
-          <Input
-            name="password"
-            type="password"
-            ref={register}
-            error={errors.password}
-            height="50px"
-            placeholder="Contraseña"
-          />
+          <p className="text-base lg:text-xl mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
 
-          <Button
-            primary
-            margin="mt-4"
-            htmlType="submit"
-            loading={isLoadingCreateUser}
-            disabled={isLoadingUser || isLoadingCreateUser}
-          >
-            Registrarse
+          <Button margin="m-0" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
+            Adquirir entrada
           </Button>
 
-          <div className="py-4">
-            <div className="text-['Encode Sans'] text-blackDarken font-[400] text-[16px] leading-[20px]">
-              Si ya tienes una cuenta puedes ingresar con tu correo y contraseña.
-            </div>
-
-            <Button primary margin="mt-4" onClick={() => router.push("/login")}>
-              Iniciar sesión
-            </Button>
+          <div className="my-8">
+            <Image
+              src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`}
+              height="130px"
+              width="340px"
+              size="contain"
+              margin="0"
+            />
           </div>
-        </form>
+        </div>
+
+        <div>
+          <div className="flex items-center px-2 gap-[5px]">
+            <div
+              className={`rounded-tl-[10px] p-2 cursor-pointer rounded-tr-[10px] text-['Encode Sans'] text-[12px] leading-[14px] md:text-[16px] md:leading-[20px] font-600 text-white ${
+                tab === 0 ? `bg-primary` : `bg-grayLighten`
+              }`}
+              onClick={() => setTab(0)}
+            >
+              No soy alumno universitario
+            </div>
+            <div
+              className={`rounded-tl-[10px] p-2 cursor-pointer rounded-tr-[10px] text-['Encode Sans'] text-[12px] leading-[14px] md:text-[16px] md:leading-[20px] font-600 text-white ${
+                tab === 1 ? `bg-primary` : `bg-grayLighten`
+              }`}
+              onClick={() => setTab(1)}
+            >
+              Soy alumno universitario
+            </div>
+          </div>
+          <div className="w-full lg:w-[800px] bg-white/[.60] h-[fit-content] rounded-[10px] p-4">
+            {tab === 1 ? (
+              <StudentRegister signUpUser={signUpUser} {...props} />
+            ) : (
+              <VisitorRegister signUpUser={signUpUser} {...props} />
+            )}
+          </div>
+        </div>
       </div>
 
       <Countdown />
