@@ -9,6 +9,8 @@ import firebase from "firebase";
 
 export const useUser = createLocalStorageStateHook("user", null);
 
+export const useDeadline = createLocalStorageStateHook("deadline", null);
+
 export const useSettings = createLocalStorageStateHook("settings", {});
 
 export const useLocation = createLocalStorageStateHook("location", {});
