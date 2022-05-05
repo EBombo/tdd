@@ -1,7 +1,6 @@
 import React, { useEffect, useGlobal, useState } from "reactn";
 import { Button, Input } from "../../components/form";
 import Countdown from "../../components/Countdown";
-
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
 import { Image } from "../../components/common/Image";
