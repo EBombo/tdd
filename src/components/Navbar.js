@@ -86,7 +86,7 @@ const Navbar = (props) => {
 
           <div>
             <Button primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-              Adquirir entrada
+              {!authUser ? "Registrarse" : "Adquirir entrada"}
             </Button>
 
             {!authUser ? (

@@ -12,8 +12,8 @@ export const Button = forwardRef((props, ref) => (
         props.disabled
           ? "bg-blackLighten text-gray"
           : props.primary
-          ? "bg-pink-500 text-white hover:bg-pink-700 hover:border-pink-700"
-          : "bg-white text-pink-500  hover:bg-pink-500 hover:border-pink-700 hover:text-white"
+          ? "bg-primary text-white hover:bg-primaryDark"
+          : "bg-white text-primary hover:bg-primaryLight hover:text-white"
       }
       ${props.margin ?? "ml-4 mt-4 lg:mt-0"}
       ${props.fontSize ?? "text-base"}

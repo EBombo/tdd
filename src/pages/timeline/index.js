@@ -100,12 +100,13 @@ export const Timeline = (props) => {
                     <div className="flex items-center gap-[5px]">
                       <Anchor url={exhibitor.linkedin} target="_blank">
                         <Image
-                          src={`${config.storageUrl}/resources/linkedin-${block.color}.svg`}
+                          src={`${config.storageUrl}/resources/linkedin-${block.colorName}.svg`}
                           width="18px"
                           height="18px"
                           desktopWidth="34px"
                           desktopHeight="34px"
                           size="contain"
+                          cursor="pointer"
                           margin="0"
                         />
                       </Anchor>
@@ -128,15 +129,15 @@ export const Timeline = (props) => {
 
                 <div className="grid justify-center my-8 gap-4 md:grid-cols-[repeat(3,1fr)]">
                   {block.commentators.map((commentator) => (
-                    <div className="shadow-[0_0_37px_rgba(0,0,0,0.15)] rounded-[8px] bg-white p-4 max-w-[350px]">
+                    <div className="shadow-[0_0_37px_rgba(0,0,0,0.15)] rounded-[8px] bg-white p-4 w-[350px] md:w-full md:max-w-[450px]">
                       <div className="flex items-center justify-between mb-4">
-                        <div className="text-['Encode Sans'] font-[700] text-[25px] leading-[30px] text-black">
+                        <div className="text-['Encode Sans'] font-[700] text-[14px] leading-[18px] md:text-[25px] md:leading-[30px] text-black">
                           {commentator.name}
                         </div>
                         <div>
                           <Anchor url={commentator.linkedin} target="_blank">
                             <Image
-                              src={`${config.storageUrl}/resources/linkedin-${block.color}.svg`}
+                              src={`${config.storageUrl}/resources/linkedin-${block.colorName}.svg`}
                               width="18px"
                               height="18px"
                               desktopWidth="35px"
@@ -147,7 +148,7 @@ export const Timeline = (props) => {
                           </Anchor>
                         </div>
                       </div>
-                      <div className="text-['Encode Sans'] font-[500] text-[20px] leading-[25px] text-black">
+                      <div className="text-['Encode Sans'] font-[500] text-[10px] leading-[12px] md:text-[18px] md:leading-[20px] text-black">
                         {commentator.title}
                       </div>
                     </div>
