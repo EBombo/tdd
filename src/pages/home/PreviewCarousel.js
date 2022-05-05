@@ -34,24 +34,62 @@ export const PreviewCarousel = ({ items, ...props }) => {
 
   return (
     <div className="w-full">
-      <div className="bg-white shadow rounded mx-4 mb-4">
-        <div className="lg:grid lg:grid-cols-[1fr_2fr] ">
-          <div className="p-4">
-            <Image className="lg:min-h-[500px]" src={selected?.imageUrl} size="contain" />
+      <div className="p-4 my-8 rounded-[8px] grid gap-4 shadow-[0_0_37px_rgba(0,0,0,0.15)] mx-auto max-w-[320px] md:max-w-[1100px] md:grid-cols-[325px_auto] md:p-8">
+        <Image
+          src={selected?.imageUrl}
+          width="265px"
+          height="265px"
+          desktopHeight="300px"
+          desktopWidth="300px"
+          size="cover"
+          margin="0 auto"
+          borderRadius="8px"
+        />
+        <div className="p-2 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center md:justify-between md:flex-row">
+              <div className="text-['Encode Sans'] text-black font-[700] text-[20px] leading-[25px] md:text-[30px] md:leading-[35px]">
+                {selected?.name}
+              </div>
+
+              <div className="hidden md:block">
+                <Image
+                  src={`${config.storageUrl}/resources/${selected?.country}.svg`}
+                  width="60px"
+                  height="40px"
+                  size="contain"
+                  margin="0"
+                  borderRadius="8px"
+                />
+              </div>
+            </div>
+
+            <div className="py-4 text-['Encode Sans'] text-black font-[400] text-[14px] leading-[18px] md:text-[20px] md:leading-[25px]">
+              {selected?.title}
+            </div>
           </div>
-          <div className="py-4">
-            <h2 className="px-4 text-xl lg:text-5xl font-bold mb-8">{selected?.name || "Nombre apellido"}</h2>
-            <p className="px-4 text-base lg:text-xl mb-8">{selected?.name || "Cargo que tiene y linkedIn"}</p>
-            <div className="px-4 py-4">
-              <span className="mr-2">
-                <Anchor url={selected?.linkedin} target="_blank">
-                  <Image
-                    className="inline-block"
-                    src={`${config.storageUrl}/resources/linkedin-pink.svg`}
-                    width="24px"
-                  />
-                </Anchor>
-              </span>
+
+          <div className="flex items-center justify-between">
+            <Anchor url={selected?.linkedin}>
+              <Image
+                src={`${config.storageUrl}/resources/linkedin-primary.svg`}
+                width="40px"
+                height="40px"
+                size="contain"
+                margin="0"
+                borderRadius="8px"
+                cursor="pointer"
+              />
+            </Anchor>
+            <div className="block md:hidden">
+              <Image
+                src={`${config.storageUrl}/resources/${selected?.country}.svg`}
+                width="40px"
+                height="30px"
+                size="contain"
+                margin="0"
+                borderRadius="8px"
+              />
             </div>
           </div>
         </div>
@@ -69,11 +107,12 @@ export const PreviewCarousel = ({ items, ...props }) => {
         <div className={`flex gap-4 justify-center overflow-hidden`}>
           {items
             .concat(items)
-            .slice(selectedIndex + 1, selectedIndex + 5)
+            .slice(items.length - 1 + selectedIndex - 1, items.length + selectedIndex )
+            .concat(items.concat(items).slice(selectedIndex, selectedIndex + 3))
             .map((exhibitor, index) => (
-              <span>
+              <span key={`${exhibitor.name}-${index}`}>
                 <Image
-                  className="inline-block rounded-xl"
+                  className={`inline-block rounded-xl ${exhibitor.name === selected?.name && `border-primary border-2`}`}
                   width="80px"
                   height="80px"
                   desktopHeight="100px"

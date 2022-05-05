@@ -34,13 +34,10 @@ const news = [
 ];
 
 const sponsors = [
-  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg` },
-  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg` },
-  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg` },
-  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg` },
-  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg` },
-  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg` },
-  { imageUrl: `${config.storageUrl}/resources/rectangle-gray.jpg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/adidas.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/bbva.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/puma.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/cisco.svg` },
 ];
 
 export const Home = (props) => {
