@@ -86,7 +86,7 @@ export const WithConfiguration = (props) => {
         pageLoaded = true;
       });
 
-    const fetchCountDowm = async () => {
+    const fetchCountdowm = async () => {
       const landingSettingsQuery = await firestore.doc("settings/landing").get();
 
       const landingSettings = landingSettingsQuery.data();
@@ -98,7 +98,7 @@ export const WithConfiguration = (props) => {
     };
 
     initializeConfig();
-    fetchCountDowm();
+    fetchCountdowm();
     const unsubscribeVersion = fetchVersion();
 
     setIsLoadingConfig(false);

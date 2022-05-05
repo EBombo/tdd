@@ -41,7 +41,7 @@ const Countdown = React.memo(({ title = "Reserva la fecha", deadline, ...props }
   );
 });
 
-const CountDownComponent = () => {
+const CountdownComponent = () => {
   const [deadline] = useGlobal("deadline");
 
   if (!deadline) return spinLoaderMin();
@@ -49,4 +49,4 @@ const CountDownComponent = () => {
   return <Countdown deadline={deadline} />;
 };
 
-export default CountDownComponent;
+export default CountdownComponent;
