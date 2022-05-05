@@ -43,11 +43,14 @@ export const BuyTickets = (props) => {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-50px)] sm:px-1 lg:min-h-[calc(100vh-120px)] w-full bg-index bg-no-repeat bg-cover flex lg:items-end bg-bottom">
-        <div className="lg:w-[450px] sm:w-[300px] md:mr-[100px] md:ml-auto my-auto rounded-md p-6 bg-blackDarken">
-          <div className="text-xl text-primary mb-4 text-left">Arquirir entrada</div>
+      <div className="min-h-[calc(100vh-50px)] sm:px-1 lg:min-h-[calc(100vh-120px)] w-full bg-register bg-no-repeat bg-cover flex lg:items-end bg-bottom">
+        <div className="lg:w-[450px] md:mr-[100px] md:ml-auto my-auto rounded-md p-8 bg-blackDarken mx-2">
+          <div className="mb-4 grid grid-cols-[auto_1fr]">
+            <div className="text-3xl text-bold text-primary text-left">Arquirir entrada</div>
+            <span className="w-full h-[1px] bg-primary ml-6 m-auto" />
+          </div>
 
-          <div className="text-white text-left mb-4">
+          <div className="text-white text-left mb-6">
             Obtén acceso a toda la feria durante toda su duración y asiste a todas las presentaciones
           </div>
 
@@ -56,7 +59,7 @@ export const BuyTickets = (props) => {
           <div className="text-white text-left">
             <div className="text-7xl text-bold">
               {cost}
-              <span className="text-xs text-normal">soles</span>
+              <span className="text-base text-normal">soles</span>
             </div>
           </div>
 
@@ -70,8 +73,8 @@ export const BuyTickets = (props) => {
 
           <div className="text-white">Sub total: {cost.toFixed(2)} </div>
           <div className="text-white">Descuento por cupón: {discount.toFixed(2)} </div>
-          <div className="w-full h-[1px] bg-white my-1" />
-          <div className="text-white text-lg">Total: {totalCost.toFixed(2)}</div>
+          <div className="w-full h-[1px] bg-white mt-1 mb-2" />
+          <div className="text-white text-xl">Total: {totalCost.toFixed(2)}</div>
 
           <CulqiComponent
             {...props}

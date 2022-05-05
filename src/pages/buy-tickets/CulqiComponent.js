@@ -73,10 +73,11 @@ export const CulqiComponent = (props) => {
             <div className="flex mt-6">
               <Button
                 primary
-                fontSize="text-lg"
+                width="w-full"
+                fontSize="text-base"
+                margin="mx-auto mt-2"
                 loading={props.isLoading}
                 disabled={props.isLoading}
-                margin="mx-auto mt-2"
                 onClick={() => {
                   const formattedCost = +props.totalCost * 100;
                   setAmount(formattedCost);

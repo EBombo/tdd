@@ -17,7 +17,7 @@ export const Button = forwardRef((props, ref) => (
       }
       ${props.margin ?? "ml-4 mt-4 lg:mt-0"}
       ${props.fontSize ?? "text-base"}
-      `}
+      ${props.width ?? "w-auto"}`}
     {...props}
   >
     {props.loading && <LoadingOutlined />} {props.children}
