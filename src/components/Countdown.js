@@ -1,32 +1,19 @@
-import React, { useEffect, useMemo, useState } from "reactn";
-import moment from "moment";
+import React, { useGlobal, useMemo } from "reactn";
 import useCountdown from "../hooks/useCountdown";
-import { firestore } from "../firebase";
+import { spinLoaderMin } from "./common/loader";
 
-const Countdown = ({ title = "Reserva la fecha", ...props }) => {
-  const [deadlineTime, setDeadlineTime] = useState(null);
+const Countdown = React.memo(({ title = "Reserva la fecha", deadline, ...props }) => {
+  const [days, hours, minutes, seconds] = useCountdown(deadline);
 
-  const [days, hours, minutes, seconds] = useCountdown(deadlineTime);
-
-  useEffect(() => {
-    const fetchCountdowm = async () => {
-      const landingSettings = (await firestore.doc("settings/landing").get()).data();
-
-      setDeadlineTime(moment(landingSettings.countdown.toDate()));
-    };
-
-    fetchCountdowm();
-  }, []);
-
-  const DisplayNumber = ({ value, label }) => (
+  const DisplayNumber = React.memo(({ value, label }) => (
     <span className="mx-0 lg:mx-8">
       <div className="min-w-[80px] lg:min-w-[90px] text-4xl lg:text-8xl font-bold text-center mb-3">{value}</div>
       <div className="text-md lg:text-4xl text-pink-500 text-center">{label}</div>
     </span>
-  );
+  ));
 
   const displayContent = useMemo(() => {
-    if (deadlineTime === null || days + hours + minutes + seconds <= 0)
+    if (deadline === null || days + hours + minutes + seconds <= 0)
       return (
         <div className="flex items-center justify-center">
           <DisplayNumber value={0} label="Días" />
@@ -52,6 +39,14 @@ const Countdown = ({ title = "Reserva la fecha", ...props }) => {
       {displayContent}
     </div>
   );
+});
+
+const CountDownComponent = () => {
+  const [deadline] = useGlobal("deadline");
+
+  if (!deadline) return spinLoaderMin();
+
+  return <Countdown deadline={deadline} />;
 };
 
-export default Countdown;
+export default CountDownComponent;
