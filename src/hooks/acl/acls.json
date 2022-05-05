@@ -6,6 +6,24 @@
       "/admin/settings/templates": "Edicion de templates"
     }
   },
+  "adminUsers": {
+    "label": "Gestión de usuarios",
+    "items": {
+      "/admin/users": "Listado de usuarios",
+      "/admin/users/[userId]": "Edición/Creación de usuarios",
+      "/admin/users/[userId]/acls": "Gestión de permisos del usuario"
+    }
+  },
+  "adminCoupons": {
+    "label": "Gestión de cupones",
+    "items": {
+      "/admin/coupons": "Listado de cupones",
+      "/admin/coupons#disable": "Habilitar/Deshabilitar cupón",
+      "/admin/coupons#delete": "Eliminar cupón",
+      "/admin/coupons/[couponId]": "Edición de cupones",
+      "/admin/coupons/new": "Creación de cupones"
+    }
+  },
   "common": {
     "label": "Acceso común",
     "items": {

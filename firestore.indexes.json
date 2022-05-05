@@ -1,16 +1,16 @@
 {
   "indexes": [
     {
-      "collectionGroup": "messages",
+      "collectionGroup": "coupons",
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "lobbyId",
+          "fieldPath": "deleted",
           "order": "ASCENDING"
         },
         {
           "fieldPath": "createAt",
-          "order": "ASCENDING"
+          "order": "DESCENDING"
         }
       ]
     }

@@ -1,4 +1,5 @@
 import { config } from "../../firebase";
+import { darkTheme } from "../../theme";
 
 export const avatars = [
   `${config.storageUrl}/resources/avatars/dog.svg`,
@@ -32,6 +33,26 @@ export const adminMenus = [
   {
     value: "seo",
     url: "/admin/seo",
+  },
+];
+
+export const menus = [
+  /*
+  {
+    name: "Reportes",
+    url: "/reports",
+    src: `${config.storageUrl}/resources/footer/reports-icon.svg`,
+  },
+   */
+  {
+    name: "Lista de usuarios",
+    url: "/admin/users",
+    isAdmin: true,
+  },
+  {
+    name: "Lista de cupónes",
+    url: "/admin/coupons",
+    isAdmin: true,
   },
 ];
 
@@ -292,3 +313,29 @@ export const timelineBlocks = [
     ],
   },
 ];
+
+export const accountStates = {
+  valid: {
+    color: darkTheme.basic.primary,
+    label: "Válido",
+  },
+  notValid: {
+    color: darkTheme.basic.danger,
+    label: "No válido",
+  },
+  inProcess: {
+    color: darkTheme.basic.action,
+    label: "En proceso",
+  },
+};
+
+export const verifiedState = {
+  noVerified: {
+    type: "danger",
+    text: "Cancelar Verificacion",
+  },
+  verified: {
+    type: "primary",
+    text: "Verificar",
+  },
+};
