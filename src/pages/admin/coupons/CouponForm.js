@@ -140,7 +140,7 @@ export const CouponForm = (props) => {
             name="activeSince"
             control={control}
             defaultValue={currentCoupon?.activeSince}
-            as={<DatePicker type="datetime-local" error={errors.activeSince} placeholder="Activo desde" />}
+            as={<DatePicker showTime type="datetime-local" error={errors.activeSince} placeholder="Activo desde" />}
           />
 
           <label htmlFor="expireAt">Expira el</label>
@@ -150,6 +150,7 @@ export const CouponForm = (props) => {
             defaultValue={currentCoupon?.expireAt}
             as={
               <DatePicker
+                showTime
                 name="expireAt"
                 type="datetime-local"
                 ref={register}

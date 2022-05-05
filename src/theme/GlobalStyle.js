@@ -286,4 +286,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   /*-------------- MODAL CONFIRM ---------------*/
+  .ant-picker-ok {
+    button {
+      background: #1890ff;
+      border-color: #1890ff;
+    }
+  }
 `;
