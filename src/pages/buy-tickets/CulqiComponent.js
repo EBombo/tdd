@@ -5,10 +5,8 @@ import { config } from "../../firebase";
 import { useSendError } from "../../hooks";
 import { useFetch } from "../../hooks/useFetch";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 const currency = "PEN";
-const defaultCost = 200;
 
 // Reference:
 // Tarjetas de prueba: https://docs.culqi.com/#/desarrollo/tarjetas
@@ -22,26 +20,23 @@ export const CulqiComponent = (props) => {
 
   const [authUser] = useGlobal("user");
 
-  const [cost, setCost] = useState(defaultCost);
-  const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     if (authUser) return;
 
-    // TODO: Redirect after register page is available.
-    //router.push("/login");
+    router.push("/login");
   }, [authUser]);
 
   const purchasing = async (event) => {
     try {
-      setIsLoading(true);
+      props.setIsLoading(true);
 
       const { error } = await Fetch(`${config.serverUrl}/users/${authUser.id}/payment`, "POST", {
         user: authUser,
         email: event.email,
         source_id: event.id,
+        coupon: props.coupon,
         currency_code: currency,
-        amount: cost,
+        amount: +props.totalCost,
       });
 
       if (error) throw Error(error);
@@ -53,7 +48,7 @@ export const CulqiComponent = (props) => {
       props.showNotification("Error", "Algo salio mal, intente nuevamente");
     }
 
-    setIsLoading(false);
+    props.setIsLoading(false);
   };
 
   const onError = (error) => {
@@ -78,13 +73,13 @@ export const CulqiComponent = (props) => {
             <div className="flex mt-6">
               <Button
                 primary
-                margin="m-auto"
-                fontSize="text-xl"
-                loading={isLoading}
-                disabled={isLoading}
+                width="w-full"
+                fontSize="text-base"
+                margin="mx-auto mt-2"
+                loading={props.isLoading}
+                disabled={props.isLoading}
                 onClick={() => {
-                  // TODO: Implement coupons.
-                  const formattedCost = cost * 100;
+                  const formattedCost = +props.totalCost * 100;
                   setAmount(formattedCost);
                   openCulqi();
                 }}
