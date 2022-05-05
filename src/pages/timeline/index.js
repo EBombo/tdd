@@ -1,4 +1,4 @@
-import React, { useGlobal } from "reactn";
+import React from "reactn";
 import Countdown from "../../components/Countdown";
 import { timelineBlocks } from "../../components/common/DataList";
 import { Image } from "../../components/common/Image";
@@ -6,8 +6,6 @@ import { config } from "../../firebase";
 import { Anchor } from "../../components/form";
 
 export const Timeline = (props) => {
-  const [authUser] = useGlobal("user");
-
   return (
     <div>
       <div className="w-full bg-timeline bg-no-repeat bg-center bg-cover max-h-[115px] h-[30vh] md:max-h-[368px] p-4 md:p-8 relative">
@@ -29,7 +27,7 @@ export const Timeline = (props) => {
 
       <Countdown />
 
-      <div className="bg-white p-4 md:p-8">
+      <div className="bg-white p-4 md:p-24">
         {timelineBlocks.map((block, index) => (
           <div className="rounded-[8px] bg-white shadow-[0_0_37px_rgba(0,0,0,0.15)] p-2 my-4 md:p-12 md:my-8 max-w-[1500px] mx-auto">
             <div className="flex items-center rounded-[8px] gap-[20px] md:translate-x-[-4rem] translate-x-[-1rem]">
