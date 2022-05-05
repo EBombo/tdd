@@ -46,7 +46,7 @@ export const ContactForm = (props) => {
     <div className="mx-8">
       <div className="grid grid-cols-[4px_auto] mb-8">
         <div className="bg-pink-500"></div>
-        <div className="ml-2 text-grayDarken">Contáctanos</div>
+        <div className="ml-2 text-grayLight text-2xl font-normal">Contáctanos</div>
       </div>
       <div className="">
         <form onSubmit={handleSubmit(submitContact)} className="max-w-[700px] grid gap-2">
