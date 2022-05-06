@@ -1,8 +1,7 @@
 const logger = require("../../../utils/logger");
 const { config, firestore } = require("../../../config");
 const fetch = require("node-fetch");
-
-const defaultCost = 200;
+const { defaultCost } = require("../../../business");
 
 exports.postPayment = async (req, res, next) => {
   try {

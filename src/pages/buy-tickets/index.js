@@ -4,8 +4,8 @@ import Countdown from "../../components/Countdown";
 import { CouponForm } from "./CouponForm";
 import { useEffect, useMemo, useState } from "react";
 import { firestore } from "../../firebase";
+import { defaultCost } from "../../business";
 
-const defaultCost = 200;
 const defaultDiscount = 0;
 
 export const BuyTickets = (props) => {

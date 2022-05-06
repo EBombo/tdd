@@ -2,8 +2,7 @@ const logger = require("../../utils/logger");
 const { firestore } = require("../../config");
 const { snapshotToArray } = require("../../utils");
 const moment = require("moment");
-
-const defaultCost = 200;
+const { defaultCost } = require("../../business");
 
 exports.postValidateCoupon = async (req, res, next) => {
   try {
