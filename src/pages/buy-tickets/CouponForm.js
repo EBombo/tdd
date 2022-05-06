@@ -52,7 +52,7 @@ export const CouponForm = (props) => {
       <div className="text-primary mt-6 mb-2">Ingresa un cupón</div>
 
       <form onSubmit={handleSubmit(validateCouponCode)}>
-        <div className="grid grid-cols-[2fr_1fr]">
+        <div className="grid md:grid-cols-[2fr_1fr]">
           <Input
             type="text"
             border="none"
@@ -62,7 +62,15 @@ export const CouponForm = (props) => {
             error={errors.couponCode}
             placeholder="Ingresa tu cupón"
           />
-          <Button fontSize="text-xs" htmlType="submit" loading={props.isLoading} disabled={props.isLoading} primary>
+          <Button
+            fontSize="text-xs"
+            width="sm:w-full md:w-auto"
+            margin="sm:mx-auto"
+            htmlType="submit"
+            loading={props.isLoading}
+            disabled={props.isLoading}
+            primary
+          >
             Validar cupón
           </Button>
         </div>
