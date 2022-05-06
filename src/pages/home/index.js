@@ -91,7 +91,12 @@ export const Home = (props) => {
           </div>
           <div className="px-10">
             <p className="mb-8 text-base lg:text-2xl text-right">
-              El Instituto Transformación Digital para el Desarrollo (TDD) Nace con el fin de promover la adopción e impulsar el uso intensivo, eficaz, eficiente y extendido de las Tecnologías Digitales y de esta manera coadyuvar al desarrollo del país, con acciones de todos los estamentos de nuestra sociedad: gobierno, empresa, academia y sociedad civil, con un claro liderazgo del Estado por medio de Políticas Públicas Digitales efectivas y el desarrollo de la institucionalidad apropiada a tal reto, que contribuyan a superar los grandes problemas nacionales enmarcados en una visión de desarrollo compartida.
+              El Instituto Transformación Digital para el Desarrollo (TDD) Nace con el fin de promover la adopción e
+              impulsar el uso intensivo, eficaz, eficiente y extendido de las Tecnologías Digitales y de esta manera
+              coadyuvar al desarrollo del país, con acciones de todos los estamentos de nuestra sociedad: gobierno,
+              empresa, academia y sociedad civil, con un claro liderazgo del Estado por medio de Políticas Públicas
+              Digitales efectivas y el desarrollo de la institucionalidad apropiada a tal reto, que contribuyan a
+              superar los grandes problemas nacionales enmarcados en una visión de desarrollo compartida.
             </p>
             <div className="text-right">
               <Button primary margin="m-0" onClick={() => {}}>
@@ -130,7 +135,8 @@ export const Home = (props) => {
         <div className="mx-auto max-w-[1200px]">
           <div className="text-xl lg:text-4xl font-bold pt-4 mb-8 mx-4">Información de contacto</div>
           <div className="text-base lg:text-xl pt-4 mb-8 mx-4">
-            Si desea información acerca de la feria, por favor envie su solicitud al correo <span className="font-bold">congreso@tdduni.org</span>
+            Si desea información acerca de la feria, por favor envie su solicitud al correo{" "}
+            <span className="font-bold">congreso@tdduni.org</span>
           </div>
 
           <ContactForm {...props} />
