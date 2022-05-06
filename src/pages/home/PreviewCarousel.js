@@ -107,12 +107,14 @@ export const PreviewCarousel = ({ items, ...props }) => {
         <div className={`flex gap-4 justify-center overflow-hidden`}>
           {items
             .concat(items)
-            .slice(items.length - 1 + selectedIndex - 1, items.length + selectedIndex )
+            .slice(items.length - 1 + selectedIndex - 1, items.length + selectedIndex)
             .concat(items.concat(items).slice(selectedIndex, selectedIndex + 3))
             .map((exhibitor, index) => (
               <span key={`${exhibitor.name}-${index}`}>
                 <Image
-                  className={`inline-block rounded-xl ${exhibitor.name === selected?.name && `border-primary border-2`}`}
+                  className={`inline-block rounded-xl ${
+                    exhibitor.name === selected?.name && `border-primary border-2`
+                  }`}
                   width="80px"
                   height="80px"
                   desktopHeight="100px"
