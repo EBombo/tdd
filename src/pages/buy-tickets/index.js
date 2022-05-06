@@ -51,7 +51,8 @@ export const BuyTickets = (props) => {
           </div>
 
           <div className="text-white text-left mb-6">
-            Obtén acceso a toda la feria durante toda su duración y asiste a todas las presentaciones
+            Obtén acceso a toda la feria durante toda su duración, asiste a todas las presentaciones y recibe un
+            certificado por tu participación.
           </div>
 
           <div className="text-primary">Precio general</div>
