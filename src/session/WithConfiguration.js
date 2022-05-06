@@ -1,5 +1,13 @@
 import React, { setGlobal, useEffect, useGlobal, useState } from "reactn";
-import { collectionToDate, useEnvironment, useLanguageCode, useLocation, useSettings, useUser } from "../hooks";
+import {
+  collectionToDate,
+  useDeadline,
+  useEnvironment,
+  useLanguageCode,
+  useLocation,
+  useSettings,
+  useUser,
+} from "../hooks";
 import { config, firestore, version } from "../firebase";
 import get from "lodash/get";
 import { darkTheme, lightTheme } from "../theme";
@@ -16,13 +24,15 @@ const UpdateVersion = dynamic(() => import("../components/versions/UpdateVersion
 
 export const WithConfiguration = (props) => {
   const [authUser] = useGlobal("user");
+  const [, setDeadline] = useGlobal("deadline");
   const [settings, setSettings] = useGlobal("settings");
   const [, setIsVisibleLoginModal] = useGlobal("isVisibleLoginModal");
 
   const [authUserLS] = useUser();
   const [location] = useLocation();
   const [languageCode] = useLanguageCode();
-  const [environment, setEnvironment] = useEnvironment();
+  const [, setEnvironment] = useEnvironment();
+  const [deadlineLS, setDeadlineLS] = useDeadline();
   const [settingsLS, setSettingsLocalStorage] = useSettings();
 
   const [isLoadingConfig, setIsLoadingConfig] = useState(true);
@@ -36,6 +46,7 @@ export const WithConfiguration = (props) => {
       await setGlobal({
         user: authUserLS ? collectionToDate(authUserLS) : null,
         settings: collectionToDate({ ...settingsLS, version }),
+        deadline: deadlineLS ? new Date(deadlineLS) : deadlineLS,
         location,
         audios: [],
         languageCode,
@@ -75,8 +86,21 @@ export const WithConfiguration = (props) => {
         pageLoaded = true;
       });
 
+    const fetchCountdowm = async () => {
+      const landingSettingsQuery = await firestore.doc("settings/landing").get();
+
+      const landingSettings = landingSettingsQuery.data();
+
+      const countdownDate = landingSettings?.countdown?.toDate() ?? new Date();
+
+      setDeadline(countdownDate);
+      setDeadlineLS(countdownDate);
+    };
+
     initializeConfig();
+    fetchCountdowm();
     const unsubscribeVersion = fetchVersion();
+
     setIsLoadingConfig(false);
 
     return () => unsubscribeVersion();
