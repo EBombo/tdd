@@ -352,3 +352,10 @@ export const verifiedState = {
     text: "Verificar",
   },
 };
+
+export const videos = [
+  { title: "Video A", embedUrl: "https://www.youtube.com/embed/xcJtL7QggTI", portraitUrl: `${config.storageUrl}/resources/video-thumbnail.jpg` },
+  { title: "Video B", embedUrl: "https://www.youtube.com/embed/xcJtL7QggTI", portraitUrl: `${config.storageUrl}/resources/video-thumbnail.jpg` },
+  { title: "Video C", embedUrl: "https://www.youtube.com/embed/xcJtL7QggTI", portraitUrl: `${config.storageUrl}/resources/video-thumbnail.jpg` },
+  { title: "Video D", embedUrl: "https://www.youtube.com/embed/xcJtL7QggTI", portraitUrl: `${config.storageUrl}/resources/video-thumbnail.jpg` },
+]

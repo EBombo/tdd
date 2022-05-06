@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from "reactn";
+import React, { useState } from "reactn";
 import { Image } from "../../components/common/Image";
 import { config } from "../../firebase";
 import Countdown from "../../components/Countdown";
-import { Anchor, Button } from "../../components/form";
-import { Input } from "antd";
-import { timelineBlocks } from "../../components/common/DataList";
-import orderBy from "lodash/orderBy";
-import isEmpty from "lodash/isEmpty";
-
-const videos = [
-  { title: "Video A", embedUrl: "https://www.youtube.com/embed/xcJtL7QggTI", portraitUrl: `${config.storageUrl}/resources/video-thumbnail.jpg` },
-  { title: "Video B", embedUrl: "https://www.youtube.com/embed/xcJtL7QggTI", portraitUrl: `${config.storageUrl}/resources/video-thumbnail.jpg` },
-  { title: "Video C", embedUrl: "https://www.youtube.com/embed/xcJtL7QggTI", portraitUrl: `${config.storageUrl}/resources/video-thumbnail.jpg` },
-  { title: "Video D", embedUrl: "https://www.youtube.com/embed/xcJtL7QggTI", portraitUrl: `${config.storageUrl}/resources/video-thumbnail.jpg` },
-]
+import { videos } from "../../components/common/DataList";
 
 export const Content = (props) => {
 
@@ -36,7 +25,6 @@ export const Content = (props) => {
   return (
     <div className="min-h-[calc(100vh-100px)] w-full bg-content bg-no-repeat bg-cover">
       <div className="min-h-[calc(100vh-100px)] grid lg:grid-cols-[auto_400px] grid-rows-[auto_min-content]">
-
         <div className="flex flex-col">
           <div className="py-2 lg:min-h-[150px]">
             <div className="text-md lg:text-4xl font-bold uppercase my-2">
@@ -62,6 +50,8 @@ export const Content = (props) => {
           <VideoList />
         </div>
       </div>
+
+      <Countdown />
     </div>
   );
 };
