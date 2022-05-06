@@ -4,8 +4,8 @@ import Countdown from "../../components/Countdown";
 import { CouponForm } from "./CouponForm";
 import { useEffect, useMemo, useState } from "react";
 import { firestore } from "../../firebase";
+import { defaultCost } from "../../business";
 
-const defaultCost = 200;
 const defaultDiscount = 0;
 
 export const BuyTickets = (props) => {
@@ -46,7 +46,7 @@ export const BuyTickets = (props) => {
       <div className="min-h-[calc(100vh-50px)] sm:px-1 lg:min-h-[calc(100vh-120px)] w-full bg-register bg-no-repeat bg-cover flex lg:items-end bg-bottom">
         <div className="lg:w-[450px] md:mr-[100px] md:ml-auto my-auto rounded-md p-8 bg-blackDarken mx-2">
           <div className="mb-4 grid grid-cols-[auto_1fr]">
-            <div className="text-3xl text-bold text-primary text-left">Arquirir entrada</div>
+            <div className="text-3xl text-bold text-primary text-left">Adquirir entrada</div>
             <span className="w-full h-[1px] bg-primary ml-6 m-auto" />
           </div>
 

@@ -318,6 +318,15 @@ export const timelineBlocks = [
   },
 ];
 
+export const sponsorsLists = [
+  { imageUrl: `${config.storageUrl}/resources/sponsors/utp.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/zytrust.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/adidas.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/bbva.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/puma.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/cisco.svg` },
+];
+
 export const accountStates = {
   valid: {
     color: darkTheme.basic.primary,

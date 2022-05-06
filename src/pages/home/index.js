@@ -8,7 +8,6 @@ import { Button } from "../../components/form";
 import { Image } from "../../components/common/Image";
 import { PreviewCarousel } from "./PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
-import { Sponsors } from "./Sponsors";
 import { ContactForm } from "./ContactForm";
 import orderBy from "lodash/orderBy";
 
@@ -31,13 +30,6 @@ const news = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
-];
-
-const sponsors = [
-  { imageUrl: `${config.storageUrl}/resources/sponsors/adidas.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/bbva.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/puma.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/cisco.svg` },
 ];
 
 export const Home = (props) => {
@@ -91,7 +83,12 @@ export const Home = (props) => {
           </div>
           <div className="px-10">
             <p className="mb-8 text-base lg:text-2xl text-right">
-              El Instituto Transformación Digital para el Desarrollo (TDD) Nace con el fin de promover la adopción e impulsar el uso intensivo, eficaz, eficiente y extendido de las Tecnologías Digitales y de esta manera coadyuvar al desarrollo del país, con acciones de todos los estamentos de nuestra sociedad: gobierno, empresa, academia y sociedad civil, con un claro liderazgo del Estado por medio de Políticas Públicas Digitales efectivas y el desarrollo de la institucionalidad apropiada a tal reto, que contribuyan a superar los grandes problemas nacionales enmarcados en una visión de desarrollo compartida.
+              El Instituto Transformación Digital para el Desarrollo (TDD) Nace con el fin de promover la adopción e
+              impulsar el uso intensivo, eficaz, eficiente y extendido de las Tecnologías Digitales y de esta manera
+              coadyuvar al desarrollo del país, con acciones de todos los estamentos de nuestra sociedad: gobierno,
+              empresa, academia y sociedad civil, con un claro liderazgo del Estado por medio de Políticas Públicas
+              Digitales efectivas y el desarrollo de la institucionalidad apropiada a tal reto, que contribuyan a
+              superar los grandes problemas nacionales enmarcados en una visión de desarrollo compartida.
             </p>
             <div className="text-right">
               <Button primary margin="m-0" onClick={() => {}}>
@@ -118,19 +115,12 @@ export const Home = (props) => {
         </div>
       </div>
 
-      <div className="bg-white py-4 mb-32">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Auspiciadores</div>
-
-          <Sponsors items={sponsors} />
-        </div>
-      </div>
-
       <div className="bg-white py-4 mb-48">
         <div className="mx-auto max-w-[1200px]">
           <div className="text-xl lg:text-4xl font-bold pt-4 mb-8 mx-4">Información de contacto</div>
           <div className="text-base lg:text-xl pt-4 mb-8 mx-4">
-            Si desea información acerca de la feria, por favor envie su solicitud al correo <span className="font-bold">congreso@tdduni.org</span>
+            Si desea información acerca de la feria, por favor envie su solicitud al correo{" "}
+            <span className="font-bold">congreso@tdduni.org</span>
           </div>
 
           <ContactForm {...props} />
