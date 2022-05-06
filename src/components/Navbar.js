@@ -31,7 +31,7 @@ const Navbar = (props) => {
   ));
 
   return (
-    <div className="relative h-[100vh] w-[100wv] ">
+    <div className="relative h-[100vh] w-[100wv] overflow-hidden">
       <nav className="h-[100px] absolute top-0 left-0 right-0 z-[9999] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
         <div className="flex items-center flex-shrink-0 text-black mr-6 cursor-pointer lg:min-w-[170px]">
           <Image
