@@ -31,8 +31,8 @@ const Navbar = (props) => {
   ));
 
   return (
-    <div className="relative h-[100vh]">
-      <nav className="h-[100px] absolute top-0 left-0 right-0 translate-y-[-100%] z-[9999] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
+    <div className="relative h-[100vh] w-[100wv] ">
+      <nav className="h-[100px] absolute top-0 left-0 right-0 z-[9999] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
         <div className="flex items-center flex-shrink-0 text-black mr-6 cursor-pointer lg:min-w-[170px]">
           <Image
             src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`}
@@ -160,8 +160,8 @@ const Navbar = (props) => {
         )}
       </nav>
 
-      <div className="mt-[100px] h-[calc(100vh-100px)] overflow-auto">
-        <div className="w-[100wv] min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-120px)]">{props.children}</div>
+      <div className="absolute top-[100px] left-0 right-0 h-[calc(100vh-100px)] overflow-auto">
+        <div className="min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-120px)]">{props.children}</div>
         <Footer />
       </div>
     </div>

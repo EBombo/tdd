@@ -8,7 +8,6 @@ import { Button } from "../../components/form";
 import { Image } from "../../components/common/Image";
 import { PreviewCarousel } from "./PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
-import { Sponsors } from "./Sponsors";
 import { ContactForm } from "./ContactForm";
 import orderBy from "lodash/orderBy";
 
@@ -31,13 +30,6 @@ const news = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
-];
-
-const sponsors = [
-  { imageUrl: `${config.storageUrl}/resources/sponsors/adidas.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/bbva.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/puma.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/cisco.svg` },
 ];
 
 export const Home = (props) => {
@@ -120,14 +112,6 @@ export const Home = (props) => {
           <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Noticias de Interés</div>
 
           <NewsCarousel items={news} />
-        </div>
-      </div>
-
-      <div className="bg-white py-4 mb-32">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Auspiciadores</div>
-
-          <Sponsors items={sponsors} />
         </div>
       </div>
 
