@@ -1,1 +1,1 @@
-export const defaultCost = 95;
+exports.defaultCost = 95;
