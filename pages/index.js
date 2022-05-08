@@ -7,7 +7,7 @@ const Init = (props) => (
   <>
     <SEOMeta {...props} />
     <Navbar>
-      <Home/>
+      <Home {...props} />
     </Navbar>
   </>
 );

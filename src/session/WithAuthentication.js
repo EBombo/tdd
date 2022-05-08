@@ -1,7 +1,7 @@
-import React, {useEffect, useGlobal, useRef} from "reactn";
-import {authEvents, firestoreEvents} from "../firebase";
-import {useAuth} from "../hooks/useAuth";
-import {useUser} from "../hooks";
+import React, { useEffect, useGlobal, useRef } from "reactn";
+import { auth, firestore } from "../firebase";
+import { useAuth } from "../hooks/useAuth";
+import { useUser } from "../hooks";
 
 export const WithAuthentication = (props) => {
   const { createAccount } = useAuth();
@@ -14,7 +14,7 @@ export const WithAuthentication = (props) => {
 
   useEffect(() => {
     const fetchAuthUser = (user) =>
-      (unSubScribeAuthUser.current = firestoreEvents
+      (unSubScribeAuthUser.current = firestore
         .collection("users")
         .doc(user.uid)
         .onSnapshot(async (onSnapShotUser) => {
@@ -26,7 +26,7 @@ export const WithAuthentication = (props) => {
           await setIsLoadingCreateUser(false);
         }));
 
-    const unsubscribeAuthStateChanged = authEvents.onAuthStateChanged(async (user) => {
+    const unsubscribeAuthStateChanged = auth.onAuthStateChanged(async (user) => {
       if (!user) unSubScribeAuthUser.current && unSubScribeAuthUser.current();
 
       if (isLoadingCreateUser || !user) return;
@@ -40,7 +40,7 @@ export const WithAuthentication = (props) => {
 
   useEffect(() => {
     const afterRedirect = async () => {
-      const result = await authEvents.getRedirectResult();
+      const result = await auth.getRedirectResult();
 
       if (!result.user || !result?.additionalUserInfo?.isNewUser) {
         await setIsLoadingUser(false);

@@ -1,13 +1,21 @@
-import React, {setGlobal, useEffect, useGlobal, useState} from "reactn";
-import {collectionToDate, useEnvironment, useLanguageCode, useLocation, useSettings, useUser} from "../hooks";
-import {config, firestore, version} from "../firebase";
+import React, { setGlobal, useEffect, useGlobal, useState } from "reactn";
+import {
+  collectionToDate,
+  useDeadline,
+  useEnvironment,
+  useLanguageCode,
+  useLocation,
+  useSettings,
+  useUser,
+} from "../hooks";
+import { config, firestore, version } from "../firebase";
 import get from "lodash/get";
-import {darkTheme, lightTheme} from "../theme";
+import { darkTheme, lightTheme } from "../theme";
 import moment from "moment";
-import {setLocale} from "yup";
-import {yup} from "../config";
-import {register} from "next-offline/runtime";
-import {spinLoader} from "../components/common/loader";
+import { setLocale } from "yup";
+import { yup } from "../config";
+import { register } from "next-offline/runtime";
+import { spinLoader } from "../components/common/loader";
 import dynamic from "next/dynamic";
 
 const UpdateVersion = dynamic(() => import("../components/versions/UpdateVersion"), {
@@ -16,13 +24,15 @@ const UpdateVersion = dynamic(() => import("../components/versions/UpdateVersion
 
 export const WithConfiguration = (props) => {
   const [authUser] = useGlobal("user");
+  const [, setDeadline] = useGlobal("deadline");
   const [settings, setSettings] = useGlobal("settings");
   const [, setIsVisibleLoginModal] = useGlobal("isVisibleLoginModal");
 
   const [authUserLS] = useUser();
   const [location] = useLocation();
   const [languageCode] = useLanguageCode();
-  const [environment, setEnvironment] = useEnvironment();
+  const [, setEnvironment] = useEnvironment();
+  const [deadlineLS, setDeadlineLS] = useDeadline();
   const [settingsLS, setSettingsLocalStorage] = useSettings();
 
   const [isLoadingConfig, setIsLoadingConfig] = useState(true);
@@ -34,18 +44,17 @@ export const WithConfiguration = (props) => {
       setEnvironment(config.firebase.projectId);
 
       await setGlobal({
-        user: authUserLS ? collectionToDate(authUserLS) : { id: firestore.collection("users").doc().id },
+        user: authUserLS ? collectionToDate(authUserLS) : null,
         settings: collectionToDate({ ...settingsLS, version }),
+        deadline: deadlineLS ? new Date(deadlineLS) : deadlineLS,
         location,
         audios: [],
         languageCode,
         ping: null,
-
         isAutomatic: false,
-
         register: null,
-        isLoadingUser: true,
-        isLoadingCreateUser: true,
+        isLoadingUser: false,
+        isLoadingCreateUser: false,
         isVisibleLoginModal: false,
         isVisibleForgotPassword: false,
         openRightDrawer: false,
@@ -77,8 +86,21 @@ export const WithConfiguration = (props) => {
         pageLoaded = true;
       });
 
+    const fetchCountdowm = async () => {
+      const landingSettingsQuery = await firestore.doc("settings/landing").get();
+
+      const landingSettings = landingSettingsQuery.data();
+
+      const countdownDate = landingSettings?.countdown?.toDate() ?? new Date();
+
+      setDeadline(countdownDate);
+      setDeadlineLS(countdownDate);
+    };
+
     initializeConfig();
+    fetchCountdowm();
     const unsubscribeVersion = fetchVersion();
+
     setIsLoadingConfig(false);
 
     return () => unsubscribeVersion();

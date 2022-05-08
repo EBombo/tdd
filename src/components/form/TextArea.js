@@ -1,6 +1,6 @@
-import React, {forwardRef} from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
-import {sizes} from "../../constants";
+import { sizes } from "../../constants";
 
 export const TextArea = forwardRef((props, ref) => (
   <InputContainer marginBottom={props.marginBottom}>
@@ -51,9 +51,9 @@ const InputWrapper = styled.div`
 `;
 
 const StyledInput = styled.textarea`
-  background: ${(props) => (props.background ? props.background : "transparent")};
-  color: ${(props) => (props.color ? props.color : "white")};
-  border: ${(props) => (props.border ? props.border : `1px solid ${props.theme.basic.primary}`)};
+  background: ${(props) => props.background ?? props.theme.basic.whiteLight};
+  color: ${(props) => props.theme.basic.blackDarken};
+  border: ${(props) => (props.border ? props.border : `1px solid ${props.theme.basic.grayLighten}`)};
   ${(props) =>
     !props.addonBefore &&
     `

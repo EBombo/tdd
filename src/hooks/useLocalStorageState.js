@@ -1,4 +1,4 @@
-import {createLocalStorageStateHook} from "use-local-storage-state";
+import { createLocalStorageStateHook } from "use-local-storage-state";
 import defaultTo from "lodash/defaultTo";
 import get from "lodash/get";
 import isArray from "lodash/isArray";
@@ -8,6 +8,8 @@ import mapValues from "lodash/mapValues";
 import firebase from "firebase";
 
 export const useUser = createLocalStorageStateHook("user", null);
+
+export const useDeadline = createLocalStorageStateHook("deadline", null);
 
 export const useSettings = createLocalStorageStateHook("settings", {});
 

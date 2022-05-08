@@ -1,19 +1,21 @@
-const {getUserToken, getVerifyCode, getResendVerifyCode, getSendEmail} = require("./users/get");
-const {postError, getError} = require("./errors");
-const {postUser} = require("./users/post");
+const { getUserToken, getVerifyCode, getResendVerifyCode, getSendEmail } = require("./users/get");
+const { postError, getError } = require("./errors");
+const { postUser, postPayment } = require("./users/post");
+const { postContact } = require("./contact/post");
 const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
-const {getManifest} = require("./manifests/get");
+const { getManifest } = require("./manifests/get");
+const { postValidateCoupon } = require("./coupons");
 
 const api = express();
 const router = express.Router();
 
-router.use(cors({origin: "*"}));
+router.use(cors({ origin: "*" }));
 
 router.use(bodyParser.json());
 
-router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", async (req, res) => res.send("Hello!"));
 
@@ -27,6 +29,12 @@ router.get("/verify/:userId/resend-code", getResendVerifyCode);
 
 router.get("/verify/:userId/verification-code/:verificationCode", getVerifyCode);
 
+router.post("/users/:userId/payment", postPayment);
+
+//------------------------contact------------------------
+
+router.post("/contact", postContact);
+
 //------------------------send email------------------------
 
 router.get("/templates/:templateId/emails/:emailId", getSendEmail);
@@ -35,12 +43,16 @@ router.get("/templates/:templateId/emails/:emailId", getSendEmail);
 
 router.get("/manifest", getManifest);
 
-//------------------------error------------------------
-
 router.get("/error-vanilla", getError);
 
 router.post("/error-boundary", postError);
 
-api.use("/api", router);
+//------------------------error------------------------
 
-module.exports = {api};
+router.post("/coupons/:couponCode/validate", postValidateCoupon);
+
+//------------------------coupons------------------------
+
+api.use("/", router);
+
+module.exports = { api };

@@ -1,9 +1,9 @@
-import React, {forwardRef, useEffect, useState} from "reactn";
+import React, { forwardRef, useEffect, useState } from "reactn";
 import styled from "styled-components";
-import {sizes} from "../../constants";
-import {EyeInvisibleOutlined, EyeOutlined, SearchOutlined} from "@ant-design/icons";
-import {config} from "../../firebase";
-import {Image} from "../common/Image";
+import { sizes } from "../../constants";
+import { EyeInvisibleOutlined, EyeOutlined, SearchOutlined } from "@ant-design/icons";
+import { config } from "../../firebase";
+import { Image } from "../common/Image";
 
 export const Input = forwardRef((props, ref) => {
   const [hide, setHide] = useState(false);
@@ -28,6 +28,7 @@ export const Input = forwardRef((props, ref) => {
           type={inputType()}
           className={`ant-input ${props.className}`}
         />
+
         {props.type === "password" && (
           <>
             {hide ? (
@@ -37,8 +38,10 @@ export const Input = forwardRef((props, ref) => {
             )}
           </>
         )}
+
         {props.type === "search" && <SearchOutlinedCss onClick={() => props.onPressEnter()} />}
       </InputWrapper>
+
       {props.error && (
         <Error>
           <Image src={`${config.storageUrl}/resources/error.svg`} height="11px" width="11px" margin="0 5px 0 0" />
@@ -100,7 +103,7 @@ const StyledInput = styled.input`
   height: ${(props) => props.height ?? "36px"};
   border: ${(props) => props.border ?? `1px solid ${props.theme.basic.grayLighten}`};
   box-sizing: border-box;
-  border-radius: 4px !important;
+  border-radius: ${(props) => props.radius ?? "4px !important"};
   background: ${(props) => props.background ?? props.theme.basic.whiteLight};
   color: ${(props) => props.theme.basic.blackDarken};
 

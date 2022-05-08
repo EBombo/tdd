@@ -1,4 +1,4 @@
-import React, { useEffect } from "reactn";
+import React, { useEffect, useGlobal } from "reactn";
 import { Anchor, Button, Input } from "../../components/form";
 import { useForm } from "react-hook-form";
 import Countdown from "../../components/Countdown";
@@ -11,9 +11,20 @@ export const Login = (props) => {
 
   const { signIn } = useAuth();
 
+  const [authUser] = useGlobal("user");
+  const [isLoadingUser] = useGlobal("isLoadingUser");
+  const [isLoadingCreateUser] = useGlobal("isLoadingCreateUser");
+
   useEffect(() => {
+    if (router.isReady) return;
+    router.prefetch("/buy-tickets");
     router.prefetch("/register");
   }, []);
+
+  useEffect(() => {
+    //TODO: DEFINIR A DONDE SE REDIRIGE AL USUARIO LUEGO DEL INICIAR SESION
+    if (authUser) router.push("/");
+  }, [authUser]);
 
   const schema = object().shape({
     email: string().required().email(),
@@ -27,7 +38,7 @@ export const Login = (props) => {
 
   return (
     <div>
-      <div className="w-full bg-landing bg-no-repeat bg-cover h-[calc(100vh-50px)] p-4 justify-center md:p-8 md:flex md:justify-end">
+      <div className="w-full bg-landing bg-no-repeat bg-cover h-full p-4 justify-center md:p-8 md:min-h-[calc(100vh-100px)] md:flex md:items-center md:justify-end">
         <form
           className="max-w-[500px] bg-white/[.60] h-[fit-content] rounded-[10px] p-4"
           onSubmit={handleSubmit(signIn)}
@@ -66,7 +77,13 @@ export const Login = (props) => {
               </Anchor>
             </span>
           </div>
-          <Button primary margin="my-4" htmlType="submit">
+          <Button
+            primary
+            margin="my-4"
+            htmlType="submit"
+            loading={isLoadingUser}
+            disabled={isLoadingUser || isLoadingCreateUser}
+          >
             Ingresar
           </Button>
 
@@ -74,7 +91,8 @@ export const Login = (props) => {
             <div className="text-['Encode Sans'] text-blackDarken font-[400] text-[16px] leading-[20px]">
               Si aún no tienes tu entrada para la feria ¡Estás atiempo para conseguirla!
             </div>
-            <Button primary margin="my-4" onClick={() => router.push("/register")}>
+
+            <Button primary margin="my-4" onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
               Adquirir entrada
             </Button>
           </div>
