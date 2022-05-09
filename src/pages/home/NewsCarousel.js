@@ -19,7 +19,9 @@ export const NewsCarousel = ({ items, ...props }) => {
   }, [currentIndex]);
 
   const selectIndex = (i) => {
-    setCurrentIndex(i);
+    // TODO refactor logic of dots navigation
+    const desktopViewSize = 3;
+    setCurrentIndex(i < (size / 2) ? 0 : size - desktopViewSize);
   };
 
   const NewsCard = React.memo(({ newItem }) => (
@@ -43,18 +45,33 @@ export const NewsCarousel = ({ items, ...props }) => {
 
   const Dots = React.memo(({ items, currentIndex }) => (
     <>
-      {items.map((_, i) => {
-        const isVisible =
-          currentIndex % size === i || (currentIndex + 1) % size === i || (currentIndex + 2) % size === i;
+      <div className="hidden lg:inline-block lg:flex">
+        {items.map((_, i) => {
+          const isVisible =
+            currentIndex % size === i || (currentIndex + 1) % size === i || (currentIndex + 2) % size === i;
 
-        return (
-          <div
-            className={`cursor-pointer w-4 h-4 mx-2 rounded-[50%] ${isVisible ? "bg-pink-500" : "bg-gray"}`}
-            onClick={() => selectIndex(i)}
-            key={i}
-          />
-        );
-      })}
+          return (
+            <div
+              className={`cursor-pointer w-4 h-4 mx-2 rounded-[50%] ${isVisible ? "bg-pink-500" : "bg-gray"}`}
+              onClick={() => !isVisible && selectIndex(i)}
+              key={i}
+            />
+          );
+        })}
+      </div>
+      <div className="flex lg:hidden">
+        {items.map((_, i) => {
+          const isVisible = currentIndex % size === i;
+
+          return (
+            <div
+              className={`cursor-pointer w-4 h-4 mx-2 rounded-[50%] ${isVisible ? "bg-pink-500" : "bg-gray"}`}
+              onClick={() => !isVisible && setCurrentIndex(i)}
+              key={i}
+            />
+          );
+        })}
+      </div>
     </>
   ));
 
