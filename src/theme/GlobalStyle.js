@@ -154,7 +154,6 @@ export const GlobalStyle = createGlobalStyle`
   /*-------------- NOTIFICATIONS ANT---------------*/
   .ant-message {
     z-index: 999999;
-    margin-top: 100px;
 
     .ant-message-notice-content {
       background: ${(props) => props.theme.basic.blackDarken};
