@@ -11,16 +11,16 @@ const Footer = (props) => {
         TRANSFORMACIÓN DIGITAL PARA EL DESARROLLO
       </div>
       <div className="flex justify-center gap-4">
-        <Anchor url="/">
+        <Anchor url="https://www.facebook.com/tdduni" target="_blank">
           <Image src={`${config.storageUrl}/resources/facebook-gray.svg`} />
         </Anchor>
-        <Anchor url="/">
+        <Anchor url="https://www.instagram.com/tdduni/" target="_blank">
           <Image src={`${config.storageUrl}/resources/instagram-gray.svg`} />
         </Anchor>
-        <Anchor url="/">
+        <Anchor url="https://www.linkedin.com/company/tdduni" target="_blank">
           <Image src={`${config.storageUrl}/resources/linkedin-gray.svg`} />
         </Anchor>
-        <Anchor url="/">
+        <Anchor url="https://twitter.com/tdduni" target="_blank">
           <Image src={`${config.storageUrl}/resources/twitter-gray.svg`} />
         </Anchor>
       </div>
