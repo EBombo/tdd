@@ -38,12 +38,16 @@ export const NewsCarousel = ({ items, ...props }) => {
   const Dots = React.memo(({ items, currentIndex }) => (
     <>
       {items.map((_, i) => {
-
-        const isVisible = (currentIndex % size) === i || ((currentIndex + 1) % size) === i || ((currentIndex + 2) % size) === i;
+        const isVisible =
+          currentIndex % size === i || (currentIndex + 1) % size === i || (currentIndex + 2) % size === i;
 
         return (
-          <div className={`cursor-pointer w-4 h-4 mx-2 rounded-[50%] ${isVisible ? "bg-pink-500" : "bg-gray"}`} onClick={() => selectIndex(i)} key={i} />
-        )
+          <div
+            className={`cursor-pointer w-4 h-4 mx-2 rounded-[50%] ${isVisible ? "bg-pink-500" : "bg-gray"}`}
+            onClick={() => selectIndex(i)}
+            key={i}
+          />
+        );
       })}
     </>
   ));

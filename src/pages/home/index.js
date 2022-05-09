@@ -36,7 +36,6 @@ const news = [
     description:
       "El cambio acelerado mundial motivado principalmente por el crecimiento exponencial de las Tecnologías Digitales TD está presente en nuestra sociedad desde hace ya algunos años, pero se ha hecho más evidente con la pandemia del COVID.",
   },
-
 ];
 
 export const Home = (props) => {
