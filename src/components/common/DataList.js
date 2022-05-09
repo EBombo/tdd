@@ -280,7 +280,7 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/juan-miranda.jpg`,
         subtitle: "Aplicaciones de Block Chain",
         linkedin: "https://www.linkedin.com/in/jjmiranda/",
-        country: "spain",
+        country: "peru",
       },
       {
         name: "Benito Juárez",
@@ -321,10 +321,10 @@ export const timelineBlocks = [
 export const sponsorsLists = [
   { imageUrl: `${config.storageUrl}/resources/sponsors/utp.svg` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/zytrust.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/adidas.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/bbva.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/puma.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/cisco.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
 ];
 
 export const accountStates = {
