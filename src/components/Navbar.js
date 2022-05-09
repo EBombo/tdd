@@ -95,6 +95,16 @@ const Navbar = (props) => {
               </span>
               <span className={path === "/exhibitors" && "text-pink-500"}>Expositores</span>
             </LeftAnchor>
+            <LeftAnchor url="/content">
+              <span className="mx-2">
+                {path === "/content" ? (
+                  <Image className="inline-block" width="18px" src={`${config.storageUrl}/resources/film-pink.svg`} />
+                ) : (
+                  <Image className="inline-block" width="18px" src={`${config.storageUrl}/resources/film.svg`} />
+                )}
+              </span>
+              <span className={path === "/content" && "text-pink-500"}>Contenido</span>
+            </LeftAnchor>
           </div>
 
           <div>
