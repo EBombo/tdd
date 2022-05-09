@@ -8,19 +8,31 @@ import { Anchor } from "../../components/form";
 export const Timeline = (props) => {
   return (
     <div>
-      <div className="w-full bg-timeline bg-no-repeat bg-center bg-cover max-h-[115px] h-[30vh] md:max-h-[368px] p-4 md:p-8 relative">
-        <div className="p-8 md:px-12 md:py-8 bg-white/[.60] absolute top-[50%] left-0 translate-y-[-50%] flex gap-[10px]">
-          <Image
-            src={`${config.storageUrl}/resources/calendar.svg`}
-            height="23px"
-            width="23px"
-            desktopHeight="45px"
-            desktopWidth="45px"
-            size="contain"
-            margin="0"
-          />
-          <div className="text-['Encode Sans'] text-blackDarken text-[20px] font-[800] leading-[25px]  md:text-[40px] md:leading-[44px] uppercase">
-            Programa
+      <div className="w-full bg-exhibitors bg-no-repeat bg-center bg-cover max-h-[240px] h-[40vh] md:max-h-[368px] py-4 md:py-8 relative">
+        <div className="grid lg:grid-cols-[auto_300px] gap-4">
+          <div className="grid gap-4">
+            <div className="text-blackDarken text-[20px] font-[800] leading-[25px] lg:text-[36px] lg:leading-[44px] uppercase bg-white/[.60]">
+              <span className="pl-4 py-4 inline-block">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</span>
+            </div>
+
+            <div className="py-4 lg:pr-12 lg:py-4 flex gap-[10px] text-[24px] uppercase font-bold">
+              <span className="bg-white/[.60] pl-4 py-4">
+                <Image
+                  className="inline-block"
+                  src={`${config.storageUrl}/resources/calendar.svg`}
+                  height="24px"
+                  width="24px"
+                  desktopHeight="32px"
+                  desktopWidth="32px"
+                  size="contain"
+                  margin="0"
+                />
+                <span className="align-top px-2">Programa</span>
+              </span>
+            </div>
+          </div>
+          <div className="bg-white/[.60] hidden lg:block">
+            <Image src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} width="80%" />
           </div>
         </div>
       </div>
