@@ -12,12 +12,12 @@ const fetchUser = async (userId) => {
 };
 
 const updateUser = async (userId, user) => {
-  const _userBefore = fetchUser(userId);
+  const _userBefore = await fetchUser(userId);
   logger.log(_userBefore);
 
   await firestore.doc(`users/${userId}`).set(user, { merge: true });
 
-  const _userAfter = fetchUser(userId);
+  const _userAfter = await fetchUser(userId);
   logger.log(_userAfter);
 };
 

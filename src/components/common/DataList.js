@@ -280,7 +280,7 @@ export const timelineBlocks = [
         imageUrl: `${config.storageUrl}/resources/exhibitors/juan-miranda.jpg`,
         subtitle: "Aplicaciones de Block Chain",
         linkedin: "https://www.linkedin.com/in/jjmiranda/",
-        country: "spain",
+        country: "peru",
       },
       {
         name: "Benito Juárez",
@@ -319,12 +319,14 @@ export const timelineBlocks = [
 ];
 
 export const sponsorsLists = [
+  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
+
   { imageUrl: `${config.storageUrl}/resources/sponsors/utp.svg` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/zytrust.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/adidas.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/bbva.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/puma.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/cisco.svg` },
+
+  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
 ];
 
 export const accountStates = {
@@ -352,3 +354,26 @@ export const verifiedState = {
     text: "Verificar",
   },
 };
+
+export const videos = [
+  {
+    title: "TDD TALK 09 Ciberseguridad Factor Clave en la Transformación Digital",
+    embedUrl: "https://www.youtube.com/embed/nV_0GHNWSyQ",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-1.jpg`,
+  },
+  {
+    title: "TDD TALK 08 Transformación Digital en la Educación Superior",
+    embedUrl: "https://www.youtube.com/embed/E08ziEsBc4w",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-2.jpg`,
+  },
+  {
+    title: "TDD PRESENTA 01 Desarrollo de la Red Dorsal y Redes Regionales",
+    embedUrl: "https://www.youtube.com/embed/TVuKGZ322_c",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-3.jpg`,
+  },
+  {
+    title: "TDD TALK 07 Retos para la Transformación Digital",
+    embedUrl: "https://www.youtube.com/embed/QeF8vplir6o",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-4.jpg`,
+  },
+];

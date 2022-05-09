@@ -37,7 +37,6 @@ const Countdown = React.memo(({ title = "Reserva la fecha", deadline, ...props }
 
   return (
     <div className="min-h-[50px] pt-20 pb-12 bg-white">
-
       <div className="bg-white py-4 mb-12">
         <div className="mx-auto max-w-[1200px]">
           <div className="text-center text-xl lg:text-3xl font-bold pt-4 mb-16">Coorganizadores</div>
