@@ -73,7 +73,6 @@ export const Home = (props) => {
               <Image className="inline-block" src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} />
             </div>
           </div>
-
         </div>
       </div>
 
