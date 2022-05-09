@@ -107,13 +107,15 @@ export const CouponForm = (props) => {
       .where("code", "==", data.code)
       .get();
 
-    const coupons = snapshotToArray(couponsQuery).filter((coupon) =>
-      moment(get(coupon, "expireAt", moment()).toDate()).isAfter(moment(data.activeSince))
-    );
+    const coupons = snapshotToArray(couponsQuery).filter((coupon) => {
+      const expireAt = moment(get(coupon, "expireAt", moment()).toDate());
+      const dateActive = moment(data.activeSince);
+      return expireAt.isAfter(dateActive);
+    });
 
     if (isEmpty(coupons)) return { ok: true };
 
-    return { ok: false, error: "Ya existe un coupon con este nombre" };
+    return { ok: false, error: "Ya existe un coupon con este nombre para la fecha" };
   };
 
   return (
