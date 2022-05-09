@@ -3,11 +3,13 @@ import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/router";
 import get from "lodash/get";
 import { object, string, number, date } from "yup";
-import { useSendError } from "../../../hooks";
-import { firestore } from "../../../firebase";
-import { Input, Button, DatePicker } from "../../../components/form";
+import { useSendError } from "../../../../hooks";
+import { firestore } from "../../../../firebase";
+import { Input, Button, DatePicker } from "../../../../components/form";
 import moment from "moment";
-import { useAcl } from "../../../hooks/acl";
+import { useAcl } from "../../../../hooks/acl";
+import { snapshotToArray } from "../../../../utils";
+import isEmpty from "lodash/isEmpty";
 
 const COUPONS_COLLECTION = "coupons";
 
@@ -72,9 +74,13 @@ export const CouponForm = (props) => {
 
   const createCoupon = async (data) => {
     try {
+      const validation = await validateCoupon(data);
+
+      if (!validation.ok) return props.showNotification("Error", validation.error);
+
       const discountFactor = data.discountFactor / 100;
 
-      firestore.doc(`${COUPONS_COLLECTION}/${documentId}`).set(
+      await firestore.doc(`${COUPONS_COLLECTION}/${documentId}`).set(
         {
           ...data,
           createAt: isNew ? new Date() : currentCoupon?.createAt?.toDate(),
@@ -92,6 +98,24 @@ export const CouponForm = (props) => {
       sendError("Error", e.toString());
       props.showNotification(`Error ${e.toString()}`);
     }
+  };
+
+  const validateCoupon = async (data) => {
+    const couponsQuery = await firestore
+      .collection("coupons")
+      .where("deleted", "==", false)
+      .where("code", "==", data.code)
+      .get();
+
+    const coupons = snapshotToArray(couponsQuery).filter((coupon) => {
+      const expireAt = moment(get(coupon, "expireAt", moment()).toDate());
+      const dateActive = moment(data.activeSince);
+      return expireAt.isAfter(dateActive);
+    });
+
+    if (isEmpty(coupons)) return { ok: true };
+
+    return { ok: false, error: "Ya existe un coupon con este nombre para la fecha" };
   };
 
   return (
