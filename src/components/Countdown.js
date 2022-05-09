@@ -36,15 +36,15 @@ const Countdown = React.memo(({ title = "Reserva la fecha", deadline, ...props }
   }, [days, hours, minutes, seconds]);
 
   return (
-    <div className="min-h-[50px] pt-20 pb-12 bg-white">
+    <div className="min-h-[50px] pt-12 md:pt-20 pb-12 bg-white">
       <div className="bg-white py-4 mb-12">
         <div className="mx-auto max-w-[1200px]">
-          <div className="text-center text-xl lg:text-3xl font-bold pt-4 mb-16">Coorganizadores</div>
+          <div className="text-center text-xl lg:text-3xl font-bold pt-4 mb-8 md:mb-16">Coorganizadores</div>
           <Sponsors items={sponsorsLists} />
         </div>
       </div>
 
-      <div className="text-center text-xl lg:text-3xl font-bold mb-16">{title}</div>
+      <div className="text-center text-xl lg:text-3xl font-bold pt-4 mb-8 md:mb-16">{title}</div>
       {displayContent}
     </div>
   );
