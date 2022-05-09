@@ -47,6 +47,7 @@ module.exports = {
         timeline: `url('${config.storageUrl}/resources/timeline-cover.svg')`,
         exhibitors: `url('${config.storageUrl}/resources/exhibitors-cover.svg')`,
         index: `url('${config.storageUrl}/resources/index-bg-img.jpg')`,
+        content: `url('${config.storageUrl}/resources/content-bg-img.jpg')`,
       }),
       boxShadow: {
         navbar: "0px 4px 4px 0px #00000012",
