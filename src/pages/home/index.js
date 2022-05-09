@@ -13,23 +13,30 @@ import orderBy from "lodash/orderBy";
 
 const news = [
   {
-    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
-    title: "Transformación digital",
+    imageUrl: `${config.storageUrl}/resources/news-1.jpg`,
+    title: "Por un Perú Digital",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Más de 30 organizaciones civiles, académicas y empresariales hacemos un llamado para priorizar acciones específicas de una agenda digital que permita construir un Perú digital como eje fundamental de la agenda pública en cumplimiento de la Politica 35 del Acuerdo Nacional.",
   },
   {
-    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
-    title: "Transformación digital",
+    imageUrl: `${config.storageUrl}/resources/news-2.jpg`,
+    title: "Red Dorsal Nacional de Fibra Óptica",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "COMUNICADO TDD-COM-2021-02 Propuesta base para la gestión y operación de la Red Dorsal Nacional de Fibra Óptica y las Redes Regionales de Fibra Óptica La conectividad es una de las bases para un auténtico desarrollo con inclusión.",
   },
   {
-    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
-    title: "Transformación digital",
+    imageUrl: `${config.storageUrl}/resources/news-3.jpg`,
+    title: "Transformación Digital del Perú con Inclusión",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "La pandemia del COVID ha puesto en evidencia las carencias estructurales de nuestro país, pero además ha revelado la profunda BRECHA DIGITAL en nuestra sociedad, la cual es una consecuencia del proceso global de Transformación Digital que afecta las actividades económicas, sociales, e incluso políticas de todos los países.",
   },
+  {
+    imageUrl: `${config.storageUrl}/resources/news-4.jpg`,
+    title: "Lineamientos para la Transformación Digital del Perú",
+    description:
+      "El cambio acelerado mundial motivado principalmente por el crecimiento exponencial de las Tecnologías Digitales TD está presente en nuestra sociedad desde hace ya algunos años, pero se ha hecho más evidente con la pandemia del COVID.",
+  },
+
 ];
 
 export const Home = (props) => {
