@@ -128,8 +128,7 @@ export const timelineBlocks = [
       {
         name: "Raul Katz",
         title:
-          "President Telecom Advisory Services LLC, Director Business" +
-          "Strategy Research Columbia Institute for tele-Information",
+          "President Telecom Advisory Services LLC, Director Business Strategy Research Columbia Institute for tele-Information",
         imageUrl: `${config.storageUrl}/resources/exhibitors/raul-katz.jpg`,
         subtitle: "Política Públicas para impulsar la TD del país",
         linkedin: "https://www.linkedin.com/in/raul-katz-b160687/",
@@ -137,7 +136,7 @@ export const timelineBlocks = [
       },
       {
         name: "Julio Porcel",
-        title: "Past President TDD",
+        title: "Past President TDD, Coordinador del Componente 1 Proyecto BID para la mejora de las Compras Públicas del Perú",
         imageUrl: `${config.storageUrl}/resources/exhibitors/julio-porcel.jpg`,
         subtitle: "Panorama Digital del Perú",
         linkedin: "https://www.linkedin.com/in/julio-porcel-b931b135/",
@@ -230,13 +229,6 @@ export const timelineBlocks = [
     colorName: "orange",
     description:
       "El enfoque digital ha trasformado completamente la forma de relacionarse con los consumidores y las exigencias de estos, esto obliga a las organizaciones a tomar decisiones estratégicas y operativas sustentadas en tecnología para ponerlas al servicio del consumidor.",
-    commentators: [
-      {
-        name: "Carlos Armando de la Flor",
-        title: "CoFundador y CEO María Almenara",
-        linkedin: "https://www.linkedin.com/in/cadelaflor/",
-      },
-    ],
     exhibitors: [
       {
         name: "Ignacio Couto",
@@ -262,6 +254,14 @@ export const timelineBlocks = [
         linkedin: "https://www.linkedin.com/in/guillermo-rodr%C3%ADguez-abitia-363b5b4/",
         country: "italy",
       },
+      {
+        name: "Carlos Armando de la Flor",
+        title: "CoFundador y CEO María Almenara",
+        linkedin: "https://www.linkedin.com/in/cadelaflor/",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-armando.jpg`,
+        subtitle: "Caso María Almenara",
+        country: "peru"
+      },
     ],
   },
   {
@@ -269,7 +269,7 @@ export const timelineBlocks = [
     date: "Sábado 11",
     title: "TECNOLOGÍAS DIGITALES Y SU APLICACIÓN",
     color: "#00AEEF",
-    colorName: "skyblue",
+    colorName: "skyBlue",
     description:
       "Las Tecnologías Digitales son las impulsoras de la transformación y su entendimiento y dominio es imprescindible. La mejor forma para absorber estas tecnologías es utilizarlas en aplicaciones específicas en las cuales se pueda desarrollar la experiencia de uso y aprendizaje, así como la prueba del valor que estas tecnologías ofrecen.",
     exhibitors: [
@@ -292,7 +292,7 @@ export const timelineBlocks = [
       },
       {
         name: "Rosa Delgado",
-        title: "IPv6 Council Perú",
+        title: "Presidente IPv6 Council Perú, Emeritus Trustee Internet Society (ISOC)",
         imageUrl: `${config.storageUrl}/resources/exhibitors/rosa-delgado.jpg`,
         subtitle: "El Internet Industrial de las Cosas IIoT",
         linkedin: "https://www.linkedin.com/in/rosa-maria-delgado-024304/",
