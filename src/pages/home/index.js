@@ -17,24 +17,28 @@ const news = [
     title: "Por un Perú Digital",
     description:
       "Más de 30 organizaciones civiles, académicas y empresariales hacemos un llamado para priorizar acciones específicas de una agenda digital que permita construir un Perú digital como eje fundamental de la agenda pública en cumplimiento de la Politica 35 del Acuerdo Nacional.",
+    url: "https://www.tdduni.org/por-un-peru-digital/",
   },
   {
     imageUrl: `${config.storageUrl}/resources/news-2.jpg`,
     title: "Red Dorsal Nacional de Fibra Óptica",
     description:
       "COMUNICADO TDD-COM-2021-02 Propuesta base para la gestión y operación de la Red Dorsal Nacional de Fibra Óptica y las Redes Regionales de Fibra Óptica La conectividad es una de las bases para un auténtico desarrollo con inclusión.",
+    url: "https://www.tdduni.org/red-dorsal-nacional-de-fibra-optica-y-las-redes-regionales/",
   },
   {
     imageUrl: `${config.storageUrl}/resources/news-3.jpg`,
     title: "Transformación Digital del Perú con Inclusión",
     description:
       "La pandemia del COVID ha puesto en evidencia las carencias estructurales de nuestro país, pero además ha revelado la profunda BRECHA DIGITAL en nuestra sociedad, la cual es una consecuencia del proceso global de Transformación Digital que afecta las actividades económicas, sociales, e incluso políticas de todos los países.",
+    url: "https://www.tdduni.org/transformacion-digital-del-peru-para-el-desarrollo-con-inclusion/",
   },
   {
     imageUrl: `${config.storageUrl}/resources/news-4.jpg`,
     title: "Lineamientos para la Transformación Digital del Perú",
     description:
       "El cambio acelerado mundial motivado principalmente por el crecimiento exponencial de las Tecnologías Digitales TD está presente en nuestra sociedad desde hace ya algunos años, pero se ha hecho más evidente con la pandemia del COVID.",
+    url: "https://www.tdduni.org/lineamientos/",
   },
 ];
 

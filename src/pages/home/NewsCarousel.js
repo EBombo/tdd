@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "reactn";
 import { Image } from "../../components/common/Image";
+import { Button } from "../../components/form";
 
 export const NewsCarousel = ({ items, ...props }) => {
   const size = items?.length || 0;
@@ -22,7 +23,7 @@ export const NewsCarousel = ({ items, ...props }) => {
   };
 
   const NewsCard = React.memo(({ newItem }) => (
-    <div className="relative h-full shadow-lg rounded-lg pb-8 pt-4">
+    <div className="relative h-full shadow-lg rounded-lg pb-16 pt-4">
       <div className="w-full">
         <div className="flex justify-center my-8">
           <Image className="inline-block" src={newItem?.imageUrl} width="214px" />
@@ -31,6 +32,9 @@ export const NewsCarousel = ({ items, ...props }) => {
       <div className="px-8 mb-8 text-center text-lg lg:text-xl font-bold">{newItem?.title}</div>
       <div className="px-8 text-base lg:text-lg">
         <p>{newItem?.description}</p>
+      </div>
+      <div className="px-8 text-base lg:text-lg text-center absolute bottom-2 left-0 right-0">
+        <Button primary onClick={() =>  window?.open(newItem?.url, "_blank")}>Leer más</Button>
       </div>
     </div>
   ));
