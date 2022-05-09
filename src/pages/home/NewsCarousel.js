@@ -34,7 +34,9 @@ export const NewsCarousel = ({ items, ...props }) => {
         <p>{newItem?.description}</p>
       </div>
       <div className="px-8 text-base lg:text-lg text-center absolute bottom-2 left-0 right-0">
-        <Button primary onClick={() =>  window?.open(newItem?.url, "_blank")}>Leer más</Button>
+        <Button primary onClick={() => window?.open(newItem?.url, "_blank")}>
+          Leer más
+        </Button>
       </div>
     </div>
   ));
