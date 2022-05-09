@@ -98,11 +98,7 @@ const Navbar = (props) => {
             <LeftAnchor url="/content">
               <span className="mx-2">
                 {path === "/content" ? (
-                  <Image
-                    className="inline-block"
-                    width="18px"
-                    src={`${config.storageUrl}/resources/film-pink.svg`}
-                  />
+                  <Image className="inline-block" width="18px" src={`${config.storageUrl}/resources/film-pink.svg`} />
                 ) : (
                   <Image className="inline-block" width="18px" src={`${config.storageUrl}/resources/film.svg`} />
                 )}
