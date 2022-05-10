@@ -1,12 +1,13 @@
-const { getUserToken, getVerifyCode, getResendVerifyCode, getSendEmail } = require("./users/get");
-const { postError, getError } = require("./errors");
-const { postUser, postPayment } = require("./users/post");
-const { postContact } = require("./contact/post");
-const bodyParser = require("body-parser");
-const express = require("express");
 const cors = require("cors");
+const express = require("express");
+const { getDate } = require("./date");
+const bodyParser = require("body-parser");
+const { postContact } = require("./contact/post");
 const { getManifest } = require("./manifests/get");
 const { postValidateCoupon } = require("./coupons");
+const { postError, getError } = require("./errors");
+const { postUser, postPayment } = require("./users/post");
+const { getUserToken, getVerifyCode, getResendVerifyCode, getSendEmail } = require("./users/get");
 
 const api = express();
 const router = express.Router();
@@ -50,6 +51,10 @@ router.post("/error-boundary", postError);
 //------------------------error------------------------
 
 router.post("/coupons/:couponCode/validate", postValidateCoupon);
+
+//------------------------coupons------------------------
+
+router.get("/get-server-date", getDate);
 
 //------------------------coupons------------------------
 

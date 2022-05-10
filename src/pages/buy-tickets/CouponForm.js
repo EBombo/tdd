@@ -27,7 +27,7 @@ export const CouponForm = (props) => {
 
       const url = `${config.serverUrl}/coupons/${couponCode}/validate`;
 
-      const { response, error } = await Fetch(url, "POST", { couponCode, userDate: new Date() });
+      const { response, error } = await Fetch(url, "POST", { couponCode });
 
       if (error) {
         props.showNotification("Error", error?.message ?? "Algo salio mal intentalo nuevamente");
