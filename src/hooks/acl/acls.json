@@ -6,6 +6,13 @@
       "/admin/settings/templates": "Edicion de templates"
     }
   },
+  "adminEmails": {
+    "label": "Gestion de emails",
+    "items": {
+      "/admin/emails": "Listado de emails",
+      "/admin/emails/[emailId]": "Vista previa del email"
+    }
+  },
   "adminUsers": {
     "label": "Gestión de usuarios",
     "items": {
