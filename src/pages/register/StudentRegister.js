@@ -1,13 +1,15 @@
 import React, { useGlobal } from "reactn";
 import { object, string } from "yup";
-import { useForm } from "react-hook-form";
-import { Button, Input } from "../../components/form";
+import { useForm, Controller } from "react-hook-form";
+import { Button, Input, Select } from "../../components/form";
+import { getData } from "country-list";
 
 export const StudentRegister = (props) => {
   const [isLoadingUser] = useGlobal("isLoadingUser");
   const [isLoadingCreateUser] = useGlobal("isLoadingCreateUser");
 
   const schema = object().shape({
+    countryCode: string().required(),
     name: string().required(),
     lastName: string().required(),
     documentId: string().required(),
@@ -21,7 +23,7 @@ export const StudentRegister = (props) => {
     reference: string(),
   });
 
-  const { register, errors, handleSubmit } = useForm({
+  const { register, errors, handleSubmit, control } = useForm({
     validationSchema: schema,
     reValidateMode: "onSubmit",
   });
@@ -100,6 +102,25 @@ export const StudentRegister = (props) => {
       </div>
 
       <div className="mb-4 grid gap-4 md:grid-cols-[repeat(2,1fr)] items-end">
+        <Controller
+          name="countryCode"
+          control={control}
+          as={
+            <Select
+              placeholder="Pais"
+              showSearch
+              virtual={false}
+              height="50px"
+              error={errors.countryCode}
+              optionFilterProp="children"
+              optionsdom={getData().map((country) => ({
+                key: country.code,
+                code: country.code,
+                name: country.name,
+              }))}
+            />
+          }
+        />
         <div className="flex flex-col items-end">
           <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
           <Input

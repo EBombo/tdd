@@ -40,17 +40,28 @@ const StyledSelect = styled(AntSelect)`
     font-size: ${sizes.font.small};
     height: auto !important;
     border-radius: 2px;
-    background: ${(props) => props.theme.basic.whiteLight};
+    background: ${(props) => props.background ?? props.theme.basic.whiteLight} !important;
+    ${(props) => props.height && `height: ${props.height} !important`};
 
     .ant-select-selection-item {
       display: flex;
       align-items: center;
       color: ${(props) => props.theme.basic.grayLight} !important;
     }
+
+    .ant-select-selection-search-input {
+      ${(props) => props.height && `height: ${props.height} !important;`}
+    }
+
+    .ant-select-selection-placeholder{
+      display: flex;
+      align-items: center;
+    }
   }
 
   .ant-select-arrow {
     color: ${(props) => props.theme.basic.grayLight} !important;
+    cursor: pointer !important;
 
     span {
       svg {
