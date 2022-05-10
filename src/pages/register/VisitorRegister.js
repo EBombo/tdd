@@ -1,6 +1,6 @@
 import React, { useGlobal } from "reactn";
 import { object, string } from "yup";
-import { useForm, Controller } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Button, Input, Select } from "../../components/form";
 import { getData } from "country-list";
 
@@ -81,9 +81,10 @@ export const VisitorRegister = (props) => {
         <Controller
           name="countryCode"
           control={control}
+          defaultValue={"PE"}
           as={
             <Select
-              placeholder="Pais"
+              placeholder="País"
               showSearch
               virtual={false}
               height="50px"
