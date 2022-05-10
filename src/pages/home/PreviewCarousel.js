@@ -113,7 +113,7 @@ export const PreviewCarousel = ({ items, ...props }) => {
               <span key={`${exhibitor.name}-${index}`}>
                 <Image
                   className={`inline-block rounded-xl ${
-                    exhibitor.name === selected?.name && `border-primary border-2`
+                    exhibitor.name === selected?.name ? `border-primary border-2` : "opacity-50"
                   }`}
                   width="80px"
                   height="80px"
