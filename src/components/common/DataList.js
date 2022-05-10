@@ -112,16 +112,19 @@ export const timelineBlocks = [
         name: "Angélica Matsuda",
         title: "CEO Fueradelacaja Soluciones, Founder & President Perú D",
         linkedin: "https://www.linkedin.com/in/ang%C3%A9lica-matsuda-374a039/",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/angelica_matsuda.jpg`,
       },
       {
         name: "Marushka Chocobar",
         title: "Directora de la Secretaría de Gobierno y Transformación Digital PCM",
         linkedin: "https://www.linkedin.com/in/marushkachocobar/",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/marushka_chocobar.jpg`,
       },
       {
         name: "Juan Rivadeneyra",
         title: "Director de Regulación CLARO",
         linkedin: "https://www.linkedin.com/in/juan-rivadeneyra-8725202/",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/juan_rivadeneyra.jpg`,
       },
     ],
     exhibitors: [
@@ -136,7 +139,8 @@ export const timelineBlocks = [
       },
       {
         name: "Julio Porcel",
-        title: "Past President TDD, Coordinador del Componente 1 Proyecto BID para la mejora de las Compras Públicas del Perú",
+        title:
+          "Past President TDD, Coordinador del Componente 1 Proyecto BID para la mejora de las Compras Públicas del Perú",
         imageUrl: `${config.storageUrl}/resources/exhibitors/julio-porcel.jpg`,
         subtitle: "Panorama Digital del Perú",
         linkedin: "https://www.linkedin.com/in/julio-porcel-b931b135/",
@@ -173,17 +177,20 @@ export const timelineBlocks = [
         name: "Jaime Dupuy",
         title: "Legal and Regulatory Affairs ManagerLegal Sociedad de Comercio Exterior del Perú ComexPerú",
         linkedin: "https://www.linkedin.com/in/jaimedupuy/",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/jaime_dupuy.jpg`,
       },
       {
         name: "Javier Salinas",
         title:
           "Presidente Asociacion de Economia Plateada en el Perú, Promotor del ecosistema y regulación Fintech en el Perú y la región",
         linkedin: "https://www.linkedin.com/in/javierrsalinasm/",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/javier_salinas.jpg`,
       },
       {
         name: "Roque Benavides",
         title: "Presidente de Directorio Compañía de Minas Buenaventura",
         linkedin: "https://www.linkedin.com/in/roque-benavides-ganoza-298a4246/",
+        imageUrl: `${config.storageUrl}/resources/exhibitors/roque_benavides.jpg`,
       },
     ],
     exhibitors: [
@@ -260,7 +267,7 @@ export const timelineBlocks = [
         linkedin: "https://www.linkedin.com/in/cadelaflor/",
         imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-armando.jpg`,
         subtitle: "Caso María Almenara",
-        country: "peru"
+        country: "peru",
       },
     ],
   },
