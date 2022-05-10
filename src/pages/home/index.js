@@ -71,13 +71,17 @@ export const Home = (props) => {
       <div className="min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)] w-full bg-index bg-no-repeat bg-cover flex lg:items-end bg-bottom">
         <div className="mt-8 lg:mt-0 lg:mx-12 lg:grid lg:grid-cols-3 w-[90%] lg:w-full lg:h-[500px]">
           <div className="col-start-1 col-end-2 bg-white/[.60] max-w-[500px] p-4 lg:p-8">
-            <h2 className="text-xl lg:text-4xl font-bold mb-6">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
+            <h2 className="text-xl lg:text-4xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
-            <p className="text-base lg:text-xl mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
+            <p className="text-base lg:text-lg mb-4">Hacia un desarrollo digital sostenible e inclusivo.</p>
 
-            <Button margin="m-0" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
+            <Button margin="mb-4" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
               Adquirir entrada
             </Button>
+
+            <div className="py-4 max-w-[280px]">
+              <Image className="inline-block" src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} />
+            </div>
           </div>
         </div>
       </div>
