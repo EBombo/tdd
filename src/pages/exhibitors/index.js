@@ -44,7 +44,7 @@ export const Exhibitors = (props) => {
 
   return (
     <div>
-      <div className="w-full bg-exhibitors bg-no-repeat bg-center bg-cover max-h-[240px] h-[40vh] md:max-h-[368px] py-4 md:py-8 relative">
+      <div className="w-full bg-timeline bg-no-repeat bg-center bg-cover max-h-[240px] h-[40vh] md:max-h-[368px] py-4 md:py-8 relative">
         <div className="grid lg:grid-cols-[auto_300px] gap-4">
           <div className="grid gap-4">
             <div className="text-blackDarken text-[20px] font-[800] leading-[25px] lg:text-[36px] lg:leading-[44px] uppercase bg-white/[.60]">
