@@ -32,7 +32,7 @@ const Navbar = (props) => {
 
   return (
     <div className="relative h-[100vh] w-[100wv] overflow-hidden">
-      <nav className="h-[100px] absolute top-0 left-0 right-0 z-[9999] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
+      <nav className="h-[100px] absolute top-0 left-0 right-0 z-[999] flex items-center justify-between flex-wrap px-4 bg-white shadow-navbar">
         <div className="flex items-center flex-shrink-0 text-black mr-6 cursor-pointer lg:min-w-[170px]">
           <Image
             src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`}
@@ -94,6 +94,16 @@ const Navbar = (props) => {
                 )}
               </span>
               <span className={path === "/exhibitors" && "text-pink-500"}>Expositores</span>
+            </LeftAnchor>
+            <LeftAnchor url="/content">
+              <span className="mx-2">
+                {path === "/content" ? (
+                  <Image className="inline-block" width="18px" src={`${config.storageUrl}/resources/film-pink.svg`} />
+                ) : (
+                  <Image className="inline-block" width="18px" src={`${config.storageUrl}/resources/film.svg`} />
+                )}
+              </span>
+              <span className={path === "/content" && "text-pink-500"}>Contenido</span>
             </LeftAnchor>
           </div>
 

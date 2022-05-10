@@ -1,13 +1,15 @@
 import React, { useGlobal } from "reactn";
 import { object, string } from "yup";
-import { useForm } from "react-hook-form";
-import { Button, Input } from "../../components/form";
+import { Controller, useForm } from "react-hook-form";
+import { Button, Input, Select } from "../../components/form";
+import { getData } from "country-list";
 
 export const VisitorRegister = (props) => {
   const [isLoadingUser] = useGlobal("isLoadingUser");
   const [isLoadingCreateUser] = useGlobal("isLoadingCreateUser");
 
   const schema = object().shape({
+    countryCode: string().required(),
     name: string().required(),
     lastName: string().required(),
     documentId: string().required(),
@@ -20,7 +22,7 @@ export const VisitorRegister = (props) => {
     title: string(),
   });
 
-  const { register, errors, handleSubmit } = useForm({
+  const { register, errors, handleSubmit, control } = useForm({
     validationSchema: schema,
     reValidateMode: "onSubmit",
   });
@@ -76,6 +78,29 @@ export const VisitorRegister = (props) => {
           height="50px"
           placeholder="Contraseña"
         />
+        <Controller
+          name="countryCode"
+          control={control}
+          defaultValue={"PE"}
+          as={
+            <Select
+              placeholder="País"
+              showSearch
+              virtual={false}
+              height="50px"
+              error={errors.countryCode}
+              optionFilterProp="children"
+              optionsdom={getData().map((country) => ({
+                key: country.code,
+                code: country.code,
+                name: country.name,
+              }))}
+            />
+          }
+        />
+      </div>
+
+      <div className="mb-4 grid gap-4 md:grid-cols-[repeat(2,1fr)] items-end">
         <div className="flex flex-col items-end">
           <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
           <Input
@@ -87,13 +112,13 @@ export const VisitorRegister = (props) => {
             placeholder="¿Cómo te enteraste del evento?"
           />
         </div>
-      </div>
-
-      <div className="mb-4 grid gap-4 md:grid-cols-[repeat(2,1fr)] items-end">
         <div className="flex flex-col items-end">
           <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
           <Input name="company" type="text" ref={register} error={errors.company} height="50px" placeholder="Empresa" />
         </div>
+      </div>
+
+      <div className="mb-4 grid gap-4 md:grid-cols-[repeat(2,1fr)] items-end">
         <div className="flex flex-col items-end">
           <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
           <Input name="title" type="text" ref={register} error={errors.title} height="50px" placeholder="Cargo" />

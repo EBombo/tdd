@@ -1,5 +1,5 @@
 import React, { useEffect, useGlobal, useState } from "reactn";
-import { Button, Input } from "../../components/form";
+import { Button } from "../../components/form";
 import Countdown from "../../components/Countdown";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
@@ -22,7 +22,7 @@ export const Register = (props) => {
   }, []);
 
   useEffect(() => {
-    //TODO: DEFINIR A DONDE SE REDIRIGE AL USUARIO LUEGO DEL REGISTRO
+    //TODO: Definir a donde se redirige al usuario luego del registro.
     if (authUser) router.push("/");
   }, [authUser]);
 

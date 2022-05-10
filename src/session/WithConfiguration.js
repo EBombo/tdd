@@ -1,32 +1,36 @@
-import React, { setGlobal, useEffect, useGlobal, useState } from "reactn";
 import {
   collectionToDate,
   useDeadline,
   useEnvironment,
   useLanguageCode,
   useLocation,
+  useSendError,
   useSettings,
   useUser,
 } from "../hooks";
-import { config, firestore, version } from "../firebase";
-import get from "lodash/get";
-import { darkTheme, lightTheme } from "../theme";
 import moment from "moment";
+import get from "lodash/get";
 import { setLocale } from "yup";
 import { yup } from "../config";
-import { register } from "next-offline/runtime";
-import { spinLoader } from "../components/common/loader";
 import dynamic from "next/dynamic";
+import { register } from "next-offline/runtime";
+import { darkTheme, lightTheme } from "../theme";
+import { spinLoader } from "../components/common/loader";
+import { config, firestore, version } from "../firebase";
+import React, { setGlobal, useEffect, useGlobal, useState } from "reactn";
+import { useFetch } from "../hooks/useFetch";
 
 const UpdateVersion = dynamic(() => import("../components/versions/UpdateVersion"), {
   loading: () => spinLoader(),
 });
 
 export const WithConfiguration = (props) => {
-  const [authUser] = useGlobal("user");
+  const { Fetch } = useFetch();
+  const { sendError } = useSendError();
+
   const [, setDeadline] = useGlobal("deadline");
+  const [, setServerDate] = useGlobal("serverDate");
   const [settings, setSettings] = useGlobal("settings");
-  const [, setIsVisibleLoginModal] = useGlobal("isVisibleLoginModal");
 
   const [authUserLS] = useUser();
   const [location] = useLocation();
@@ -40,6 +44,7 @@ export const WithConfiguration = (props) => {
   let pageLoaded = false;
 
   useEffect(() => {
+    /** Initial setup. **/
     const initializeConfig = async () => {
       setEnvironment(config.firebase.projectId);
 
@@ -51,17 +56,17 @@ export const WithConfiguration = (props) => {
         audios: [],
         languageCode,
         ping: null,
-        isAutomatic: false,
         register: null,
-        isLoadingUser: false,
-        isLoadingCreateUser: false,
-        isVisibleLoginModal: false,
-        isVisibleForgotPassword: false,
-        openRightDrawer: false,
-        openLeftDrawer: false,
-        serverTime: new Date(),
-        currentCurrency: "s/.",
         isAdmin: false,
+        isAutomatic: false,
+        isLoadingUser: false,
+        openLeftDrawer: false,
+        serverDate: new Date(),
+        currentCurrency: "s/.",
+        openRightDrawer: false,
+        isVisibleLoginModal: false,
+        isLoadingCreateUser: false,
+        isVisibleForgotPassword: false,
         theme: get(authUserLS, "theme") === "lightTheme" ? lightTheme : darkTheme,
       });
 
@@ -69,6 +74,7 @@ export const WithConfiguration = (props) => {
       setLocale(yup[languageCode]);
     };
 
+    /** Fetch current version. **/
     const fetchVersion = () =>
       firestore.doc("settings/default").onSnapshot(async (snapshot) => {
         if (!snapshot.exists) return;
@@ -86,7 +92,8 @@ export const WithConfiguration = (props) => {
         pageLoaded = true;
       });
 
-    const fetchCountdowm = async () => {
+    /** Fetch expiration date of the event. **/
+    const fetchExpirationEvent = async () => {
       const landingSettingsQuery = await firestore.doc("settings/landing").get();
 
       const landingSettings = landingSettingsQuery.data();
@@ -97,30 +104,45 @@ export const WithConfiguration = (props) => {
       setDeadlineLS(countdownDate);
     };
 
+    /** Fetch server date to validate coupons. **/
+    const fetchCurrentServerDate = async () => {
+      try {
+        const { response, error } = await Fetch(`${config.serverUrl}/get-server-date`);
+
+        if (error) throw Error(error);
+
+        const serverDate = new Date(response.date);
+
+        setServerDate(serverDate);
+      } catch (error) {
+        console.error(error);
+        sendError(error, "fetchCurrentServerDate");
+      }
+    };
+
     initializeConfig();
-    fetchCountdowm();
+    fetchExpirationEvent();
+    fetchCurrentServerDate();
     const unsubscribeVersion = fetchVersion();
 
+    /** End load. **/
     setIsLoadingConfig(false);
 
+    /** Close subscriptions. **/
     return () => unsubscribeVersion();
   }, []);
 
   useEffect(() => {
-    authUser && setIsVisibleLoginModal(false);
-  }, [authUser, setIsVisibleLoginModal]);
-
-  useEffect(() => {
+    /** Service worker. **/
     register("/sw.js", { scope: "/" });
   }, []);
 
-  return version === get(settings, "version", version) ? (
-    isLoadingConfig ? (
-      spinLoader()
-    ) : (
-      props.children
-    )
-  ) : (
-    <UpdateVersion />
-  );
+  /** Loading. **/
+  if (isLoadingConfig) return spinLoader();
+
+  /** Validate version. **/
+  if (version !== get(settings, "version", version)) return <UpdateVersion />;
+
+  /** Show child component. **/
+  return props.children;
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "reactn";
 import { Image } from "../../components/common/Image";
+import { Button } from "../../components/form";
 
 export const NewsCarousel = ({ items, ...props }) => {
   const size = items?.length || 0;
@@ -17,19 +18,16 @@ export const NewsCarousel = ({ items, ...props }) => {
     setSelected(items[currentIndex]);
   }, [currentIndex]);
 
-  // const next = () => { setSelectedIndex((oldValue) => (oldValue + 1) % size); };
-  //
-  // const prev = () => { setSelectedIndex((oldValue) => (oldValue - 1) % size); };
-
   const selectIndex = (i) => {
-    setCurrentIndex(i);
+    // TODO refactor logic of dots navigation
+    const desktopViewSize = 3;
+    setCurrentIndex(i < (size / 2) ? 0 : size - desktopViewSize);
   };
 
   const NewsCard = React.memo(({ newItem }) => (
-    <div className="relative shadow-lg rounded-lg mt-16 pb-8">
-      <div className="h-[214px]"></div>
-      <div className="absolute top-[-30px] right-0 w-full">
-        <div className="flex justify-center">
+    <div className="relative h-full shadow-lg rounded-lg pb-16 pt-4">
+      <div className="w-full">
+        <div className="flex justify-center my-8">
           <Image className="inline-block" src={newItem?.imageUrl} width="214px" />
         </div>
       </div>
@@ -37,14 +35,43 @@ export const NewsCarousel = ({ items, ...props }) => {
       <div className="px-8 text-base lg:text-lg">
         <p>{newItem?.description}</p>
       </div>
+      <div className="px-8 text-base lg:text-lg text-center absolute bottom-2 left-0 right-0">
+        <Button primary onClick={() => window?.open(newItem?.url, "_blank")}>
+          Leer más
+        </Button>
+      </div>
     </div>
   ));
 
-  const Dots = React.memo(({ items }) => (
+  const Dots = React.memo(({ items, currentIndex }) => (
     <>
-      {items.map((_, i) => (
-        <div className="cursor-pointer w-4 h-4 mx-2 rounded-[50%] bg-pink-500" onClick={() => selectIndex(i)} key={i} />
-      ))}
+      <div className="hidden lg:inline-block lg:flex">
+        {items.map((_, i) => {
+          const isVisible =
+            currentIndex % size === i || (currentIndex + 1) % size === i || (currentIndex + 2) % size === i;
+
+          return (
+            <div
+              className={`cursor-pointer w-4 h-4 mx-2 rounded-[50%] ${isVisible ? "bg-pink-500" : "bg-gray"}`}
+              onClick={() => !isVisible && selectIndex(i)}
+              key={i}
+            />
+          );
+        })}
+      </div>
+      <div className="flex lg:hidden">
+        {items.map((_, i) => {
+          const isVisible = currentIndex % size === i;
+
+          return (
+            <div
+              className={`cursor-pointer w-4 h-4 mx-2 rounded-[50%] ${isVisible ? "bg-pink-500" : "bg-gray"}`}
+              onClick={() => !isVisible && setCurrentIndex(i)}
+              key={i}
+            />
+          );
+        })}
+      </div>
     </>
   ));
 
@@ -67,8 +94,8 @@ export const NewsCarousel = ({ items, ...props }) => {
         </div>
       </div>
 
-      <div className="flex justify-center">
-        <Dots items={items}></Dots>
+      <div className="flex justify-center my-8">
+        <Dots items={items} currentIndex={currentIndex}></Dots>
       </div>
     </div>
   );

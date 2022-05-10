@@ -84,7 +84,7 @@ export const CulqiComponent = (props) => {
                   openCulqi();
                 }}
               >
-                PAGAR ENTRADA
+                Comprar
               </Button>
             </div>
           );

@@ -1,24 +1,25 @@
-import React, { useEffect, useState, useMemo } from "reactn";
-import { useForm, Controller } from "react-hook-form";
-import { useRouter } from "next/router";
 import get from "lodash/get";
-import { object, string, number, date } from "yup";
-import { useSendError } from "../../../hooks";
-import { firestore } from "../../../firebase";
-import { Input, Button, DatePicker } from "../../../components/form";
 import moment from "moment";
-import { useAcl } from "../../../hooks/acl";
+import isEmpty from "lodash/isEmpty";
+import { useRouter } from "next/router";
+import { useAcl, useSendError } from "../../../../hooks";
+import { firestore } from "../../../../firebase";
+import { date, number, object, string } from "yup";
+import { snapshotToArray } from "../../../../utils";
+import { Controller, useForm } from "react-hook-form";
+import React, { useEffect, useGlobal, useMemo, useState } from "reactn";
+import { Button, DatePicker, Input } from "../../../../components/form";
 
 const COUPONS_COLLECTION = "coupons";
 
 export const CouponForm = (props) => {
   const router = useRouter();
-
   const { couponId } = router.query;
 
   const { AclLink } = useAcl();
-
   const { sendError } = useSendError();
+
+  const [serverDate] = useGlobal("serverDate");
 
   const schema = object().shape({
     code: string().required(),
@@ -33,6 +34,7 @@ export const CouponForm = (props) => {
     reValidateMode: "onSubmit",
   });
 
+  const [loading, setLoading] = useState(false);
   const [currentCoupon, setCurrentCoupon] = useState({});
 
   useEffect(() => {
@@ -45,6 +47,8 @@ export const CouponForm = (props) => {
     if (isNew) return;
 
     const fetchCoupon = async () => {
+      setLoading(true);
+
       const couponSnapshot = await firestore.doc(`${COUPONS_COLLECTION}/${couponId}`).get();
       const couponData = couponSnapshot.data();
 
@@ -59,6 +63,8 @@ export const CouponForm = (props) => {
       reset({
         activeSince: couponData.activeSince ? moment(couponData.activeSince?.toDate()) : couponData.activeSince,
       });
+
+      setLoading(false);
     };
 
     fetchCoupon();
@@ -72,9 +78,18 @@ export const CouponForm = (props) => {
 
   const createCoupon = async (data) => {
     try {
+      setLoading(true);
+
+      const validation = await validateCoupon(data);
+
+      if (!validation.ok) {
+        setLoading(false);
+        return props.showNotification("Error", validation.error);
+      }
+
       const discountFactor = data.discountFactor / 100;
 
-      firestore.doc(`${COUPONS_COLLECTION}/${documentId}`).set(
+      await firestore.doc(`${COUPONS_COLLECTION}/${documentId}`).set(
         {
           ...data,
           createAt: isNew ? new Date() : currentCoupon?.createAt?.toDate(),
@@ -88,10 +103,28 @@ export const CouponForm = (props) => {
       );
 
       router.push("/admin/coupons");
-    } catch (e) {
-      sendError("Error", e.toString());
-      props.showNotification(`Error ${e.toString()}`);
+    } catch (error) {
+      console.error(error);
+      sendError("Error", error.toString());
+      props.showNotification(`Error ${error.toString()}`);
     }
+
+    setLoading(false);
+  };
+
+  const validateCoupon = async (data) => {
+    const couponsQuery = await firestore
+      .collection("coupons")
+      .where("deleted", "==", false)
+      .where("code", "==", data.code)
+      .where("expireAt", ">", serverDate)
+      .get();
+
+    const coupons = snapshotToArray(couponsQuery).filter((coupon) => coupon.id !== couponId);
+
+    if (isEmpty(coupons)) return { ok: true };
+
+    return { ok: false, error: "Ya existe un coupon con este nombre para la fecha" };
   };
 
   return (
@@ -116,7 +149,7 @@ export const CouponForm = (props) => {
           />
           <label htmlFor="discountFactor">Descuento (%)</label>
           <Input
-            defaultValue={currentCoupon?.discountFactor}
+            defaultValue={currentCoupon?.discountFactor?.toFixed(0)}
             name="discountFactor"
             type="number"
             ref={register}
@@ -161,7 +194,7 @@ export const CouponForm = (props) => {
           />
 
           <div>
-            <Button primary htmltype="submit" margin="m-0">
+            <Button primary htmltype="submit" margin="m-0" loading={loading} disabled={loading}>
               <span className="px-8">{isNew ? "Crear cupón" : "Actualizar cupón"}</span>
             </Button>
           </div>

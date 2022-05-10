@@ -13,22 +13,32 @@ import orderBy from "lodash/orderBy";
 
 const news = [
   {
-    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
-    title: "Transformación digital",
+    imageUrl: `${config.storageUrl}/resources/news-1.jpg`,
+    title: "Por un Perú Digital",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Más de 30 organizaciones civiles, académicas y empresariales hacemos un llamado para priorizar acciones específicas de una agenda digital que permita construir un Perú digital como eje fundamental de la agenda pública en cumplimiento de la Politica 35 del Acuerdo Nacional.",
+    url: "https://www.tdduni.org/por-un-peru-digital/",
   },
   {
-    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
-    title: "Transformación digital",
+    imageUrl: `${config.storageUrl}/resources/news-2.jpg`,
+    title: "Red Dorsal Nacional de Fibra Óptica",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "COMUNICADO TDD-COM-2021-02 Propuesta base para la gestión y operación de la Red Dorsal Nacional de Fibra Óptica y las Redes Regionales de Fibra Óptica La conectividad es una de las bases para un auténtico desarrollo con inclusión.",
+    url: "https://www.tdduni.org/red-dorsal-nacional-de-fibra-optica-y-las-redes-regionales/",
   },
   {
-    imageUrl: `${config.storageUrl}/resources/news-sample.jpg`,
-    title: "Transformación digital",
+    imageUrl: `${config.storageUrl}/resources/news-3.jpg`,
+    title: "Transformación Digital del Perú con Inclusión",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "La pandemia del COVID ha puesto en evidencia las carencias estructurales de nuestro país, pero además ha revelado la profunda BRECHA DIGITAL en nuestra sociedad, la cual es una consecuencia del proceso global de Transformación Digital que afecta las actividades económicas, sociales, e incluso políticas de todos los países.",
+    url: "https://www.tdduni.org/transformacion-digital-del-peru-para-el-desarrollo-con-inclusion/",
+  },
+  {
+    imageUrl: `${config.storageUrl}/resources/news-4.jpg`,
+    title: "Lineamientos para la Transformación Digital del Perú",
+    description:
+      "El cambio acelerado mundial motivado principalmente por el crecimiento exponencial de las Tecnologías Digitales TD está presente en nuestra sociedad desde hace ya algunos años, pero se ha hecho más evidente con la pandemia del COVID.",
+    url: "https://www.tdduni.org/lineamientos/",
   },
 ];
 
@@ -61,13 +71,17 @@ export const Home = (props) => {
       <div className="min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)] w-full bg-index bg-no-repeat bg-cover flex lg:items-end bg-bottom">
         <div className="mt-8 lg:mt-0 lg:mx-12 lg:grid lg:grid-cols-3 w-[90%] lg:w-full lg:h-[500px]">
           <div className="col-start-1 col-end-2 bg-white/[.60] max-w-[500px] p-4 lg:p-8">
-            <h2 className="text-xl lg:text-4xl font-bold mb-6">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
+            <h2 className="text-xl lg:text-4xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
-            <p className="text-base lg:text-xl mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
+            <p className="text-base lg:text-lg mb-4">Hacia un desarrollo digital sostenible e inclusivo.</p>
 
-            <Button margin="m-0" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
+            <Button margin="mb-4" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
               Adquirir entrada
             </Button>
+
+            <div className="py-4 max-w-[280px]">
+              <Image className="inline-block" src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} />
+            </div>
           </div>
         </div>
       </div>
