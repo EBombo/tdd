@@ -8,8 +8,9 @@ exports.postValidateCoupon = async (req, res, next) => {
   try {
     logger.log("postValidateCoupon", req.body, req.params);
 
-    const { couponCode, userDate } = req.body;
-    const currentUserDate = new Date(userDate);
+    const { couponCode } = req.body;
+
+    const serverDate = moment().tz("America/Los_Angeles").format();
 
     if (couponCode !== req.params.couponCode) throw Error("Cupón invalido");
 
@@ -19,10 +20,10 @@ exports.postValidateCoupon = async (req, res, next) => {
 
     const paymentsLength = await fetchPayments(coupon.id);
 
-    const isAvailable = moment(coupon.activeSince.toDate()).isBefore(currentUserDate);
+    const isAvailable = moment(coupon.activeSince.toDate()).isBefore(serverDate);
     if (!isAvailable) throw Error("Cupón no esta disponible");
 
-    const isExpired = coupon.expireAt && moment(coupon.expireAt.toDate()).isBefore(currentUserDate);
+    const isExpired = coupon.expireAt && moment(coupon.expireAt.toDate()).isBefore(serverDate);
     if (isExpired) throw Error("Cupón ha expirado");
 
     if (!coupon.enabled) throw Error("Cupón no esta disponible");
