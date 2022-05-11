@@ -57,8 +57,8 @@ export const menus = [
   {
     name: "Lista de emails",
     url: "/admin/emails",
-    isAdmin: true
-  }
+    isAdmin: true,
+  },
 ];
 
 export const emailTemplates = [

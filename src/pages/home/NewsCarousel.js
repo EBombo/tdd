@@ -21,7 +21,7 @@ export const NewsCarousel = ({ items, ...props }) => {
   const selectIndex = (i) => {
     // TODO refactor logic of dots navigation
     const desktopViewSize = 3;
-    setCurrentIndex(i < (size / 2) ? 0 : size - desktopViewSize);
+    setCurrentIndex(i < size / 2 ? 0 : size - desktopViewSize);
   };
 
   const NewsCard = React.memo(({ newItem }) => (
