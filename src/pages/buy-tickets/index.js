@@ -3,12 +3,15 @@ import { CulqiComponent } from "./CulqiComponent";
 import Countdown from "../../components/Countdown";
 import { CouponForm } from "./CouponForm";
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import { firestore } from "../../firebase";
 import { defaultCost } from "../../business";
 
 const defaultDiscount = 0;
 
 export const BuyTickets = (props) => {
+  const router = useRouter();
+
   const [authUser] = useGlobal("user");
 
   const [cost] = useState(defaultCost);
@@ -27,8 +30,7 @@ export const BuyTickets = (props) => {
         .onSnapshot((paymentSnapShot) => {
           if (paymentSnapShot.empty) return;
 
-          // TODO: Redirect to event.
-          //router.push("/")
+          router.push("/event-countdown");
         });
 
     const sub = fetchPayments();
