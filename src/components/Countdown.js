@@ -4,7 +4,7 @@ import { spinLoaderMin } from "./common/loader";
 import { Sponsors } from "../pages/home/Sponsors";
 import { sponsorsLists } from "./common/DataList";
 
-const Countdown = React.memo(({ title = "Reserva la fecha", deadline, ...props }) => {
+const Countdown = React.memo(({ title = "Reserva la fecha", deadline, disableSponsors, dark, ...props }) => {
   const [days, hours, minutes, seconds] = useCountdown(deadline);
 
   const DisplayNumber = React.memo(({ value, label }) => (
@@ -36,26 +36,29 @@ const Countdown = React.memo(({ title = "Reserva la fecha", deadline, ...props }
   }, [days, hours, minutes, seconds]);
 
   return (
-    <div className="min-h-[50px] pt-12 md:pt-20 pb-12 bg-white">
-      <div className="bg-white py-4 mb-12">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="text-center text-xl lg:text-3xl font-bold pt-4 mb-8 md:mb-16">Coorganizadores</div>
-          <Sponsors items={sponsorsLists} />
+    <div className={`min-h-[50px] ${props.containerPadding || "pt-12 md:pt-20 pb-12"} ${dark ? "bg-blackDarken text-white" : "bg-white" } bg-white`}>
+      {!disableSponsors && (
+        <div className={`${dark ? "bg-blackDarken text-white" : "bg-white" } py-4 mb-12`}>
+          <div className="mx-auto max-w-[1200px]">
+            <div className="text-center text-xl lg:text-3xl font-bold pt-4 mb-8 md:mb-16">Coorganizadores</div>
+            <Sponsors items={sponsorsLists} />
+          </div>
         </div>
-      </div>
+      )}
+      
 
-      <div className="text-center text-xl lg:text-3xl font-bold pt-4 mb-8 md:mb-16">{title}</div>
+      <div className={`${props.titleAlignment || "text-center"} text-xl lg:text-3xl font-bold ${props.titlePadding || "pt-4"} ${props.titleMargin || "mb-8 md:mb-16"}`}>{title}</div>
       {displayContent}
     </div>
   );
 });
 
-const CountdownComponent = () => {
+const CountdownComponent = (props) => {
   const [deadline] = useGlobal("deadline");
 
   if (!deadline) return spinLoaderMin();
 
-  return <Countdown deadline={deadline} />;
+  return <Countdown deadline={deadline} {...props} />;
 };
 
 export default CountdownComponent;
