@@ -270,7 +270,7 @@ export const timelineBlocks = [
         name: "Carlos Armando de la Flor",
         title: "CoFundador y CEO María Almenara",
         linkedin: "https://www.linkedin.com/in/cadelaflor/",
-        imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-armando.jpg`,
+        imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-armando.jpeg`,
         subtitle: "Caso María Almenara",
         country: "peru",
       },

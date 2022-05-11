@@ -103,6 +103,18 @@ export const VisitorRegister = (props) => {
       <div className="mb-4 grid gap-4 md:grid-cols-[repeat(2,1fr)] items-end">
         <div className="flex flex-col items-end">
           <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
+          <Input name="company" type="text" ref={register} error={errors.company} height="50px" placeholder="Empresa" />
+        </div>
+
+        <div className="flex flex-col items-end">
+          <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
+          <Input name="title" type="text" ref={register} error={errors.title} height="50px" placeholder="Cargo" />
+        </div>
+      </div>
+
+      <div className="mb-4 grid gap-4 md:grid-cols-[repeat(2,1fr)] items-end">
+        <div className="flex flex-col items-end">
+          <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
           <Input
             name="reference"
             type="text"
@@ -111,17 +123,6 @@ export const VisitorRegister = (props) => {
             height="50px"
             placeholder="¿Cómo te enteraste del evento?"
           />
-        </div>
-        <div className="flex flex-col items-end">
-          <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
-          <Input name="company" type="text" ref={register} error={errors.company} height="50px" placeholder="Empresa" />
-        </div>
-      </div>
-
-      <div className="mb-4 grid gap-4 md:grid-cols-[repeat(2,1fr)] items-end">
-        <div className="flex flex-col items-end">
-          <div className="text-primary font-[600] text-[12px] leading-[15px] text-['Encode Sans']">*Opcional</div>
-          <Input name="title" type="text" ref={register} error={errors.title} height="50px" placeholder="Cargo" />
         </div>
       </div>
 
