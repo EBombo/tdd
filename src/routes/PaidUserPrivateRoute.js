@@ -13,7 +13,8 @@ export const PaidUserPrivateRoute = (props) => {
   useEffect(() => {
     if (!authUser) return router.push("/");
 
-    const fetchPayments = () => firestore
+    const fetchPayments = () =>
+      firestore
         .collection("payments")
         .where("user.id", "==", authUser.id)
         .limit(1)
@@ -21,9 +22,8 @@ export const PaidUserPrivateRoute = (props) => {
           if (!paymentSnapShot.empty) return setIsLoading(false);
 
           // Redirect to / if does not have a payment.
-          router.push("/")
+          router.push("/");
         });
-    
 
     const sub = fetchPayments();
     return () => {
