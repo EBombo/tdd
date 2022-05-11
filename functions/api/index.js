@@ -2,7 +2,7 @@ const cors = require("cors");
 const express = require("express");
 const { getDate } = require("./date");
 const bodyParser = require("body-parser");
-const { postContact } = require("./contact/post");
+const { postEmail } = require("./emails/post");
 const { getManifest } = require("./manifests/get");
 const { postValidateCoupon } = require("./coupons");
 const { postError, getError } = require("./errors");
@@ -32,9 +32,9 @@ router.get("/verify/:userId/verification-code/:verificationCode", getVerifyCode)
 
 router.post("/users/:userId/payment", postPayment);
 
-//------------------------contact------------------------
+//------------------------emails------------------------
 
-router.post("/contact", postContact);
+router.post("/emails", postEmail);
 
 //------------------------send email------------------------
 

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "reactn";
-import { Image } from "../../components/common/Image";
-import { Anchor, Button, Input, TextArea } from "../../components/form";
+import React, { useState } from "reactn";
+import { Button, Input, TextArea } from "../../components/form";
 import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { useFetch } from "../../hooks/useFetch";
@@ -11,6 +10,8 @@ export const ContactForm = (props) => {
   const { Fetch } = useFetch();
   const { sendError } = useSendError();
 
+  const [loading, setLoading] = useState(false);
+
   const schema = object().shape({
     email: string().required().email(),
     name: string().required(),
@@ -18,15 +19,17 @@ export const ContactForm = (props) => {
     message: string(),
   });
 
-  const { register, errors, handleSubmit } = useForm({
+  const { register, errors, handleSubmit, reset } = useForm({
     validationSchema: schema,
     reValidateMode: "onSubmit",
   });
 
   const submitContact = async (data) => {
     try {
+      setLoading(true);
+
       const fetchProps = {
-        url: `${config.serverUrl}/contact`,
+        url: `${config.serverUrl}/emails`,
         method: "POST",
         body: data,
       };
@@ -36,9 +39,13 @@ export const ContactForm = (props) => {
       if (error) throw new Error(error);
 
       props.showNotification("Enviado", "Tu mensaje se ha enviado exitósamente", "info");
+
+      await reset();
     } catch (error) {
       sendError(error, "submitContact");
       props.showNotification("Error", error.toString());
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,7 +79,7 @@ export const ContactForm = (props) => {
             placeholder="Mensaje"
           />
           <div>
-            <Button primary htmlType="submit" margin="m-0">
+            <Button primary loading={loading} disabled={loading} htmlType="submit" margin="m-0">
               <span className="px-8">Enviar</span>
             </Button>
           </div>

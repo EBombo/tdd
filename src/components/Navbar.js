@@ -171,7 +171,7 @@ const Navbar = (props) => {
       </nav>
 
       <div className="absolute top-[100px] left-0 right-0 h-[calc(100vh-100px)] overflow-auto">
-        <div className="min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-120px)]">{props.children}</div>
+        <div className="min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-120px)] w-[100vw] overflow-hidden">{props.children}</div>
         <Footer />
       </div>
     </div>
