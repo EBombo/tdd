@@ -60,7 +60,26 @@ const MyApp = ({ Component, pageProps }) => {
       <Script
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: ` `,
+          __html: `
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "bug3b6ngms");
+          `,
+        }}
+      />
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+           window.smartlook||(function(d) {
+            var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+            var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+            c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
+            })(document);
+            smartlook('init', '99e714fc677f977ad1017cf10949f6923a8e8e76', { region: 'eu' });
+          `,
         }}
       />
       <ErrorBoundary FallbackComponent={ErrorFallback}>
