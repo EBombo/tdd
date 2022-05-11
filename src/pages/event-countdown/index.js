@@ -1,54 +1,31 @@
 import React, { useGlobal } from "reactn";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
-import { firestore, config } from "../../firebase";
+import { useState } from "react";
+import { config } from "../../firebase";
 import Countdown from "../../components/Countdown";
 import { Image } from "../../components/common/Image";
 import { Button } from "../../components/form";
-import { spinLoader } from "../../components/common/loader";
+import { useInterval } from "../../hooks/useInterval";
 
 export const EventCountdown = (props) => {
   const router = useRouter();
 
-  const [authUser] = useGlobal("user");
   const [deadline] = useGlobal("deadline");
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isDeadlinedFinished, setIsDeadlinedFinished] = useState(false);
 
-  useEffect(() => {
-    if (!authUser) return;
+  useInterval(() => {
+    const finishedDeadline = () => {
+      if (!deadline) return;
 
-    const fetchPayments = () => {
-      // setIsLoading(true);
+      const currentTime = new Date().getTime();
+      const deadlineTime = deadline.getTime();
 
-      return firestore
-        .collection("payments")
-        .where("user.id", "==", authUser.id)
-        .limit(1)
-        .onSnapshot((paymentSnapShot) => {
-          if (!paymentSnapShot.empty) return setIsLoading(false);
-
-          // Redirect to / if does not have a payment.
-          // router.push("/")
-        });
+      setIsDeadlinedFinished(currentTime > deadlineTime);
     };
 
-    const sub = fetchPayments();
-    return () => {
-      sub && sub();
-    };
-  }, [authUser]);
-
-  const finishedDeadline = () => {
-    if (!deadline) return;
-
-    const currentTime = new Date().getTime();
-    const deadlineTime = deadline.getTime();
-
-    return currentTime > deadlineTime;
-  };
-
-  if (isLoading) return spinLoader();
+    finishedDeadline();
+  }, 1000);
 
   return (
     <>
@@ -70,10 +47,12 @@ export const EventCountdown = (props) => {
             <p className="text-primary text-lg lg:text-4xl font-bold px-10">¡Ya tienes entrada!</p>
             {!deadline ? (
               spinLoaderMin()
-            ) : finishedDeadline() ? (
-              <Button primary onClick={() => router.push("/event")}>
-                Ingresar
-              </Button>
+            ) : isDeadlinedFinished ? (
+              <div className="px-10 py-8">
+                <Button primary margin="m-0" onClick={() => router.push("/event")}>
+                  Unirse al evento
+                </Button>
+              </div>
             ) : (
               <div className="max-w-[800px]">
                 <Countdown
