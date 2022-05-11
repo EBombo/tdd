@@ -10,7 +10,8 @@
     "label": "Gestion de emails",
     "items": {
       "/admin/emails": "Listado de emails",
-      "/admin/emails/[emailId]": "Vista previa del email"
+      "/admin/emails/[emailId]": "Vista previa del email",
+      "/admin/emails#delete": "Eliminar email"
     }
   },
   "adminUsers": {
