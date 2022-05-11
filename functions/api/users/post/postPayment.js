@@ -28,7 +28,7 @@ exports.postPayment = async (req, res, next) => {
      * Calcular el monto a pagar, este debe coincidir con el monto recibido,
      * de lo contrario puede hacer algun tipo de corrupcion con el proceso.
      **/
-    const discount = +(coupon?.discountFactor ?? 0);
+    const discount = +(coupon ? coupon.discountFactor : 0);
     const discountAmount = defaultCost * discount;
     const totalAmount = defaultCost - discountAmount;
 
