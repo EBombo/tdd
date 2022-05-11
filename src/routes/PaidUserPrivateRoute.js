@@ -4,9 +4,9 @@ import { spinLoader } from "../components/common/loader";
 import { firestore } from "../firebase";
 
 export const PaidUserPrivateRoute = (props) => {
-  const [authUser] = useGlobal("user");
-
   const router = useRouter();
+
+  const [authUser] = useGlobal("user");
 
   const [isLoading, setIsLoading] = useState(true);
 
