@@ -54,6 +54,11 @@ export const menus = [
     url: "/admin/coupons",
     isAdmin: true,
   },
+  {
+    name: "Lista de emails",
+    url: "/admin/emails",
+    isAdmin: true
+  }
 ];
 
 export const emailTemplates = [
