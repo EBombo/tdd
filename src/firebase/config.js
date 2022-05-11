@@ -17,7 +17,7 @@ console.log("process.env.NEXT_PUBLIC_DOMAIN", DOMAIN);
 const CONFIG = process.env.NEXT_PUBLIC_CONFIG ?? "";
 //console.log("process.env.NEXT_PUBLIC_CONFIG", CONFIG);
 
-const version = "0.0.1";
+const version = "0.0.2";
 
 const config = JSON.parse(CONFIG);
 
@@ -54,7 +54,7 @@ if (isEmpty(firebase.apps)) {
 }
 
 if (DOMAIN?.includes("localhost")) {
-  //config.serverUrl = "http://localhost:5001/tdd-dev-348022/us-central1/api";
+  // config.serverUrl = "http://localhost:5001/tdd-dev-348022/us-central1/api";
   //firestore.useEmulator("localhost", 8080);
   //auth.useEmulator("http://localhost:9099/");
 }
