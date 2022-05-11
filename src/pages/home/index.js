@@ -105,7 +105,15 @@ export const Home = (props) => {
               superar los grandes problemas nacionales enmarcados en una visión de desarrollo compartida.
             </p>
             <div className="text-right">
-              <Button primary margin="m-0" onClick={() => {}}>
+              <Button
+                primary
+                margin="m-0"
+                onClick={() => {
+                  if (typeof window === "undefined") return;
+
+                  window.open("https://www.tdduni.org", "_blank");
+                }}
+              >
                 Ir al TDD
               </Button>
             </div>
