@@ -6,8 +6,6 @@ import { snapshotToArray } from "../../../utils";
 import { spinLoader } from "../../../components/common/loader";
 import { Tooltip } from "antd";
 import { Icon } from "../../../components/common/Icons";
-import { Button } from "../../../components/form";
-import { updateCollection } from "../../../firebase/script";
 
 export const Emails = (props) => {
   const router = useRouter();
@@ -55,10 +53,6 @@ export const Emails = (props) => {
           spinLoader()
         ) : (
           <div className="mx-4">
-            {(authUser?.email.includes("pabloynciorivera@gmail.com") ||
-              authUser?.email.includes("sebastian.mendo1995@gmail.com")) && (
-              <Button onClick={() => updateCollection("contact")}>Update Collection</Button>
-            )}
             {emails.map((email, index) => (
               <div
                 key={`email-${index}`}
