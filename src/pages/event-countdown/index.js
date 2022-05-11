@@ -49,7 +49,7 @@ export const EventCountdown = (props) => {
               spinLoaderMin()
             ) : isDeadlinedFinished ? (
               <div className="px-10 py-8">
-                <Button primary margin="m-0" onClick={() => router.push("/event")}>
+                <Button primary margin="m-0" onClick={() => window.open("/event", "_blank")}>
                   Unirse al evento
                 </Button>
               </div>
