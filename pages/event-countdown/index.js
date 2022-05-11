@@ -14,4 +14,3 @@ const EventCountdownContainer = (props) => (
 );
 
 export default EventCountdownContainer;
-

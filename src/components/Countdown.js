@@ -36,18 +36,27 @@ const Countdown = React.memo(({ title = "Reserva la fecha", deadline, disableSpo
   }, [days, hours, minutes, seconds]);
 
   return (
-    <div className={`min-h-[50px] ${props.containerPadding || "pt-12 md:pt-20 pb-12"} ${dark ? "bg-blackDarken text-white" : "bg-white" } bg-white`}>
+    <div
+      className={`min-h-[50px] ${props.containerPadding || "pt-12 md:pt-20 pb-12"} ${
+        dark ? "bg-blackDarken text-white" : "bg-white"
+      }`}
+    >
       {!disableSponsors && (
-        <div className={`${dark ? "bg-blackDarken text-white" : "bg-white" } py-4 mb-12`}>
+        <div className={`${dark ? "bg-blackDarken text-white" : "bg-white"} py-4 mb-12`}>
           <div className="mx-auto max-w-[1200px]">
             <div className="text-center text-xl lg:text-3xl font-bold pt-4 mb-8 md:mb-16">Coorganizadores</div>
             <Sponsors items={sponsorsLists} />
           </div>
         </div>
       )}
-      
 
-      <div className={`${props.titleAlignment || "text-center"} text-xl lg:text-3xl font-bold ${props.titlePadding || "pt-4"} ${props.titleMargin || "mb-8 md:mb-16"}`}>{title}</div>
+      <div
+        className={`${props.titleAlignment || "text-center"} text-xl lg:text-3xl font-bold ${
+          props.titlePadding || "pt-4"
+        } ${props.titleMargin || "mb-8 md:mb-16"}`}
+      >
+        {title}
+      </div>
       {displayContent}
     </div>
   );

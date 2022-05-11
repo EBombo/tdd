@@ -53,7 +53,7 @@ const StyledSelect = styled(AntSelect)`
       ${(props) => props.height && `height: ${props.height} !important;`}
     }
 
-    .ant-select-selection-placeholder{
+    .ant-select-selection-placeholder {
       display: flex;
       align-items: center;
     }
