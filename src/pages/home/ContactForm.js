@@ -29,7 +29,7 @@ export const ContactForm = (props) => {
       setLoading(true);
 
       const fetchProps = {
-        url: `${config.serverUrl}/contact`,
+        url: `${config.serverUrl}/emails`,
         method: "POST",
         body: data,
       };

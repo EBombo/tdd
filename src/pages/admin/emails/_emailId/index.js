@@ -28,7 +28,9 @@ export const Email = (props) => {
           setLoading(false);
         });
 
-    fetchEmail();
+    const sub = fetchEmail();
+
+    return () => sub && sub();
   }, [emailId]);
 
   useEffect(() => {

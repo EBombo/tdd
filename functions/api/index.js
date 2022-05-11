@@ -34,7 +34,7 @@ router.post("/users/:userId/payment", postPayment);
 
 //------------------------emails------------------------
 
-router.post("/contact", postEmail);
+router.post("/emails", postEmail);
 
 //------------------------send email------------------------
 
