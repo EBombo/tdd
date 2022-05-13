@@ -19,8 +19,13 @@ export const BuyTickets = (props) => {
   const [discount, setDiscount] = useState(defaultDiscount);
   const [isLoading, setIsLoading] = useState(false);
 
+  /**
+   * Redirect to countdown to event.
+   * **/
   useEffect(() => {
     if (!authUser) return;
+    // The student can see the event.
+    if (authUser?.documentId) return router.push("/event-countdown");
 
     const fetchPayments = () =>
       firestore

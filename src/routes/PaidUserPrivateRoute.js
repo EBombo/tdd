@@ -11,6 +11,9 @@ export const PaidUserPrivateRoute = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // The student can see the event.
+    if (authUser?.documentId) return setIsLoading(false);
+
     if (!authUser) return router.push("/");
 
     const fetchPayments = () =>
@@ -26,9 +29,8 @@ export const PaidUserPrivateRoute = (props) => {
         });
 
     const sub = fetchPayments();
-    return () => {
-      sub && sub();
-    };
+
+    return () => sub && sub();
   }, [authUser]);
 
   if (isLoading) return spinLoader();
