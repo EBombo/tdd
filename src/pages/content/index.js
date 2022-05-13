@@ -10,7 +10,7 @@ export const Content = (props) => {
 
   return (
     <div className="min-h-[calc(100vh-100px)] w-full bg-content bg-no-repeat bg-cover">
-      <div className="min-h-[calc(100vh-100px)] grid lg:grid-cols-[auto_280px] grid-rows-[auto_min-content]">
+      <div className="min-h-[calc(100vh-100px)] grid grid-rows-[min-content_auto]">
         <div className="flex flex-col">
           <div className="py-2 lg:min-h-[150px]">
             <div className="text-md lg:text-4xl font-bold uppercase my-2">
@@ -30,25 +30,9 @@ export const Content = (props) => {
               </span>
             </div>
           </div>
-
-          <div className="bg-white/[.60] h-full lg:h-[75%]">
-            <div className="max-w-[1200px] w-full h-full mx-auto flex flex-col">
-              <div className="w-[90%] mx-auto pt-4 text-md lg:text-xl font-bold">{currentVideo.title}</div>
-              <div className="h-full w-full pt-4 pb-8">
-                <iframe
-                  className="mx-auto w-full lg:w-[90%]"
-                  height="100%"
-                  src={currentVideo.embedUrl}
-                  title={currentVideo.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
         </div>
-        <div className="flex flex-col overflow-x-auto">
+
+        <div className="">
           <VideoList setCurrentVideo={setCurrentVideo} videos={videos} />
         </div>
       </div>
