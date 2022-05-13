@@ -57,8 +57,8 @@ export const menus = [
   {
     name: "Lista de emails",
     url: "/admin/emails",
-    isAdmin: true
-  }
+    isAdmin: true,
+  },
 ];
 
 export const emailTemplates = [
@@ -135,6 +135,7 @@ export const timelineBlocks = [
     exhibitors: [
       {
         name: "Raul Katz",
+        lastName: "Katz",
         title:
           "President Telecom Advisory Services LLC, Director Business Strategy Research Columbia Institute for tele-Information",
         imageUrl: `${config.storageUrl}/resources/exhibitors/raul-katz.jpg`,
@@ -144,6 +145,7 @@ export const timelineBlocks = [
       },
       {
         name: "Julio Porcel",
+        lastName: "Porcel",
         title:
           "Past President TDD, Coordinador del Componente 1 Proyecto BID para la mejora de las Compras Públicas del Perú",
         imageUrl: `${config.storageUrl}/resources/exhibitors/julio-porcel.jpg`,
@@ -153,6 +155,7 @@ export const timelineBlocks = [
       },
       {
         name: "Alfredo Astudillo",
+        lastName: "Astudillo",
         title: "Vice Presidente TDD",
         imageUrl: `${config.storageUrl}/resources/exhibitors/alfredo-astudillo.jpg`,
         subtitle: "Aceleración del Avance Digital del Perú",
@@ -161,6 +164,7 @@ export const timelineBlocks = [
       },
       {
         name: "Carlos Huaman",
+        lastName: "Huaman",
         title: "Socio Fundador DN Consultores",
         imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-huaman.jpg`,
         subtitle: "Política Pública Sectorial",
@@ -201,6 +205,7 @@ export const timelineBlocks = [
     exhibitors: [
       {
         name: "Fernando Zavala",
+        lastName: "Zavala",
         title: "Presidente de Directorio Grupo Interbank",
         imageUrl: `${config.storageUrl}/resources/exhibitors/fernando-zavala.jpg`,
         subtitle: "Liderazgo, Estrategia Digital & Gobierno Corporativo",
@@ -209,6 +214,7 @@ export const timelineBlocks = [
       },
       {
         name: "Walter Cabanillas",
+        lastName: "Cabanillas",
         title: "Digital Native Universe Program Manager Microsoft Región Sur",
         imageUrl: `${config.storageUrl}/resources/exhibitors/walter-cabanillas.jpg`,
         subtitle: "Modelos de Negocio, Innovación & Rediseño de Procesos",
@@ -217,6 +223,7 @@ export const timelineBlocks = [
       },
       {
         name: "Liliana Alvarado",
+        lastName: "Alvarado",
         title: "Directora Escuela Postgrado UTP Presidente TDD",
         imageUrl: `${config.storageUrl}/resources/exhibitors/liliana-alvarado.jpg`,
         subtitle: "Cambio Cultural & Desarrollo de Competencias y Capacidades (skillings)",
@@ -225,6 +232,7 @@ export const timelineBlocks = [
       },
       {
         name: "Guillermo Pacheco",
+        lastName: "Pacheco",
         title: "Gerente General NOVATRONIC",
         imageUrl: `${config.storageUrl}/resources/exhibitors/guillermo-pacheco.jpg`,
         subtitle: "Experiencias Exitosas de Transformación Digital",
@@ -244,6 +252,7 @@ export const timelineBlocks = [
     exhibitors: [
       {
         name: "Ignacio Couto",
+        lastName: "Couto",
         title: "Profesor de Digital Transformation en el IE Business School",
         imageUrl: `${config.storageUrl}/resources/exhibitors/ignacio-couto.jpg`,
         subtitle: "La Transformación Digital como factor de Competitividad Empresarial",
@@ -252,6 +261,7 @@ export const timelineBlocks = [
       },
       {
         name: "Gabriel Amaro",
+        lastName: "Amaro",
         title: "Director Ejecutivo Asociación de Gremios Productores Agrarios del Perú",
         imageUrl: `${config.storageUrl}/resources/exhibitors/gabriel-amaro.jpg`,
         subtitle: "Ecosistema para el desarrollo de las Pymes",
@@ -260,6 +270,7 @@ export const timelineBlocks = [
       },
       {
         name: "Guillermo Rodríguez",
+        lastName: "Rodríguez",
         title: "Operations & Information Systems Management Raymond A. Mason School of Business",
         imageUrl: `${config.storageUrl}/resources/exhibitors/guillermo-rodriguez.jpg`,
         subtitle: "La innovación como Clave del Éxito",
@@ -268,6 +279,7 @@ export const timelineBlocks = [
       },
       {
         name: "Carlos Armando de la Flor",
+        lastName: "Armando de la Flor",
         title: "CoFundador y CEO María Almenara",
         linkedin: "https://www.linkedin.com/in/cadelaflor/",
         imageUrl: `${config.storageUrl}/resources/exhibitors/carlos-armando.jpeg`,
@@ -287,6 +299,7 @@ export const timelineBlocks = [
     exhibitors: [
       {
         name: "Juan José Miranda",
+        lastName: "Miranda",
         title:
           "Director Digital Technology Innovation Blockchain & Web3 NTT DATA - Presidente de la Asociación Blockchain & DLT Peru ABPE",
         imageUrl: `${config.storageUrl}/resources/exhibitors/juan-miranda.jpg`,
@@ -296,6 +309,7 @@ export const timelineBlocks = [
       },
       {
         name: "Benito Juárez",
+        lastName: "Juárez",
         title: "Director Ejecutivo FabLab",
         imageUrl: `${config.storageUrl}/resources/exhibitors/benito-juarez.jpg`,
         subtitle: "Fabricación Digital (impresión 3D)",
@@ -304,6 +318,7 @@ export const timelineBlocks = [
       },
       {
         name: "Rosa Delgado",
+        lastName: "Delgado",
         title: "Presidente IPv6 Council Perú, Emeritus Trustee Internet Society (ISOC)",
         imageUrl: `${config.storageUrl}/resources/exhibitors/rosa-delgado.jpg`,
         subtitle: "El Internet Industrial de las Cosas IIoT",
@@ -312,6 +327,7 @@ export const timelineBlocks = [
       },
       {
         name: "Jorge Aguinaga",
+        lastName: "Aguinaga",
         title: "Gerente de Gestión Estratégica de Información UPC",
         imageUrl: `${config.storageUrl}/resources/exhibitors/jorge-aguinaga.jpg`,
         subtitle: "Big Data y Data Analytics",
@@ -320,6 +336,7 @@ export const timelineBlocks = [
       },
       {
         name: "Edgar Pérez",
+        lastName: "Pérez",
         title: "Asociado Grupo Gerson Lehrman, Instituto Ponemon y Centro de Globalización Chino, MrEdgarPerez.com",
         imageUrl: `${config.storageUrl}/resources/exhibitors/edgar-perez.jpg`,
         subtitle: "Metaverso",
@@ -336,8 +353,8 @@ export const sponsorsLists = [
 
   { imageUrl: `${config.storageUrl}/resources/sponsors/utp.svg` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/zytrust.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/g&s.svg` },
 
-  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
 ];
 
@@ -370,22 +387,52 @@ export const verifiedState = {
 export const videos = [
   {
     title: "TDD TALK 09 Ciberseguridad Factor Clave en la Transformación Digital",
-    embedUrl: "https://www.youtube.com/embed/nV_0GHNWSyQ",
+    embedUrl: "https://www.youtube.com/watch?v=nV_0GHNWSyQ&t=2038s",
     portraitUrl: `${config.storageUrl}/resources/thumbnail-1.jpg`,
   },
   {
     title: "TDD TALK 08 Transformación Digital en la Educación Superior",
-    embedUrl: "https://www.youtube.com/embed/E08ziEsBc4w",
+    embedUrl: "https://www.youtube.com/watch?v=E08ziEsBc4w",
     portraitUrl: `${config.storageUrl}/resources/thumbnail-2.jpg`,
   },
   {
     title: "TDD PRESENTA 01 Desarrollo de la Red Dorsal y Redes Regionales",
-    embedUrl: "https://www.youtube.com/embed/TVuKGZ322_c",
+    embedUrl: "https://www.youtube.com/watch?v=TVuKGZ322_c",
     portraitUrl: `${config.storageUrl}/resources/thumbnail-3.jpg`,
   },
   {
     title: "TDD TALK 07 Retos para la Transformación Digital",
-    embedUrl: "https://www.youtube.com/embed/QeF8vplir6o",
+    embedUrl: "https://www.youtube.com/watch?v=QeF8vplir6o",
     portraitUrl: `${config.storageUrl}/resources/thumbnail-4.jpg`,
+  },
+  {
+    title: "TDD PRESENTA 02 Impulso de la Identidad Digital",
+    embedUrl: "https://www.youtube.com/watch?v=IZzmd6CE6rI",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-5.jpg`,
+  },
+  {
+    title: "TDD TALK 06 Smart Cities",
+    embedUrl: "https://www.youtube.com/watch?v=hIeLsZh95TI",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-6.jpg`,
+  },
+  {
+    title: "TDD TALK 05 Experiencias Aplicadas en la Industria 4.0",
+    embedUrl: "https://www.youtube.com/watch?v=6Gxeju7UIQE",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-7.jpg`,
+  },
+  {
+    title: "TDD TALK 04 Innovación para la Transformación en Minería",
+    embedUrl: "https://www.youtube.com/watch?v=8rjtNisRddQ",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-8.jpg`,
+  },
+  {
+    title: "TDD TALK 03 Red Dorsal Nacional de Fibra Óptica - Desafíos y Oportunidades",
+    embedUrl: "https://www.youtube.com/watch?v=5ymZokME0Q0",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-9.jpg`,
+  },
+  {
+    title: "TDD TALK 02 La Travesía hacia el Liderazgo Transformador",
+    embedUrl: "https://www.youtube.com/watch?v=CJtbkByS1vA&t=1s",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-10.jpg`,
   },
 ];
