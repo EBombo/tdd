@@ -22,13 +22,13 @@ export const Exhibitors = (props) => {
 
     timelineBlocks.map((block) => _exhibitors.push(...block.exhibitors));
 
-    const sortedExhibitors = orderBy(_exhibitors, ["name"], [order]);
+    const sortedExhibitors = orderBy(_exhibitors, ["lastName"], [order]);
 
     setExhibitors(sortedExhibitors);
   };
 
   const reverseOrder = () => {
-    setExhibitors(orderBy(exhibitors, ["name"], order === "asc" ? "desc" : "asc"));
+    setExhibitors(orderBy(exhibitors, ["lastName"], order === "asc" ? "desc" : "asc"));
     setOrder(order === "asc" ? "desc" : "asc");
   };
 
