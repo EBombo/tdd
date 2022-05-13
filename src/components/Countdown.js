@@ -1,7 +1,7 @@
 import React, { useGlobal, useMemo } from "reactn";
 import useCountdown from "../hooks/useCountdown";
 import { spinLoaderMin } from "./common/loader";
-import { Sponsors } from "../pages/home/Sponsors";
+import { Sponsors } from "./Sponsors";
 import { sponsorsLists } from "./common/DataList";
 
 const Countdown = React.memo(({ title = "Reserva la fecha", deadline, disableSponsors, dark, ...props }) => {
