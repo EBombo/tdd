@@ -35,11 +35,9 @@ export const Exhibitors = (props) => {
   const searchUser = (value) => {
     if (isEmpty(value)) return sortUsers();
 
-    const filterUsers = exhibitors.map((exhibitor) => {
-      if (exhibitor.name.toLowerCase().includes(value)) return exhibitor;
-    });
+    const filterUsers = exhibitors.filter((exhibitor) => exhibitor.name.toLowerCase().includes(value?.toLowerCase()));
 
-    setExhibitors(filterUsers.filter((user) => user !== undefined));
+    setExhibitors(filterUsers);
   };
 
   return (
@@ -85,18 +83,18 @@ export const Exhibitors = (props) => {
           </div>
         </div>
 
-        <div>
+        <div className="grid lg:grid-cols-2 gap-8 pt-8">
           {exhibitors.slice(0, limit).map((exhibitor, index) => (
             <div
               key={`${exhibitor.name}-${index}`}
-              className="p-4 my-8 rounded-[8px] grid gap-4 shadow-[0_0_37px_rgba(0,0,0,0.15)] mx-auto max-w-[320px] md:max-w-[1100px] md:grid-cols-[325px_auto] md:p-8"
+              className="p-4 rounded-[8px] grid gap-4 w-full shadow-[0_0_37px_rgba(0,0,0,0.15)] mx-auto max-w-[320px] md:max-w-[1100px] md:grid-cols-[min-content_auto] md:p-4"
             >
               <Image
                 src={exhibitor.imageUrl}
                 width="265px"
                 height="265px"
-                desktopHeight="300px"
-                desktopWidth="300px"
+                desktopHeight="180px"
+                desktopWidth="180px"
                 size="cover"
                 margin="0 auto"
                 borderRadius="8px"
@@ -111,8 +109,8 @@ export const Exhibitors = (props) => {
                     <div className="hidden md:block">
                       <Image
                         src={`${config.storageUrl}/resources/${exhibitor.country}.svg`}
-                        width="60px"
-                        height="40px"
+                        width="30px"
+                        height="20px"
                         size="contain"
                         margin="0"
                         borderRadius="8px"
@@ -120,7 +118,7 @@ export const Exhibitors = (props) => {
                     </div>
                   </div>
 
-                  <div className="py-4 text-['Encode Sans'] text-black font-[400] text-[14px] leading-[18px] md:text-[20px] md:leading-[25px]">
+                  <div className="py-2 text-['Encode Sans'] text-black font-[400] text-[14px] leading-[18px] md:text-[20px] md:leading-[25px]">
                     {exhibitor.title}
                   </div>
                 </div>
@@ -129,8 +127,8 @@ export const Exhibitors = (props) => {
                   <Anchor url={exhibitor.linkedin}>
                     <Image
                       src={`${config.storageUrl}/resources/linkedin-primary.svg`}
-                      width="40px"
-                      height="40px"
+                      width="32px"
+                      height="32px"
                       size="contain"
                       margin="0"
                       borderRadius="8px"
@@ -151,15 +149,14 @@ export const Exhibitors = (props) => {
               </div>
             </div>
           ))}
-
-          {limit <= exhibitors.length && (
-            <div className="w-full flex justify-center my-8">
-              <Button primary onClick={() => setLimit(limit + 3)} margin="m-0">
-                Ver más
-              </Button>
-            </div>
-          )}
         </div>
+        {limit <= exhibitors.length && (
+          <div className="w-full flex justify-center my-8">
+            <Button primary onClick={() => setLimit(limit + 3)} margin="m-0">
+              Ver más
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
