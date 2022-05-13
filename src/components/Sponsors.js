@@ -1,5 +1,5 @@
 import React from "reactn";
-import { Image } from "../../components/common/Image";
+import { Image } from "./common/Image";
 
 export const Sponsors = ({ items }) => {
   return (
