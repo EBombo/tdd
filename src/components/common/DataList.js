@@ -370,22 +370,52 @@ export const verifiedState = {
 export const videos = [
   {
     title: "TDD TALK 09 Ciberseguridad Factor Clave en la Transformación Digital",
-    embedUrl: "https://www.youtube.com/embed/nV_0GHNWSyQ",
+    embedUrl: "https://www.youtube.com/watch?v=nV_0GHNWSyQ&t=2038s",
     portraitUrl: `${config.storageUrl}/resources/thumbnail-1.jpg`,
   },
   {
     title: "TDD TALK 08 Transformación Digital en la Educación Superior",
-    embedUrl: "https://www.youtube.com/embed/E08ziEsBc4w",
+    embedUrl: "https://www.youtube.com/watch?v=E08ziEsBc4w",
     portraitUrl: `${config.storageUrl}/resources/thumbnail-2.jpg`,
   },
   {
     title: "TDD PRESENTA 01 Desarrollo de la Red Dorsal y Redes Regionales",
-    embedUrl: "https://www.youtube.com/embed/TVuKGZ322_c",
+    embedUrl: "https://www.youtube.com/watch?v=TVuKGZ322_c",
     portraitUrl: `${config.storageUrl}/resources/thumbnail-3.jpg`,
   },
   {
     title: "TDD TALK 07 Retos para la Transformación Digital",
-    embedUrl: "https://www.youtube.com/embed/QeF8vplir6o",
+    embedUrl: "https://www.youtube.com/watch?v=QeF8vplir6o",
     portraitUrl: `${config.storageUrl}/resources/thumbnail-4.jpg`,
+  },
+  {
+    title: "TDD PRESENTA 02 Impulso de la Identidad Digital",
+    embedUrl: "https://www.youtube.com/watch?v=IZzmd6CE6rI",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-5.jpg`,
+  },
+  {
+    title: "TDD TALK 06 Smart Cities",
+    embedUrl: "https://www.youtube.com/watch?v=hIeLsZh95TI",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-6.jpg`,
+  },
+  {
+    title: "TDD TALK 05 Experiencias Aplicadas en la Industria 4.0",
+    embedUrl: "https://www.youtube.com/watch?v=6Gxeju7UIQE",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-7.jpg`,
+  },
+  {
+    title: "TDD TALK 04 Innovación para la Transformación en Minería",
+    embedUrl: "https://www.youtube.com/watch?v=8rjtNisRddQ",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-8.jpg`,
+  },
+  {
+    title: "TDD TALK 03 Red Dorsal Nacional de Fibra Óptica - Desafíos y Oportunidades",
+    embedUrl: "https://www.youtube.com/watch?v=5ymZokME0Q0",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-9.jpg`,
+  },
+  {
+    title: "TDD TALK 02 La Travesía hacia el Liderazgo Transformador",
+    embedUrl: "https://www.youtube.com/watch?v=CJtbkByS1vA&t=1s",
+    portraitUrl: `${config.storageUrl}/resources/thumbnail-10.jpg`,
   },
 ];
