@@ -5,8 +5,8 @@
       "service": "gmail",
       "host": "smtp.gmail.com",
       "from": "TDD TEAM",
-      "user": "hello@ebombo.com",
-      "password": "pass"
+      "user": " hello@ebombo.com",
+      "password": "Bomboperu123"
     },
     "serverUrl": "https://tdd.com",
     "mails": "pabloynciorivera@gmail.com",
@@ -20,8 +20,8 @@
       "service": "gmail",
       "host": "smtp.gmail.com",
       "from": "TDD TEAM",
-      "user": "hello@ebombo.com",
-      "password": "pass"
+      "user": " hello@ebombo.com",
+      "password": "Bomboperu123"
     },
     "serverUrl": "https://tdd.com",
     "mails": "pabloynciorivera@gmail.com",

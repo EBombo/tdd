@@ -1,6 +1,9 @@
 const logger = require("../../../utils/logger");
 const { updateUser } = require("../../../collections/users");
 const { searchName } = require("../../../utils");
+const { fetchTemplate, fetchSettingsLanding } = require("../../../collections/settings");
+const { sendEmail } = require("../../../email/sendEmail");
+const moment = require("moment");
 
 const postUser = async (req, res, next) => {
   try {
@@ -21,11 +24,26 @@ const postUser = async (req, res, next) => {
 
     await updateUser(user.id, { ...user, searchName: _searchName, createAt: new Date(), updateAt: new Date() });
 
+    await sendEmailToUser({ ...user, searchName: _searchName, createAt: new Date(), updateAt: new Date() })
+
     return res.send({ success: true });
   } catch (error) {
     logger.error(error);
     next(error);
   }
 };
+
+const sendEmailToUser = async (user) => {
+  const welcomeTemplate = await fetchTemplate("welcome");
+  const settings = await fetchSettingsLanding()
+
+  const date = moment(settings.countdown.toDate()).format("DD/MM/YYYY hh:mm:ss")
+
+  logger.log(welcomeTemplate)
+
+  await sendEmail(user.email.trim(), "Bienvenido al TDD", welcomeTemplate, {
+    eventDate: date
+  })
+}
 
 module.exports = { postUser };
