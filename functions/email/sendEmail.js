@@ -23,17 +23,15 @@ exports.sendEmail = async (to, subject, content, models) => {
       },
     });
 
-    const transporter = nodemailer.createTransport(
-      smtpTransport({
-        host: HOST,
-        port: PORT,
-        secure: true, //ssl
-        auth: {
-          user: USER,
-          pass: PASSWORD,
-        },
-      })
-    );
+    const transporter = nodemailer.createTransport({
+      host: HOST,
+      port: PORT,
+      secure: true, //ssl
+      auth: {
+        user: USER,
+        pass: PASSWORD,
+      },
+    });
 
     const mailOptions = {
       from: FROM,
