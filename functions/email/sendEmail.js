@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-let smtpTransport = require("nodemailer-smtp-transport");
+const smtpTransport = require("nodemailer-smtp-transport");
 const { config } = require("../config");
 const logger = require("../utils/logger");
 
