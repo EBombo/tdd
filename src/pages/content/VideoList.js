@@ -4,7 +4,7 @@ import { Anchor } from "../../components/form";
 
 export const VideoList = React.memo((props) => {
   return (
-    <div className="bg-blackDarken py-4 px-8 grid md:grid-cols-2 lg:grid-cols-4 gap-8 h-full lg:max-h-[calc(100vh-100px)] overflow-auto ">
+    <div className="bg-blackDarken py-4 px-8 grid md:grid-cols-2 lg:grid-cols-4 gap-8 h-full overflow-auto ">
       {props.videos.map((video, i) => (
         <div
           key={`video-list-item-${i}`}
