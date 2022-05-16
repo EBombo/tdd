@@ -16,7 +16,8 @@ exports.sendEmail = async (to, subject, content, models) => {
     logger.log({
       host: HOST,
       port: PORT,
-      secure: true, //ssl
+      secureConnection: false,
+      // secure: true, //ssl
       auth: {
         user: USER,
         pass: PASSWORD,
@@ -27,7 +28,8 @@ exports.sendEmail = async (to, subject, content, models) => {
       smtpTransport({
         host: HOST,
         port: PORT,
-        secure: true, //ssl
+        secureConnection: false,
+        // secure: true, //ssl
         auth: {
           user: USER,
           pass: PASSWORD,
