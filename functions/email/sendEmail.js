@@ -4,6 +4,7 @@ const { config } = require("../config");
 const logger = require("../utils/logger");
 
 const SERVICE = config.serverEmail.service;
+const PORT = config.serverEmail.port;
 const HOST = config.serverEmail.host;
 const FROM = `${config.serverEmail.from} <config.serverEmail.user>`;
 const USER = config.serverEmail.user;
@@ -16,6 +17,8 @@ exports.sendEmail = async (to, subject, content, models) => {
     logger.log({
       service: SERVICE,
       host: HOST,
+      port: PORT,
+      secure: false,
       auth: {
         user: USER,
         pass: PASSWORD,

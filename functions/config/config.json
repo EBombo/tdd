@@ -4,6 +4,7 @@
     "serverEmail": {
       "service": "zoho",
       "host": "smtp.zoho.com",
+      "port": 587,
       "from": "TDD TEAM",
       "user": "congreso@tdduni.org",
       "password": "#td5@Un1@2022"
@@ -19,6 +20,7 @@
     "serverEmail": {
       "service": "zoho",
       "host": "smtp.zoho.com",
+      "port": 587,
       "from": "TDD TEAM",
       "user": "congreso@tdduni.org",
       "password": "#td5@Un1@2022"
