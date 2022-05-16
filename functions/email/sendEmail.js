@@ -3,9 +3,10 @@ const smtpTransport = require("nodemailer-smtp-transport");
 const { config } = require("../config");
 const logger = require("../utils/logger");
 
+const SERVICE = config.serverEmail.service;
 const PORT = config.serverEmail.port;
 const HOST = config.serverEmail.host;
-const FROM = `${config.serverEmail.from} <config.serverEmail.user>`;
+const FROM = config.serverEmail.from + ` <${config.serverEmail.user}>`;
 const USER = config.serverEmail.user;
 const PASSWORD = config.serverEmail.password;
 
@@ -14,6 +15,8 @@ exports.sendEmail = async (to, subject, content, models) => {
     if (!to) return;
 
     logger.log({
+      FROM,
+      service: "Zoho",
       host: HOST,
       port: PORT,
       secure: true, //ssl
@@ -24,6 +27,7 @@ exports.sendEmail = async (to, subject, content, models) => {
     });
 
     const transporter = nodemailer.createTransport({
+      service: SERVICE,
       host: HOST,
       port: PORT,
       secure: true, //ssl
