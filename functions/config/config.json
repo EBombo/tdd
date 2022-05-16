@@ -2,8 +2,8 @@
   "productionConfig": {
     "phone": "0000000",
     "serverEmail": {
-      "service": "gmail",
-      "host": "smtp.gmail.com",
+      "service": "zoho",
+      "host": "smtp.zoho.com",
       "from": "TDD TEAM",
       "user": "congreso@tdduni.org",
       "password": "#td5@Un1@2022"
@@ -17,7 +17,7 @@
   "devConfig": {
     "phone": "0000000",
     "serverEmail": {
-      "service": "gmail",
+      "service": "zoho",
       "host": "smtp.zoho.com",
       "from": "TDD TEAM",
       "user": "congreso@tdduni.org",
