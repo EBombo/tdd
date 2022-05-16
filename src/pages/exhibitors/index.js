@@ -10,7 +10,7 @@ import isEmpty from "lodash/isEmpty";
 
 export const Exhibitors = (props) => {
   const [exhibitors, setExhibitors] = useState([]);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(6);
   const [order, setOrder] = useState("asc");
 
   useEffect(() => {
@@ -22,13 +22,13 @@ export const Exhibitors = (props) => {
 
     timelineBlocks.map((block) => _exhibitors.push(...block.exhibitors));
 
-    const sortedExhibitors = orderBy(_exhibitors, ["name"], [order]);
+    const sortedExhibitors = orderBy(_exhibitors, ["lastName"], [order]);
 
     setExhibitors(sortedExhibitors);
   };
 
   const reverseOrder = () => {
-    setExhibitors(orderBy(exhibitors, ["name"], order === "asc" ? "desc" : "asc"));
+    setExhibitors(orderBy(exhibitors, ["lastName"], order === "asc" ? "desc" : "asc"));
     setOrder(order === "asc" ? "desc" : "asc");
   };
 
@@ -152,7 +152,7 @@ export const Exhibitors = (props) => {
         </div>
         {limit <= exhibitors.length && (
           <div className="w-full flex justify-center my-8">
-            <Button primary onClick={() => setLimit(limit + 3)} margin="m-0">
+            <Button primary onClick={() => setLimit(limit + 4)} margin="m-0">
               Ver más
             </Button>
           </div>

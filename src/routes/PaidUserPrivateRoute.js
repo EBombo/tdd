@@ -12,7 +12,7 @@ export const PaidUserPrivateRoute = (props) => {
 
   useEffect(() => {
     // The student can see the event.
-    if (authUser?.documentId) return setIsLoading(false);
+    if (authUser?.studentId) return setIsLoading(false);
 
     if (!authUser) return router.push("/");
 
