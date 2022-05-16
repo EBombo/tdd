@@ -29,6 +29,8 @@ exports.sendEmail = async (to, subject, content, models) => {
       smtpTransport({
         service: SERVICE,
         host: HOST,
+        port: PORT,
+        secure: false,
         auth: {
           user: USER,
           pass: PASSWORD,
