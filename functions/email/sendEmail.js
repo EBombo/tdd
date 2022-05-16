@@ -18,7 +18,6 @@ exports.sendEmail = async (to, subject, content, models) => {
       service: SERVICE,
       host: HOST,
       port: PORT,
-      secure: true,
       auth: {
         user: USER,
         pass: PASSWORD,
@@ -30,7 +29,6 @@ exports.sendEmail = async (to, subject, content, models) => {
         service: SERVICE,
         host: HOST,
         port: PORT,
-        secure: true,
         auth: {
           user: USER,
           pass: PASSWORD,
