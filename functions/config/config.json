@@ -2,7 +2,6 @@
   "productionConfig": {
     "phone": "0000000",
     "serverEmail": {
-      "service": "zoho",
       "host": "smtppro.zoho.com",
       "port": 465,
       "from": "TDD TEAM",
@@ -18,9 +17,8 @@
   "devConfig": {
     "phone": "0000000",
     "serverEmail": {
-      "service": "zoho",
       "host": "smtppro.zoho.com",
-      "port": "465",
+      "port": 465,
       "from": "TDD TEAM",
       "user": "congreso@tdduni.org",
       "password": "#td5@Un1@2022"
