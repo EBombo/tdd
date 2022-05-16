@@ -26,9 +26,9 @@ exports.sendEmail = async (to, subject, content, models) => {
 
     const transporter = nodemailer.createTransport(
       smtpTransport({
-        service: SERVICE,
         host: HOST,
         port: PORT,
+        secure: true,
         auth: {
           user: USER,
           pass: PASSWORD,
