@@ -25,7 +25,7 @@ export const BuyTickets = (props) => {
   useEffect(() => {
     if (!authUser) return;
     // The student can see the event.
-    if (authUser?.documentId) return router.push("/event-countdown");
+    if (authUser?.studentId) return router.push("/event-countdown");
 
     const fetchPayments = () =>
       firestore
