@@ -147,9 +147,15 @@ const Navbar = (props) => {
 
             <div>
               <div className="text-center">
-                <Button margin="m-2" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-                  Adquirir entrada
-                </Button>
+                {authUser?.hasPayment ? (
+                  <Button margin="mb-4" primary onClick={() => router.push("/buy-tickets")}>
+                    Ver evento
+                  </Button>
+                ) : (
+                  <Button margin="m-2" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
+                    Adquirir entrada
+                  </Button>
+                )}
               </div>
 
               {!authUser ? (

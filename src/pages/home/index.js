@@ -75,9 +75,15 @@ export const Home = (props) => {
 
             <p className="text-base lg:text-lg mb-4">Hacia un desarrollo digital sostenible e inclusivo.</p>
 
-            <Button margin="mb-4" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-              Adquirir entrada
-            </Button>
+            {authUser?.hasPayment ? (
+              <Button margin="mb-4" primary onClick={() => router.push("/buy-tickets")}>
+                Ver evento
+              </Button>
+            ) : (
+              <Button margin="mb-4" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
+                Adquirir entrada
+              </Button>
+            )}
 
             <div className="py-4 max-w-[280px]">
               <Image className="inline-block" src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} />
