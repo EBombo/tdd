@@ -3,6 +3,10 @@ const { config, firestore, adminFirestore } = require("../../../config");
 const fetch = require("node-fetch");
 const { defaultCost } = require("../../../business");
 const { updateUser } = require("../../../collections/users");
+const { updateCoupon } = require("../../../collections/coupons");
+const { fetchTemplate, fetchSettingsLanding } = require("../../../collections/settings");
+const { sendEmail } = require("../../../email/sendEmail");
+const moment = require("moment");
 
 exports.postPayment = async (req, res, next) => {
   try {
@@ -42,15 +46,28 @@ exports.postPayment = async (req, res, next) => {
 
     const promisePayment = createPayment({ user, email, source_id, currency_code, amount, coupon, response });
     const promiseUser = updateUser(userId, { hasPayment: true });
-    const promiseCoupon = updateCoupon(coupon?.id);
+    const promiseCoupon = updateCoupon(coupon?.id, { totalUsed: adminFirestore.FieldValue.increment(1) });
 
     await Promise.all([promisePayment, promiseUser, promiseCoupon]);
+
+    await sendEmailToUser(email);
 
     return res.send({ success: true });
   } catch (error) {
     logger.error(error);
     next(error);
   }
+};
+
+const sendEmailToUser = async (email) => {
+  const template = await fetchTemplate("ticket");
+  const settings = await fetchSettingsLanding();
+
+  const date = moment(settings.countdown.toDate()).locale("es").format("MMMM Do YYYY, h:mm a");
+
+  await sendEmail(email.trim(), "Tu pago fue aceptado ¡Ya tienes tu entrada!", template, {
+    eventDate: date,
+  });
 };
 
 const culqiCharges = async (email, source_id, currency_code, amount) => {
@@ -89,17 +106,4 @@ const createPayment = async (paymentProps) => {
       { ...paymentProps, createAt: new Date(), updateAt: new Date(), deleted: false, id: paymentId },
       { merge: true }
     );
-};
-
-const updateCoupon = async (couponId) => {
-  if (!couponId) return;
-
-  try {
-    await firestore
-      .collection("coupons")
-      .doc(couponId)
-      .set({ totalUsed: adminFirestore.FieldValue.increment(1) }, { merge: true });
-  } catch (error) {
-    logger.error(error);
-  }
 };
