@@ -37,6 +37,7 @@ export const User = (props) => {
   }, [userId]);
 
   useEffect(() => {
+    if (!user) return;
     if (!userId) return;
     if (!user.hasPayment) return;
 
@@ -48,7 +49,7 @@ export const User = (props) => {
     };
 
     fetchPayment();
-  }, []);
+  }, [user]);
 
   return loadingUser ? (
     spinLoader()
