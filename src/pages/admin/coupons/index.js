@@ -119,6 +119,7 @@ export const Coupons = (props) => {
             </span>
           </p>
           <p>Cantidad Máxima de uso: {coupon?.maxUsage}</p>
+          <p>Cantidad veces que fue usado: {coupon?.totalUsed ?? 0}</p>
           <p>Descuento (%): {coupon?.discountFactor}</p>
           <p>
             Activo desde:{" "}

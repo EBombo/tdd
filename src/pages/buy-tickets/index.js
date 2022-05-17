@@ -2,16 +2,13 @@ import React, { useGlobal } from "reactn";
 import { CulqiComponent } from "./CulqiComponent";
 import Countdown from "../../components/Countdown";
 import { CouponForm } from "./CouponForm";
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/router";
-import { firestore } from "../../firebase";
+import { useMemo, useState } from "react";
 import { defaultCost } from "../../business";
+import { EventCountdown } from "../event-countdown";
 
 const defaultDiscount = 0;
 
 export const BuyTickets = (props) => {
-  const router = useRouter();
-
   const [authUser] = useGlobal("user");
 
   const [cost] = useState(defaultCost);
@@ -19,34 +16,18 @@ export const BuyTickets = (props) => {
   const [discount, setDiscount] = useState(defaultDiscount);
   const [isLoading, setIsLoading] = useState(false);
 
-  /**
-   * Redirect to countdown to event.
-   * **/
-  useEffect(() => {
-    if (!authUser) return;
-    // The student can see the event.
-    if (authUser?.studentId) return router.push("/event-countdown");
-
-    const fetchPayments = () =>
-      firestore
-        .collection("payments")
-        .where("user.id", "==", authUser.id)
-        .limit(1)
-        .onSnapshot((paymentSnapShot) => {
-          if (paymentSnapShot.empty) return;
-
-          router.push("/event-countdown");
-        });
-
-    const sub = fetchPayments();
-    return () => {
-      sub && sub();
-    };
-  }, [authUser]);
-
   const totalCost = useMemo(() => {
     return +(cost - discount);
   }, [cost, discount]);
+
+  const canSeeEvent = useMemo(() => {
+    return authUser?.studentId || authUser?.hasPayment;
+  }, [authUser]);
+
+  /**
+   * The user can see the event.
+   * **/
+  if (canSeeEvent) return <EventCountdown {...props} />;
 
   return (
     <>

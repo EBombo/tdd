@@ -1,7 +1,8 @@
 const logger = require("../../../utils/logger");
-const { config, firestore } = require("../../../config");
+const { config, firestore, adminFirestore } = require("../../../config");
 const fetch = require("node-fetch");
 const { defaultCost } = require("../../../business");
+const { updateUser } = require("../../../collections/users");
 
 exports.postPayment = async (req, res, next) => {
   try {
@@ -39,7 +40,11 @@ exports.postPayment = async (req, res, next) => {
     /** This logger is necessary. **/
     logger.log("response", response);
 
-    await createPayment({ user, email, source_id, currency_code, amount, coupon, response });
+    const promisePayment = createPayment({ user, email, source_id, currency_code, amount, coupon, response });
+    const promiseUser = updateUser(userId, { hasPayment: true });
+    const promiseCoupon = updateCoupon(coupon?.id);
+
+    await Promise.all([promisePayment, promiseUser, promiseCoupon]);
 
     return res.send({ success: true });
   } catch (error) {
@@ -84,4 +89,17 @@ const createPayment = async (paymentProps) => {
       { ...paymentProps, createAt: new Date(), updateAt: new Date(), deleted: false, id: paymentId },
       { merge: true }
     );
+};
+
+const updateCoupon = async (couponId) => {
+  if (!couponId) return;
+
+  try {
+    await firestore
+      .collection("coupons")
+      .doc(couponId)
+      .set({ totalUsed: adminFirestore.FieldValue.increment(1) }, { merge: true });
+  } catch (error) {
+    logger.error(error);
+  }
 };
