@@ -37,9 +37,7 @@ const sendEmailToUser = async (user) => {
   const welcomeTemplate = await fetchTemplate("welcome");
   const settings = await fetchSettingsLanding()
 
-  const date = moment(settings.countdown.toDate()).format("DD/MM/YYYY hh:mm:ss")
-
-  logger.log(welcomeTemplate)
+  const date = moment(settings.countdown.toDate()).format("MMMM Do YYYY, h:mm:ss a")
 
   await sendEmail(user.email.trim(), "Bienvenido al TDD", welcomeTemplate, {
     eventDate: date
