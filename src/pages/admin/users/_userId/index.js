@@ -1,12 +1,11 @@
 import React, { useEffect, useGlobal, useState } from "reactn";
-import { config, firestore } from "../../../../firebase";
+import { firestore } from "../../../../firebase";
 import get from "lodash/get";
 import { Checkbox, Modal } from "antd";
 import moment from "moment";
 import { Button } from "../../../../components/form/Button";
 import { spinLoader } from "../../../../components/common/loader";
 import { useRouter } from "next/router";
-import { mediaQuery } from "../../../../constants";
 import { useAcl } from "../../../../hooks/acl";
 
 export const User = (props) => {
@@ -81,6 +80,12 @@ export const User = (props) => {
 
               <span>{user.createAt && moment(get(user, "createAt", null)?.toDate()).format("DD/MM/YYYY")} </span>
             </div>
+
+            {user.isAdmin && <div className="border-primary border-2 rounded text-primary px-2 my-1">ADMIN</div>}
+            {user.studentId && (
+              <div className="border-primaryDarken border-2 rounded text-primaryDarken px-2 my-1">STUDENT</div>
+            )}
+            {user.hasPayment && <div className="border-success border-2 rounded text-success px-2 my-1">PAID</div>}
           </fieldset>
           <Acl name="/admin/users/[userId]/acls">
             <fieldset>
