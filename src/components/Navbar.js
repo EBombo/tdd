@@ -108,9 +108,15 @@ const Navbar = (props) => {
           </div>
 
           <div>
-            <Button primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-              {!authUser ? "Registrarse" : "Adquirir entrada"}
-            </Button>
+            {authUser?.hasPayment ? (
+              <Button margin="mb-4" primary onClick={() => router.push("/buy-tickets")}>
+                Ver evento
+              </Button>
+            ) : (
+              <Button primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
+                {!authUser ? "Registrarse" : "Adquirir entrada"}
+              </Button>
+            )}
 
             {!authUser ? (
               <Button onClick={() => router.push("/login")}>Iniciar sesión</Button>
@@ -153,7 +159,7 @@ const Navbar = (props) => {
                   </Button>
                 ) : (
                   <Button margin="m-2" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-                    Adquirir entrada
+                    {!authUser ? "Registrarse" : "Adquirir entrada"}
                   </Button>
                 )}
               </div>

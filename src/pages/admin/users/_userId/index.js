@@ -42,10 +42,14 @@ export const User = (props) => {
     if (!user.hasPayment) return;
 
     const fetchPayment = async () => {
-      const querySnapshotPayment = await firestore.collection("payments").where("user.id", "", user.id).limit(1).get();
+      const querySnapshotPayment = await firestore
+        .collection("payments")
+        .where("user.id", "==", user.id)
+        .limit(1)
+        .get();
 
-      const payment = snapshotToArray(querySnapshotPayment);
-      setPayment(payment);
+      const payments = snapshotToArray(querySnapshotPayment);
+      setPayment(payments[0]);
     };
 
     fetchPayment();
@@ -87,18 +91,18 @@ export const User = (props) => {
               <span>{user.createAt && moment(get(user, "createAt", null)?.toDate()).format("DD/MM/YYYY")} </span>
             </div>
 
-            {user.isAdmin && <span className="border-primary border-2 rounded text-primary px-2 my-1">ADMIN</span>}
-            {user.studentId && (
-              <span className="border-primaryDarken border-2 rounded text-primaryDarken px-2 my-1">STUDENT</span>
-            )}
-            {user.hasPayment && <span className="border-success border-2 rounded text-success px-2 my-1">PAID</span>}
-
             {payment && (
               <>
-                <div>El usuario pago: {payment.amount}</div>
+                <div>El usuario pago: S/ {payment.amount}</div>
                 {payment.coupon && <div>El usuario uso el cupon: {payment.coupon.code}</div>}
               </>
             )}
+
+            {user.isAdmin && <span className="border-primary border-2 rounded text-primary px-2 m-1">ADMIN</span>}
+            {user.studentId && (
+              <span className="border-primaryDarken border-2 rounded text-primaryDarken px-2 m-1">STUDENT</span>
+            )}
+            {user.hasPayment && <span className="border-success border-2 rounded text-success px-2 m-1">PAID</span>}
           </fieldset>
 
           <Acl name="/admin/users/[userId]/acls">
