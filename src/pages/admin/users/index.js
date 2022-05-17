@@ -6,10 +6,12 @@ import { Divider, Input, List, Tooltip } from "antd";
 import { useRouter } from "next/router";
 import { snapshotToArray } from "../../../utils";
 import { firestore } from "../../../firebase";
-import { useAcl } from "../../../hooks/acl";
-import { Anchor } from "../../../components/form/Anchor";
+import { useAcl } from "../../../hooks";
+import { Anchor } from "../../../components/form";
 import { Icon } from "../../../components/common/Icons";
 import { spinLoaderMin } from "../../../components/common/loader";
+
+const defaultLimitUsers = 100;
 
 export const Users = (props) => {
   const router = useRouter();
@@ -17,6 +19,7 @@ export const Users = (props) => {
 
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
+  const [limit, setLimit] = useState(defaultLimitUsers);
   const [loadingUsers, setLoadingUsers] = useState(true);
 
   useEffect(() => {
@@ -25,10 +28,10 @@ export const Users = (props) => {
 
   useEffect(() => {
     !search.trim() ? fetchUsers() : fetchUsersByName();
-  }, [search]);
+  }, [search, limit]);
 
   const fetchUsers = async () => {
-    const users = await firestore.collection("users").orderBy("createAt", "desc").limit(100).get();
+    const users = await firestore.collection("users").orderBy("createAt", "desc").limit(limit).get();
 
     setUsers(snapshotToArray(users));
 
@@ -39,7 +42,7 @@ export const Users = (props) => {
     const users = await firestore
       .collection("users")
       .where("searchName", "array-contains", search.toUpperCase())
-      .limit(100)
+      .limit(defaultLimitUsers)
       .get();
 
     setUsers(snapshotToArray(users));
@@ -108,6 +111,8 @@ export const Users = (props) => {
           </List.Item>
         )}
       />
+
+      {limit <= users?.length && <Anchor onClick={() => setLimit(limit + 100)}>Ver más</Anchor>}
     </div>
   );
 };
