@@ -112,7 +112,7 @@ export const Users = (props) => {
         )}
       />
 
-      {limit <= users?.length && <Anchor onClick={() => setLimit(limit + 100)}>Ver más</Anchor>}
+      {limit <= users?.length && <Anchor onClick={() => setLimit(limit + defaultLimitUsers)}>Ver más</Anchor>}
     </div>
   );
 };

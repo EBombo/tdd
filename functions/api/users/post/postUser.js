@@ -24,7 +24,7 @@ const postUser = async (req, res, next) => {
 
     await updateUser(user.id, { ...user, searchName: _searchName, createAt: new Date(), updateAt: new Date() });
 
-    await sendEmailToUser({ ...user, searchName: _searchName, createAt: new Date(), updateAt: new Date() })
+    await sendEmailToUser({ ...user, searchName: _searchName, createAt: new Date(), updateAt: new Date() });
 
     return res.send({ success: true });
   } catch (error) {
@@ -35,13 +35,13 @@ const postUser = async (req, res, next) => {
 
 const sendEmailToUser = async (user) => {
   const welcomeTemplate = await fetchTemplate("welcome");
-  const settings = await fetchSettingsLanding()
+  const settings = await fetchSettingsLanding();
 
-  const date = moment(settings.countdown.toDate()).format("MMMM Do YYYY, h:mm:ss a")
+  const date = moment(settings.countdown.toDate()).locale("es").format("MMMM Do YYYY, h:mm a");
 
   await sendEmail(user.email.trim(), "Bienvenido al TDD", welcomeTemplate, {
-    eventDate: date
-  })
-}
+    eventDate: date,
+  });
+};
 
 module.exports = { postUser };
