@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import moment from "moment";
 import get from "lodash/get";
 import orderBy from "lodash/orderBy";
@@ -9,18 +9,41 @@ import { firestore } from "../../../firebase";
 import { useAcl } from "../../../hooks";
 import { Anchor } from "../../../components/form";
 import { Icon } from "../../../components/common/Icons";
+import { CSVLink } from "react-csv";
 import { spinLoaderMin } from "../../../components/common/loader";
 
 const defaultLimitUsers = 100;
+
+const headers = [
+  { label: "Nombre", key: "name" },
+  { label: "Apellidos", key: "lastName" },
+  { label: "Email", key: "email" },
+  { label: "Document", key: "documentId" },
+  { label: "Codigo de estudiante", key: "studentId" },
+  { label: "Compañia", key: "company" },
+  { label: "Cargo", key: "title" },
+  { label: "Num. tlf", key: "phoneNumber" },
+  { label: "Referencia", key: "reference" },
+];
 
 export const Users = (props) => {
   const router = useRouter();
   const { AclLink, Acl } = useAcl();
 
-  const [search, setSearch] = useState("");
+  const csvRef = useRef(null);
+
   const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
   const [limit, setLimit] = useState(defaultLimitUsers);
+  const [allUsers, setAllUsers] = useState([]);
   const [loadingUsers, setLoadingUsers] = useState(true);
+  const [isLoadingDownload, setIsLoadingDownload] = useState(false);
+
+  useEffect(() => {
+    if (!allUsers?.length) return;
+
+    csvRef.current.link.click();
+  }, [allUsers]);
 
   useEffect(() => {
     fetchUsers();
@@ -50,6 +73,35 @@ export const Users = (props) => {
     setLoadingUsers(false);
   };
 
+  const fetchAllUsers = async () => {
+    setIsLoadingDownload(true);
+    const usersQuery = await firestore.collection("users").get();
+
+    const allUsers_ = snapshotToArray(usersQuery);
+
+    const usersMapped = allUsers_.map((user) => {
+      return {
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        documentId: user.documentId,
+        university: user.university,
+        studentId: user.studentId,
+        career: user.career,
+        company: user.company,
+        companyRole: user.title,
+        phoneNumber: user.phoneNumber,
+        reference: user.reference,
+        register: user.createAt.toDate(),
+        countryCode: user.countryCode,
+        hasPayment: user.hasPayment ? "yes" : "no",
+      };
+    });
+
+    setAllUsers(usersMapped);
+    setIsLoadingDownload(false);
+  };
+
   return loadingUsers ? (
     spinLoaderMin()
   ) : (
@@ -59,14 +111,24 @@ export const Users = (props) => {
           Regresar
         </Anchor>
       </div>
+
       <div className="title">
-        <h2 className="text-lg">Usuarios</h2>
+        <h2 className="text-lg text-center">Lista de usuarios</h2>
       </div>
-      <br />
+
       <div className="content-filters">
         <Input.Search className="search-team" placeholder="Buscar usuario" onSearch={(value) => setSearch(value)} />
       </div>
+
+      <div className="text-center">
+        <Anchor onClick={() => fetchAllUsers()} loading={isLoadingDownload} variant="primary">
+          Descargar todos los usuarios
+        </Anchor>
+        <CSVLink data={allUsers} ref={csvRef} key={`key-all-users-csv-${allUsers.length}`} filename="users.csv" />
+      </div>
+
       <Divider />
+
       <List
         itemLayout="vertical"
         size="large"
@@ -112,7 +174,11 @@ export const Users = (props) => {
         )}
       />
 
-      {limit <= users?.length && <Anchor onClick={() => setLimit(limit + defaultLimitUsers)}>Ver más</Anchor>}
+      {limit <= users?.length && (
+        <Anchor onClick={() => setLimit(limit + defaultLimitUsers)} loading={loadingUsers} variant="primary">
+          Ver más
+        </Anchor>
+      )}
     </div>
   );
 };
