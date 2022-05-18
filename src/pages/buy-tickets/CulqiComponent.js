@@ -7,6 +7,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { useRouter } from "next/router";
 
 const currency = "PEN";
+const minCost = 0;
 
 // Reference:
 // Tarjetas de prueba: https://docs.culqi.com/#/desarrollo/tarjetas
@@ -32,11 +33,11 @@ export const CulqiComponent = (props) => {
 
       const { error } = await Fetch(`${config.serverUrl}/users/${authUser.id}/payment`, "POST", {
         user: authUser,
-        email: event.email,
-        source_id: event.id,
         coupon: props.coupon,
+        source_id: event?.id,
         currency_code: currency,
         amount: +props.totalCost,
+        email: event?.email ?? authUser.email,
       });
 
       if (error) throw Error(error);
@@ -79,6 +80,9 @@ export const CulqiComponent = (props) => {
                 loading={props.isLoading}
                 disabled={props.isLoading}
                 onClick={() => {
+                  /** Total cost can be less than zero. **/
+                  if (props.totalCost * 100 <= minCost) return purchasing();
+
                   const formattedCost = +props.totalCost * 100;
                   setAmount(formattedCost);
                   openCulqi();

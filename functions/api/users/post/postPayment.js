@@ -21,11 +21,10 @@ exports.postPayment = async (req, res, next) => {
 
     if (userId !== user.id) throw Error("User is corrupt.");
 
-    if (!amount) throw Error("amount is required");
-
-    if (amount < 0) throw Error("Amount is invalid");
-
-    if (!source_id) throw "token is invalid";
+    /** Total cost can be less than zero. **/
+    //if (!amount) throw Error("amount is required");
+    //if (amount < 0) throw Error("Amount is invalid");
+    //if (!source_id) throw "token is invalid";
 
     if (currency_code !== "PEN") throw Error("Currency is corrupt");
 
@@ -44,9 +43,28 @@ exports.postPayment = async (req, res, next) => {
     /** This logger is necessary. **/
     logger.log("response", response);
 
-    const promisePayment = createPayment({ user, email, source_id, currency_code, amount, coupon, response });
-    const promiseUser = updateUser(userId, { hasPayment: true });
-    const promiseCoupon = updateCoupon(coupon ? coupon.id : null, {
+    /** Total cost can be less than zero. **/
+    const paymentId = firestore.collection("payments").doc().id;
+    const paymentBody = {
+      user,
+      email,
+      amount,
+      currency_code,
+      id: paymentId,
+      deleted: false,
+      createAt: new Date(),
+      updateAt: new Date(),
+      coupon: coupon ?? null,
+      response: response ?? null,
+      source_id: source_id ?? null,
+    };
+
+    const promisePayment = createPayment(paymentId, paymentBody);
+    const promiseUser = updateUser(userId, {
+      hasPayment: true,
+      payment: { ...paymentBody, user: null, coupon: coupon ?? null },
+    });
+    const promiseCoupon = updateCoupon(coupon?.id, {
       totalUsed: adminFirestore.FieldValue.increment(1),
     });
 
@@ -73,6 +91,9 @@ const sendEmailToUser = async (email) => {
 };
 
 const culqiCharges = async (email, source_id, currency_code, amount) => {
+  /** Total cost can be less than zero. **/
+  if (!source_id) return;
+
   const formattedAmount = +amount * 100;
 
   const response = await fetch("https://api.culqi.com/v2/charges", {
@@ -97,15 +118,5 @@ const culqiCharges = async (email, source_id, currency_code, amount) => {
   return response.json();
 };
 
-const createPayment = async (paymentProps) => {
-  const paymentRef = await firestore.collection("payments");
-
-  const paymentId = paymentRef.doc().id;
-
-  await paymentRef
-    .doc(paymentId)
-    .set(
-      { ...paymentProps, createAt: new Date(), updateAt: new Date(), deleted: false, id: paymentId },
-      { merge: true }
-    );
-};
+const createPayment = async (paymentId, paymentBody) =>
+  await firestore.collection("payments").doc(paymentId).set(paymentBody, { merge: true });
