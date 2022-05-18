@@ -1,6 +1,8 @@
-const { config, firestore } = require("../../../config");
+const { firestore, config } = require("../../../config");
 const logger = require("../../../utils/logger");
 const { updateEmail } = require("../../../collections/emails");
+const { fetchTemplate } = require("../../../collections/settings");
+const { sendEmail } = require("../../../email/sendEmail");
 
 const postEmail = async (req, res, next) => {
   try {
@@ -25,11 +27,24 @@ const postEmail = async (req, res, next) => {
       deleted: false,
     });
 
+    await sendEmailToAdmin(newEmail);
+
     return res.send({ success: true });
   } catch (error) {
     logger.error(error);
     next(error);
   }
+};
+
+const sendEmailToAdmin = async (email) => {
+  const contactTemplate = await fetchTemplate("contact");
+
+  await sendEmail(config.mails, "Consulta TDD", contactTemplate, {
+    email: email.email.trim(),
+    message: email.message,
+    name: email.name,
+    lastName: email.lastName
+  });
 };
 
 module.exports = { postEmail };
