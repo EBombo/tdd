@@ -46,11 +46,13 @@ exports.postPayment = async (req, res, next) => {
 
     const promisePayment = createPayment({ user, email, source_id, currency_code, amount, coupon, response });
     const promiseUser = updateUser(userId, { hasPayment: true });
-    const promiseCoupon = updateCoupon(coupon ? coupon.id : null, { totalUsed: adminFirestore.FieldValue.increment(1) });
+    const promiseCoupon = updateCoupon(coupon ? coupon.id : null, {
+      totalUsed: adminFirestore.FieldValue.increment(1),
+    });
 
     await Promise.all([promisePayment, promiseUser, promiseCoupon]);
 
-    await sendEmailToUser(email);
+    await sendEmailToUser(user.email ?? email);
 
     return res.send({ success: true });
   } catch (error) {
