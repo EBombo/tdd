@@ -95,6 +95,8 @@ export const Users = (props) => {
         register: user.createAt.toDate(),
         countryCode: user.countryCode,
         hasPayment: user.hasPayment ? "yes" : "no",
+        amountPayment: user.payment?.amount ?? 0,
+        couponCode: user.payment?.coupon?.code ?? "",
       };
     });
 
@@ -162,11 +164,15 @@ export const Users = (props) => {
                 <p>{`${get(user, "name", "")} ${get(user, "lastName", "")}`}</p>
                 <span className="text-black">{get(user, "email", "without email")}</span>
                 <h4>{`Creado: ${user.createAt && moment(user.createAt.toDate()).format("DD MMM YYYY")}`}</h4>
+                {user.payment ? <h4>Pagó: {user.payment.amount} soles</h4> : null}
+                {user.payment?.coupon ? <h4>Codigo cupón: {user.payment.coupon.code}</h4> : null}
 
                 {user.isAdmin && <div className="border-primary border-2 rounded text-primary px-2 my-1">ADMIN</div>}
+
                 {user.studentId && (
                   <div className="border-primaryDarken border-2 rounded text-primaryDarken px-2 my-1">STUDENT</div>
                 )}
+
                 {user.hasPayment && <div className="border-success border-2 rounded text-success px-2 my-1">PAID</div>}
               </div>
             </AclLink>
