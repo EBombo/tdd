@@ -348,14 +348,10 @@ export const timelineBlocks = [
 ];
 
 export const sponsorsLists = [
-  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
-
   { imageUrl: `${config.storageUrl}/resources/sponsors/utp.svg` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/zytrust.svg` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/g&s.svg` },
-
-  { imageUrl: `${config.storageUrl}/resources/sponsors/-.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/uni.svg` },
 ];
 
 export const accountStates = {
