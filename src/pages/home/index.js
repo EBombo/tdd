@@ -51,6 +51,7 @@ export const Home = (props) => {
 
   useEffect(() => {
     router.prefetch("/buy-tickets");
+    router.prefetch("/timeline");
     router.prefetch("/library");
     router.prefetch("/library/events");
     router.prefetch("/events/[eventId]");
@@ -94,6 +95,28 @@ export const Home = (props) => {
 
       <Countdown />
 
+      <div className="bg-white py-4 md:py-12">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Expositores</div>
+
+          <PreviewCarousel items={exhibitors} />
+
+          <div className="w-fit mx-auto mt-8">
+            <Button primary margin="m-0" onClick={() => router.push("/timeline")}>
+              <div className="flex items-center gap-[5px]">
+                <Image
+                  className="inline-block"
+                  width="18px"
+                  src={`${config.storageUrl}/resources/schedule.svg`}
+                  filter="brightness(0) invert(1)"
+                />
+                Ver programa
+              </div>
+            </Button>
+          </div>
+        </div>
+      </div>
+
       <div className="bg-white pt-24 mb-32">
         <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">¿Quiénes somos?</div>
 
@@ -124,14 +147,6 @@ export const Home = (props) => {
               </Button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="bg-white py-4 md:py-12">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="text-center text-xl lg:text-4xl font-bold pt-4 mb-8">Expositores</div>
-
-          <PreviewCarousel items={exhibitors} />
         </div>
       </div>
 
