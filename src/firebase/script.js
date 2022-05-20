@@ -3,45 +3,37 @@ import { snapshotToArray } from "../utils";
 import get from "lodash/get";
 import chunk from "lodash/chunk";
 
-const limit = 1000;
+const limit = 2;
 
-export const updateCollection = async (collection_, startAfter_ = "") => {
-  const collectionRef = firestore.collection(collection_);
+export const updateCollection = async (collection_, startAfter_ = null) => {
+  let documentRef = firestore.collection(collection_).orderBy("id", "desc");
 
-  // const documentsQuerySnapShot = await collectionRef.orderBy("id", "asc").startAfter(startAfter_).limit(limit).get();
-  const documentsQuerySnapShot = await collectionRef.limit(limit).get();
+  if (startAfter_) {
+    documentRef = documentRef.startAfter(startAfter_);
+  }
+
+  documentRef = documentRef.limit(limit);
+
+  const documentsQuerySnapShot = await documentRef.get();
 
   if (documentsQuerySnapShot.empty) return console.log("finish->", documentsQuerySnapShot.empty);
 
   let documents = snapshotToArray(documentsQuerySnapShot);
 
-  console.log("traidos--->", documents.length);
+  console.log("fetching--->", documents.length);
 
   const promises = chunk(documents, 500).map(async (documentsChunk) => {
     const batchRef = firestore.batch();
 
     documentsChunk.map(async (document) => {
-      // batchRef.update(firestore.collection(collection_).doc(document.id), {
-      //   updateAt: new Date(),
-      //   createAt: new Date(),
-      //   seen: false,
-      //   deleted: false,
-      //   id: document.id,
-      // });
+      if (!document?.user?.id) return;
+
+      console.log("document", document);
+
       await firestore
-        .collection("emails")
-        .doc(document.id)
-        .set(
-          {
-            ...document,
-            updateAt: new Date(),
-            createAt: new Date(),
-            seen: false,
-            deleted: false,
-            id: document.id,
-          },
-          { merge: true }
-        );
+        .collection("users")
+        .doc(document.user.id)
+        .set({ payment: document, hasPayment: !!document }, { merge: true });
     });
 
     await batchRef.commit();
