@@ -11,7 +11,6 @@ import { Anchor } from "../../../components/form";
 import { Icon } from "../../../components/common/Icons";
 import { CSVLink } from "react-csv";
 import { spinLoaderMin } from "../../../components/common/loader";
-import { updateCollection } from "../../../firebase/script";
 
 const defaultLimitUsers = 100;
 
@@ -129,10 +128,6 @@ export const Users = (props) => {
         </Anchor>
         <CSVLink data={allUsers} ref={csvRef} key={`key-all-users-csv-${allUsers.length}`} filename="users.csv" />
       </div>
-
-      <Anchor variant="primary" onClick={() => updateCollection("payments")}>
-        ACTUALIZAR USUARIOS
-      </Anchor>
 
       <Divider />
 
