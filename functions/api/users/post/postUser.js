@@ -4,6 +4,7 @@ const { searchName } = require("../../../utils");
 const { fetchTemplate, fetchSettingsLanding } = require("../../../collections/settings");
 const { sendEmail } = require("../../../email/sendEmail");
 const moment = require("moment");
+const capitalize = require("lodash/capitalize");
 
 const postUser = async (req, res, next) => {
   try {
@@ -37,7 +38,9 @@ const sendEmailToUser = async (user) => {
   const welcomeTemplate = await fetchTemplate("welcome");
   const settings = await fetchSettingsLanding();
 
-  const date = moment(settings.countdown.toDate()).locale("es").format("MMMM Do YYYY, h:mm a");
+  const date = capitalize(
+    moment(settings.countdown.toDate()).locale("es").utcOffset(-5).format("dddd Do MMMM, h:mm a")
+  );
 
   await sendEmail(user.email.trim(), "Bienvenido al TDD", welcomeTemplate, {
     eventDate: date,
