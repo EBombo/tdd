@@ -22,8 +22,9 @@ export const Register = (props) => {
   }, []);
 
   useEffect(() => {
-    //TODO: Definir a donde se redirige al usuario luego del registro.
-    if (authUser) router.push("/");
+    if (!authUser) return;
+
+    router.push("/buy-tickets");
   }, [authUser]);
 
   const signUpUser = async (user) => {
