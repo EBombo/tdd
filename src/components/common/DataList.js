@@ -106,7 +106,7 @@ export const templatesLegend = [
 export const timelineBlocks = [
   {
     name: "Bloque 1",
-    date: "Miércoles 8",
+    date: "Miércoles 8, 6:00 - 9:00 PM",
     title: "Políticas Públicas",
     color: "#D2232A",
     colorName: "red",
@@ -175,7 +175,7 @@ export const timelineBlocks = [
   },
   {
     name: "Bloque 2",
-    date: "Jueves 9",
+    date: "Jueves 9, 6:00 - 9:00 PM",
     title: "TRANSFORMACIÓN DIGITAL DE LAS ORGANIZACIONES PRIVADAS",
     color: "#39B54A",
     colorName: "green",
@@ -243,7 +243,7 @@ export const timelineBlocks = [
   },
   {
     name: "Bloque 3",
-    date: "Viernes 10",
+    date: "Viernes 10, 6:00 - 10:00 PM",
     title: "TRANSFORMACIÓN DIGITAL DE LAS ORGANIZACIONES PRIVADAS",
     color: "#F47B20",
     colorName: "orange",
@@ -290,7 +290,7 @@ export const timelineBlocks = [
   },
   {
     name: "Bloque 4",
-    date: "Sábado 11",
+    date: "Sábado 11, 9:00 AM - 12:00 PM",
     title: "TECNOLOGÍAS DIGITALES Y SU APLICACIÓN",
     color: "#00AEEF",
     colorName: "skyBlue",

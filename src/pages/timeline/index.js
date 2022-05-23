@@ -55,6 +55,7 @@ export const Timeline = (props) => {
             </div>
           ))}
         </div>
+
         {timelineBlocks.map((block, index) => (
           <div
             className={`rounded-[8px] bg-white shadow-[0_0_37px_rgba(0,0,0,0.15)] p-2 mb-4 md:p-12 md:mb-12 max-w-[1500px] mx-auto ${
