@@ -17,7 +17,7 @@ const DisplayNumber = React.memo(({ value, label, scale }) => (
   </span>
 ));
 
-const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, dark, scale, ...props }) => {
+const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, disableTitle, dark, scale, ...props }) => {
   const [deadline] = useGlobal("deadline");
 
   if (!deadline) return spinLoaderMin();
@@ -60,13 +60,15 @@ const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, dark,
         </div>
       )}
 
-      <div
-        className={`${props.titleAlignment || "text-center"} ${scale ? "" : "text-xl lg:text-3xl"} font-bold ${
-          props.titlePadding || "pt-4"
-        } ${props.titleMargin || "mb-8 md:mb-16"}`}
-      >
-        {title}
-      </div>
+      {!disableTitle && (
+        <div
+          className={`${props.titleAlignment || "text-center"} ${scale ? "" : "text-xl lg:text-3xl"} font-bold ${
+            props.titlePadding || "pt-4"
+          } ${props.titleMargin || "mb-8 md:mb-16"}`}
+        >
+          {title}
+        </div>
+      )}
 
       {displayContent}
     </div>
