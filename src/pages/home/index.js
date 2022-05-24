@@ -115,8 +115,13 @@ export const Home = (props) => {
             </div>
 
             <p className="text-base lg:text-lg mb-4">
-              {!authUser &&
-                "¡Regístrate para poder comprar tu entrada! Si eres estudiante universitario tendrás entrada gratuita a la feria"}
+              {!authUser && (
+                <>
+                  ¡Regístrate para poder comprar tu entrada!
+                  <br />
+                  Si eres estudiante universitario tendrás entrada gratuita a la feria
+                </>
+              )}
             </p>
 
             {hasPayment}
@@ -129,6 +134,7 @@ export const Home = (props) => {
 
             {authUser?.hasPayment || authUser?.studentId ? (
               <Countdown
+                title="El congreso empieza en:"
                 titleAlignment={"text-left"}
                 titlePadding={"-"}
                 titleMargin={"-"}
