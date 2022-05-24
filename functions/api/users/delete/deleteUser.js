@@ -7,7 +7,7 @@ exports.deleteUser = async (req, res, next) => {
 
     const { userId } = req.params;
 
-    console.log("userId", userId);
+    logger.log("userId", userId);
 
     await deleteUserAccount(userId);
 
