@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "reactn";
-import { firestore } from "../../../../firebase";
-import get from "lodash/get";
 import moment from "moment";
-import { Button } from "../../../../components/form";
-import { spinLoader } from "../../../../components/common/loader";
+import { Modal } from "antd";
+import get from "lodash/get";
 import { useRouter } from "next/router";
-import { useAcl } from "../../../../hooks";
+import { config, firestore } from "../../../../firebase";
 import { snapshotToArray } from "../../../../utils";
+import React, { useEffect, useState } from "reactn";
+import { useAcl, useSendError } from "../../../../hooks";
+import { Anchor, Button } from "../../../../components/form";
+import { spinLoader } from "../../../../components/common/loader";
+import { useFetch } from "../../../../hooks/useFetch";
 
 export const User = (props) => {
   const router = useRouter();
   const { userId } = router.query;
 
   const { Acl, AclLink } = useAcl();
+  const { sendError } = useSendError();
+  const { Fetch } = useFetch();
 
   const [user, setUser] = useState(null);
   const [payment, setPayment] = useState(null);
@@ -55,6 +59,31 @@ export const User = (props) => {
     fetchPayment();
   }, [user]);
 
+  const deleteUser = async (userId) => {
+    Modal.confirm({
+      title: "¿Seguro que quieres eliminar este usuario?",
+      content: "No se podrá revertir el cambio una vez eliminado.",
+      okText: "Eliminar",
+      async onOk() {
+        try {
+          /** Delete user on authentication.**/
+          /** Delete user on firebase.**/
+          const { error } = await Fetch(`${config.serverUrl}/users/${user.id}/delete`, "DELETE");
+
+          if (error) throw Error(error);
+
+          props.showNotification("Ok", "La cuenta fue eliminada", "success");
+          await router.push("/admin/users");
+        } catch (error) {
+          console.error(error);
+          sendError(error, "deleteFolder");
+          props.showNotification("Error", "Algo salio mal");
+        }
+      },
+      onCancel() {},
+    });
+  };
+
   return loadingUser ? (
     spinLoader()
   ) : (
@@ -64,6 +93,7 @@ export const User = (props) => {
           Regresar
         </AclLink>
       </div>
+
       <div className="grid lg:grid-cols-2">
         <div className="mx-2">
           <fieldset>
@@ -110,13 +140,20 @@ export const User = (props) => {
               <legend>
                 <span className="title-legend">Cuenta</span>
               </legend>
+
               <div className="item">
                 <label>Editar permisos :</label>
+
                 <Button variant="primary" display="inline" onClick={() => router.push(`/admin/users/${userId}/acls`)}>
                   EDITAR PERMISOS
                 </Button>
+
                 <br />
                 <br />
+
+                <Anchor variant="primary" display="block" onClick={() => deleteUser(userId)}>
+                  Eliminar cuenta
+                </Anchor>
               </div>
             </fieldset>
           </Acl>
