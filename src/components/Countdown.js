@@ -4,7 +4,11 @@ import { spinLoaderMin } from "./common/loader";
 import { Sponsors } from "./Sponsors";
 import { sponsorsLists } from "./common/DataList";
 
-const Countdown = React.memo(({ title = "Reserva la fecha", deadline, disableSponsors, dark, ...props }) => {
+const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, dark, ...props }) => {
+  const [deadline] = useGlobal("deadline");
+
+  if (!deadline) return spinLoaderMin();
+
   const [days, hours, minutes, seconds] = useCountdown(deadline);
 
   const DisplayNumber = React.memo(({ value, label }) => (
@@ -57,17 +61,10 @@ const Countdown = React.memo(({ title = "Reserva la fecha", deadline, disableSpo
       >
         {title}
       </div>
+
       {displayContent}
     </div>
   );
-});
-
-const CountdownComponent = (props) => {
-  const [deadline] = useGlobal("deadline");
-
-  if (!deadline) return spinLoaderMin();
-
-  return <Countdown deadline={deadline} {...props} />;
 };
 
 export default CountdownComponent;
