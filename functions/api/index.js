@@ -8,6 +8,7 @@ const { postValidateCoupon } = require("./coupons");
 const { postError, getError } = require("./errors");
 const { postUser, postPayment } = require("./users/post");
 const { getUserToken, getVerifyCode, getResendVerifyCode, getSendEmail } = require("./users/get");
+const { deleteUser } = require("./users/delete");
 
 const api = express();
 const router = express.Router();
@@ -31,6 +32,8 @@ router.get("/verify/:userId/resend-code", getResendVerifyCode);
 router.get("/verify/:userId/verification-code/:verificationCode", getVerifyCode);
 
 router.post("/users/:userId/payment", postPayment);
+
+router.delete("/users/:userId/delete", deleteUser);
 
 //------------------------emails------------------------
 

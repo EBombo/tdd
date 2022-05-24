@@ -1,4 +1,4 @@
-const { firestore } = require("../../config");
+const { firestore, auth } = require("../../config");
 const logger = require("../../utils/logger");
 const { snapshotToArray } = require("../../utils");
 
@@ -29,4 +29,13 @@ const fetchUserByEmail = async (userEmail) => {
   return snapshotToArray(userSnapshot)[0];
 };
 
-module.exports = { fetchUsers, fetchUser, updateUser, fetchUserByEmail };
+const deleteUserAccount = async (userId) => {
+  /** Delete user on firebase.**/
+  const promiseFirebase = firestore.collection("users").doc(userId).delete();
+  /** Delete user on authentication.**/
+  const promiseAuthentication = auth.deleteUser(userId);
+
+  await Promise.all([promiseFirebase, promiseAuthentication]);
+};
+
+module.exports = { fetchUsers, fetchUser, updateUser, fetchUserByEmail, deleteUserAccount };
