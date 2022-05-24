@@ -4,19 +4,19 @@ import { spinLoaderMin } from "./common/loader";
 import { Sponsors } from "./Sponsors";
 import { sponsorsLists } from "./common/DataList";
 
+const DisplayNumber = React.memo(({ value, label }) => (
+  <span className="mx-0 lg:mx-8">
+    <div className="min-w-[80px] lg:min-w-[90px] text-4xl lg:text-5xl font-bold text-center mb-3">{value}</div>
+    <div className="text-md lg:text-4xl text-pink-500 text-center">{label}</div>
+  </span>
+));
+
 const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, dark, ...props }) => {
   const [deadline] = useGlobal("deadline");
 
   if (!deadline) return spinLoaderMin();
 
   const [days, hours, minutes, seconds] = useCountdown(deadline);
-
-  const DisplayNumber = React.memo(({ value, label }) => (
-    <span className="mx-0 lg:mx-8">
-      <div className="min-w-[80px] lg:min-w-[90px] text-4xl lg:text-5xl font-bold text-center mb-3">{value}</div>
-      <div className="text-md lg:text-4xl text-pink-500 text-center">{label}</div>
-    </span>
-  ));
 
   const displayContent = useMemo(() => {
     if (deadline === null || days + hours + minutes + seconds <= 0)
