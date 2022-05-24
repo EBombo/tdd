@@ -5,8 +5,14 @@ import { Image } from "./common/Image";
 import { Anchor, Button } from "./form";
 import { useAuth } from "../hooks/useAuth";
 import Footer from "./Footer";
+import { useMemo } from "react";
 
-// TODO: Implement Navbar
+const LeftAnchor = React.memo(({ children, url }) => (
+  <Anchor className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-pink-500 py-2" url={url}>
+    <span className="text-base mx-4">{children}</span>
+  </Anchor>
+));
+
 const Navbar = (props) => {
   const router = useRouter();
 
@@ -24,11 +30,13 @@ const Navbar = (props) => {
     router.prefetch("/login");
   }, []);
 
-  const LeftAnchor = React.memo(({ children, url }) => (
-    <Anchor className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-pink-500 py-2" url={url}>
-      <span className="text-base mx-4">{children}</span>
-    </Anchor>
-  ));
+  const btnLabel = useMemo(() => {
+    if (!authUser) return "Registrarse";
+    if (!authUser?.hasPayment && !authUser?.studentId)
+      return <>Adquirir entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/95</>;
+
+    return "Ver evento";
+  }, [authUser]);
 
   return (
     <div className="relative h-[100vh] w-[100wv] overflow-hidden">
@@ -114,7 +122,7 @@ const Navbar = (props) => {
               </Button>
             ) : (
               <Button primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-                {!authUser ? "Registrarse" : "Adquirir entrada"}
+                {btnLabel}
               </Button>
             )}
 
@@ -159,7 +167,7 @@ const Navbar = (props) => {
                   </Button>
                 ) : (
                   <Button margin="m-2" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-                    {!authUser ? "Registrarse" : "Adquirir entrada"}
+                    {btnLabel}
                   </Button>
                 )}
               </div>
