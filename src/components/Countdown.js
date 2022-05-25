@@ -48,7 +48,7 @@ const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, disab
   return (
     <div
       className={`min-h-[50px] ${props.containerPadding || "pt-12 md:pt-20 pb-12"} ${
-        dark ? "bg-blackDarken text-white" : "-"
+        dark ? "bg-blackDarken text-white" : ""
       } `}
     >
       {!disableSponsors && (
