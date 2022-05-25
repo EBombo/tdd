@@ -32,7 +32,9 @@ export const VisitorRegister = (props) => {
       <div className="text-['Encode Sans'] font-[700] text-[20px] leading-[25px] md:text-[40px] md:leading-[44px]">
         Regístrate
       </div>
-      <div className="my-4">Crea tu cuenta con tus datos para poder comprar tu entrada.</div>
+      <div className="my-4">
+        Si no eres alumno universitario, crea tu cuenta con tus datos para poder comprar tu entrada.
+      </div>
       <div className="mb-4 grid gap-4 md:grid-cols-[repeat(2,1fr)] items-end">
         <Input name="name" type="text" ref={register} error={errors.name} height="50px" placeholder="Nombres" />
         <Input
@@ -126,22 +128,32 @@ export const VisitorRegister = (props) => {
         </div>
       </div>
 
-      <Button
-        primary
-        margin="mt-4"
-        htmlType="submit"
-        loading={isLoadingCreateUser}
-        disabled={isLoadingUser || isLoadingCreateUser}
-      >
-        Registrarse
-      </Button>
+      <div className="flex">
+        <Button
+          margin="mx-auto"
+          onClick={() => props.setRegisterOption(null)}
+          disabled={isLoadingUser || isLoadingCreateUser}
+        >
+          Volver
+        </Button>
+
+        <Button
+          primary
+          margin="mx-auto"
+          htmlType="submit"
+          loading={isLoadingCreateUser}
+          disabled={isLoadingUser || isLoadingCreateUser}
+        >
+          Registrarse
+        </Button>
+      </div>
 
       <div className="py-4">
         <div className="text-['Encode Sans'] text-blackDarken font-[400] text-[16px] leading-[20px]">
           Si ya tienes una cuenta puedes ingresar con tu correo y contraseña.
         </div>
 
-        <Button primary margin="mt-4" onClick={() => router.push("/login")}>
+        <Button margin="mt-4" onClick={() => router.push("/login")}>
           Iniciar sesión
         </Button>
       </div>

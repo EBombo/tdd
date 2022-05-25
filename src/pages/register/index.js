@@ -7,6 +7,9 @@ import { Image } from "../../components/common/Image";
 import { config } from "../../firebase";
 import { StudentRegister } from "./StudentRegister";
 import { VisitorRegister } from "./VisitorRegister";
+import { useMemo } from "react";
+import { registrationOptions } from "./dataList";
+import { RegistrationOptions } from "./registrationOptions";
 
 export const Register = (props) => {
   const router = useRouter();
@@ -15,7 +18,7 @@ export const Register = (props) => {
 
   const [authUser] = useGlobal("user");
 
-  const [tab, setTab] = useState(0);
+  const [registrationOption, setRegisterOption] = useState(null);
 
   useEffect(() => {
     router.prefetch("/login");
@@ -34,6 +37,18 @@ export const Register = (props) => {
 
     await signUp(user);
   };
+
+  const register = useMemo(() => {
+    /** Show sign-up options. **/
+    if (!registrationOption) return <RegistrationOptions setRegisterOption={setRegisterOption} {...props} />;
+
+    /** Student form. **/
+    if (registrationOption?.title === registrationOptions.student.title)
+      return <StudentRegister setRegisterOption={setRegisterOption} signUpUser={signUpUser} {...props} />;
+
+    /** Visitor form. **/
+    return <VisitorRegister setRegisterOption={setRegisterOption} signUpUser={signUpUser} {...props} />;
+  }, [registrationOption]);
 
   return (
     <div>
@@ -59,32 +74,7 @@ export const Register = (props) => {
         </div>
 
         <div>
-          <div className="flex items-center px-2 gap-[5px]">
-            <div
-              className={`rounded-tl-[10px] p-2 cursor-pointer rounded-tr-[10px] text-['Encode Sans'] text-[12px] leading-[14px] md:text-[16px] md:leading-[20px] font-600 text-white ${
-                tab === 0 ? `bg-primary` : `bg-grayLighten`
-              }`}
-              onClick={() => setTab(0)}
-            >
-              No soy alumno universitario
-            </div>
-            <div
-              className={`rounded-tl-[10px] p-2 cursor-pointer rounded-tr-[10px] text-['Encode Sans'] text-[12px] leading-[14px] md:text-[16px] md:leading-[20px] font-600 text-white ${
-                tab === 1 ? `bg-primary` : `bg-grayLighten`
-              }`}
-              onClick={() => setTab(1)}
-            >
-              Soy alumno universitario
-            </div>
-          </div>
-
-          <div className="w-full lg:w-[800px] bg-white/[.60] h-[fit-content] rounded-[10px] p-4">
-            {tab === 1 ? (
-              <StudentRegister signUpUser={signUpUser} {...props} />
-            ) : (
-              <VisitorRegister signUpUser={signUpUser} {...props} />
-            )}
-          </div>
+          <div className="w-full lg:w-[800px] bg-white/[.60] h-[fit-content] rounded-[10px] p-4">{register}</div>
         </div>
       </div>
 
