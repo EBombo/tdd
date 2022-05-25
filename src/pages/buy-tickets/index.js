@@ -5,6 +5,9 @@ import { CouponForm } from "./CouponForm";
 import { useMemo, useState } from "react";
 import { defaultCost } from "../../business";
 import { EventCountdown } from "../event-countdown";
+import { Desktop } from "../../constants";
+import { Image } from "../../components/common/Image";
+import { config } from "../../firebase";
 
 const defaultDiscount = 0;
 
@@ -32,6 +35,30 @@ export const BuyTickets = (props) => {
   return (
     <>
       <div className="min-h-[calc(100vh-50px)] sm:px-1 lg:min-h-[calc(100vh-120px)] w-full bg-register bg-no-repeat bg-cover flex lg:items-end bg-bottom">
+        <Desktop>
+          <div className="col-start-1 col-end-2 bg-white/[.80] max-w-[500px] p-4 lg:p-8 ml-4">
+            <h2 className="text-2xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
+
+            <div className="text-base my-4">
+              <b>Hacia un desarrollo digital sostenible e inclusivo.</b>
+            </div>
+
+            <Countdown
+              title="El congreso empieza en:"
+              titlePadding={"-"}
+              titleMargin={"my-2"}
+              containerPadding={"py-8 px-2"}
+              disableSponsors
+              scale
+              dark
+            />
+
+            <div className="py-4 max-w-[280px]">
+              <Image className="inline-block" src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} />
+            </div>
+          </div>
+        </Desktop>
+
         <div className="lg:w-[450px] md:mr-[100px] md:ml-auto my-auto rounded-md p-8 bg-blackDarken mx-2">
           <div className="mb-4 grid grid-cols-[auto_1fr]">
             <div className="text-3xl text-bold text-primary text-left">Adquirir entrada</div>

@@ -13,12 +13,12 @@ export const Timeline = (props) => {
       <div className="w-full bg-timeline bg-no-repeat bg-center bg-cover max-h-[240px] h-[40vh] md:max-h-[368px] py-4 md:py-8 relative">
         <div className="grid lg:grid-cols-[auto_300px] gap-4">
           <div className="grid gap-4">
-            <div className="text-blackDarken text-[20px] font-[800] leading-[25px] lg:text-[36px] lg:leading-[44px] uppercase bg-white/[.60]">
+            <div className="text-blackDarken text-[20px] font-[800] leading-[25px] lg:text-[36px] lg:leading-[44px] uppercase bg-white/[.80]">
               <span className="pl-4 py-4 inline-block">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</span>
             </div>
 
             <div className="py-4 lg:pr-12 lg:py-4 flex gap-[10px] text-[24px] uppercase font-bold">
-              <span className="bg-white/[.60] pl-4 py-4">
+              <span className="bg-white/[.80] pl-4 py-4">
                 <Image
                   className="inline-block"
                   src={`${config.storageUrl}/resources/calendar.svg`}
@@ -33,7 +33,7 @@ export const Timeline = (props) => {
               </span>
             </div>
           </div>
-          <div className="bg-white/[.60] hidden lg:block">
+          <div className="bg-white/[.80] hidden lg:block">
             <Image src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} width="80%" />
           </div>
         </div>

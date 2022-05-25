@@ -30,7 +30,7 @@ export const EventCountdown = (props) => {
   return (
     <>
       <div className="sm:px-1 min-h-[calc(100vh-100px)] w-full bg-register bg-no-repeat bg-cover bg-bottom flex flex-col justify-center">
-        <div className="bg-white/[.60] lg:max-w-[1200px] grid lg:grid-cols-[auto_300px] gap-4 p-8 mb-8">
+        <div className="bg-white/[.80] lg:max-w-[1200px] grid lg:grid-cols-[auto_300px] gap-4 p-8 mb-8">
           <div className="">
             <p className="text-xl lg:text-4xl font-bold uppercase mb-4 px-10">
               I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL
