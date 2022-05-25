@@ -351,7 +351,7 @@ export const sponsorsLists = [
   { imageUrl: `${config.storageUrl}/resources/sponsors/utp.svg` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/zytrust.svg` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/g&s.svg` },
-  { imageUrl: `${config.storageUrl}/resources/sponsors/uni.svg` },
+  { imageUrl: `${config.storageUrl}/resources/sponsors/uni.png` },
   { imageUrl: `${config.storageUrl}/resources/sponsors/ebombo.svg` },
 ];
 
