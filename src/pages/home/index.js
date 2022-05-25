@@ -86,7 +86,7 @@ export const Home = (props) => {
     if (authUser) return;
 
     return (
-      <Button margin="mb-4" primary onClick={() => router.push("/register")}>
+      <Button margin="mb-2" primary onClick={() => router.push("/register")}>
         Regístrarme
       </Button>
     );
@@ -97,7 +97,7 @@ export const Home = (props) => {
     if (authUser?.hasPayment || authUser?.studentId) return;
 
     return (
-      <Button margin="mb-4" primary onClick={() => router.push("/buy-tickets")}>
+      <Button margin="mb-2" primary onClick={() => router.push("/buy-tickets")}>
         Adquirir entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/95
       </Button>
     );
@@ -107,14 +107,14 @@ export const Home = (props) => {
     <LandingContainer>
       <div className="min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)] w-full bg-index bg-no-repeat bg-cover flex lg:items-end bg-bottom">
         <div className="mt-8 lg:mt-0 lg:mx-12 lg:grid lg:grid-cols-3 w-[90%] lg:w-full lg:h-[500px]">
-          <div className="col-start-1 col-end-2 bg-white/[.60] max-w-[500px] p-4 lg:p-8">
+          <div className="col-start-1 col-end-2 bg-white/[.80] max-w-[500px] p-4 lg:p-8">
             <h2 className="text-xl lg:text-4xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
-            <div className="text-base my-4">
+            <div className="text-base my-2">
               <b>Hacia un desarrollo digital sostenible e inclusivo.</b>
             </div>
 
-            <p className="text-base lg:text-lg mb-4">
+            <p className="text-base mb-4">
               {!authUser && (
                 <>
                   ¡Regístrate para poder comprar tu entrada!

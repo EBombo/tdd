@@ -36,7 +36,7 @@ export const BuyTickets = (props) => {
     <>
       <div className="min-h-[calc(100vh-50px)] sm:px-1 lg:min-h-[calc(100vh-120px)] w-full bg-register bg-no-repeat bg-cover flex lg:items-end bg-bottom">
         <Desktop>
-          <div className="col-start-1 col-end-2 bg-white/[.60] max-w-[500px] p-4 lg:p-8 ml-4">
+          <div className="col-start-1 col-end-2 bg-white/[.80] max-w-[500px] p-4 lg:p-8 ml-4">
             <h2 className="text-2xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
             <div className="text-base my-4">

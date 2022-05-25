@@ -53,7 +53,7 @@ export const Register = (props) => {
   return (
     <div>
       <div className="w-full relative bg-register bg-no-repeat bg-cover p-4 justify-center lg:min-h-[calc(100vh-100px)] md:p-8 lg:flex lg:justify-end">
-        <div className="col-start-1 col-end-2 bg-white/[.60] max-w-[500px] p-4 hidden absolute bottom-0 left-8 xl:block lg:p-8">
+        <div className="col-start-1 col-end-2 bg-white/[.80] max-w-[500px] p-4 hidden absolute bottom-0 left-8 xl:block lg:p-8">
           <h2 className="text-xl lg:text-4xl font-bold mb-6">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
           <p className="text-base lg:text-xl mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
