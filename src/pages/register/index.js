@@ -74,7 +74,7 @@ export const Register = (props) => {
         </div>
 
         <div>
-          <div className="w-full lg:w-[800px] bg-white/[.60] h-[fit-content] rounded-[10px] p-4">{register}</div>
+          <div className="w-full lg:w-[800px] bg-white/[.80] h-[fit-content] rounded-[10px] p-4">{register}</div>
         </div>
       </div>
 
