@@ -10,6 +10,7 @@ import { PreviewCarousel } from "./PreviewCarousel";
 import { NewsCarousel } from "./NewsCarousel";
 import { ContactForm } from "./ContactForm";
 import orderBy from "lodash/orderBy";
+import { useMemo } from "react";
 
 const news = [
   {
@@ -67,24 +68,81 @@ export const Home = (props) => {
     setExhibitors(sortedExhibitors);
   }, []);
 
+  const hasPayment = useMemo(() => {
+    if (!authUser) return;
+    if (!authUser?.hasPayment && !authUser?.studentId) return;
+
+    return <div className="text-lg text-primary">¡Ya tienes entrada!</div>;
+  }, [authUser]);
+
+  const buyTicket = useMemo(() => {
+    if (!authUser) return;
+    if (authUser?.hasPayment || authUser?.studentId) return;
+
+    return <div>¡Compra ya tu entrada!</div>;
+  }, [authUser]);
+
+  const registerBtn = useMemo(() => {
+    if (authUser) return;
+
+    return (
+      <Button margin="mb-2" primary onClick={() => router.push("/register")}>
+        Regístrarme
+      </Button>
+    );
+  }, [authUser]);
+
+  const buyTicketBtn = useMemo(() => {
+    if (!authUser) return;
+    if (authUser?.hasPayment || authUser?.studentId) return;
+
+    return (
+      <Button margin="mb-2" primary onClick={() => router.push("/buy-tickets")}>
+        Adquirir entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/95
+      </Button>
+    );
+  }, [authUser]);
+
   return (
     <LandingContainer>
       <div className="min-h-[calc(100vh-50px)] lg:min-h-[calc(100vh-120px)] w-full bg-index bg-no-repeat bg-cover flex lg:items-end bg-bottom">
         <div className="mt-8 lg:mt-0 lg:mx-12 lg:grid lg:grid-cols-3 w-[90%] lg:w-full lg:h-[500px]">
-          <div className="col-start-1 col-end-2 bg-white/[.60] max-w-[500px] p-4 lg:p-8">
+          <div className="col-start-1 col-end-2 bg-white/[.80] max-w-[500px] p-4 lg:p-8">
             <h2 className="text-xl lg:text-4xl font-bold mb-4">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
-            <p className="text-base lg:text-lg mb-4">Hacia un desarrollo digital sostenible e inclusivo.</p>
+            <div className="text-base my-2">
+              <b>Hacia un desarrollo digital sostenible e inclusivo.</b>
+            </div>
 
-            {authUser?.hasPayment ? (
-              <Button margin="mb-4" primary onClick={() => router.push("/buy-tickets")}>
-                Ver evento
-              </Button>
-            ) : (
-              <Button margin="mb-4" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-                Adquirir entrada
-              </Button>
-            )}
+            <p className="text-base mb-4">
+              {!authUser && (
+                <>
+                  ¡Regístrate para poder comprar tu entrada!
+                  <br />
+                  Si eres estudiante universitario tendrás entrada gratuita a la feria
+                </>
+              )}
+            </p>
+
+            {hasPayment}
+
+            {buyTicket}
+
+            {registerBtn}
+
+            {buyTicketBtn}
+
+            {authUser?.hasPayment || authUser?.studentId ? (
+              <Countdown
+                title="El congreso empieza en:"
+                titleAlignment={"text-left"}
+                titlePadding={"-"}
+                titleMargin={"-"}
+                containerPadding={"py-2"}
+                disableSponsors
+                scale
+              />
+            ) : null}
 
             <div className="py-4 max-w-[280px]">
               <Image className="inline-block" src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} />

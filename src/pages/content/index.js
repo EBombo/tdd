@@ -14,12 +14,12 @@ export const Content = (props) => {
         <div className="flex flex-col">
           <div className="py-2 lg:min-h-[150px]">
             <div className="text-md lg:text-4xl font-bold uppercase my-2">
-              <span className="bg-white/[.60] inline-block px-8">
+              <span className="bg-white/[.80] inline-block px-8">
                 I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL
               </span>
             </div>
             <div className="text-md lg:text-2xl font-bold uppercase inline-block">
-              <span className="bg-white/[.60] inline-block px-8">
+              <span className="bg-white/[.80] inline-block px-8">
                 <Image
                   className="inline-block"
                   src={`${config.storageUrl}/resources/film.svg`}

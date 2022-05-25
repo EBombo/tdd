@@ -4,37 +4,43 @@ import { spinLoaderMin } from "./common/loader";
 import { Sponsors } from "./Sponsors";
 import { sponsorsLists } from "./common/DataList";
 
-const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, dark, ...props }) => {
+const DisplayNumber = React.memo(({ value, label, scale }) => (
+  <span className={`mx-0 ${scale ? "mx-2" : "lg:mx-8"}`}>
+    <div
+      className={`${
+        scale ? "text-3xl" : "min-w-[80px] lg:min-w-[90px] text-4xl lg:text-5xl"
+      } font-bold text-center mb-3`}
+    >
+      {value}
+    </div>
+    <div className={`${scale ? "" : "text-md lg:text-4xl "}text-pink-500 text-center`}>{label}</div>
+  </span>
+));
+
+const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, disableTitle, dark, scale, ...props }) => {
   const [deadline] = useGlobal("deadline");
 
   if (!deadline) return spinLoaderMin();
 
   const [days, hours, minutes, seconds] = useCountdown(deadline);
 
-  const DisplayNumber = React.memo(({ value, label }) => (
-    <span className="mx-0 lg:mx-8">
-      <div className="min-w-[80px] lg:min-w-[90px] text-4xl lg:text-5xl font-bold text-center mb-3">{value}</div>
-      <div className="text-md lg:text-4xl text-pink-500 text-center">{label}</div>
-    </span>
-  ));
-
   const displayContent = useMemo(() => {
     if (deadline === null || days + hours + minutes + seconds <= 0)
       return (
         <div className="flex items-center justify-center">
-          <DisplayNumber value={0} label="Días" />
-          <DisplayNumber value={0} label="Horas" />
-          <DisplayNumber value={0} label="Minutos" />
-          <DisplayNumber value={0} label="Segundos" />
+          <DisplayNumber value={0} label="Días" scale={scale} />
+          <DisplayNumber value={0} label="Horas" scale={scale} />
+          <DisplayNumber value={0} label="Minutos" scale={scale} />
+          <DisplayNumber value={0} label="Segundos" scale={scale} />
         </div>
       );
 
     return (
       <div className="flex items-center justify-center">
-        <DisplayNumber value={days} label="Días" />
-        <DisplayNumber value={hours} label="Horas" />
-        <DisplayNumber value={minutes} label="Minutos" />
-        <DisplayNumber value={seconds} label="Segundos" />
+        <DisplayNumber value={days} label="Días" scale={scale} />
+        <DisplayNumber value={hours} label="Horas" scale={scale} />
+        <DisplayNumber value={minutes} label="Minutos" scale={scale} />
+        <DisplayNumber value={seconds} label="Segundos" scale={scale} />
       </div>
     );
   }, [days, hours, minutes, seconds]);
@@ -42,8 +48,8 @@ const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, dark,
   return (
     <div
       className={`min-h-[50px] ${props.containerPadding || "pt-12 md:pt-20 pb-12"} ${
-        dark ? "bg-blackDarken text-white" : "bg-white"
-      }`}
+        dark ? "bg-blackDarken text-white" : ""
+      } `}
     >
       {!disableSponsors && (
         <div className={`${dark ? "bg-blackDarken text-white" : "bg-white"} py-4 mb-12`}>
@@ -54,13 +60,15 @@ const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, dark,
         </div>
       )}
 
-      <div
-        className={`${props.titleAlignment || "text-center"} text-xl lg:text-3xl font-bold ${
-          props.titlePadding || "pt-4"
-        } ${props.titleMargin || "mb-8 md:mb-16"}`}
-      >
-        {title}
-      </div>
+      {!disableTitle && (
+        <div
+          className={`${props.titleAlignment || "text-center"} ${scale ? "" : "text-xl lg:text-3xl"} font-bold ${
+            props.titlePadding || "pt-4"
+          } ${props.titleMargin || "mb-8 md:mb-16"}`}
+        >
+          {title}
+        </div>
+      )}
 
       {displayContent}
     </div>
