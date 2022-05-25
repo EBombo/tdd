@@ -77,6 +77,7 @@ export const Register = (props) => {
               Soy alumno universitario
             </div>
           </div>
+
           <div className="w-full lg:w-[800px] bg-white/[.60] h-[fit-content] rounded-[10px] p-4">
             {tab === 1 ? (
               <StudentRegister signUpUser={signUpUser} {...props} />
