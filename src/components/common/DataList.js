@@ -186,7 +186,7 @@ export const timelineBlocks = [
         name: "Jaime Dupuy",
         title: "Legal and Regulatory Affairs ManagerLegal Sociedad de Comercio Exterior del Perú ComexPerú",
         linkedin: "https://www.linkedin.com/in/jaimedupuy/",
-        imageUrl: `${config.storageUrl}/resources/exhibitors/jaime_dupuy.jpg`,
+        imageUrl: `${config.storageUrl}/resources/exhibitors/jaime-dupuy.jpeg`,
       },
       {
         name: "Javier Salinas",
