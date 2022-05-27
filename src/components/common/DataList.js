@@ -186,7 +186,7 @@ export const timelineBlocks = [
         name: "Jaime Dupuy",
         title: "Legal and Regulatory Affairs ManagerLegal Sociedad de Comercio Exterior del Perú ComexPerú",
         linkedin: "https://www.linkedin.com/in/jaimedupuy/",
-        imageUrl: `${config.storageUrl}/resources/exhibitors/jaime_dupuy.jpg`,
+        imageUrl: `${config.storageUrl}/resources/exhibitors/jaime-dupuy.jpeg`,
       },
       {
         name: "Javier Salinas",
@@ -243,8 +243,8 @@ export const timelineBlocks = [
   },
   {
     name: "Bloque 3",
-    date: "Viernes 10, 6:00 - 10:00 PM",
-    title: "TRANSFORMACIÓN DIGITAL DE LAS ORGANIZACIONES PRIVADAS",
+    date: "Viernes 10, 6:00 - 9:00 PM",
+    title: "TRANSFORMACIÓN DIGITAL ENFOCADA EN PYMES",
     color: "#F47B20",
     colorName: "orange",
     description:

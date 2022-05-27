@@ -1,5 +1,4 @@
 import React, { useEffect, useGlobal, useState } from "reactn";
-import { Button } from "../../components/form";
 import Countdown from "../../components/Countdown";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
@@ -57,10 +56,6 @@ export const Register = (props) => {
           <h2 className="text-xl lg:text-4xl font-bold mb-6">I CONGRESO INTERNACIONAL DE TRANSFORMACIÓN DIGITAL</h2>
 
           <p className="text-base lg:text-xl mb-8">Hacia un desarrollo digital sostenible e inclusivo.</p>
-
-          <Button margin="m-0" primary onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-            Adquirir entrada
-          </Button>
 
           <div className="my-8">
             <Image

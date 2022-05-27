@@ -89,11 +89,14 @@ export const Login = (props) => {
 
           <div className="py-4">
             <div className="text-['Encode Sans'] text-blackDarken font-[400] text-[16px] leading-[20px]">
-              Si aún no tienes tu entrada para la feria ¡Estás atiempo para conseguirla!
+              Si aún no te has registrado y no tienes tu entrada
+            </div>
+            <div className="text-['Encode Sans'] text-blackDarken font-[400] text-[16px] leading-[20px]">
+              ¡Hazlo ya!
             </div>
 
-            <Button primary margin="my-4" onClick={() => router.push(authUser ? "/buy-tickets" : "/register")}>
-              Adquirir entrada
+            <Button primary margin="my-4" onClick={() => router.push("/register")}>
+              Registrarse
             </Button>
           </div>
         </form>
