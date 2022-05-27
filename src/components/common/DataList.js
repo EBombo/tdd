@@ -329,7 +329,7 @@ export const timelineBlocks = [
         name: "Jorge Aguinaga",
         lastName: "Aguinaga",
         title: "Gerente de Gestión Estratégica de Información UPC",
-        imageUrl: `${config.storageUrl}/resources/exhibitors/jorge-aguinaga.jpg`,
+        imageUrl: `${config.storageUrl}/resources/exhibitors/jorge-aguinaga.jpeg`,
         subtitle: "Big Data y Data Analytics",
         linkedin: "https://www.linkedin.com/in/jorgeaguinaga/",
         country: "peru",
