@@ -31,7 +31,7 @@ const Navbar = (props) => {
   }, []);
 
   const btnLabel = useMemo(() => {
-    if (!authUser) return "Registrarse";
+    if (!authUser) return "Regístrarse";
     if (!authUser?.hasPayment && !authUser?.studentId)
       return <>Adquirir entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/95</>;
 
