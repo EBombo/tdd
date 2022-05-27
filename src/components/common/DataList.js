@@ -243,7 +243,7 @@ export const timelineBlocks = [
   },
   {
     name: "Bloque 3",
-    date: "Viernes 10, 6:00 - 10:00 PM",
+    date: "Viernes 10, 6:00 - 9:00 PM",
     title: "TRANSFORMACIÓN DIGITAL ENFOCADA EN PYMES",
     color: "#F47B20",
     colorName: "orange",
