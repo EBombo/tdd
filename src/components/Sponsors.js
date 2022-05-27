@@ -6,13 +6,9 @@ import { mediaQuery } from "../constants";
 
 export const Sponsors = ({ items }) => {
   return chunk(items, 4).map((itemsChunked, index) => (
-    <SponsorsStyled
-      size={itemsChunked.length}
-      className={`grid gap-4 lg:gap-8 mx-4 my-4`}
-      key={`items-chunked-${index}`}
-    >
+    <SponsorsStyled size={itemsChunked.length} key={`items-chunked-${index}`} className="grid gap-4 lg:gap-8 mx-4 my-8">
       {itemsChunked.map((item, i) => (
-        <Image height="50px" desktopHeight="70px" size="contain" src={item.imageUrl} key={`sponsor-img-${i}`} />
+        <Image height="50px" desktopHeight="60px" size="contain" src={item.imageUrl} key={`sponsor-img-${i}`} />
       ))}
     </SponsorsStyled>
   ));
