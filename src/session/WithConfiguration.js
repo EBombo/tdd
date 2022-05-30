@@ -51,7 +51,7 @@ export const WithConfiguration = (props) => {
       await setGlobal({
         user: authUserLS ? collectionToDate(authUserLS) : null,
         settings: collectionToDate({ ...settingsLS, version }),
-        deadline: deadlineLS ? new Date(deadlineLS) : deadlineLS,
+        deadline: deadlineLS ? new Date(deadlineLS) : new Date(),
         location,
         audios: [],
         languageCode,

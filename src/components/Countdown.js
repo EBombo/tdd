@@ -20,8 +20,6 @@ const DisplayNumber = React.memo(({ value, label, scale }) => (
 const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, disableTitle, dark, scale, ...props }) => {
   const [deadline] = useGlobal("deadline");
 
-  if (!deadline) return spinLoaderMin();
-
   const [days, hours, minutes, seconds] = useCountdown(deadline);
 
   const displayContent = useMemo(() => {
@@ -44,6 +42,8 @@ const CountdownComponent = ({ title = "Reserva la fecha", disableSponsors, disab
       </div>
     );
   }, [days, hours, minutes, seconds]);
+
+  if (!deadline) return spinLoaderMin();
 
   return (
     <div
