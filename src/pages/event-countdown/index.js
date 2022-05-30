@@ -1,5 +1,4 @@
 import React, { useGlobal } from "reactn";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { config } from "../../firebase";
 import Countdown from "../../components/Countdown";
@@ -8,8 +7,6 @@ import { Button } from "../../components/form";
 import { useInterval } from "../../hooks/useInterval";
 
 export const EventCountdown = (props) => {
-  const router = useRouter();
-
   const [deadline] = useGlobal("deadline");
 
   const [isDeadlinedFinished, setIsDeadlinedFinished] = useState(false);
