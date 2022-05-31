@@ -1,28 +1,68 @@
 import React, { useGlobal } from "reactn";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { config } from "../../firebase";
 import Countdown from "../../components/Countdown";
 import { Image } from "../../components/common/Image";
 import { Button } from "../../components/form";
 import { useInterval } from "../../hooks/useInterval";
+import moment from "moment";
+import { spinLoaderMin } from "../../components/common/loader";
+import { useRouter } from "next/router";
 
 export const EventCountdown = (props) => {
+  const router = useRouter();
+
   const [deadline] = useGlobal("deadline");
+  const [serverDate] = useGlobal("serverDate");
 
   const [isDeadlinedFinished, setIsDeadlinedFinished] = useState(false);
 
   useInterval(() => {
     const finishedDeadline = () => {
       if (!deadline) return;
+      if (isDeadlinedFinished) return;
 
-      const currentTime = new Date().getTime();
-      const deadlineTime = deadline.getTime();
-
-      setIsDeadlinedFinished(currentTime > deadlineTime);
+      setIsDeadlinedFinished(moment(deadline).isBefore(serverDate));
     };
 
     finishedDeadline();
   }, 1000);
+
+  const eventComponent = useMemo(() => {
+    /**
+     * The event is live.
+     * **/
+    if (isDeadlinedFinished) {
+      return (
+        <div className="bg-blackDarken mx-4 lg:mx-auto px-8 pt-10 text-center">
+          <p className="text-primary text-lg lg:text-4xl font-bold px-10">¡Ya tienes entrada!</p>
+          <div className="px-10 py-8">
+            <Button primary margin="m-auto" fontSize="text-xl" onClick={() => router.push("/event")}>
+              Unirse al evento
+            </Button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="bg-blackDarken mx-4 lg:mx-0 px-8 pt-10">
+        <p className="text-primary text-lg lg:text-4xl font-bold px-10">¡Ya tienes entrada!</p>
+        <div className="max-w-[800px]">
+          <Countdown
+            disableSponsors
+            dark
+            titleAlignment="text-left"
+            title="El congreso inicia en:"
+            titlePadding="pt-4 px-10"
+            containerPadding="pt-4 md:pt-12 pb-12"
+          />
+        </div>
+      </div>
+    );
+  }, [isDeadlinedFinished]);
+
+  if (!deadline) return spinLoaderMin();
 
   return (
     <>
@@ -39,31 +79,7 @@ export const EventCountdown = (props) => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-[min-content_auto]">
-          <div className="bg-blackDarken mx-4 lg:mx-0 px-8 pt-10">
-            <p className="text-primary text-lg lg:text-4xl font-bold px-10">¡Ya tienes entrada!</p>
-            {!deadline ? (
-              spinLoaderMin()
-            ) : isDeadlinedFinished ? (
-              <div className="px-10 py-8">
-                <Button primary margin="m-0" onClick={() => window.open("/event", "_blank")}>
-                  Unirse al evento
-                </Button>
-              </div>
-            ) : (
-              <div className="max-w-[800px]">
-                <Countdown
-                  disableSponsors
-                  dark
-                  titleAlignment="text-left"
-                  title="El congreso inicia en:"
-                  titlePadding="pt-4 px-10"
-                  containerPadding="pt-4 md:pt-12 pb-12"
-                />
-              </div>
-            )}
-          </div>
-        </div>
+        <div className={`grid ${isDeadlinedFinished ? "" : "lg:grid-cols-[min-content_auto]"}`}>{eventComponent}</div>
       </div>
     </>
   );
