@@ -3,7 +3,7 @@ import React from "reactn";
 // TODO replace iframe
 const videoId = "m3cmEq3jRVk";
 const eventUrl = `https://www.youtube.com/embed/${videoId}`;
-const host = "run.app";
+const host = "localhost";
 
 export const Event = (props) => {
   return (
