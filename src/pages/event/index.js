@@ -9,7 +9,7 @@ export const Event = (props) => {
   return (
     <div className="flex">
       <iframe
-        className="min-h-screen min-w-screen"
+        className="min-h-screen w-full"
         src="https://storage.net-fs.com/hosting/7319004/0/"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
