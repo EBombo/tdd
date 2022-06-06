@@ -1,25 +1,16 @@
 import React from "reactn";
 
-// TODO replace iframe
-const eventUrl = "https://html.spec.whatwg.org/";
-// TODO remove this boolean
-const showIFrame = false;
+const eventUrl = `https://storage.net-fs.com/hosting/7319004/0/`;
 
 export const Event = (props) => {
   return (
-    <>
-      <div className="m-0 sm:px-1 min-h-screen w-full bg-register bg-no-repeat bg-cover bg-bottom flex flex-col justify-center">
-        {showIFrame && (
-          <iframe
-            src={eventUrl}
-            frameBorder="0"
-            className="min-h-screen"
-            height="100%"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        )}
-      </div>
-    </>
+    <div className="flex">
+      <iframe
+        className="min-h-screen w-full"
+        src={eventUrl}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
   );
 };
