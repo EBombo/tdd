@@ -144,7 +144,7 @@ export const Home = (props) => {
               />
             ) : null}
 
-            <div className="py-4 max-w-[280px]">
+            <div className="py-4 max-w-[260px]">
               <Image className="inline-block" src={`${config.storageUrl}/resources/logo-tdd-utp-vector.svg`} />
             </div>
           </div>
