@@ -29,7 +29,7 @@ export const Resume = (props) => {
                   width="18px"
                   desktopWidth="24px"
                 />{" "}
-                CONTENIDO
+                VIDEOS TRANSMITIDOS
               </span>
             </div>
           </div>
