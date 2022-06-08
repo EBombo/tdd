@@ -33,6 +33,7 @@ export const Event = (props) => {
         .doc("schedule")
         .onSnapshot((querySnapshotStartDate) => {
           const schedule = querySnapshotStartDate.data();
+
           if (!schedule?.start) return;
           if (!schedule?.end) return;
 
