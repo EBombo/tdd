@@ -28,6 +28,7 @@ const Navbar = (props) => {
     router.prefetch("/buy-tickets");
     router.prefetch("/register");
     router.prefetch("/login");
+    router.prefetch("/resume");
   }, []);
 
   const btnLabel = useMemo(() => {
@@ -36,6 +37,17 @@ const Navbar = (props) => {
       return <>Adquirir entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/95</>;
 
     return "Ver evento";
+  }, [authUser]);
+
+  const btnVideos = useMemo(() => {
+    if (!authUser) return null;
+    if (!authUser?.hasPayment && !authUser?.studentId) return null;
+
+    return (
+      <Button primary onClick={() => router.push("/resume")} fontSize="text-sm">
+        Videos
+      </Button>
+    );
   }, [authUser]);
 
   return (
@@ -113,6 +125,8 @@ const Navbar = (props) => {
               </span>
               <span className={path === "/content" && "text-pink-500"}>Contenido</span>
             </LeftAnchor>
+
+            {btnVideos}
           </div>
 
           <div>
