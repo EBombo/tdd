@@ -44,7 +44,7 @@ const Navbar = (props) => {
     if (!authUser?.hasPayment && !authUser?.studentId) return null;
 
     return (
-      <Button primary onClick={() => router.push("/resume")} fontSize="text-sm">
+      <Button primary onClick={() => router.push("/resume")} fontSize="text-sm" margin="m-auto">
         Videos
       </Button>
     );
@@ -165,6 +165,8 @@ const Navbar = (props) => {
                 </span>
                 Expositores
               </LeftAnchor>
+
+              <div className="flex">{btnVideos}</div>
             </div>
 
             <div>
