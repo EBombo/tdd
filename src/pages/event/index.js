@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import moment from "moment";
 import { useInterval } from "../../hooks/useInterval";
 import { useSendError } from "../../hooks";
+import { Desktop, Tablet } from "../../constants";
 
 const eventUrl = `https://storage.net-fs.com/hosting/7319004/0/`;
 
@@ -69,31 +70,61 @@ export const Event = (props) => {
         </CountDown>
       )}
 
-      <Tooltip title="Informacón del evento" placement="left">
-        <FloatIcon {...props} top="15px" onClick={() => router.push("/timeline")} icon="info-icon.png">
-          <div className="icon" />
-        </FloatIcon>
-      </Tooltip>
+      <Desktop>
+        <Tooltip title="Informacón del evento" placement="left">
+          <FloatIcon {...props} top="15px" onClick={() => router.push("/timeline")} icon="info-icon.png">
+            <div className="icon" />
+          </FloatIcon>
+        </Tooltip>
 
-      <Tooltip title="Videos transmitidos" placement="left">
-        <FloatIcon {...props} top="65px" onClick={() => router.push("/resume")} icon="video-icon.png">
-          <div className="icon" />
-        </FloatIcon>
-      </Tooltip>
+        <Tooltip title="Videos transmitidos" placement="left">
+          <FloatIcon {...props} top="65px" onClick={() => router.push("/resume")} icon="video-icon.png">
+            <div className="icon" />
+          </FloatIcon>
+        </Tooltip>
 
-      <Tooltip title="Ir a la entrada del evento" placement="left">
-        <FloatIcon
-          {...props}
-          icon="home-icon.svg"
-          top="115px"
-          onClick={() => {
-            setEventLink(eventUrl);
-            setForceRender(forceRender + 1);
-          }}
-        >
-          <div className="icon" />
-        </FloatIcon>
-      </Tooltip>
+        <Tooltip title="Ir a la entrada del evento" placement="left">
+          <FloatIcon
+            {...props}
+            icon="home-icon.svg"
+            top="115px"
+            onClick={() => {
+              setEventLink(eventUrl);
+              setForceRender(forceRender + 1);
+            }}
+          >
+            <div className="icon" />
+          </FloatIcon>
+        </Tooltip>
+      </Desktop>
+
+      <Tablet>
+        <Tooltip title="Informacón del evento" placement="left">
+          <FloatIcon {...props} top="115px" onClick={() => router.push("/timeline")} icon="info-icon.png">
+            <div className="icon" />
+          </FloatIcon>
+        </Tooltip>
+
+        <Tooltip title="Videos transmitidos" placement="left">
+          <FloatIcon {...props} top="165px" onClick={() => router.push("/resume")} icon="video-icon.png">
+            <div className="icon" />
+          </FloatIcon>
+        </Tooltip>
+
+        <Tooltip title="Ir a la entrada del evento" placement="left">
+          <FloatIcon
+            {...props}
+            icon="home-icon.svg"
+            top="215px"
+            onClick={() => {
+              setEventLink(eventUrl);
+              setForceRender(forceRender + 1);
+            }}
+          >
+            <div className="icon" />
+          </FloatIcon>
+        </Tooltip>
+      </Tablet>
 
       <iframe
         src={eventLink}
