@@ -23,7 +23,7 @@ export const Event = (props) => {
 
   useEffect(() => {
     router.prefetch("/resume");
-    router.prefetch("/content");
+    router.prefetch("/timeline");
   }, []);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export const Event = (props) => {
       )}
 
       <Tooltip title="Informacón del evento" placement="left">
-        <FloatIcon {...props} top="15px" onClick={() => router.push("/content")} icon="info-icon.png">
+        <FloatIcon {...props} top="15px" onClick={() => router.push("/timeline")} icon="info-icon.png">
           <div className="icon" />
         </FloatIcon>
       </Tooltip>
