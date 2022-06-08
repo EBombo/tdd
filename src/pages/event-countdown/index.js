@@ -12,7 +12,6 @@ export const EventCountdown = (props) => {
   const router = useRouter();
 
   const [deadline] = useGlobal("deadline");
-  const [serverDate] = useGlobal("serverDate");
 
   const [isDeadlinedFinished, setIsDeadlinedFinished] = useState(false);
 
@@ -21,7 +20,8 @@ export const EventCountdown = (props) => {
       if (!deadline) return;
       if (isDeadlinedFinished) return;
 
-      setIsDeadlinedFinished(moment(deadline).isBefore(serverDate));
+      const currentDate = moment().utcOffset(-5);
+      setIsDeadlinedFinished(moment(deadline).isBefore(currentDate));
     };
 
     finishedDeadline();
