@@ -5,7 +5,15 @@ import { VideoList } from "./VideoList";
 
 const videos = [
   {
-    title: "BLOQUE 1",
+    title: (
+      <>
+        POLÍTICAS PÚBLICAS
+        <br />
+        Miércoles 8, 6:00 - 9:00 PM
+        <br />
+        BLOQUE 1
+      </>
+    ),
     videoId: "2192101",
   },
 ];
