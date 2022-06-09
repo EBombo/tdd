@@ -16,6 +16,18 @@ const videos = [
     ),
     videoId: "2192101",
   },
+  {
+    title: (
+      <>
+        TRANSFORMACIÓN DIGITAL DE LAS ORGANIZACIONES PRIVADAS
+        <br />
+        Jueves 9, 6:00 - 9:00 PM
+        <br />
+        BLOQUE 2
+      </>
+    ),
+    videoId: "2192108",
+  },
 ];
 
 export const Resume = (props) => {
