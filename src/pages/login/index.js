@@ -27,7 +27,7 @@ export const Login = (props) => {
   }, [authUser]);
 
   const schema = object().shape({
-    email: string().required().email(),
+    email: string().required().email().trim(),
     password: string().required(),
   });
 
