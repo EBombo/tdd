@@ -135,7 +135,7 @@ export const Home = (props) => {
 
             {buyTicketBtn}
 
-            {authUser?.hasPayment || authUser?.studentId || isFreeDay ? (
+            {(authUser?.hasPayment || authUser?.studentId || isFreeDay) && !!authUser ? (
               <Countdown
                 title="El congreso empieza en:"
                 titleAlignment={"text-left"}
