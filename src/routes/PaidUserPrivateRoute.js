@@ -12,11 +12,11 @@ export const PaidUserPrivateRoute = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (!authUser) return router.push("/");
+
     if (isFreeDay) return setIsLoading(false);
     if (authUser?.studentId) return setIsLoading(false);
     if (authUser?.hasPayment) return setIsLoading(false);
-
-    if (!authUser) return router.push("/");
 
     const fetchPayments = () =>
       firestore
