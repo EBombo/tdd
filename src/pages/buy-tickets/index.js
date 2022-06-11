@@ -13,6 +13,7 @@ const defaultDiscount = 0;
 
 export const BuyTickets = (props) => {
   const [authUser] = useGlobal("user");
+  const [isFreeDay] = useGlobal("isFreeDay");
 
   const [cost] = useState(defaultCost);
   const [coupon, setCoupon] = useState(null);
@@ -24,8 +25,8 @@ export const BuyTickets = (props) => {
   }, [cost, discount]);
 
   const canSeeEvent = useMemo(() => {
-    return authUser?.studentId || authUser?.hasPayment;
-  }, [authUser]);
+    return authUser?.studentId || authUser?.hasPayment || isFreeDay;
+  }, [authUser, isFreeDay]);
 
   /**
    * The user can see the event.

@@ -28,6 +28,18 @@ const videos = [
     ),
     videoId: "2192108",
   },
+  {
+    title: (
+      <>
+        TRANSFORMACIÓN DIGITAL ENFOCADA EN PYMES
+        <br />
+        Viernes 10, 6:00 - 9:00 PM
+        <br />
+        BLOQUE 3
+      </>
+    ),
+    videoId: "2192112",
+  },
 ];
 
 export const Resume = (props) => {
