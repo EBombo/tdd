@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { config } from "../../firebase";
 import { Image } from "../common/Image";
 import { mediaQuery } from "../../constants";
-import { ButtonAnt } from "../form";
+import { Button } from "../form";
 
 const UpdateVersion = () => (
   <UpdateContainer>
@@ -15,9 +15,9 @@ const UpdateVersion = () => (
         height={"26px"}
       />
       <h2 className="title">Por favor actualiza a la última versión de la plataforma</h2>
-      <ButtonAnt onClick={() => document.location.reload(true)} fontSize="18px">
+      <Button onClick={() => document.location.reload(true)} fontSize="18px">
         ACTUALIZAR
-      </ButtonAnt>
+      </Button>
     </div>
   </UpdateContainer>
 );
