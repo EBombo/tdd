@@ -24,6 +24,10 @@ const UpdateVersion = dynamic(() => import("../components/versions/UpdateVersion
   loading: () => spinLoader(),
 });
 
+const dayFree = "11/06/2022";
+
+const currentDate = moment().utcOffset(-5);
+
 export const WithConfiguration = (props) => {
   const { Fetch } = useFetch();
   const { sendError } = useSendError();
@@ -68,6 +72,7 @@ export const WithConfiguration = (props) => {
         isLoadingCreateUser: false,
         isVisibleForgotPassword: false,
         theme: get(authUserLS, "theme") === "lightTheme" ? lightTheme : darkTheme,
+        isFreeDay: dayFree.toLowerCase().includes(currentDate.format("DD/MM/YYYY")),
       });
 
       moment.locale(languageCode);

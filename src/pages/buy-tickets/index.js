@@ -8,37 +8,24 @@ import { EventCountdown } from "../event-countdown";
 import { Desktop } from "../../constants";
 import { Image } from "../../components/common/Image";
 import { config } from "../../firebase";
-import moment from "moment";
 
 const defaultDiscount = 0;
 
-const dayFree = moment("11/06/2022", "DD/MM/YYYY");
-
-const currentDate = moment().utcOffset(-5);
-
 export const BuyTickets = (props) => {
   const [authUser] = useGlobal("user");
+  const [isFreeDay] = useGlobal("isFreeDay");
 
   const [cost] = useState(defaultCost);
   const [coupon, setCoupon] = useState(null);
   const [discount, setDiscount] = useState(defaultDiscount);
   const [isLoading, setIsLoading] = useState(false);
 
-  const isFreeDay = useMemo(() => {
-    console.log("dayFree->", dayFree.format("DD/MM/YYYY"));
-    console.log("currentDate->", currentDate.format("DD/MM/YYYY"));
-
-    return dayFree.format("DD/MM/YYYY") === currentDate.format("DD/MM/YYYY");
-  }, [dayFree, currentDate]);
-
   const totalCost = useMemo(() => {
     return +(cost - discount);
   }, [cost, discount]);
 
   const canSeeEvent = useMemo(() => {
-    if (isFreeDay) return isFreeDay;
-
-    return authUser?.studentId || authUser?.hasPayment;
+    return authUser?.studentId || authUser?.hasPayment || isFreeDay;
   }, [authUser, isFreeDay]);
 
   /**

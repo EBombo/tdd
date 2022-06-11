@@ -7,11 +7,12 @@ export const PaidUserPrivateRoute = (props) => {
   const router = useRouter();
 
   const [authUser] = useGlobal("user");
+  const [isFreeDay] = useGlobal("isFreeDay");
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // The student can see the event.
+    if (isFreeDay) return setIsLoading(false);
     if (authUser?.studentId) return setIsLoading(false);
     if (authUser?.hasPayment) return setIsLoading(false);
 
@@ -32,7 +33,7 @@ export const PaidUserPrivateRoute = (props) => {
     const sub = fetchPayments();
 
     return () => sub && sub();
-  }, [authUser]);
+  }, [authUser, isFreeDay]);
 
   if (isLoading) return spinLoader();
 

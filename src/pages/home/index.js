@@ -47,6 +47,7 @@ export const Home = (props) => {
   const router = useRouter();
 
   const [authUser] = useGlobal("user");
+  const [isFreeDay] = useGlobal("isFreeDay");
 
   const [exhibitors, setExhibitors] = useState([]);
 
@@ -77,6 +78,7 @@ export const Home = (props) => {
 
   const buyTicket = useMemo(() => {
     if (!authUser) return;
+    if (isFreeDay) return;
     if (authUser?.hasPayment || authUser?.studentId) return;
 
     return <div>¡Compra ya tu entrada!</div>;
@@ -94,6 +96,7 @@ export const Home = (props) => {
 
   const buyTicketBtn = useMemo(() => {
     if (!authUser) return;
+    if (isFreeDay) return;
     if (authUser?.hasPayment || authUser?.studentId) return;
 
     return (
@@ -101,7 +104,7 @@ export const Home = (props) => {
         Adquirir entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/95
       </Button>
     );
-  }, [authUser]);
+  }, [authUser, isFreeDay]);
 
   return (
     <LandingContainer>
@@ -132,7 +135,7 @@ export const Home = (props) => {
 
             {buyTicketBtn}
 
-            {authUser?.hasPayment || authUser?.studentId ? (
+            {authUser?.hasPayment || authUser?.studentId || isFreeDay ? (
               <Countdown
                 title="El congreso empieza en:"
                 titleAlignment={"text-left"}

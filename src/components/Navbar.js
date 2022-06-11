@@ -21,6 +21,7 @@ const Navbar = (props) => {
   const path = router.pathname;
 
   const [authUser] = useGlobal("user");
+  const [isFreeDay] = useGlobal("isFreeDay");
 
   const [menuDrawer, setMenuDrawer] = useState(false);
 
@@ -33,22 +34,23 @@ const Navbar = (props) => {
 
   const btnLabel = useMemo(() => {
     if (!authUser) return "Regístrarse";
-    if (!authUser?.hasPayment && !authUser?.studentId)
+    if (!authUser?.hasPayment && !authUser?.studentId && !isFreeDay)
       return <>Adquirir entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s/95</>;
 
     return "Ver evento";
-  }, [authUser]);
+  }, [authUser, isFreeDay]);
 
   const btnVideos = useMemo(() => {
     if (!authUser) return null;
-    if (!authUser?.hasPayment && !authUser?.studentId) return null;
+    if (!isFreeDay) return null;
+    if (!authUser?.hasPayment && !authUser?.studentId && !isFreeDay) return null;
 
     return (
       <Button primary onClick={() => router.push("/resume")} fontSize="text-sm" margin="m-auto">
         Videos
       </Button>
     );
-  }, [authUser]);
+  }, [authUser, isFreeDay]);
 
   return (
     <div className="relative h-[100vh] w-[100wv] overflow-hidden">
