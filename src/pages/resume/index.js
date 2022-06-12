@@ -40,6 +40,18 @@ const videos = [
     ),
     videoId: "2192112",
   },
+  {
+    title: (
+      <>
+        TECNOLOGÍAS DIGITALES Y SU APLICACIÓN
+        <br />
+        Sábado 11, 9:00 AM - 12:00 PM
+        <br />
+        BLOQUE 4
+      </>
+    ),
+    videoId: "2192139",
+  },
 ];
 
 export const Resume = (props) => {
