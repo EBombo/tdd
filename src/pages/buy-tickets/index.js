@@ -25,6 +25,11 @@ export const BuyTickets = (props) => {
   }, [cost, discount]);
 
   const canSeeEvent = useMemo(() => {
+    /**
+    Disable payment
+     **/
+    return true;
+
     return authUser?.studentId || authUser?.hasPayment || isFreeDay;
   }, [authUser, isFreeDay]);
 
