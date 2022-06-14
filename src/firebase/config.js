@@ -17,7 +17,7 @@ console.log("process.env.NEXT_PUBLIC_DOMAIN", DOMAIN);
 const CONFIG = process.env.NEXT_PUBLIC_CONFIG ?? "";
 //console.log("process.env.NEXT_PUBLIC_CONFIG", CONFIG);
 
-const version = "0.0.11";
+const version = "0.0.12";
 
 const config = JSON.parse(CONFIG);
 
